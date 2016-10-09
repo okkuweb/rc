@@ -5,9 +5,6 @@ export NVM_DIR="/home/webdev/.nvm"
 # Changes the terminal colors a bit
 export PS1="\[$(tput bold)\]\[\033[38;5;196m\]\u@\h:\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\w\\$ \[$(tput sgr0)\]"
 
-# Enables composer in terminal
-# export PATH="$PATH:$HOME/.config/composer/vendor/bin"
-
 # Start a simple PHP server in current directory
 alias phpserver="php -S localhost:8000"
 
@@ -40,3 +37,14 @@ alias clip="xclip -sel clip < "
 
 # Change vim to nvim
 alias vi="nvim"
+
+# Make a shorthand for bash_aliases
+alias editbash="vi ~/.bash_aliases && source ~/.bash_aliases"
+
+# Make moving and copying files safer by making it confirm overwrite
+alias cp="cp -i"
+alias mv="mv -i"
+
+# Shorthand for cd ..
+alias ..="cd .."
+
