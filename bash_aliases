@@ -1,5 +1,5 @@
 # Enables nvm in terminal
-export NVM_DIR="/home/webdev/.nvm"
+export NVM_DIR="~/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Changes the terminal colors a bit
@@ -11,14 +11,12 @@ alias phpserver="php -S localhost:8000"
 # Start chrome from terminal a bit easier
 alias chrome="google-chrome"
 
-# This enables composer in terminal
-alias composer="/usr/local/bin/composer/composer.phar"
-
 # Enable autojump in terminal
 . /usr/share/autojump/autojump.sh
 
+# ADD THIS TO WEBDEV PC .BASHRC
 # Open file manager in current directory
-alias opendir="caja"
+# alias opendir="caja"
 
 # Extract any archive by just writing "extract"
 alias extract="unp"
