@@ -48,3 +48,5 @@ alias mv="mv -i"
 # Shorthand for cd ..
 alias ..="cd .."
 
+# Restart wifi
+alias wifirestart="sudo service network-manager restart"

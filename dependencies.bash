@@ -15,3 +15,7 @@ pip3 install neovim
 pip3 install --upgrade neovim
 # If deoplete or something doesn't work yet do this in neovim
 :UpdateRemotePlugins
+
+# To install Vim Plug use this
+curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
