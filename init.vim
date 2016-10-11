@@ -57,4 +57,4 @@ xmap <C-k>     <Plug>(neosnippet_expand_target)
 nmap <C-o> o<Esc>
 
 " Make Esc escape from terminal mode in neovim terminal
-:tnoremap <Esc> <C-\><C-n>
+tnoremap <Esc> <C-\><C-n>
