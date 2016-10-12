@@ -14,10 +14,6 @@ alias chrome="google-chrome"
 # Enable autojump in terminal
 . /usr/share/autojump/autojump.sh
 
-# ADD THIS TO WEBDEV PC .BASHRC
-# Open file manager in current directory
-# alias opendir="caja"
-
 # Extract any archive by just writing "extract"
 alias extract="unp"
 

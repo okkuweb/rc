@@ -58,3 +58,4 @@ nmap <C-o> o<Esc>
 
 " Make Esc escape from terminal mode in neovim terminal
 tnoremap <Esc> <C-\><C-n>
+
