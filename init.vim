@@ -11,7 +11,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
-Plug 'ap/vim-css-color'
+Plug 'chrisbra/colorizer'
 call plug#end()
 
 
@@ -25,17 +25,12 @@ set expandtab
 set softtabstop=4
 
 " colorscheme
-colorscheme molokai
 let g:molokai_original = 1
+colorscheme molokai
 hi MatchParen      ctermfg=208 ctermbg=233 cterm=bold 
 
 " Add numbers to vim sidebar
 set number
-
-" Add system clipboard as the default clipboard
-if has('unnamedplus')
-   set clipboard=unnamed,unnamedplus
-endif
 
 " Set escape from insert mode to jj
 imap jj <Esc>
@@ -59,4 +54,7 @@ nmap <C-o> o<Esc>
 
 " Make Esc escape from terminal mode in neovim terminal
 tnoremap <Esc> <C-\><C-n>
+
+" Activate color highlighting
+let g:colorizer_auto_filetype='css,html,scss,less,sass,js,ts'
 
