@@ -11,6 +11,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
+Plug 'ap/vim-css-color'
 call plug#end()
 
 
