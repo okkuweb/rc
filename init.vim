@@ -58,3 +58,5 @@ tnoremap <Esc> <C-\><C-n>
 " Activate color highlighting
 let g:colorizer_auto_filetype='css,html,scss,less,sass,js,ts'
 
+" Make jj exit insert mode in terminal mode
+tmap jj <Esc>
