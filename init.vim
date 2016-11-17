@@ -12,6 +12,7 @@ Plug 'captbaritone/better-indent-support-for-php-with-html'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'ervandew/supertab'
 Plug 'chrisbra/colorizer'
+Plug 'tpope/vim-surround'
 call plug#end()
 
 
@@ -60,3 +61,12 @@ let g:colorizer_auto_filetype='css,html,scss,less,sass,js,ts'
 
 " Make jj exit insert mode in terminal mode
 tmap jj <Esc>
+
+" Make a buffer file to home folder for copying between vims
+vmap <C-y> :w! ~/.vimbuffer<CR>
+nmap <C-y> :.w! ~/.vimbuffer<CR>
+" Paste from buffer
+map <C-p> :r ~/.vimbuffer<CR>
+
+" Toggle paste mode with F11
+set pastetoggle=<F10>
