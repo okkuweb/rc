@@ -70,3 +70,7 @@ map <C-p> :r ~/.vimbuffer<CR>
 
 " Toggle paste mode with F11
 set pastetoggle=<F10>
+
+" Set line number toggle
+noremap <F9> :set invnumber<CR>
+inoremap <F9> <C-O>:set invnumber<CR>
