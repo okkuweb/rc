@@ -63,7 +63,7 @@ let g:colorizer_auto_filetype='css,html,scss,less,sass,js,ts'
 tmap jj <Esc>
 
 " Make a buffer file to home folder for copying between vims
-vmap <C-y> :w! ~/.vimbuffer<CR>
+vmap <C-y> y:let @a = @<CR>:sp ~/.vimbuffer<CR>ggdG:let @" = @a<CR>p:w<CR>:bdelete!<CR> " This monstrosity isn't that elegant...
 nmap <C-y> :.w! ~/.vimbuffer<CR>
 " Paste from buffer
 map <C-p> :r ~/.vimbuffer<CR>
