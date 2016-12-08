@@ -75,3 +75,6 @@ set pastetoggle=<F10>
 noremap <F9> :set invnumber<CR>
 inoremap <F9> <C-O>:set invnumber<CR>
 
+" Traverse one line at a time
+nnoremap <S-j> <C-E>
+nnoremap <S-k> <C-Y>
