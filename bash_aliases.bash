@@ -23,7 +23,7 @@ alias tmux="tmux -2"
 alias clip="xclip -sel clip < "
 
 # Change vim to nvim
-alias vi="nvim"
+alias vi="vim"
 
 # Make a shorthand for bash_aliases
 alias editbash="vi ~/.bash_aliases && source ~/.bash_aliases"
@@ -37,4 +37,3 @@ alias ..="cd .."
 
 # Restart wifi
 alias wifirestart="sudo service network-manager restart"
-
