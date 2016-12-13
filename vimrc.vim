@@ -112,31 +112,8 @@ set number
 " Set escape from insert mode to jj
 imap jj <Esc>
 
-" Use deoplete.
-let g:deoplete#enable_at_startup = 1
-
-" Change emmet expand hotkey to ctrl + e + ,
-let g:user_emmet_leader_key='<C-E>'
-
-" Change tab completion direction
-let g:SuperTabDefaultCompletionType = "<c-n>"
-
-" Set neosnippet expand binding
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
-
 " Add newlines with enter without going to insert mode
 nmap <C-o> o<Esc>
-
-" Make Esc escape from terminal mode in neovim terminal
-tnoremap <Esc> <C-\><C-n>
-
-" Activate color highlighting
-let g:colorizer_auto_filetype='css,html,scss,less,sass,js,ts'
-
-" Make jj exit insert mode in terminal mode
-tmap jj <Esc>
 
 " Make a buffer file to home folder for copying between vims
 vmap <C-y> y:let @a = @<CR>:sp ~/.vimbuffer<CR>ggdG:let @" = @a<CR>p:w<CR>:bdelete!<CR> " This monstrosity isn't that elegant...
