@@ -4,3 +4,4 @@ ln -f $location/bash_aliases ~/.bash_aliases
 ln -f $location/inputrc ~/.inputrc
 ln -f $location/init.vim ~/.config/nvim/init.vim
 ln -f $location/tmux.conf ~/.tmux.conf
+ln -f $location/tmux.conf.sh ~/.tmux.conf.sh
