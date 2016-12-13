@@ -1,3 +1,4 @@
+#!/bin/bash
 # Update repositories
 sudo apt-get update
 
