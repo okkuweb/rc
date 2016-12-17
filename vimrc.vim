@@ -1,3 +1,5 @@
+execute pathogen#infect()
+
 " Indent automatically
 set autoindent
 " Make backspace delete over line breaks
