@@ -1,3 +1,4 @@
+" Execute pathogen plugins
 execute pathogen#infect()
 
 " Indent automatically
