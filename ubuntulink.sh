@@ -6,7 +6,6 @@ ln -f $location/bash_aliases.bash ~/.bash_aliases
 ln -f $location/inputrc.bash ~/.inputrc
 ln -f $location/vimrc.vim ~/.vimrc
 ln -f $location/tmux.conf ~/.tmux.conf
-ln -f $location/tmux.conf.sh ~/.tmux.conf.sh
 
 # Check if source .bash_aliases already present in .bashrc and add it there if not
 check=`grep "source ~/.bash_aliases" ~/.bashrc`
