@@ -1,6 +1,11 @@
 " Execute pathogen plugins
 execute pathogen#infect()
 
+" Set vim temporary files to home folder
+silent !mkdir -p ~/.vim/tempfiles/ > /dev/null 2>&1
+set backupdir=~/.vim/tempfiles/
+set directory=~/.vim/tempfiles/
+
 " Indent automatically
 set autoindent
 " Make backspace delete over line breaks
@@ -101,8 +106,12 @@ set tabstop=4
 set shiftwidth=4
 " On pressing tab, insert 4 spaces
 set expandtab
-" makes the spaces feel like real tabs
+" Makes the spaces feel like real tabs
 set softtabstop=4
+" Make vim indent to next tab spot instead of always indenting 4 spaces
+set shiftround
+" Make it possible to indent properly in files that do not have a proper filetype
+set smartindent
 
 " colorscheme
 let g:molokai_original = 1
