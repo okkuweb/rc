@@ -13,7 +13,26 @@ alias phpserver="php -S localhost:8000"
 alias chrome="google-chrome"
 
 # Extract any archive by just writing "extract"
-alias extract="unp -U"
+extract () {
+   if [ -f $1 ] ; then
+       case $1 in
+           *.tar.bz2)   tar xvjf $1    ;;
+           *.tar.gz)    tar xvzf $1    ;;
+           *.bz2)       bunzip2 $1     ;;
+           *.rar)       unrar x $1       ;;
+           *.gz)        gunzip $1      ;;
+           *.tar)       tar xvf $1     ;;
+           *.tbz2)      tar xvjf $1    ;;
+           *.tgz)       tar xvzf $1    ;;
+           *.zip)       unzip $1       ;;
+           *.Z)         uncompress $1  ;;
+           *.7z)        7z x $1        ;;
+           *)           echo "don't know how to extract '$1'..." ;;
+       esac
+   else
+       echo "'$1' is not a valid file!"
+   fi
+ }
 
 # List self-installed npm packages
 alias nodelist="npm list -g --depth=0"
@@ -23,9 +42,6 @@ alias simpleserver="browser-sync start --server \".\" --files \"./**/*\""
 
 # Add 256 colors to tmux
 alias tmux="tmux -2"
-
-# Add copy to clipboard alias
-alias clip="xclip -sel clip < "
 
 # Change vim to nvim
 alias vi="vim"
