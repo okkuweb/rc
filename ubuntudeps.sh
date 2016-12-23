@@ -3,7 +3,7 @@
 sudo apt-get update
 
 # Install required bash cli tools
-sudo apt-get install curl git xclip vim tmux unp
+sudo apt-get install curl git vim tmux
 
 # Install pathogen package manager for vim
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
