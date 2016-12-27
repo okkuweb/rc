@@ -143,3 +143,7 @@ inoremap <F9> <C-O>:set invnumber<CR>
 " Traverse one line at a time
 nnoremap <C-j> <C-E>
 nnoremap <C-k> <C-Y>
+
+" Make search case insensitive and only sensitive when using uppercase letters
+set ignorecase
+set smartcase
