@@ -2,7 +2,9 @@
 execute pathogen#infect()
 
 " Set vim temporary files to home folder
-silent !mkdir -p ~/.vim/tempfiles/ > /dev/null 2>&1
+if !isdirectory($HOME."/.vim/tempfiles")
+    call mkdir($HOME."/.vim/tempfiles", "p")
+endif
 set backupdir=~/.vim/tempfiles/
 set directory=~/.vim/tempfiles/
 
@@ -147,3 +149,9 @@ nnoremap <C-k> <C-Y>
 " Make search case insensitive and only sensitive when using uppercase letters
 set ignorecase
 set smartcase
+
+" Set persistent undo
+set undofile
+set undodir=~/.vim/tempfiles
+set undolevels=1000
+set undoreload=10000
