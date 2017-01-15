@@ -8,7 +8,7 @@ ln -f $location/vimrc.vim ~/.vimrc
 ln -f $location/tmux.conf ~/.tmux.conf
 
 # Check if source .bash_aliases already present in .bashrc and add it there if not
-check=`grep "source ~/.bash_aliases" ~/.bashrc`
+check=`grep "bash_aliases" ~/.bashrc`
 if [ "$check" ]
 then
     echo "Source ~/.bash_aliases already present in .bashrc"
