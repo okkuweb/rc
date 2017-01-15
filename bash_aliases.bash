@@ -1,5 +1,5 @@
 # Add colors to linux terminal
-TERM="xterm-256color"
+TERM="screen-256color"
 
 # Command history longer and better formatting
 HISTSIZE=5000
