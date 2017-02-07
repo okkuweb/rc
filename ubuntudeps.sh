@@ -12,3 +12,5 @@ curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 # Download molokai colorscheme for vim
 cd ~/.vim/bundle
 git clone https://github.com/tomasr/molokai
+git clone https://github.com/airblade/vim-gitgutter
+git clone https://github.com/jiangmiao/auto-pairs
