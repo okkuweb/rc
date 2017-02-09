@@ -75,5 +75,6 @@ alias ll="ls -l"
 alias calc="bc"
 
 # Tmux aliases
-alias amux="tmux at -t $1"
+alias amux="tmux at -t"
 alias lmux="tmux ls"
+alias nmux="tmux new -s"
