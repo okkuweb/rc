@@ -71,6 +71,9 @@ alias l="ls"
 # Alias shorthand for ls -l
 alias ll="ls -l"
 
+# Alias for recursive ls -R
+alias lr="ls -R"
+
 # Alias for calulation tool
 alias calc="bc"
 
