@@ -155,3 +155,7 @@ set undofile
 set undodir=~/.vim/tempfiles
 set undolevels=1000
 set undoreload=10000
+
+" Fix update frequency for gitgutter
+set updatetime=250
+
