@@ -81,3 +81,6 @@ alias calc="bc"
 alias amux="tmux at -t"
 alias lmux="tmux ls"
 alias nmux="tmux new -s"
+
+# Recursive grep with perl regexes
+alias grip="grep -riP"
