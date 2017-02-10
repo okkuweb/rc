@@ -1,13 +1,6 @@
 " Execute pathogen plugins
 execute pathogen#infect()
 
-" Set vim temporary files to home folder
-if !isdirectory($HOME."/.vim/tempfiles")
-    call mkdir($HOME."/.vim/tempfiles", "p")
-endif
-set backupdir=~/.vim/tempfiles/
-set directory=~/.vim/tempfiles/
-
 " Indent automatically
 set autoindent
 " Make backspace delete over line breaks
@@ -115,6 +108,23 @@ set shiftround
 " Make it possible to indent properly in files that do not have a proper filetype
 set smartindent
 
+" Set vim temporary files to home folder
+if !isdirectory($HOME."/.vim/tempfiles")
+    call mkdir($HOME."/.vim/tempfiles", "p")
+endif
+set backupdir=~/.vim/tempfiles/
+set directory=~/.vim/tempfiles/
+
+" Rebind leader key
+let mapleader=" "
+
+" Rebind enter to colon
+map <Enter> :
+
+" Rebind gitgutter keys
+map <Leader>< <Plug>GitGutterPrevHunk
+map <Leader>> <Plug>GitGutterNextHunk
+
 " colorscheme
 let g:molokai_original = 1
 colorscheme molokai
@@ -130,7 +140,7 @@ imap jj <Esc>
 nmap <C-o> o<Esc>
 
 " Make a buffer file to home folder for copying between vims
-vmap <C-y> y:let @a = @<CR>:sp ~/.vimbuffer<CR>ggdG:let @" = @a<CR>p:w<CR>:bdelete!<CR> " This monstrosity isn't that elegant...
+vmap <C-y> :w! ~/.vimbuffer<CR>
 nmap <C-y> :.w! ~/.vimbuffer<CR>
 " Paste from buffer
 map <C-p> :r ~/.vimbuffer<CR>
