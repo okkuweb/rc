@@ -84,3 +84,10 @@ alias nmux="tmux new -s"
 
 # Recursive grep with perl regexes
 alias grip="grep -riP"
+
+# Aliases for going up the directory
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
+alias ......="cd ../../../../.."
