@@ -169,3 +169,5 @@ set undoreload=10000
 " Fix update frequency for gitgutter
 set updatetime=250
 
+" Hotkey for resetting syntax highlighting
+noremap <Leader>l <Esc>:syntax sync fromstart<CR>
