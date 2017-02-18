@@ -10,6 +10,9 @@ set complete-=i
 " Incrementing numbers properly :V I dunno
 set nrformats-=octal
 
+" Start syntax highlighting
+syntax on
+
 " Adjust vim leader key timeout length
 set ttimeout
 set ttimeoutlen=100
