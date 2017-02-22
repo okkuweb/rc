@@ -14,6 +14,7 @@ cd ~/.vim/bundle
 git clone https://github.com/tomasr/molokai
 git clone https://github.com/airblade/vim-gitgutter
 git clone https://github.com/jiangmiao/auto-pairs
+git clone https://github.com/nathanaelkane/vim-indent-guides
 
 # Download tmux plugins
 mkdir -p ~/.tmux && cd ~/.tmux
