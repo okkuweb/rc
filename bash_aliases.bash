@@ -91,3 +91,7 @@ alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
 alias ......="cd ../../../../.."
+
+# Disable ctrl-s to suspend
+stty -ixon
+
