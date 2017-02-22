@@ -90,3 +90,5 @@ let g:indent_guides_auto_colors = 0
 hi IndentGuidesOdd ctermbg=237
 hi IndentGuidesEven ctermbg=236
 
+" Highlight search
+set hlsearch
