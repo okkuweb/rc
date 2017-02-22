@@ -176,3 +176,8 @@ set updatetime=250
 
 " Hotkey for resetting syntax highlighting
 noremap <Leader>l <Esc>:syntax sync fromstart<CR>
+
+" Settings for indent guides
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd ctermbg=237
+hi IndentGuidesEven ctermbg=236
