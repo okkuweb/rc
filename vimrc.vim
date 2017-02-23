@@ -60,8 +60,8 @@ map <C-p> :r ~/.vimbuffer<CR>
 set pastetoggle=<F10>
 
 " Set line number toggle
-noremap <F9> :set invnumber<CR>
-inoremap <F9> <C-O>:set invnumber<CR>
+noremap <F9> :set invnumber<CR>:GitGutterToggle<CR>
+inoremap <F9> <C-O>:set invnumber<CR>:GitGutterToggle<CR>
 
 " Traverse one line at a time
 nnoremap <C-j> <C-E>
