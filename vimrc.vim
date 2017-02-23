@@ -92,3 +92,6 @@ hi IndentGuidesEven ctermbg=236
 
 " Highlight search
 set hlsearch
+
+" Set folding to work by indentation
+set foldmethod=indent
