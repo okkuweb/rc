@@ -96,3 +96,5 @@ set hlsearch
 " Set folding to work by indentation
 set foldmethod=indent
 set foldlevelstart=20
+hi Folded ctermbg=236
+hi Folded ctermfg=75
