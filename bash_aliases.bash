@@ -46,7 +46,7 @@ alias simpleserver="browser-sync start --server \".\" --files \"./**/*\""
 # Add 256 colors to tmux
 alias tmux="tmux -2"
 
-# Change vim to nvim
+# Alias vi to vim
 alias vi="vim"
 
 # Make a shorthand for bash_aliases
