@@ -32,6 +32,10 @@ let mapleader=" "
 " Rebind enter to colon
 map <Enter> :
 
+" Rebinding some numpad bindings
+map <Esc>OM :
+map <Esc>OP <NOP>
+
 " Rebind gitgutter keys
 map <Leader>< <Plug>GitGutterPrevHunk
 map <Leader>> <Plug>GitGutterNextHunk
