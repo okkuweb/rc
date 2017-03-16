@@ -98,3 +98,7 @@ set foldmethod=indent
 set foldlevelstart=20
 hi Folded ctermbg=236
 hi Folded ctermfg=75
+
+" Stop # and * from going to the next element instantly
+nmap <silent> * :let @/='\<'.expand('<cword>').'\>'<CR>
+nmap <silent> # :let @/='\<'.expand('<cword>').'\>'<CR>
