@@ -102,3 +102,6 @@ hi Folded ctermfg=75
 " Stop # and * from going to the next element instantly
 nmap <silent> * :let @/='\<'.expand('<cword>').'\>'<CR>
 nmap <silent> # :let @/='\<'.expand('<cword>').'\>'<CR>
+
+" Save current file as sudo if opened without sudo
+cmap w!! w !sudo tee % > /dev/null
