@@ -105,3 +105,6 @@ nmap <silent> # :let @/='\<'.expand('<cword>').'\>'<CR>
 
 " Save current file as sudo if opened without sudo
 cmap w!! w !sudo tee % > /dev/null
+
+" Add mouse support to vim
+set mouse=a
