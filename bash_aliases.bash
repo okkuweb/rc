@@ -62,16 +62,11 @@ alias ..="cd .."
 # Restart wifi
 alias wifirestart="sudo service network-manager restart"
 
-# Alias shorthand for ls -a
-alias la="ls -a"
-
-# Alias shorthand for ls
-alias l="ls"
-
-# Alias shorthand for ls -l
+# Alias shorthands
+alias ls="ls --color"
+alias la="ls -a --color"
+alias l="ls --color"
 alias ll="ls -l"
-
-# Alias for recursive ls -R
 alias lr="ls -R"
 
 # Alias for calulation tool
