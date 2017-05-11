@@ -108,3 +108,6 @@ cmap w!! w !sudo tee % > /dev/null
 
 " Add mouse support to vim
 set mouse=a
+
+" Set ctrl + backspace to delete previous word in insert mode
+imap <C-BS> <C-W>
