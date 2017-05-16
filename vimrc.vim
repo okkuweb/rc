@@ -4,7 +4,7 @@ execute pathogen#infect()
 " Add vim syntax highlighting to vimlocal
 au BufNewFile,BufRead .vimlocal setlocal ft=vim
 " PC specific vim settings
-source .vimlocal
+source ~/.vimlocal
 
 " Start syntax highlighting
 syntax on
