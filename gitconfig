@@ -1,0 +1,6 @@
+[core]
+    editor = vim
+[push]
+    default = current
+[color]
+    ui = auto
