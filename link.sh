@@ -7,6 +7,9 @@ ln -f $location/inputrc.bash ~/.inputrc
 ln -f $location/vimrc.vim ~/.vimrc
 ln -f $location/tmux.conf ~/.tmux.conf
 
+# Add a local vimrc file
+touch ~/.vimlocal
+
 # Check if source .bash_aliases already present in .bashrc and add it there if not
 check=`grep "bash_aliases" ~/.bashrc`
 if [ "$check" ]
