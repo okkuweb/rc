@@ -1,6 +1,11 @@
 " Execute pathogen plugins
 execute pathogen#infect()
 
+" Add vim syntax highlighting to vimlocal
+au BufNewFile,BufRead .vimlocal setlocal ft=vim
+" PC specific vim settings
+source .vimlocal
+
 " Start syntax highlighting
 syntax on
 
@@ -79,9 +84,6 @@ set undodir=~/.vim/tempfiles
 set undolevels=1000
 set undoreload=10000
 
-" Fix update frequency for gitgutter
-set updatetime=250
-
 " Hotkey for resetting syntax highlighting
 noremap <Leader>l <Esc>:syntax sync fromstart<CR>
 
@@ -108,3 +110,8 @@ cmap w!! w !sudo tee % > /dev/null
 
 " Add mouse support to vim
 set mouse=a
+
+" Gitgutter settings
+set updatetime=250
+let g:gitgutter_max_signs = 600
+
