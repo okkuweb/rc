@@ -20,3 +20,29 @@ else
     echo "Added source ~/.bash_aliases to .bashrc"
     printf "\n# Source bash aliases\nsource ~/.bash_aliases" >> ~/.bashrc
 fi
+
+# Add git configurations to system
+if [ -f ~/.gitconfig ]; then
+    checkContent=`grep "\[user\]" ~/.gitconfig`
+    if [ "$checkContent" ]; then
+        content=`head -3 ~/.gitconfig`
+        cp -f $location/gitconfig.ini ~/.gitconfig
+        echo -e "$content\n$(cat ~/.gitconfig)" > ~/.gitconfig
+    else
+        printf "Adding Git configuration\n"
+        read -p "First and last name: " name
+        read -p "E-mail address: " email
+        cp -f $location/gitconfig.ini ~/.gitconfig
+        user="[user]\n    name = $name\n    email = $email\n"
+        echo -e "$user$(cat ~/.gitconfig)" > ~/.gitconfig
+    fi
+else
+    printf "Adding Git configuration\n"
+    read -p "First and last name: " name
+    read -p "E-mail address: " email
+    cp -f $location/gitconfig.ini ~/.gitconfig
+    user="[user]\n    name = $name\n    email = $email\n"
+    echo -e "$user$(cat ~/.gitconfig)" > ~/.gitconfig
+fi
+
+echo "System files updated!"
