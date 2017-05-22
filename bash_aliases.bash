@@ -70,8 +70,8 @@ alias wifirestart="sudo service network-manager restart"
 alias ls="ls --color"
 alias la="ls -a --color"
 alias l="ls --color"
-alias ll="ls -l"
-alias lr="ls -R"
+alias ll="ls -l --color"
+alias lr="ls -R --color"
 
 # Alias for calulation tool
 alias calc="bc"
