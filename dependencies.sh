@@ -5,9 +5,9 @@ os=${OS,,}
 
 # Install required bash cli tools
 if [ "$os" == "debian" ] || [ "$os" == "ubuntu" ] ; then
-    sudo apt-get update && sudo apt-get install curl git vim tmux
+    sudo apt-get update && sudo apt-get install curl git vim tmux python-pip
 elif [ "$os" == "centos" ]; then
-    sudo yum check-update && sudo yum install curl git vim tmux
+    sudo yum check-update && sudo yum install curl git vim tmux python-pip
 fi
 
 # Install pathogen package manager for vim
@@ -23,7 +23,5 @@ git clone https://github.com/jiangmiao/auto-pairs
 git clone https://github.com/nathanaelkane/vim-indent-guides
 git clone https://github.com/tpope/vim-surround
 
-# Download tmux plugins
-mkdir -p ~/.tmux && cd ~/.tmux
-git clone https://github.com/tmux-plugins/tmux-resurrect
-
+# Install tmuxp
+pip install --user tmuxp
