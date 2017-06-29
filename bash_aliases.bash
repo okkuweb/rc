@@ -82,7 +82,7 @@ alias lmux="tmux ls"
 alias nmux="tmux new -s"
 
 # Recursive grep with perl regexes
-alias grip="grep -riP"
+alias grip="grep -riPHn"
 
 # Aliases for going up the directory
 alias ..="cd .."
