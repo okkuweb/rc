@@ -110,6 +110,10 @@ cmap w!! w !sudo tee % > /dev/null
 " Add mouse support to vim
 set mouse=a
 
+" Add scrolling while in insert mode
+inoremap <C-k> <C-x><C-y>
+inoremap <C-j> <C-x><C-e>
+
 " Gitgutter settings
 set updatetime=250
 let g:gitgutter_max_signs = 600
