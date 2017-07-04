@@ -2,10 +2,10 @@
 # Check current folder
 location=`dirname $0`
 # Link files to appropriate locations
-ln -f $location/bash_aliases.bash ~/.bash_aliases
-ln -f $location/inputrc.bash ~/.inputrc
-ln -f $location/vimrc.vim ~/.vimrc
-ln -f $location/tmux.conf ~/.tmux.conf
+ln -fv $location/bash_aliases.bash ~/.bash_aliases
+ln -fv $location/inputrc.bash ~/.inputrc
+ln -fv $location/vimrc.vim ~/.vimrc
+ln -fv $location/tmux.conf ~/.tmux.conf
 
 # Add a local vimrc file
 touch ~/.vimlocal
