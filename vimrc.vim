@@ -118,3 +118,6 @@ inoremap <C-j> <C-x><C-e>
 set updatetime=250
 let g:gitgutter_max_signs = 600
 
+" Adding splitting to vim
+nnoremap <Leader>% :vsplit<CR>
+nnoremap <Leader>" :split<CR>
