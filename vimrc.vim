@@ -121,3 +121,9 @@ let g:gitgutter_max_signs = 600
 " Adding splitting to vim
 nnoremap <Leader>% :vsplit<CR>
 nnoremap <Leader>" :split<CR>
+
+" Activate inline edit plugin
+nnoremap <Leader>z :InlineEdit<CR>
+
+" Add hotkey for new tabs
+nnoremap <C-t> :tabnew<CR>
