@@ -23,6 +23,7 @@ git clone https://github.com/jiangmiao/auto-pairs
 git clone https://github.com/nathanaelkane/vim-indent-guides
 git clone https://github.com/tpope/vim-surround
 git clone https://github.com/jimsei/winresizer
+git clone https://github.com/andrewradev/inline_edit.vim
 
 # Install tmuxp
 pip install --user tmuxp
