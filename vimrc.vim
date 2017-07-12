@@ -3,8 +3,6 @@ execute pathogen#infect()
 
 " Add vim syntax highlighting to vimlocal
 au BufNewFile,BufRead .vimlocal setlocal ft=vim
-" PC specific vim settings
-source ~/.vimlocal
 
 " Start syntax highlighting
 syntax on
@@ -127,3 +125,11 @@ nnoremap <Leader>z :InlineEdit<CR>
 
 " Add hotkey for new tabs
 nnoremap <C-t> :tabnew<CR>
+
+" Run file in interpreter
+map <Leader>rh :! haxe -main % --interp<CR>
+map <Leader>rj :! node %<CR>
+map <Leader>rp :! perl %<CR>
+
+" PC specific vim settings
+source ~/.vimlocal
