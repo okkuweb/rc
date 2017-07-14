@@ -127,9 +127,12 @@ nnoremap <Leader>z :InlineEdit<CR>
 nnoremap <C-t> :tabnew<CR>
 
 " Run file in interpreter
-map <Leader>rh :! haxe -main % --interp<CR>
-map <Leader>rj :! node %<CR>
-map <Leader>rp :! perl %<CR>
+map <Leader>rh :! clear && haxe -main % --interp<CR>
+map <Leader>rj :! clear && node %<CR>
+map <Leader>rp :! clear && perl %<CR>
+
+" Make a breakpoint on underscores
+set iskeyword-=_
 
 " PC specific vim settings
 source ~/.vimlocal
