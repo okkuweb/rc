@@ -1,6 +1,9 @@
 # Add colors to linux terminal
 TERM="screen-256color"
 
+# Make vim the default text editor
+EDITOR="vim"
+
 # Command history longer and better formatting
 HISTSIZE=5000
 HISTFILESIZE=10000
