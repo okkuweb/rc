@@ -96,3 +96,6 @@ alias ......="cd ../../../../.."
 
 # Disable ctrl-s to suspend
 stty -ixon
+
+# Expand the bang command before running it
+shopt -s histverify
