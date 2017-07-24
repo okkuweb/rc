@@ -100,3 +100,5 @@ stty -ixon
 # Alias for current date in folder format
 alias today="date +%Y-%m-%d"
 
+# Expand the bang command before running it
+shopt -s histverify
