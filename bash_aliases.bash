@@ -96,3 +96,7 @@ alias ......="cd ../../../../.."
 
 # Disable ctrl-s to suspend
 stty -ixon
+
+# Alias for current date in folder format
+alias today="date +%Y-%m-%d"
+
