@@ -102,3 +102,6 @@ alias today="date +%Y-%m-%d"
 
 # Expand the bang command before running it
 shopt -s histverify
+
+# Fix bash history in tmux sessions by appending to history file
+shopt -s histappend
