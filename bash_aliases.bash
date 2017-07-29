@@ -9,12 +9,23 @@ HISTSIZE=5000
 HISTFILESIZE=10000
 HISTTIMEFORMAT="%d.%m.%y %T "
 
+# Avoid duplicates in history
+export HISTCONTROL=ignoredups:erasedups
+
+# Expand the bang command before running it
+shopt -s histverify
+
+# Fix bash history in tmux sessions by appending to history file
+shopt -s histappend
+
+# Ensures common history for all sessions
+export PROMPT_COMMAND='history -a'
+
 # Changes the terminal colors a bit
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
 export PS1="\[$(tput bold)\]\[\033[38;5;196m\]\u@\h\$(parse_git_branch):\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\w\\$ \[$(tput sgr0)\]"                                                                  
-
 
 # Start a simple PHP server in current directory
 alias phpserver="php -S localhost:8000"
@@ -99,6 +110,3 @@ stty -ixon
 
 # Alias for current date in folder format
 alias today="date +%Y-%m-%d"
-
-# Expand the bang command before running it
-shopt -s histverify
