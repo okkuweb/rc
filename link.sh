@@ -16,7 +16,6 @@ check=`grep "bash_aliases" ~/.bashrc`
 if [ "$check" ]
 then
     echo "Source ~/.bash_aliases already present in .bashrc"
-    exit
 else
     echo "Added source ~/.bash_aliases to .bashrc"
     printf "\n# Source bash aliases\nsource ~/.bash_aliases" >> ~/.bashrc
