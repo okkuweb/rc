@@ -28,6 +28,7 @@ if [ -f ~/.gitconfig ]; then
         content=`head -3 ~/.gitconfig`
         cp -f $location/gitconfig.ini ~/.gitconfig
         echo -e "$content\n$(cat ~/.gitconfig)" > ~/.gitconfig
+        echo "Updated gitconfig"
     else
         printf "Adding Git configuration\n"
         read -p "First and last name: " name
