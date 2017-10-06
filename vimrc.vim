@@ -6,7 +6,7 @@
 " vim-gitgutter
 " vim-indent-guides
 "
-" - CONFS -
+" - CONFIGURATIONS -
 " Execute pathogen plugins
 execute pathogen#infect()
 
