@@ -1,3 +1,12 @@
+" - INFO -
+" Plugin folder for gvim on windows is 'vimfiles'
+" and name of the rc file is '_vimrc'
+"
+" - DEFECTIVE PLUGINS ON WINDOWS -
+" vim-gitgutter
+" vim-indent-guides
+"
+" - CONFS -
 " Execute pathogen plugins
 execute pathogen#infect()
 
