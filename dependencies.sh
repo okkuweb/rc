@@ -24,7 +24,7 @@ git clone https://github.com/nathanaelkane/vim-indent-guides
 git clone https://github.com/tpope/vim-surround
 git clone https://github.com/jimsei/winresizer
 git clone https://github.com/pangloss/vim-javascript.git
-git clone https://github.com/vedknom/vim-fakeclip
+git clone https://github.com/kana/vim-fakeclip
 
 # Install tmuxp
 pip install --user tmuxp
