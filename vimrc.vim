@@ -124,8 +124,8 @@ set updatetime=250
 let g:gitgutter_max_signs = 600
 
 " Adding splitting to vim
-nnoremap <Leader>% :vsplit<CR>
-nnoremap <Leader>" :split<CR>
+nnoremap <C-w>% :vsplit<CR>
+nnoremap <C-w>" :split<CR>
 
 " Add hotkey for new tabs
 nnoremap <C-t> :tabnew<CR>
