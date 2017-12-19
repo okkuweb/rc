@@ -138,5 +138,10 @@ map <Leader>rp :! clear && perl %<CR>
 " Make a breakpoint on underscores
 set iskeyword-=_
 
+" New mapping for shift + j
+nnoremap <Leader>j J
+" Does the opposite of shift + j
+nnoremap <Leader>J a<CR><Esc>k$
+
 " PC specific vim settings
 source ~/.vimlocal
