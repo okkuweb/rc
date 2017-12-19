@@ -5,9 +5,9 @@ os=${OS,,}
 
 # Install required bash cli tools
 if [ "$os" == "debian" ] || [ "$os" == "ubuntu" ] ; then
-    sudo apt-get update && sudo apt-get install curl git vim tmux python-pip
+    sudo apt-get update && sudo apt-get install curl git vim tmux python-pip tree
 elif [ "$os" == "centos" ]; then
-    sudo yum check-update && sudo yum install curl git vim tmux python-pip
+    sudo yum check-update && sudo yum install curl git vim tmux python-pip tree
 fi
 
 # Install pathogen package manager for vim
