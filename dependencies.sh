@@ -1,6 +1,6 @@
 #!/bin/bash
 # Update repositories
-OS=`python -mplatform | grep -io "ubuntu\|debian\|centos"`
+OS=`cat /etc/issue | grep -io "ubuntu\|debian\|centos"`
 os=${OS,,}
 
 # Install required bash cli tools
