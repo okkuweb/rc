@@ -141,7 +141,7 @@ set iskeyword-=_
 " New mapping for shift + j
 nnoremap <Leader>j J
 " Does the opposite of shift + j
-nnoremap <Leader>J a<CR><Esc>k$
+nnoremap <Leader>J i<CR><Esc>k$
 
 " PC specific vim settings
 source ~/.vimlocal
