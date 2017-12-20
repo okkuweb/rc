@@ -144,8 +144,8 @@ nnoremap <Leader>j J
 nnoremap <Leader>J i<CR><Esc>k$
 
 " Add pasting from default buffer to search
-nnoremap <Leader>p /<C-r>"
-vnoremap <Leader>p /<C-r>"
+nnoremap <Leader>p /<C-r>"<CR>
+vnoremap <Leader>p /<C-r>"<CR>
 
 " PC specific vim settings
 source ~/.vimlocal
