@@ -143,5 +143,9 @@ nnoremap <Leader>j J
 " Does the opposite of shift + j
 nnoremap <Leader>J i<CR><Esc>k$
 
+" Add pasting from default buffer to search
+nnoremap <Leader>p /<C-r>"
+vnoremap <Leader>p /<C-r>"
+
 " PC specific vim settings
 source ~/.vimlocal
