@@ -98,15 +98,19 @@ alias nmux="tmux new -s"
 # Recursive grep with perl regexes
 alias grip="grep -riPHn"
 
-# Aliases for going up the directory
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-alias .....="cd ../../../.."
-alias ......="cd ../../../../.."
-
 # Disable ctrl-s to suspend
 stty -ixon
 
 # Alias for current date in folder format
 alias today="date +%Y-%m-%d"
+
+# Aliases for going up the directory
+repeat() { printf "$1"'%.s' $(eval "echo {1.."$(($2))"}");  }
+
+for i in {1..20}; do
+    a=$(repeat '.' $i)
+    d=$(repeat '../' $i)
+    
+    alias .$a="cd ${d}"
+    alias .$i="cd ${d}"
+done
