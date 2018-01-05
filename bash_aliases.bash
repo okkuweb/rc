@@ -27,9 +27,6 @@ parse_git_branch() {
 }
 export PS1="\[$(tput bold)\]\[\033[38;5;196m\]\u@\h\$(parse_git_branch):\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\w\\$ \[$(tput sgr0)\]"                                                                  
 
-# Start a simple PHP server in current directory
-alias phpserver="php -S localhost:8000"
-
 # Start chrome from terminal a bit easier
 alias chrome="google-chrome"
 
@@ -67,15 +64,9 @@ alias tmux="tmux -2"
 # Alias vi to vim
 alias vi="vim"
 
-# Make a shorthand for bash_aliases
-alias editbash="vi ~/.bash_aliases && source ~/.bash_aliases"
-
 # Make moving and copying files safer by making it confirm overwrite
 alias cp="cp -i"
 alias mv="mv -i"
-
-# Shorthand for cd ..
-alias ..="cd .."
 
 # Restart wifi
 alias wifirestart="sudo service network-manager restart"
@@ -86,9 +77,6 @@ alias la="ls -a --color"
 alias l="ls --color"
 alias ll="ls -l --color"
 alias lr="ls -R --color"
-
-# Alias for calulation tool
-alias calc="bc"
 
 # Tmux aliases
 alias amux="tmux at -t"
