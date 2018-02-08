@@ -147,5 +147,8 @@ nnoremap <Leader>J i<CR><Esc>k$
 nnoremap <Leader>p /<C-r>"<CR>
 vnoremap <Leader>p /<C-r>"<CR>
 
+" Make syntax highlighting faster to fix vim performance
+set re=1
+
 " PC specific vim settings
 source ~/.vimlocal
