@@ -25,6 +25,7 @@ git clone https://github.com/tpope/vim-surround
 git clone https://github.com/jimsei/winresizer
 git clone https://github.com/pangloss/vim-javascript.git
 git clone https://github.com/kana/vim-fakeclip
+git clone https://github.com/tpope/vim-fugitive.git
 
 # Install tmuxp
 pip install --user tmuxp
