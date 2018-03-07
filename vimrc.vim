@@ -144,8 +144,8 @@ nnoremap <Leader>j J
 nnoremap <Leader>J i<CR><Esc>k$
 
 " Add pasting from default buffer to search
-nnoremap <Leader>p /<C-r>"<CR>
-vnoremap <Leader>p /<C-r>"<CR>
+nnoremap <Leader>/ /<C-r>"<CR>
+vnoremap <Leader>/ /<C-r>"<CR>
 
 " Make syntax highlighting faster to fix vim performance
 set re=1
