@@ -150,5 +150,9 @@ vnoremap <Leader>/ /<C-r>"<CR>
 " Make syntax highlighting faster to fix vim performance
 set re=1
 
+" Make vim traverse lines always one line at a time
+noremap j gj
+noremap k gk
+
 " PC specific vim settings
 source ~/.vimlocal
