@@ -56,6 +56,9 @@ set number
 
 " Set escape from insert mode to jj
 imap jj <Esc>
+imap Jj <Esc>
+imap jJ <Esc>
+imap JJ <Esc>
 
 " Add newlines with enter without going to insert mode
 nmap <C-o> o<Esc>
