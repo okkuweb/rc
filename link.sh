@@ -9,6 +9,12 @@ ln -fv $location/tmux.conf ~/.tmux.conf
 ln -fv $location/fbtermrc ~/.fbtermrc
 mkdir ~/.w3m
 ln -fv $location/w3mkeymap ~/.w3m/keymap
+mkdir ~/.config/i3
+ln -fv $location/i3config ~/.config/i3/config
+mkdir ~/.config/polybar
+ln -fv $location/polybarconfig ~/.config/polybar/config
+ln -fv $location/polybarlaunch.sh ~/.config/polybar/launch.sh
+ln -fv $location/Xresources ~/Xresources
 
 # Add a local vimrc file
 touch ~/.vimlocal
