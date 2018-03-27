@@ -1,16 +1,21 @@
-# Add colors to linux terminal
+## Use .bashrc for local changes
+
+# Add colors to linux terminal with tmux support
 TERM="screen-256color"
 
 # Make vim the default text editor
 EDITOR="vim"
 
 # Command history longer and better formatting
-HISTSIZE=5000
-HISTFILESIZE=10000
+HISTSIZE=500000
+HISTFILESIZE=100000
 HISTTIMEFORMAT="%d.%m.%y %T "
 
 # Avoid duplicates in history
-export HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=erasedups:ignoreboth
+
+# Don't record some commands
+export HISTIGNORE="&:[  ]*:exit:ls:bg:fg:history:clear"
 
 # Expand the bang command before running it
 shopt -s histverify
@@ -20,6 +25,25 @@ shopt -s histappend
 
 # Ensures common history for all sessions
 export PROMPT_COMMAND='history -a'
+
+# Save multi-line commands as one command
+shopt -s cmdhist
+
+# Turn on recursive globbing (enables ** to recurse all directories)
+shopt -s globstar 2> /dev/null
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+
+# Enable history expansion with space
+# E.g. typing !!<space> will replace the !! with your last command
+bind Space:magic-space
+
+# Automatically trim long paths in the prompt (requires Bash 4.x)
+PROMPT_DIRTRIM=2
+
+# Update window size after every command
+shopt -s checkwinsize
 
 # Changes the terminal colors a bit
 parse_git_branch() {
@@ -102,3 +126,18 @@ for i in {1..20}; do
     alias .$a="cd ${d}"
     alias .$i="cd ${d}"
 done
+
+# Enable incremental history search with up/down arrows (also Readline goodness)
+# Learn more about this here: http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+bind '"\e[C": forward-char'
+bind '"\e[D": backward-char'
+
+## BETTER DIRECTORY NAVIGATION ##
+# Prepend cd to directory names automatically
+shopt -s autocd 2> /dev/null
+# Correct spelling errors during tab-completion
+shopt -s dirspell 2> /dev/null
+# Correct spelling errors in arguments supplied to cd
+shopt -s cdspell 2> /dev/null
