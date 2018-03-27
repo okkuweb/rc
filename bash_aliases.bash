@@ -101,6 +101,7 @@ alias la="ls -a --color"
 alias l="ls --color"
 alias ll="ls -l --color"
 alias lr="ls -R --color"
+alias lla="ls -la --color"
 
 # Tmux aliases
 alias amux="tmux at -t"
