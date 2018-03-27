@@ -14,7 +14,7 @@ ln -fv $location/i3config ~/.config/i3/config
 mkdir ~/.config/polybar
 ln -fv $location/polybarconfig ~/.config/polybar/config
 ln -fv $location/polybarlaunch.sh ~/.config/polybar/launch.sh
-ln -fv $location/Xresources ~/Xresources
+ln -fv $location/Xresources ~/.Xresources
 
 # Add a local vimrc file
 touch ~/.vimlocal
