@@ -69,7 +69,7 @@ alias cp="cp -i"
 alias mv="mv -i"
 
 # Restart wifi
-alias wifirestart="sudo service network-manager restart"
+alias wifirestart="sudo systemctl restart NetworkManager"
 
 # Alias shorthands
 alias ls="ls --color"
@@ -102,3 +102,9 @@ for i in {1..20}; do
     alias .$a="cd ${d}"
     alias .$i="cd ${d}"
 done
+
+# Pacman autoremove
+alias autoremove="sudo pacman -Rs $(pacman -Qtdq)"
+
+# Alias for starting the ssh agent
+alias startagent="eval \"$(ssh-agent -s)\""

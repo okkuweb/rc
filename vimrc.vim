@@ -137,6 +137,7 @@ nnoremap <C-t> :tabnew<CR>
 map <Leader>rh :! clear && haxe -main % --interp<CR>
 map <Leader>rj :! clear && node %<CR>
 map <Leader>rp :! clear && perl %<CR>
+map <Leader>rl :! clear && love `pwd`<CR>
 
 " Make a breakpoint on underscores
 set iskeyword-=_

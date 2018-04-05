@@ -1,15 +1,13 @@
 # To-Do
 - Why do I have to add sleep to some exec configuration commands for them to work
-- The two-finger scrolling speed should a bit faster
-- Take the horrible animation from the login accept button hover
-- Change icon theme
-- Install touchegg and make it click on tap? (this is for pico-8)
-- Try to configure polybar so that the changing numbers don't move the other applets/icons
 - Put a maximum value to the volume change thing
-- Shutdown -h now or poweroff
-- Put a minimum value on brightness as well so that the screen can't be fully dark
 - Stop screen from shutting down if fullscreen video is on
-- Install ntp so that suspend doesn't break clock
+- Maybe do something about the spinner when doing anything in i3?
+- Clean all the weird errors in tty1 and elsewhere on boot etc.
+- Make an ssh key for git and bitbucket
+- Change dmenu colors (that blue is awful?)
+- Maybe install some sorta checkinstall kinda deal so I can install binaries like pico-8 (this might not do... only works for compiled software?) (Maybe makepkg does the job?)
+- xf86-video-intel drivers are active!!!!!! Might cause input lag and other issues. Should use better drivers...
 
 # Notes
 
@@ -20,13 +18,28 @@ redshift
 pulseaudio
 nitrogen (wallpaper)
 lightdm-webkit2-greeter (with Aether theme)
-feh (image viewer)
+sxiv (image viewer)
 polybar
 tlp (works by default after install I guess)
+lxappearance
+pavucontrol for some audio stuff I guess :|
+pulseaudio-alsa?
+synaptics thing I don't remember
+networkmanager
+trizen
+network-manager-applet
+qt5-styleplugins
+udisks2
+udiskie
+dunst
+onboard
+compton
+xsel (for clipboard management)
 
 # Tweaks
 Add MOZ_USE_XINPUT2=1 to /etc/environment
 Added polybar config to ~/.config/polybar/config
 Added i3lock.service to /etc/systemd/system for lock on suspend (enabled with systemctl enable i3lock)
-Added brogue.desktop to /usr/share/applications Move elsewhere
+Added /usr/local/bin cdda startup script
+/etc/X11/xorg.conf.d/40-libinput.conf added for touchpad
 
