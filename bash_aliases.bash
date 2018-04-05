@@ -1,16 +1,21 @@
-# Add colors to linux terminal
+## Use .bashrc for local changes
+
+# Add colors to linux terminal with tmux support
 TERM="screen-256color"
 
 # Make vim the default text editor
 EDITOR="vim"
 
 # Command history longer and better formatting
-HISTSIZE=5000
-HISTFILESIZE=10000
+HISTSIZE=500000
+HISTFILESIZE=100000
 HISTTIMEFORMAT="%d.%m.%y %T "
 
 # Avoid duplicates in history
-export HISTCONTROL=ignoredups:erasedups
+export HISTCONTROL=erasedups:ignoreboth
+
+# Don't record some commands
+export HISTIGNORE="&:[  ]*:exit:ls:bg:fg:history:clear"
 
 # Expand the bang command before running it
 shopt -s histverify
@@ -21,11 +26,33 @@ shopt -s histappend
 # Ensures common history for all sessions
 export PROMPT_COMMAND='history -a'
 
-# Changes the terminal colors a bit
+# Save multi-line commands as one command
+shopt -s cmdhist
+
+# Turn on recursive globbing (enables ** to recurse all directories)
+shopt -s globstar 2> /dev/null
+
+# Case-insensitive globbing (used in pathname expansion)
+shopt -s nocaseglob;
+
+# Enable history expansion with space
+# E.g. typing !!<space> will replace the !! with your last command
+bind Space:magic-space
+
+# Automatically trim long paths in the prompt (requires Bash 4.x)
+PROMPT_DIRTRIM=2
+
+# Update window size after every command
+shopt -s checkwinsize
+
+## PS1 aka bash prompt settings
 parse_git_branch() {
      git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
 }
-export PS1="\[$(tput bold)\]\[\033[38;5;196m\]\u@\h\$(parse_git_branch):\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\w\\$ \[$(tput sgr0)\]"                                                                  
+export PS1="\[\033[38;5;208m\]\u\[$(tput sgr0)\]\[\033[38;5;202m\]@\[$(tput sgr0)\]\[\033[38;5;208m\]\h\[$(tput sgr0)\]\[\033[38;5;202m\]\$(parse_git_branch):\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\w\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]\n\[\033[38;5;202m\]>\[$(tput sgr0)\]\[\033[38;5;15m\] \[$(tput sgr0)\]"
+## Backup PS1
+#export PS1="\[$(tput bold)\]\[\033[38;5;196m\]\u@\h\$(parse_git_branch):\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\w\\$ \[$(tput sgr0)\]"
+
 
 # Start chrome from terminal a bit easier
 alias chrome="google-chrome"
@@ -77,6 +104,7 @@ alias la="ls -a --color"
 alias l="ls --color"
 alias ll="ls -l --color"
 alias lr="ls -R --color"
+alias lla="ls -la --color"
 
 # Tmux aliases
 alias amux="tmux at -t"
@@ -108,3 +136,18 @@ alias autoremove="sudo pacman -Rs $(pacman -Qtdq)"
 
 # Alias for starting the ssh agent
 alias startagent="eval \"$(ssh-agent -s)\""
+
+# Enable incremental history search with up/down arrows (also Readline goodness)
+# Learn more about this here: http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
+bind '"\e[C": forward-char'
+bind '"\e[D": backward-char'
+
+## BETTER DIRECTORY NAVIGATION ##
+# Prepend cd to directory names automatically
+shopt -s autocd 2> /dev/null
+# Correct spelling errors during tab-completion
+shopt -s dirspell 2> /dev/null
+# Correct spelling errors in arguments supplied to cd
+shopt -s cdspell 2> /dev/null
