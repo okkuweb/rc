@@ -30,7 +30,7 @@ font pango:Ubuntu Mono 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec lxterminal
+bindsym $mod+Return exec sakura
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -204,6 +204,7 @@ for_window [instance="guake"] floating enable
 for_window [instance="keepassxc"] floating enable
 for_window [instance="steam"] floating enable
 for_window [instance="sxiv"] floating enable
+for_window [instance="love"] floating enable
 
 # Enable gaps
 gaps outer 10
@@ -214,7 +215,7 @@ bindsym $mod+Shift+g gaps outer all minus 5; gaps inner all minus 5
 bindsym $mod+g gaps outer all plus 5; gaps inner all plus 5
 
 # Add border to all windows
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 2
 
 # Add colors to borders
 client.focused              #666666 #666666 #666666 #666666 #666666
