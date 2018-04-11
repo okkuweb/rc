@@ -142,10 +142,8 @@ map <Leader>rl :! clear && love `pwd`<CR>
 " Make a breakpoint on underscores
 set iskeyword-=_
 
-" New mapping for shift + j
-nnoremap <Leader>j J
 " Does the opposite of shift + j
-nnoremap <Leader>J i<CR><Esc>k$
+nnoremap <Leader>j i<CR><Esc>k$
 
 " Add pasting from default buffer to search
 nnoremap <Leader>/ /<C-r>"<CR>
