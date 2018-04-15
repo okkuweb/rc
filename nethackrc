@@ -1,0 +1,16 @@
+OPTIONS=name:Asuka
+OPTIONS=horsename:Agron
+OPTIONS=gender:female
+OPTIONS=fruit:meme
+OPTIONS=color
+OPTIONS=noautopickup
+OPTIONS=altmeta
+OPTIONS=prayconfirm
+OPTIONS=confirm
+OPTIONS=menucolors
+OPTIONS=menustyle:full, menu_headings:bold, extmenu
+OPTIONS=time, showexp, showscore
+OPTIONS=sortpack, lootabc, fixinv
+OPTIONS=msg_window:reversed, msghistory:20
+OPTIONS=wraptext
+OPTIONS:boulder:0
