@@ -15,6 +15,7 @@ mkdir ~/.config/polybar
 ln -fv $location/polybarconfig ~/.config/polybar/config
 ln -fv $location/polybarlaunch.sh ~/.config/polybar/launch.sh
 ln -fv $location/Xresources ~/.Xresources
+ln -fv $location/nethackrc ~/.nethackrc
 
 # Add a local vimrc file
 touch ~/.vimlocal
