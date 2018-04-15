@@ -39,9 +39,6 @@ shopt -s nocaseglob;
 # E.g. typing !!<space> will replace the !! with your last command
 bind Space:magic-space
 
-# Automatically trim long paths in the prompt (requires Bash 4.x)
-PROMPT_DIRTRIM=2
-
 # Update window size after every command
 shopt -s checkwinsize
 
