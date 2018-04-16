@@ -128,9 +128,6 @@ for i in {1..20}; do
     alias .$i="cd ${d}"
 done
 
-# Pacman autoremove
-alias autoremove="sudo pacman -Rs $(pacman -Qtdq)"
-
 # Alias for starting the ssh agent
 alias startagent="eval \"$(ssh-agent -s)\""
 
