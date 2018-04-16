@@ -6,3 +6,6 @@ set mark-symlinked-directories on
 
 # Treat hyphens and underscores as equivalent
 set completion-map-case on
+
+# Disable bell
+set bell-style none
