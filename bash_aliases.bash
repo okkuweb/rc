@@ -111,6 +111,11 @@ alias nmux="tmux new -s"
 # Recursive grep with perl regexes
 alias grip="grep -riPHn"
 
+# Git aliases
+alias gs="git status"
+alias gc="git checkout"
+alias gd="git diff"
+
 # Disable ctrl-s to suspend
 stty -ixon
 
