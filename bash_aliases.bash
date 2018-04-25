@@ -115,6 +115,7 @@ alias grip="grep -riPHn"
 alias gs="git status"
 alias gc="git checkout"
 alias gd="git diff"
+alias gl="git log"
 
 # Disable ctrl-s to suspend
 stty -ixon
