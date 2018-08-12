@@ -156,5 +156,12 @@ vnoremap <Leader>/ /<C-r>"<CR>
 " Make syntax highlighting faster to fix vim performance
 set re=1
 
+" Disable vaxe build stuff
+let g:vaxe_skip_hxml = 1
+
+" Nerdtree initialation on empty file argument
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
 " PC specific vim settings
 source ~/.vimlocal
