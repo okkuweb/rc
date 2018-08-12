@@ -8,6 +8,7 @@
 - Change dmenu colors (that blue is awful?)
 - Maybe install some sorta checkinstall kinda deal so I can install binaries like pico-8 (this might not do... only works for compiled software?) (Maybe makepkg does the job?)
 - xf86-video-intel drivers are active!!!!!! Might cause input lag and other issues. Should use better drivers...
+- Make an install script to install the necessary tools to use i3 and move some stuff to another file from i3config?
 
 # Notes
 

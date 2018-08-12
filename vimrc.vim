@@ -28,6 +28,9 @@ set expandtab
 set shiftround
 " Make it possible to indent properly in files that do not have a proper filetype
 set smartindent
+set cindent
+set cinkeys-=0#
+set indentkeys-=0#
 
 " Set vim temporary files to home folder
 if !isdirectory($HOME."/.vim/tempfiles")
@@ -135,6 +138,7 @@ nnoremap <C-t> :tabnew<CR>
 
 " Run file in interpreter
 map <Leader>rh :! clear && haxe -main % --interp<CR>
+map <Leader>rf :! clear && lime test neko<CR>
 map <Leader>rj :! clear && node %<CR>
 map <Leader>rp :! clear && perl %<CR>
 map <Leader>rl :! clear && love `pwd`<CR>
