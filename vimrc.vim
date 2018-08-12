@@ -138,7 +138,7 @@ nnoremap <C-t> :tabnew<CR>
 
 " Run file in interpreter
 map <Leader>rh :! clear && haxe -main % --interp<CR>
-map <Leader>rf :! clear && lime test neko<CR>
+map <Leader>rf :! clear && lime test neko -debug<CR>
 map <Leader>rj :! clear && node %<CR>
 map <Leader>rp :! clear && perl %<CR>
 map <Leader>rl :! clear && love `pwd`<CR>
