@@ -28,4 +28,5 @@ git clone https://github.com/jimsei/winresizer
 git clone https://github.com/pangloss/vim-javascript.git
 git clone https://github.com/kana/vim-fakeclip
 git clone https://github.com/tpope/vim-fugitive.git
+git clone https://github.com/scrooloose/nerdtree
 
