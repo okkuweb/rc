@@ -79,10 +79,10 @@ set pastetoggle=<F10>
 noremap <F9> :set invnumber<CR>:GitGutterToggle<CR>
 
 " Traverse one line at a time
-nnoremap <C-j> <C-E>
-nnoremap <C-k> <C-Y>
-vnoremap <C-j> <C-E>
-vnoremap <C-k> <C-Y>
+nnoremap <C-j> <C-E>j
+nnoremap <C-k> <C-Y>k
+vnoremap <C-j> <C-E>j
+vnoremap <C-k> <C-Y>k
 
 " Make search case insensitive and only sensitive when using uppercase letters
 set ignorecase
