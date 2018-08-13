@@ -163,5 +163,8 @@ let g:vaxe_skip_hxml = 1
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
+" Make vim show full file path at the bottom
+set statusline+=%F
+
 " PC specific vim settings
 source ~/.vimlocal
