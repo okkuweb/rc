@@ -5,11 +5,11 @@ os=${OS,,}
 
 # Install required bash cli tools
 if [ "$os" == "debian" ] || [ "$os" == "ubuntu" ] ; then
-    sudo apt-get update && sudo apt-get install curl git vim-gtk tmux tree unp tmuxp
+    sudo apt-get update && sudo apt-get install curl git vim-gtk tmux tree unp
 elif [ "$os" == "centos" ]; then
-    sudo yum check-update && sudo yum install curl git vim-gtk tmux tree unp tmuxp
+    sudo yum check-update && sudo yum install curl git vim-gtk tmux tree unp
 else
-    sudo pacman -S  curl git gvim tmux tree unp tmuxp
+    sudo pacman -S  curl git gvim tmux tree unp
 fi
 
 # Install pathogen package manager for vim
