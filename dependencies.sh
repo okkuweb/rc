@@ -31,7 +31,7 @@ else
     cd ~/.vim/bundle
 fi
 
-if [ !$windows ]; then
+if [ $windows -ne 1 ]; then
     git clone https://github.com/airblade/vim-gitgutter
 fi
 git clone https://github.com/tpope/vim-sensible.git
