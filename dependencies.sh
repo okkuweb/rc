@@ -9,15 +9,28 @@ if [ "$os" == "debian" ] || [ "$os" == "ubuntu" ] ; then
 elif [ "$os" == "centos" ]; then
     sudo yum check-update && sudo yum install curl git vim-gtk tmux tree unp
 else
-    sudo pacman -S  curl git gvim tmux tree unp
+    checkOS=1
 fi
 
-# Install pathogen package manager for vim
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+if [ $checkOS ]; then
+    read -p "Are you using a filthy Windows system? (y/n)" answer
+    if [ "$answer" == "y" ]; then
+        touch `dirname $0`/windows && echo "1" >> `dirname $0`/windows
+        windows=1
+    fi
+fi
 
-# Download vim plugins
-cd ~/.vim/bundle
+# Install vim dependencies
+if [ $windows ]; then
+    mkdir -p ~/vimfiles/autoload ~/vimfiles/bundle && \
+    curl -LSso ~/vimfiles/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    cd ~/vimfiles/bundle
+else
+    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    cd ~/.vim/bundle
+fi
+
 git clone https://github.com/tpope/vim-sensible.git
 git clone https://github.com/tomasr/molokai
 git clone https://github.com/airblade/vim-gitgutter

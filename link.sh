@@ -1,7 +1,18 @@
 #!/bin/bash
 # Check current folder
 location=`dirname $0`
+if [ -f $location/windows ]; then
+    windows=1
+fi
+
 # Link files to appropriate locations
+if [ $windows ]; then
+    ln -fv $location/vimrc.vim ~/_vimrc
+    touch ~/.vimlocal
+    echo "Filthy windows files updated..."
+    exit 1
+fi
+
 ln -fv $location/bash_aliases.bash ~/.bash_aliases
 ln -fv $location/inputrc.bash ~/.inputrc
 ln -fv $location/vimrc.vim ~/.vimrc
