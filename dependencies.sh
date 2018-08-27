@@ -31,9 +31,11 @@ else
     cd ~/.vim/bundle
 fi
 
+if [ !$windows ]; then
+    git clone https://github.com/airblade/vim-gitgutter
+fi
 git clone https://github.com/tpope/vim-sensible.git
 git clone https://github.com/tomasr/molokai
-git clone https://github.com/airblade/vim-gitgutter
 git clone https://github.com/jiangmiao/auto-pairs
 git clone https://github.com/nathanaelkane/vim-indent-guides
 git clone https://github.com/tpope/vim-surround
