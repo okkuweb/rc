@@ -9,6 +9,8 @@ fi
 if [ $windows ]; then
     ln -fv $location/vimrc.vim ~/_vimrc
     touch ~/.vimlocal
+    mkdir ~/vimfiles/colors
+    ln -fv $location/molokai.vim ~/vimfiles/colors
     echo "Filthy windows files updated..."
     exit 1
 fi
@@ -21,6 +23,8 @@ ln -fv $location/fbtermrc ~/.fbtermrc
 mkdir ~/.w3m
 ln -fv $location/w3mkeymap ~/.w3m/keymap
 ln -fv $location/nethackrc ~/.nethackrc
+mkdir ~/.vim/colors
+ln -fv $location/molokai.vim ~/.vim/colors
 
 # Add a local vimrc file
 touch ~/.vimlocal
