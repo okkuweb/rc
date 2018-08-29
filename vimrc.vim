@@ -50,7 +50,6 @@ map <Leader>< <Plug>GitGutterPrevHunk
 map <Leader>> <Plug>GitGutterNextHunk
 
 " colorscheme
-let g:molokai_original = 1
 colorscheme molokai
 
 " Add numbers to vim sidebar
