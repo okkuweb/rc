@@ -52,7 +52,6 @@ map <Leader>> <Plug>GitGutterNextHunk
 " colorscheme
 let g:molokai_original = 1
 colorscheme molokai
-hi MatchParen      ctermfg=208 ctermbg=233 cterm=bold 
 
 " Add numbers to vim sidebar
 set number
