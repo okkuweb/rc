@@ -18,6 +18,7 @@ fi
 ln -fv $location/bash_aliases.bash ~/.bash_aliases
 ln -fv $location/inputrc.bash ~/.inputrc
 ln -fv $location/vimrc.vim ~/.vimrc
+ln -fv $location/screenrc ~/.screenrc
 ln -fv $location/tmux.conf ~/.tmux.conf
 ln -fv $location/fbtermrc ~/.fbtermrc
 mkdir ~/.w3m
