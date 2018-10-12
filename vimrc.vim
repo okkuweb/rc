@@ -165,5 +165,8 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " Make vim show full file path at the bottom
 set statusline+=%F
 
+" Adding some deafult values to column command
+cmap column column -t -o " "
+
 " PC specific vim settings
 source ~/.vimlocal
