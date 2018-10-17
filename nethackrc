@@ -1,6 +1,6 @@
-OPTIONS=name:Asuka
+OPTIONS=name:Jyrki
 OPTIONS=horsename:Agron
-OPTIONS=gender:female
+OPTIONS=gender:male
 OPTIONS=fruit:meme
 OPTIONS=color
 OPTIONS=noautopickup
