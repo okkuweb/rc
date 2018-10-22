@@ -168,5 +168,9 @@ set statusline+=%F
 " Adding some deafult values to column command
 cmap column column -t -o " "
 
+" Disable all bells and whistles cos they're annoying
+set noerrorbells visualbell t_vb=
+autocmd GUIEnter * set visualbell t_vb=
+
 " PC specific vim settings
 source ~/.vimlocal
