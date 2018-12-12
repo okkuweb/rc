@@ -173,5 +173,10 @@ cmap column column -t -o " "
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
+" Open nerdtree
+nmap <leader>d :NERDTreeToggle<cr>
+" Find current open file in nerdtree
+nmap <leader>D :NerdTreeFind<cr>
+
 " PC specific vim settings
 source ~/.vimlocal
