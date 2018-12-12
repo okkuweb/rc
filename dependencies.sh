@@ -45,3 +45,4 @@ git clone https://github.com/kana/vim-fakeclip
 git clone https://github.com/tpope/vim-fugitive.git
 git clone https://github.com/scrooloose/nerdtree
 git clone https://github.com/airblade/vim-rooter
+git clone https://github.com/ctrlpvim/ctrlp.vim
