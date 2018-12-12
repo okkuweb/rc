@@ -178,5 +178,8 @@ nmap <leader>d :NERDTreeToggle<cr>
 " Find current open file in nerdtree
 nmap <leader>D :NerdTreeFind<cr>
 
+" Rebind ctrlp to leader + f(ind)
+let g:ctrlp_map = '<leader>f'
+
 " PC specific vim settings
 source ~/.vimlocal
