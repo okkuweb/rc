@@ -151,3 +151,35 @@ shopt -s autocd 2> /dev/null
 shopt -s dirspell 2> /dev/null
 # Correct spelling errors in arguments supplied to cd
 shopt -s cdspell 2> /dev/null
+
+# Watch file and run command when changes happen
+watchit () {
+    path=$1
+    shift
+    cmd=$*
+    sha=0
+    update_sha() {
+        sha=`ls -lR --time-style=full-iso $path | sha1sum`
+    }
+    update_sha
+    previous_sha=$sha
+    build() {
+        echo -en " building...\n\n"
+        $cmd
+        echo -en "\n--> resumed watching."
+    }
+    compare() {
+    update_sha
+    if [[ $sha != $previous_sha ]] ; then
+        echo -n "change detected,"
+        build
+        previous_sha=$sha
+    fi
+    }
+
+    echo -en "--> watching \"$path\"."
+    while true; do
+        compare
+        sleep 1
+    done
+}
