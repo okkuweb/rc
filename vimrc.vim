@@ -135,12 +135,13 @@ nnoremap <C-w>" :split<CR>
 nnoremap <C-t> :tabnew<CR>
 
 " Run file in interpreter
-map <Leader>rh :! clear && haxe -main % --interp<CR>
-map <Leader>rf :! clear && lime test neko -debug<CR>
-map <Leader>rj :! clear && node %<CR>
-map <Leader>rp :! clear && perl %<CR>
-map <Leader>rl :! clear && love `pwd`<CR>
-map <Leader>rb :! clear && bash %<CR>
+map <Leader>rh :w<CR>:! clear && haxe -main % --interp<CR>
+map <Leader>rf :w<CR>:! clear && lime test neko -debug<CR>
+map <Leader>rj :w<CR>:! clear && if javac %; then java %:r; fi<CR>
+map <Leader>rn :w<CR>:! clear && node %<CR>
+map <Leader>rp :w<CR>:! clear && perl %<CR>
+map <Leader>rl :w<CR>:! clear && love `pwd`<CR>
+map <Leader>rb :w<CR>:! clear && bash %<CR>
 
 " Make a breakpoint on underscores
 set iskeyword-=_
