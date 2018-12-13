@@ -183,3 +183,21 @@ watchit () {
         sleep 1
     done
 }
+
+# Function to read vim root folder main class in java
+runjava () {
+    if [ -d "$1" ]; then
+        cd $1
+        folder=`pwd`
+        main=`cat $folder/main.txt`
+        if [ -d "$folder" ] && [ -n "$main" ]; then
+            find $folder -name \*.java -print > class.list
+            javac @class.list
+            java $main
+        else
+            echo "Invalid parameters"
+        fi
+    else
+        echo "Please provide a directory and add a main.txt with main class name there"
+    fi
+}
