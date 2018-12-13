@@ -137,7 +137,7 @@ nnoremap <C-t> :tabnew<CR>
 " Run file in interpreter
 map <Leader>rh :w<CR>:! clear && haxe -main % --interp<CR>
 map <Leader>rf :w<CR>:! clear && lime test neko -debug<CR>
-map <Leader>rj :w<CR>:! clear && if javac %; then java %:r; fi<CR>
+map <Leader>rj :w<CR>:! clear && runjava .<CR>
 map <Leader>rn :w<CR>:! clear && node %<CR>
 map <Leader>rp :w<CR>:! clear && perl %<CR>
 map <Leader>rl :w<CR>:! clear && love `pwd`<CR>
@@ -183,6 +183,15 @@ nmap <leader>D :NerdTreeFind<cr>
 
 " Rebind ctrlp to leader + f(ind)
 let g:ctrlp_map = '<leader>f'
+
+" Add some stuff to java functions or some shit
+let java_highlight_functions=1
+
+" Run vim bash commands in an interactive shell (so bash functions and aliases work)
+set shellcmdflag=-ic
+
+" Added mapping for UltiSnips
+let g:UltiSnipsExpandTrigger="<tab>"
 
 " PC specific vim settings
 source ~/.vimlocal
