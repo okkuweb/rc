@@ -159,12 +159,15 @@ set re=1
 " Disable vaxe build stuff
 let g:vaxe_skip_hxml = 1
 
-" Nerdtree initialation on empty file argument
+" Nerdtree initialisation on empty file argument
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Make vim show full file path at the bottom
 set statusline+=%F
+
+" Fix for gitgutter realtime processing error
+set shell=/bin/bash
 
 " Adding some deafult values to column command
 cmap column column -t -o " "
