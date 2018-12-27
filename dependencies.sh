@@ -33,11 +33,11 @@ fi
 
 if [ $windows -ne 1 ]; then
     git clone https://github.com/airblade/vim-gitgutter
+    git clone https://github.com/nathanaelkane/vim-indent-guides
 fi
 git clone https://github.com/tpope/vim-sensible.git
 git clone https://github.com/tomasr/molokai
 git clone https://github.com/jiangmiao/auto-pairs
-git clone https://github.com/nathanaelkane/vim-indent-guides
 git clone https://github.com/tpope/vim-surround
 git clone https://github.com/jimsei/winresizer
 git clone https://github.com/pangloss/vim-javascript.git
