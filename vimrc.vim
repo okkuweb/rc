@@ -193,5 +193,9 @@ set shellcmdflag=-ic
 " Added mapping for UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 
+" Yet another paste command (paste from last yank)
+nnoremap <Leader>p "0p
+vnoremap <Leader>p "0p
+
 " PC specific vim settings
 source ~/.vimlocal
