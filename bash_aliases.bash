@@ -201,3 +201,7 @@ runjava () {
         echo "Please provide a directory and add a main.txt with main class name there"
     fi
 }
+
+# Fix for screen-256color less search highlight
+export LESS_TERMCAP_so=$'\E[30;43m'
+export LESS_TERMCAP_se=$'\E[39;49m'
