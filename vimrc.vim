@@ -199,6 +199,7 @@ vnoremap <Leader>p "0p
 
 " Change 'ctrl+g' to do the same as 'g ctrl+g'
 nnoremap <C-g> g<C-g>
+vnoremap <C-g> g<C-g>
 
 " PC specific vim settings
 source ~/.vimlocal
