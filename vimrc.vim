@@ -177,9 +177,9 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 " Open nerdtree
-nmap <leader>d :NERDTreeToggle<cr>
+nmap <leader>d :NERDTreeToggle<CR>
 " Find current open file in nerdtree
-nmap <leader>D :NerdTreeFind<cr>
+nmap <leader>D :NERDTreeFind<CR>
 
 " Rebind ctrlp to leader + f(ind)
 let g:ctrlp_map = '<leader>f'
