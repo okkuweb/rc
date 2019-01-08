@@ -15,6 +15,7 @@ if [ $windows ]; then
     exit 1
 fi
 
+ln -fv $location/bash_profile.bash ~/.bash_profile
 ln -fv $location/bash_aliases.bash ~/.bash_aliases
 ln -fv $location/inputrc.bash ~/.inputrc
 ln -fv $location/vimrc.vim ~/.vimrc
@@ -34,10 +35,7 @@ touch ~/.tmuxlocal.conf
 check=`grep "bash_aliases" ~/.bashrc`
 if [ "$check" ]
 then
-    echo "Source ~/.bash_aliases already present in .bashrc"
-else
-    echo "Added source ~/.bash_aliases to .bashrc"
-    printf "\n# Source bash aliases\nsource ~/.bash_aliases" >> ~/.bashrc
+    echo "REMOVE 'source ~/.bash_aliases' FROM YOUR BASHRC PLEASE! (caps so you see this)"
 fi
 
 # Add git configurations to system
