@@ -187,9 +187,6 @@ let g:ctrlp_map = '<leader>f'
 " Add some stuff to java functions or some shit
 let java_highlight_functions=1
 
-" Run vim bash commands in an interactive shell (so bash functions and aliases work)
-set shellcmdflag=-ic
-
 " Added mapping for UltiSnips
 let g:UltiSnipsExpandTrigger="<tab>"
 
