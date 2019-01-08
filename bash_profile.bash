@@ -148,5 +148,3 @@ runjava () {
 export LESS_TERMCAP_so=$'\E[30;43m'
 export LESS_TERMCAP_se=$'\E[39;49m'
 
-# A thing to make aliases work in vim shell
-shopt -s expand_aliases

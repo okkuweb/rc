@@ -1,3 +1,6 @@
+# A thing to make aliases work in vim shell
+shopt -s expand_aliases
+
 # List self-installed npm packages
 alias nodelist="npm list -g --depth=0"
 
