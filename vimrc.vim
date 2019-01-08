@@ -33,6 +33,7 @@ set cinkeys-=0#
 set indentkeys-=0#
 
 " Set vim temporary files to home folder
+set backup
 if !isdirectory($HOME."/.vim/tempfiles")
     call mkdir($HOME."/.vim/tempfiles", "p")
 endif
