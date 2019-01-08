@@ -201,5 +201,8 @@ vnoremap <Leader>p "0p
 nnoremap <C-g> g<C-g>
 vnoremap <C-g> g<C-g>
 
+" Make it so vim reads my bash aliases
+let $BASH_ENV = "~/.bash_aliases"
+
 " PC specific vim settings
 source ~/.vimlocal
