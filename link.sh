@@ -5,6 +5,15 @@ if [ -f $location/windows ]; then
     windows=1
 fi
 
+# Check if bashrc is updated
+backupcheck=`grep screen-256color`
+# And back it up if it hasn't been updated
+if [ "$backupcheck" -eq "0" ]; then
+    cp ~/.bashrc ~/.bashrc.bak
+    rm ~/.bash_profile
+    echo "MOVE ALL YOUR LOCAL CONFIGURATIONS FROM ~/.bashrc.bak to ~/.bash_local"
+fi
+
 # Link files to appropriate locations
 if [ $windows ]; then
     ln -fv $location/vimrc.vim ~/_vimrc
@@ -15,7 +24,7 @@ if [ $windows ]; then
     exit 1
 fi
 
-ln -fv $location/bash_profile.bash ~/.bash_profile
+ln -fv $location/bashrc.bash ~/.bashrc
 ln -fv $location/bash_aliases.bash ~/.bash_aliases
 ln -fv $location/inputrc.bash ~/.inputrc
 ln -fv $location/vimrc.vim ~/.vimrc
@@ -30,6 +39,7 @@ ln -fv $location/molokai.vim ~/.vim/colors
 # Add a local vimrc file
 touch ~/.vimlocal
 touch ~/.tmuxlocal.conf
+touch ~/.bash_local
 
 # Check if source .bash_aliases already present in .bashrc and add it there if not
 check=`grep "bash_aliases" ~/.bashrc`

@@ -5,15 +5,15 @@ os=${OS,,}
 
 # Install required bash cli tools
 if [ "$os" == "debian" ] || [ "$os" == "ubuntu" ] ; then
-    sudo apt-get update && sudo apt-get install curl git vim-gtk tmux tree unp
+    sudo apt update && sudo apt install curl git vim-gtk tmux tree bash-completion
 elif [ "$os" == "centos" ]; then
-    sudo yum check-update && sudo yum install curl git vim-gtk tmux tree unp
+    sudo yum check-update && sudo yum install curl git vim-gtk tmux tree bash-completion
 else
     checkOS=1
 fi
 
 if [ $checkOS ]; then
-    read -p "Are you using a filthy Windows system? (y/n)" answer
+    read -p "Are you using a filthy Windows system (and git bash)? (y/n)" answer
     if [ "$answer" == "y" ]; then
         touch `dirname $0`/windows && echo "1" >> `dirname $0`/windows
         windows=1

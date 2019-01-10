@@ -1,6 +1,6 @@
 # Run machine specific bash commands
-if [ -f ~/.bashrc ]; then
-    . ~/.bashrc
+if [ -f ~/.bash_local ]; then
+    . ~/.bash_local
 fi
 # Run bash alias file
 if [ -f ~/.bash_aliases ]; then
@@ -58,7 +58,7 @@ export PS1="\[\033[38;5;208m\]\u\[$(tput sgr0)\]\[\033[38;5;202m\]@\[$(tput sgr0
 #export PS1="\[$(tput bold)\]\[\033[38;5;196m\]\u@\h\$(parse_git_branch):\[$(tput sgr0)\]\[$(tput sgr0)\]\[\033[38;5;15m\]\w\\$ \[$(tput sgr0)\]"
 
 # Extract any archive by just writing "extract"
-extract () {
+unp () {
    if [ -f $1 ] ; then
        case $1 in
            *.tar.bz2)   tar xvjf $1    ;;
@@ -147,4 +147,13 @@ runjava () {
 # Fix for screen-256color less search highlight
 export LESS_TERMCAP_so=$'\E[30;43m'
 export LESS_TERMCAP_se=$'\E[39;49m'
+
+# Enable programmable completion features
+if ! shopt -oq posix; then
+  if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+  elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+  fi
+fi
 
