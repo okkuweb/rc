@@ -12,6 +12,8 @@ execute pathogen#infect()
 
 " Add vim syntax highlighting to vimlocal
 au BufNewFile,BufRead .vimlocal setlocal ft=vim
+" Add syntax highlighting to .bash_local
+au BufNewFile,BufRead .bash_local setlocal ft=sh
 
 " Start syntax highlighting
 syntax on
