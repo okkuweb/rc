@@ -12,7 +12,7 @@ else
     checkOS=1
 fi
 
-if [ $checkOS ]; then
+if [ "$checkOS" ]; then
     read -p "Are you using a filthy Windows system (and git bash)? (y/n)" answer
     if [ "$answer" == "y" ]; then
         touch `dirname $0`/windows && echo "1" >> `dirname $0`/windows
@@ -21,7 +21,7 @@ if [ $checkOS ]; then
 fi
 
 # Install vim dependencies
-if [ $windows ]; then
+if [ "$windows" ]; then
     mkdir -p ~/vimfiles/autoload ~/vimfiles/bundle && \
     curl -LSso ~/vimfiles/autoload/pathogen.vim https://tpo.pe/pathogen.vim
     cd ~/vimfiles/bundle
@@ -31,7 +31,7 @@ else
     cd ~/.vim/bundle
 fi
 
-if [ $windows -ne 1 ]; then
+if [ -z "$windows" ]; then
     git clone https://github.com/airblade/vim-gitgutter
     git clone https://github.com/nathanaelkane/vim-indent-guides
 fi
