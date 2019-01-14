@@ -57,3 +57,52 @@ for i in {1..20}; do
     alias .$i="cd ${d}"
 done
 
+# Watch file and run command when changes happen
+watchit () {
+    path=$1
+    shift
+    cmd=$*
+    sha=0
+    update_sha() {
+        sha=`ls -lR --time-style=full-iso $path | sha1sum`
+    }
+    update_sha
+    previous_sha=$sha
+    build() {
+        echo -en " building...\n\n"
+        $cmd
+        echo -en "\n--> resumed watching."
+    }
+    compare() {
+    update_sha
+    if [[ $sha != $previous_sha ]] ; then
+        echo -n "change detected,"
+        build
+        previous_sha=$sha
+    fi
+    }
+
+    echo -en "--> watching \"$path\"."
+    while true; do
+        compare
+        sleep 1
+    done
+}
+
+# Function to read vim root folder main class in java
+runjava () {
+    if [ -d "$1" ]; then
+        cd $1
+        folder=`pwd`
+        main=`cat $folder/main.txt`
+        if [ -d "$folder" ] && [ -n "$main" ]; then
+            find $folder -name \*.java -print > class.list
+            javac @class.list
+            java $main
+        else
+            echo "Invalid parameters"
+        fi
+    else
+        echo "Please provide a directory and add a main.txt with main class name there"
+    fi
+}
