@@ -34,6 +34,8 @@ fi
 if [ -z "$windows" ]; then
     git clone https://github.com/airblade/vim-gitgutter
     git clone https://github.com/nathanaelkane/vim-indent-guides
+    git clone https://github.com/SirVer/ultisnips
+    git clone https://github.com/honza/vim-snippets
 fi
 git clone https://github.com/tpope/vim-sensible.git
 git clone https://github.com/tomasr/molokai
@@ -46,5 +48,3 @@ git clone https://github.com/tpope/vim-fugitive.git
 git clone https://github.com/scrooloose/nerdtree
 git clone https://github.com/airblade/vim-rooter
 git clone https://github.com/ctrlpvim/ctrlp.vim
-git clone https://github.com/SirVer/ultisnips
-git clone https://github.com/honza/vim-snippets
