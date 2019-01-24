@@ -5,15 +5,6 @@ if [ -f $location/windows ]; then
     windows=1
 fi
 
-# Check if bashrc is updated
-backupcheck=`grep screen-256color ~/.bashrc`
-# And back it up if it hasn't been updated
-if [ -z "$backupcheck" ]; then
-    cp ~/.bashrc ~/.bashrc.bak
-    rm ~/.bash_profile
-    echo "MOVE ALL YOUR LOCAL CONFIGURATIONS FROM ~/.bashrc.bak to ~/.bash_local"
-fi
-
 # Link files to appropriate locations
 if [ "$windows" ]; then
     ln -fv $location/vimrc.vim ~/_vimrc
@@ -22,6 +13,15 @@ if [ "$windows" ]; then
     ln -fv $location/molokai.vim ~/vimfiles/colors
     echo "Filthy windows files updated..."
     exit 1
+fi
+
+# Check if bashrc is updated
+backupcheck=`grep screen-256color ~/.bashrc`
+# And back it up if it hasn't been updated
+if [ -z "$backupcheck" ]; then
+    cp ~/.bashrc ~/.bashrc.bak
+    rm ~/.bash_profile
+    echo "MOVE ALL YOUR LOCAL CONFIGURATIONS FROM ~/.bashrc.bak to ~/.bash_local"
 fi
 
 # Add .bash_profile for tmux
