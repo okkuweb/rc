@@ -31,7 +31,7 @@ shopt -s histverify
 shopt -s histappend
 
 # Ensures common history for all sessions
-export PROMPT_COMMAND='history -a'
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
 
 # Save multi-line commands as one command
 shopt -s cmdhist
