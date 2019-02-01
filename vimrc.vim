@@ -100,6 +100,8 @@ noremap <Leader>l <Esc>:syntax sync fromstart<CR>
 
 " Settings for indent guides
 let g:indent_guides_auto_colors = 0
+let g:indent_guides_default_mapping = 0
+nmap <silent> <Leader>g <Plug>IndentGuidesToggle
 hi IndentGuidesOdd ctermbg=237
 hi IndentGuidesEven ctermbg=236
 
@@ -200,6 +202,12 @@ vnoremap <Leader>p "0p
 " Change 'ctrl+g' to do the same as 'g ctrl+g'
 nnoremap <C-g> g<C-g>
 vnoremap <C-g> g<C-g>
+
+" Better keys for going to the end and beginning of the line
+nnoremap <Leader>a $
+vnoremap <Leader>a $
+nnoremap <Leader>i ^
+vnoremap <Leader>i ^
 
 " Make it so vim reads my bash aliases
 let $BASH_ENV = "~/.bash_aliases"
