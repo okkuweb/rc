@@ -97,8 +97,11 @@ runjava () {
         main=`cat $folder/main.txt`
         if [ -d "$folder" ] && [ -n "$main" ]; then
             find $folder -name \*.java -print > class.list
-            javac @class.list
-            java $main
+            if javac @class.list; then
+                java $main
+            else
+                echo "Compilation failed"
+            fi
         else
             echo "Invalid parameters"
         fi
