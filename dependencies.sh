@@ -5,9 +5,9 @@ os=${OS,,}
 
 # Install required bash cli tools
 if [ "$os" == "debian" ] || [ "$os" == "ubuntu" ] ; then
-    sudo apt update && sudo apt install curl git vim-gtk tmux tree bash-completion
+    sudo apt update && sudo apt install htop curl git vim-gtk tmux tree bash-completion
 elif [ "$os" == "centos" ]; then
-    sudo yum check-update && sudo yum install curl git vim-gtk tmux tree bash-completion
+    sudo yum check-update && sudo yum install htop curl git vim-gtk tmux tree bash-completion
 else
     checkOS=1
 fi
