@@ -209,6 +209,9 @@ vnoremap <Leader>a $
 nnoremap <Leader>i ^
 vnoremap <Leader>i ^
 
+" Leader + Enter makes an enter press instead of ":"
+nnoremap <Leader><CR> <CR>
+
 " Make it so vim reads my bash aliases
 let $BASH_ENV = "~/.bash_aliases"
 
