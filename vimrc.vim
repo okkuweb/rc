@@ -7,6 +7,7 @@
 " vim-indent-guides
 "
 " - CONFIGURATIONS -
+
 " Execute pathogen plugins
 execute pathogen#infect()
 
@@ -142,11 +143,21 @@ nnoremap <C-t> :tabnew<CR>
 " Run file in interpreter
 map <Leader>rh :w<CR>:! clear && haxe -main % --interp<CR>
 map <Leader>rf :w<CR>:! clear && lime test neko -debug<CR>
-map <Leader>rj :w<CR>:! clear && runjava .<CR>
 map <Leader>rn :w<CR>:! clear && node %<CR>
 map <Leader>rp :w<CR>:! clear && perl %<CR>
 map <Leader>rl :w<CR>:! clear && love `pwd`<CR>
 map <Leader>rb :w<CR>:! clear && bash %<CR>
+map <Leader>rj :call RunJava()<CR>
+
+" Function to run Java project
+function! RunJava()
+    let l:root = FindRootDirectory()
+    if empty(l:root)
+        echom "No root directory found"
+    else
+        execute '!runjava ' . l:root
+    endif
+endfunction
 
 " Make a breakpoint on underscores
 set iskeyword-=_
@@ -208,6 +219,8 @@ nnoremap <Leader>a $
 vnoremap <Leader>a $
 nnoremap <Leader>i ^
 vnoremap <Leader>i ^
+
+let g:rooter_manual_only = 1
 
 " Make it so vim reads my bash aliases
 let $BASH_ENV = "~/.bash_aliases"
