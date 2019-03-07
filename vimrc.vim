@@ -220,7 +220,11 @@ vnoremap <Leader>a $
 nnoremap <Leader>i ^
 vnoremap <Leader>i ^
 
+" Don't jump to root when in git coz it's annoying
 let g:rooter_manual_only = 1
+
+" Leader + Enter makes an enter press instead of ":"
+nnoremap <Leader><CR> <CR>
 
 " Make it so vim reads my bash aliases
 let $BASH_ENV = "~/.bash_aliases"
