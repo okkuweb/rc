@@ -229,5 +229,8 @@ nnoremap <Leader><CR> <CR>
 " Make it so vim reads my bash aliases
 let $BASH_ENV = "~/.bash_aliases"
 
+inoremap OH <C-o>0
+inoremap OF <C-o>$
+
 " PC specific vim settings
 source ~/.vimlocal
