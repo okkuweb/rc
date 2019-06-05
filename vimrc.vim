@@ -235,5 +235,8 @@ inoremap OF <C-o>$
 " Remove all trailing whitespace
 nnoremap <Leader>t :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
+" Disable modeline for its security issues
+set nomodeline
+
 " PC specific vim settings
 source ~/.vimlocal
