@@ -268,5 +268,8 @@ inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
 inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
   \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
+" Disable modeline for its security issues
+set nomodeline
+
 " PC specific vim settings
 source ~/.vimlocal
