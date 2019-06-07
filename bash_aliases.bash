@@ -109,3 +109,6 @@ runjava () {
         echo "Please provide a directory and add a main.txt with main class name there"
     fi
 }
+
+# Grep coloring
+alias grep="grep --color=auto"
