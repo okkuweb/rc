@@ -141,13 +141,14 @@ nnoremap <C-w>" :split<CR>
 nnoremap <C-t> :tabnew<CR>
 
 " Run file in interpreter
-map <Leader>rh :w<CR>:! clear && haxe -main % --interp<CR>
-map <Leader>rf :w<CR>:! clear && lime test neko -debug<CR>
-map <Leader>rn :w<CR>:! clear && node %<CR>
-map <Leader>rp :w<CR>:! clear && perl %<CR>
-map <Leader>rl :w<CR>:! clear && love `pwd`<CR>
-map <Leader>rb :w<CR>:! clear && bash %<CR>
-map <Leader>rj :call RunJava()<CR>
+nnoremap <Leader>rh :w<CR>:! clear && haxe -main % --interp<CR>
+nnoremap <Leader>re :call RunNeko()<CR>
+nnoremap <Leader>rw :call RunWeb()<CR>
+nnoremap <Leader>rn :w<CR>:! clear && node %<CR>
+nnoremap <Leader>rp :w<CR>:! clear && perl %<CR>
+nnoremap <Leader>rl :w<CR>:! clear && love `pwd`<CR>
+nnoremap <Leader>rb :w<CR>:! clear && bash %<CR>
+nnoremap <Leader>rj :call RunJava()<CR>
 
 " Function to run Java project
 function! RunJava()
@@ -156,6 +157,26 @@ function! RunJava()
         echom "No root directory found"
     else
         execute '!runjava ' . l:root
+    endif
+endfunction
+
+" Function to run Neko Lime project
+function! RunNeko()
+    let l:root = FindRootDirectory()
+    if empty(l:root)
+        echom "No root directory found"
+    else
+        execute '!clear && cd ' . l:root . ' && lime test neko -debug && cd -'
+    endif
+endfunction
+
+" Function to run HTML5 Lime project
+function! RunWeb()
+    let l:root = FindRootDirectory()
+    if empty(l:root)
+        echom "No root directory found"
+    else
+        execute '!clear && cd ' . l:root . ' && lime test html5 -debug && cd -'
     endif
 endfunction
 
@@ -171,9 +192,6 @@ vnoremap <Leader>/ /<C-r>"<CR>
 
 " Make syntax highlighting faster to fix vim performance
 set re=1
-
-" Disable vaxe build stuff
-let g:vaxe_skip_hxml = 1
 
 " Nerdtree initialisation on empty file argument
 autocmd StdinReadPre * let s:std_in=1
@@ -234,6 +252,21 @@ inoremap OF <C-o>$
 
 " Remove all trailing whitespace
 nnoremap <Leader>t :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
+" Vaxe stuff
+set autowrite
+let g:vaxe_lime_target = "linux -neko -64"
+
+" Close scratchpad
+nnoremap <Leader>c :pc<CR>
+
+" Better omnicompletion
+set completeopt=menu,longest,menuone,preview
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
+  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
+  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " PC specific vim settings
 source ~/.vimlocal
