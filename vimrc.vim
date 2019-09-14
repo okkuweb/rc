@@ -247,9 +247,6 @@ nnoremap <Leader><CR> <CR>
 " Make it so vim reads my bash aliases
 let $BASH_ENV = "~/.bash_aliases"
 
-inoremap OH <C-o>0
-inoremap OF <C-o>$
-
 " Remove all trailing whitespace
 nnoremap <Leader>t :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
