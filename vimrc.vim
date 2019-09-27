@@ -272,5 +272,8 @@ set nomodeline
 nnoremap <C-i> <C-a>
 map <C-a> <Nop>
 
+" When scrolling EOF, keep a 10 line space around the cursor
+set scrolloff=10
+
 " PC specific vim settings
 source ~/.vimlocal
