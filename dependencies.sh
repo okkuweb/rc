@@ -32,11 +32,11 @@ fi
 # Install vim dependencies
 if [ "$windows" ]; then
     mkdir -p ~/vimfiles/autoload ~/vimfiles/bundle && \
-    curl -LSso ~/vimfiles/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    ln -fv $location/confs/prop/pathogen.vim ~/vimfiles/autoload/pathogen.vim
     cp -rfv $location/deps/vim_deps/* ~/vimfiles/bundle
 else
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-    curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
+    ln -fv $location/confs/prop/pathogen.vim ~/.vim/autoload/pathogen.vim
     cp -rfv $location/opt_deps/vim_opt_deps/* ~/.vim/bundle
     cp -rfv $location/deps/vim_deps/* ~/.vim/bundle
 fi
