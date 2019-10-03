@@ -1,54 +1,48 @@
-[submodule "deps/vim-gitgutter"]
-	path = deps/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter
-[submodule "deps/vim-indent-guides"]
-	path = deps/vim-indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides
-[submodule "deps/ultisnips"]
-	path = deps/ultisnips
-	url = https://github.com/SirVer/ultisnips
-[submodule "deps/vim-snippets"]
-	path = deps/vim-snippets
-	url = https://github.com/honza/vim-snippets
 [submodule "deps/vim-sensible"]
-	path = deps/vim-sensible
+	path = deps/vim_deps/vim-sensible
 	url = https://github.com/tpope/vim-sensible.git
 [submodule "deps/auto-pairs"]
-	path = deps/auto-pairs
+	path = deps/vim_deps/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs
 [submodule "deps/vim-surround"]
-	path = deps/vim-surround
+	path = deps/vim_deps/vim-surround
 	url = https://github.com/tpope/vim-surround
 [submodule "deps/winresizer"]
-	path = deps/winresizer
+	path = deps/vim_deps/winresizer
 	url = https://github.com/jimsei/winresizer
 [submodule "deps/vim-javascript"]
-	path = deps/vim-javascript
+	path = deps/vim_deps/vim-javascript
 	url = https://github.com/pangloss/vim-javascript.git
 [submodule "deps/vim-fakeclip"]
-	path = deps/vim-fakeclip
+	path = deps/vim_deps/vim-fakeclip
 	url = https://github.com/kana/vim-fakeclip
 [submodule "deps/vim-fugitive"]
-	path = deps/vim-fugitive
+	path = deps/vim_deps/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
 [submodule "deps/nerdtree"]
-	path = deps/nerdtree
+	path = deps/vim_deps/nerdtree
 	url = https://github.com/scrooloose/nerdtree
 [submodule "deps/vim-rooter"]
-	path = deps/vim-rooter
+	path = deps/vim_deps/vim-rooter
 	url = https://github.com/airblade/vim-rooter
 [submodule "deps/ctrlp.vim"]
-	path = deps/ctrlp.vim
+	path = deps/vim_deps/ctrlp.vim
 	url = https://github.com/ctrlpvim/ctrlp.vim
 [submodule "opt_deps/vim-gitgutter"]
-	path = opt_deps/vim-gitgutter
+	path = deps/vim_opt_deps/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
 [submodule "opt_deps/vim-indent-guides"]
-	path = opt_deps/vim-indent-guides
+	path = deps/vim_opt_deps/vim-indent-guides
 	url = https://github.com/nathanaelkane/vim-indent-guides
 [submodule "opt_deps/ultisnips"]
-	path = opt_deps/ultisnips
+	path = deps/vim_opt_deps/ultisnips
 	url = https://github.com/SirVer/ultisnips
 [submodule "opt_deps/vim-snippets"]
-	path = opt_deps/vim-snippets
+	path = deps/vim_opt_deps/vim-snippets
 	url = https://github.com/honza/vim-snippets
+[submodule "deps/linux_deps/tmux"]
+	path = deps/linux_deps/tmux
+	url = https://github.com/tmux/tmux
+[submodule "deps/linux_deps/htop"]
+	path = deps/linux_deps/htop
+	url = https://github.com/hishamhm/htop
