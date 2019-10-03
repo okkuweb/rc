@@ -1,5 +1,6 @@
 #!/bin/bash
 # Update repositories
+location=`dirname $0`
 OS=`cat /etc/issue | grep -io "ubuntu\|debian\|centos\|mint"`
 os=${OS,,}
 
@@ -22,7 +23,7 @@ if [ "$checkOS" ]; then
     else
         read -p "Are you using a filthy Windows system (and git bash)? (y/n)`echo $'\n> '`" answer
         if [ "$answer" == "y" ]; then
-            touch `dirname $0`/windows && echo "1" >> `dirname $0`/windows
+            touch "$location/windows" && echo "1" >> $location/windows
             windows=1
         fi
     fi
@@ -32,16 +33,11 @@ fi
 if [ "$windows" ]; then
     mkdir -p ~/vimfiles/autoload ~/vimfiles/bundle && \
     curl -LSso ~/vimfiles/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-    if [ -z "$windows" ]; then
-        cp -rfv `dirname $0`/opt_deps/* ~/.vim/bundle
-    fi
-    cp -rfv `dirname $0`/deps/* ~/.vim/bundle
+    cp -rfv $location/deps/vim_deps/* ~/vimfiles/bundle
 else
     mkdir -p ~/.vim/autoload ~/.vim/bundle && \
     curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-    if [ -z "$windows" ]; then
-        cp -rfv `dirname $0`/opt_deps/* ~/.vim/bundle
-    fi
-    cp -rfv `dirname $0`/deps/* ~/.vim/bundle
+    cp -rfv $location/opt_deps/vim_opt_deps/* ~/.vim/bundle
+    cp -rfv $location/deps/vim_deps/* ~/.vim/bundle
 fi
 
