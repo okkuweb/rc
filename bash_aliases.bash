@@ -33,6 +33,7 @@ alias rmux="tmux kill-session -t"
 
 # Recursive grep with perl regexes
 alias grip="grep -riPHn"
+alias grp="grep -rPHn"
 
 # Git aliases
 alias gs="git status"
