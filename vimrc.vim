@@ -268,9 +268,8 @@ inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
 " Disable modeline for its security issues
 set nomodeline
 
-" Add an increment binding and unbound increment from tmux leader
+" Add an additional increment binding
 nnoremap <C-i> <C-a>
-map <C-a> <Nop>
 
 " PC specific vim settings
 source ~/.vimlocal
