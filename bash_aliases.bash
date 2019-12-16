@@ -32,8 +32,11 @@ alias nmux="tmux new -s"
 alias rmux="tmux kill-session -t"
 
 # Recursive grep with perl regexes
-alias grip="grep -riPHn"
-alias grp="grep -rPHn"
+alias grip="grep --color=always -riPHn"
+alias grp="grep --color=always -rPHn"
+
+# Recursive grip that cuts out files that have too long lines
+alias gut="grep -rLZE '.{500}' . | xargs -r0 grep --color=always -iPHn"
 
 # Git aliases
 alias gs="git status"
