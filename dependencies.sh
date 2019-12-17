@@ -5,7 +5,8 @@ OS=`cat /etc/issue | grep -io "ubuntu\|debian\|centos\|mint"`
 os=${OS,,}
 
 # Install required bash cli tools
-if ping -c 1 github.com &> /dev/null; then
+read -p "Are you operating in an online environment? (y/n)`echo $'\n> '`" answer
+if [ "$answer" == "y" ]; then
     if [ "$os" == "debian" ] || [ "$os" == "ubuntu" ] || [ "$os" == "mint" ] ; then
         sudo apt update && sudo apt install htop curl git vim-gtk tmux tree bash-completion
     elif [ "$os" == "centos" ]; then

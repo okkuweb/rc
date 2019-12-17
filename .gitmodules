@@ -46,3 +46,6 @@
 [submodule "deps/linux_deps/htop"]
 	path = deps/linux/htop
 	url = https://github.com/hishamhm/htop
+[submodule "deps/linux/vim"]
+	path = deps/linux/vim
+	url = https://github.com/vim/vim
