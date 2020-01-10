@@ -34,6 +34,8 @@ alias rmux="tmux kill-session -t"
 # Recursive grep with perl regexes
 alias grip="grep --color=always -riPHn"
 alias grp="grep --color=always -rPHn"
+
+# Recursive grip that cuts out files that have too long lines
 gut () {
     if [ -z "$1" ]; then echo "Provide a parameter"
     else grep --color=always -riPHn $1 | cut -c1-320
@@ -44,9 +46,6 @@ gt () {
     else grep --color=always -rPHn $1 | cut -c1-320
     fi
 }
-
-# Recursive grip that cuts out files that have too long lines
-alias gut="grep -rLZE '.{500}' . | xargs -r0 grep --color=always -iPHn"
 
 # Git aliases
 alias gs="git status"
@@ -126,3 +125,6 @@ runjava () {
 
 # Grep coloring
 alias grep="grep --color=auto"
+
+[ -x /usr/bin/lesspipe  ] && eval "$(SHELL=/bin/sh lesspipe)"
+
