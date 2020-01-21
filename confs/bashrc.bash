@@ -1,10 +1,10 @@
-# Run machine specific bash commands
-if [ -f ~/.bash_local ]; then
-    . ~/.bash_local
-fi
 # Run bash alias file
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
+fi
+# Run machine specific bash commands
+if [ -f ~/.bash_local ]; then
+    . ~/.bash_local
 fi
 
 # Add colors to linux terminal with tmux support
