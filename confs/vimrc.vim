@@ -8,6 +8,10 @@
 "
 " - CONFIGURATIONS -
 
+" Set environment variables for gitgutter
+let $TMP = "~/.vim/tempfiles"
+let $TMPDIR = "~/.vim/tempfiles"
+
 " Execute pathogen plugins
 execute pathogen#infect()
 
@@ -50,8 +54,8 @@ let mapleader=" "
 map <Enter> :
 
 " Rebind gitgutter keys
-map <Leader>< <Plug>GitGutterPrevHunk
-map <Leader>> <Plug>GitGutterNextHunk
+map <Leader>< <Plug>(GitGutterPrevHunk)
+map <Leader>> <Plug>(GitGutterNextHunk)
 
 " colorscheme
 colorscheme molokai
