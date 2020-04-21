@@ -31,9 +31,6 @@
 [submodule "opt_deps/vim-gitgutter"]
 	path = deps/vim_opt/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
-[submodule "opt_deps/vim-indent-guides"]
-	path = deps/vim_opt/vim-indent-guides
-	url = https://github.com/nathanaelkane/vim-indent-guides
 [submodule "opt_deps/ultisnips"]
 	path = deps/vim_opt/ultisnips
 	url = https://github.com/SirVer/ultisnips
