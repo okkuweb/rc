@@ -7,9 +7,6 @@ if [ -f ~/.bash_local ]; then
     . ~/.bash_local
 fi
 
-# Add colors to linux terminal with tmux support
-TERM="xterm-256color"
-
 # Make vim the default text editor
 EDITOR="vim"
 
