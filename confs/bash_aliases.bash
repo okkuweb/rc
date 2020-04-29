@@ -51,6 +51,7 @@ gt () {
 alias gs="git status"
 alias gc="git checkout"
 alias gd="git diff"
+alias gds="git diff --staged"
 alias gl="git log"
 
 # Alias for current date in folder format

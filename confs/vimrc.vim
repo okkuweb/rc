@@ -274,6 +274,9 @@ set nomodeline
 
 " Add an additional increment binding
 nnoremap <C-i> <C-a>
+" Unbind default increment binding 
+" (it causes too many code errors since it's the same as tmux prefix)
+nnoremap <C-a> <Nop>
 
 " PC specific vim settings
 source ~/.vimlocal
