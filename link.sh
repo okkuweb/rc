@@ -38,14 +38,14 @@ fi
 
 mkdir -p ~/.w3m
 mkdir -p ~/.vim/colors
-ln -fv $location/confs/bashrc.bash ~/.bashrc
-ln -fv $location/confs/bash_aliases.bash ~/.bash_aliases
-ln -fv $location/confs/inputrc.bash ~/.inputrc
-ln -fv $location/confs/vimrc.vim ~/.vimrc
-ln -fv $location/confs/tmux.conf ~/.tmux.conf
-ln -fv $location/confs/w3mkeymap ~/.w3m/keymap
-ln -fv $location/confs/nethackrc ~/.nethackrc
-ln -fv $location/confs/molokai.vim ~/.vim/colors
+ln -sfv $location/confs/bashrc.bash ~/.bashrc
+ln -sfv $location/confs/bash_aliases.bash ~/.bash_aliases
+ln -sfv $location/confs/inputrc.bash ~/.inputrc
+ln -sfv $location/confs/vimrc.vim ~/.vimrc
+ln -sfv $location/confs/tmux.conf ~/.tmux.conf
+ln -sfv $location/confs/w3mkeymap ~/.w3m/keymap
+ln -sfv $location/confs/nethackrc ~/.nethackrc
+ln -sfv $location/confs/molokai.vim ~/.vim/colors
 
 # Add a local vimrc file
 touch ~/.vimlocal
