@@ -5,6 +5,8 @@ if [ -f $location/windows ]; then
     windows=1
 fi
 
+cd $location
+
 # Link files to appropriate locations
 if [ "$windows" ]; then
     ln -fv $location/confs/vimrc.vim ~/_vimrc
@@ -38,14 +40,14 @@ fi
 
 mkdir -p ~/.w3m
 mkdir -p ~/.vim/colors
-ln -sfv $location/confs/bashrc.bash ~/.bashrc
-ln -sfv $location/confs/bash_aliases.bash ~/.bash_aliases
-ln -sfv $location/confs/inputrc.bash ~/.inputrc
-ln -sfv $location/confs/vimrc.vim ~/.vimrc
-ln -sfv $location/confs/tmux.conf ~/.tmux.conf
-ln -sfv $location/confs/w3mkeymap ~/.w3m/keymap
-ln -sfv $location/confs/nethackrc ~/.nethackrc
-ln -sfv $location/confs/molokai.vim ~/.vim/colors
+ln -sfv `pwd`/confs/bashrc.bash ~/.bashrc
+ln -sfv `pwd`/confs/bash_aliases.bash ~/.bash_aliases
+ln -sfv `pwd`/confs/inputrc.bash ~/.inputrc
+ln -sfv `pwd`/confs/vimrc.vim ~/.vimrc
+ln -sfv `pwd`/confs/tmux.conf ~/.tmux.conf
+ln -sfv `pwd`/confs/w3mkeymap ~/.w3m/keymap
+ln -sfv `pwd`/confs/nethackrc ~/.nethackrc
+ln -sfv `pwd`/confs/molokai.vim ~/.vim/colors
 
 # Add a local vimrc file
 touch ~/.vimlocal
