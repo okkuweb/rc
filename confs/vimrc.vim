@@ -68,6 +68,10 @@ imap jk <Esc>
 imap Jk <Esc>
 imap jK <Esc>
 imap JK <Esc>
+imap kj <Esc>
+imap Kj <Esc>
+imap kJ <Esc>
+imap KJ <Esc>
 
 " Add newlines with enter without going to insert mode
 nmap <C-o> o<Esc>
