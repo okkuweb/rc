@@ -49,3 +49,6 @@
 [submodule "deps/vim/vim-repeat"]
 	path = deps/vim/vim-repeat
 	url = https://github.com/tpope/vim-repeat
+[submodule "deps/vim/gv.vim"]
+	path = deps/vim/gv.vim
+	url = https://github.com/junegunn/gv.vim
