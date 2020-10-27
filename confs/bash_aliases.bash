@@ -36,12 +36,12 @@ alias grip="grep --color=always -riPHn"
 alias grp="grep --color=always -rPHn"
 
 # Recursive grip that cuts out files that have too long lines
-gut () {
+function gut () {
     if [ -z "$1" ]; then echo "Provide a parameter"
     else grep --color=always -riPHn $1 | cut -c1-320
     fi
 }
-gt () {
+function gt () {
     if [ -z "$1" ]; then echo "Provide a parameter"
     else grep --color=always -rPHn $1 | cut -c1-320
     fi
@@ -61,7 +61,7 @@ alias today="date +%Y-%m-%d"
 alias startagent="eval \"$(ssh-agent -s)\""
 
 # Aliases for going up the directory
-repeat() { printf "$1"'%.s' $(eval "echo {1.."$(($2))"}");  }
+function repeat() { printf "$1"'%.s' $(eval "echo {1.."$(($2))"}");  }
 
 for i in {1..20}; do
     a=$(repeat '.' $i)
@@ -72,7 +72,7 @@ for i in {1..20}; do
 done
 
 # Watch file and run command when changes happen
-watchit () {
+function watchit () {
     path=$1
     shift
     cmd=$*
@@ -104,7 +104,7 @@ watchit () {
 }
 
 # Function to read vim root folder main class in java
-runjava () {
+function runjava () {
     if [ -d "$1" ]; then
         cd $1
         folder=`pwd`
