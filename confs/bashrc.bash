@@ -108,3 +108,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
+alias caja="echo Opening with a caja alias; caja . &"
+
