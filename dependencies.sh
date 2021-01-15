@@ -1,15 +1,15 @@
 #!/bin/bash
 # Update repositories
 location=`dirname $0`
-OS=`cat /etc/issue | grep -io "ubuntu\|debian\|centos\|mint"`
-os=${OS,,}
+apt=`which apt`
+yum=`which yum`
 
 # Install required bash cli tools
 read -p "Are you operating in an online environment? (y/n)`echo $'\n> '`" answer
 if [ "$answer" == "y" ]; then
-    if [ "$os" == "debian" ] || [ "$os" == "ubuntu" ] || [ "$os" == "mint" ] ; then
+    if [ "$apt" ]; then
         sudo apt update && sudo apt install htop curl git vim-gtk tmux tree bash-completion
-    elif [ "$os" == "centos" ]; then
+    elif [ "$yum" ]; then
         sudo yum check-update && sudo yum install htop curl git vim-gtk tmux tree bash-completion
     else
         checkOS=1
