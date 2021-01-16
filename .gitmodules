@@ -19,9 +19,6 @@
 [submodule "deps/vim-fugitive"]
 	path = deps/vim/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive.git
-[submodule "deps/nerdtree"]
-	path = deps/vim/nerdtree
-	url = https://github.com/scrooloose/nerdtree
 [submodule "deps/vim-rooter"]
 	path = deps/vim/vim-rooter
 	url = https://github.com/airblade/vim-rooter
