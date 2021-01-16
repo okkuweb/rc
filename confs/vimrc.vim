@@ -201,10 +201,6 @@ vnoremap <Leader>/ /<C-r>"<CR>
 " Make syntax highlighting faster to fix vim performance
 set re=1
 
-" Nerdtree initialisation on empty file argument
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
 " Make vim show full file path at the bottom
 set statusline+=%F
 
@@ -217,11 +213,6 @@ cmap column column -t -o " "
 " Disable all bells and whistles cos they're annoying
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
-" Open nerdtree
-nmap <leader>d :NERDTreeToggle<CR>
-" Find current open file in nerdtree
-nmap <leader>D :NERDTreeFind<CR>
 
 " Rebind ctrlp to leader + f(ind)
 let g:ctrlp_map = '<leader>f'
