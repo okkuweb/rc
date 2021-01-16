@@ -14,8 +14,9 @@ if [ "$answer" == "y" ]; then
     else
         checkOS=1
     fi
+    git submodule update --init
 else
-    echo Install needed linux dependencies manually from deps/linux_deps.\n
+    echo Download dependencies in an online environment and pack and move this to the desired system for manual installation.\n
 fi
 
 if [ "$checkOS" ]; then
