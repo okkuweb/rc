@@ -273,5 +273,7 @@ nnoremap <C-i> <C-a>
 " (it causes too many code errors since it's the same as tmux prefix)
 nnoremap <C-a> <Nop>
 
+set laststatus=2
+
 " PC specific vim settings
 source ~/.vimlocal
