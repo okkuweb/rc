@@ -1,3 +1,8 @@
+if ! { [ "$TERM" = "screen-256color" ] && [ -n "$TMUX" ]; } then
+    export TERM="xterm-256color"
+fi
+
+
 # Run bash alias file
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
@@ -43,10 +48,6 @@ shopt -s globstar 2> /dev/null
 # Case-insensitive globbing (used in pathname expansion)
 shopt -s nocaseglob;
 
-# Enable history expansion with space
-# E.g. typing !!<space> will replace the !! with your last command
-bind Space:magic-space
-
 # Update window size after every command
 shopt -s checkwinsize
 
@@ -79,13 +80,6 @@ unp () {
        echo "'$1' is not a valid file!"
    fi
  }
-
-# Enable incremental history search with up/down arrows (also Readline goodness)
-# Learn more about this here: http://codeinthehole.com/writing/the-most-important-command-line-tip-incremental-history-searching-with-inputrc/
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
-bind '"\e[C": forward-char'
-bind '"\e[D": backward-char'
 
 ## BETTER DIRECTORY NAVIGATION ##
 # Prepend cd to directory names automatically
