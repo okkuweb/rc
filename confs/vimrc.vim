@@ -63,7 +63,7 @@ colorscheme molokai
 " Add numbers to vim sidebar
 set number
 
-" Set escape from insert mode to jj
+" Set escape from insert mode to jk
 imap jk <Esc>
 imap Jk <Esc>
 imap jK <Esc>
