@@ -18,12 +18,12 @@ alias mv="mv -i"
 alias wifirestart="sudo systemctl restart NetworkManager"
 
 # Alias shorthands
-alias ls="ls --color"
-alias la="ls -a --color"
-alias l="ls --color"
-alias ll="ls -l --color"
-alias lr="ls -R --color"
-alias lla="ls -la --color"
+alias ls="ls --color=auto"
+alias la="ls -a --color=auto"
+alias l="ls --color=auto"
+alias ll="ls -l --color=auto"
+alias lr="ls -R --color=auto"
+alias lla="ls -la --color=auto"
 
 # Tmux aliases
 alias amux="tmux at -t"
@@ -32,8 +32,8 @@ alias nmux="tmux new -s"
 alias rmux="tmux kill-session -t"
 
 # Recursive grep with perl regexes
-alias grip="grep --color=always -riPHn"
-alias grp="grep --color=always -rPHn"
+alias grip="grep --color=auto -riPHn"
+alias grp="grep --color=auto -rPHn"
 
 # Recursive grip that cuts out files that have too long lines
 function gut () {
