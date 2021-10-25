@@ -132,11 +132,11 @@ end
 "
 if &t_Co > 255
    if s:molokai_original == 1
-      hi Normal                   ctermbg=234 gui=NONE
-      hi CursorLine               ctermbg=235   cterm=none gui=NONE
+      hi Normal                   gui=NONE
+      hi CursorLine               cterm=none gui=NONE
       hi CursorLineNr ctermfg=208               cterm=none gui=NONE
    else
-      hi Normal       ctermfg=252 ctermbg=233 gui=NONE
+      hi Normal       ctermfg=252 gui=NONE
       hi CursorLine               ctermbg=234   cterm=none gui=NONE
       hi CursorLineNr ctermfg=208               cterm=none gui=NONE
    endif
@@ -229,7 +229,7 @@ if &t_Co > 255
    hi SpecialKey      ctermfg=59 gui=NONE
 
    if exists("g:rehash256") && g:rehash256 == 1
-       hi Normal       ctermfg=252 ctermbg=234 gui=NONE
+       hi Normal       ctermfg=252 gui=NONE
        hi CursorLine               ctermbg=236   cterm=none gui=NONE
        hi CursorLineNr ctermfg=208               cterm=none gui=NONE
 
