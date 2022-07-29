@@ -8,10 +8,6 @@
 "
 " - CONFIGURATIONS -
 
-" Set environment variables for gitgutter
-let $TMP = "~/.vim/tempfiles"
-let $TMPDIR = "~/.vim/tempfiles"
-
 " Execute pathogen plugins
 execute pathogen#infect()
 
@@ -156,6 +152,7 @@ nnoremap <Leader>rn :w<CR>:! clear && node %<CR>
 nnoremap <Leader>rp :w<CR>:! clear && perl %<CR>
 nnoremap <Leader>rl :w<CR>:! clear && love `pwd`<CR>
 nnoremap <Leader>rb :w<CR>:! clear && bash %<CR>
+nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
 nnoremap <Leader>rj :call RunJava()<CR>
 
 " Function to run Java project
