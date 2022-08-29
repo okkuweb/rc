@@ -273,7 +273,7 @@ nnoremap <C-a> <Nop>
 set laststatus=2
 
 " Close any preview/info windows
-nnoremap <Leader>q <C-w>k:q<CR>
+nnoremap <Leader>q :only<CR>
 
 " PC specific vim settings
 source ~/.vimlocal
