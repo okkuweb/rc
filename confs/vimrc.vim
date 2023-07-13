@@ -278,5 +278,8 @@ set laststatus=2
 " Close any preview/info windows
 nnoremap <Leader>q :only<CR>
 
+" Set 2 space indentation for yaml files
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+
 " PC specific vim settings
 source ~/.vimlocal
