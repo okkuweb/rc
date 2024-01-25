@@ -77,8 +77,10 @@ imap KJ <Esc>
 nmap <C-o> o<Esc>
 
 " Make a buffer file to home folder for copying between vims
-vmap <C-y> :w! ~/.vimbuffer<CR>
+"vmap <C-y> :w! ~/.vimbuffer<CR>
 nmap <C-y> :.w! ~/.vimbuffer<CR>
+vmap <C-y> "ny:new ~/.vimbuffer<CR>VG"nP:w<CR>:bdelete!<CR>:let @"=@0<CR>
+
 " Paste from buffer
 map <C-p> :r ~/.vimbuffer<CR>
 
