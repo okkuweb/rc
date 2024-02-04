@@ -8,6 +8,10 @@
 "
 " - CONFIGURATIONS -
 
+" Set environment variables for gitgutter
+let $TMP = $HOME . "/.vim/tempfiles/"
+let $TMPDIR = $HOME . "/.vim/tempfiles/"
+
 " Execute pathogen plugins
 execute pathogen#infect()
 
