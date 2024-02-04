@@ -234,7 +234,6 @@ nnoremap <Leader>a $
 vnoremap <Leader>a $
 nnoremap <Leader>i ^
 vnoremap <Leader>i ^
-nnoremap <Leader>d gd
 nnoremap <Leader>b <C-T>
 
 " Don't jump to root when in git coz it's annoying
