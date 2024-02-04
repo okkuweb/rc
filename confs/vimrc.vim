@@ -145,9 +145,6 @@ let g:gitgutter_max_signs = 600
 nnoremap <C-w>% :vsplit<CR>
 nnoremap <C-w>" :split<CR>
 
-" Add hotkey for new tabs
-nnoremap <C-t> :tabnew<CR>
-
 " Run file in interpreter
 nnoremap <Leader>rh :w<CR>:! clear && haxe -main % --interp<CR>
 nnoremap <Leader>re :call RunNeko()<CR>
@@ -237,6 +234,8 @@ nnoremap <Leader>a $
 vnoremap <Leader>a $
 nnoremap <Leader>i ^
 vnoremap <Leader>i ^
+nnoremap <Leader>d gd
+nnoremap <Leader>b <C-T>
 
 " Don't jump to root when in git coz it's annoying
 let g:rooter_manual_only = 1
@@ -248,7 +247,8 @@ nnoremap <Leader><CR> <CR>
 let $BASH_ENV = "~/.bash_aliases"
 
 " Remove all trailing whitespace
-nnoremap <Leader>t :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <Leader>T :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <Leader>t :newtab<CR>
 
 " Vaxe stuff
 set autowrite
