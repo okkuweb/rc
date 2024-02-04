@@ -248,7 +248,7 @@ let $BASH_ENV = "~/.bash_aliases"
 
 " Remove all trailing whitespace
 nnoremap <Leader>T :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-nnoremap <Leader>t :newtab<CR>
+nnoremap <Leader>t :tabnew<CR>
 
 " Vaxe stuff
 set autowrite
