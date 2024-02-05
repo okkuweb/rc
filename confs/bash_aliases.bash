@@ -1,3 +1,25 @@
+# Recursive grep with perl regexes
+if command -v rg &> /dev/null
+then
+    alias grip="rg -iPHnM 1000 -g '!node_modules' -g '!puppeteer'"
+    alias grp="rg -PHnM 1000 -g '!node_modules' -g '!puppeteer'"
+else
+    # Recursive grep with perl regexes
+    alias grip="grep --color=auto -riPHn"
+    alias grp="grep --color=auto -rPHn"
+	# Recursive grip that cuts out files that have too long lines
+	function gut () {
+		if [ -z "$1" ]; then echo "Provide a parameter"
+		else grep --color=always -riPHn $1 | cut -c1-320
+		fi
+	}
+	function gt () {
+		if [ -z "$1" ]; then echo "Provide a parameter"
+		else grep --color=always -rPHn $1 | cut -c1-320
+		fi
+	}
+fi
+
 # A thing to make aliases work in vim shell
 shopt -s expand_aliases
 
@@ -30,10 +52,6 @@ alias amux="tmux at -t"
 alias lmux="tmux ls"
 alias nmux="tmux new -s"
 alias rmux="tmux kill-session -t"
-
-# Recursive grep with perl regexes
-alias grip="grep --color=auto -riPHn"
-alias grp="grep --color=auto -rPHn"
 
 # Recursive grip that cuts out files that have too long lines
 function gut () {
