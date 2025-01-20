@@ -5,41 +5,22 @@ apt=`which apt`
 yum=`which yum`
 
 # Install required bash cli tools
-read -p "Are you operating in an online environment? (y/n)`echo $'\n> '`" answer
-if [ "$answer" == "y" ]; then
-    if [ "$apt" ]; then
-        sudo apt update && sudo apt install htop curl git vim-gtk tmux tree bash-completion
-    elif [ "$yum" ]; then
-        sudo yum check-update && sudo yum install htop curl git vim-gtk tmux tree bash-completion
-    else
-        checkOS=1
-    fi
-    git submodule update --init
+if [ "$apt" ]; then
+    sudo apt update && sudo apt install htop curl git vim-gtk tmux tree bash-completion
+elif [ "$yum" ]; then
+    sudo yum check-update && sudo yum install htop curl git vim-gtk tmux tree bash-completion
 else
-    echo Download dependencies in an online environment and pack and move this to the desired system for manual installation.\n
-fi
-
-if [ "$checkOS" ]; then
-    if [ "`cat $location/windows`" ]; then
-        windows=1
-    else
-        read -p "Are you using a filthy Windows system (and git bash)? (y/n)`echo $'\n> '`" answer
-        if [ "$answer" == "y" ]; then
-            touch "$location/windows" && echo "1" >> $location/windows
-            windows=1
-        fi
-    fi
+    checkOS=1
 fi
 
 # Install vim dependencies
-if [ "$windows" ]; then
-    mkdir -p ~/vimfiles/autoload ~/vimfiles/bundle && \
-    ln -fv $location/confs/prop/pathogen.vim ~/vimfiles/autoload/pathogen.vim
-    cp -rfv $location/deps/vim/* ~/vimfiles/bundle
-else
-    mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-    ln -fv $location/confs/prop/pathogen.vim ~/.vim/autoload/pathogen.vim
-    cp -rfv $location/deps/vim_opt/* ~/.vim/bundle
-    cp -rfv $location/deps/vim/* ~/.vim/bundle
-fi
+mkdir -p ~/.vim/autoload ~/.vim/bundle && \
+ln -fv $location/confs/prop/pathogen.vim ~/.vim/autoload/pathogen.vim
+cd ~/.vim/bundle
+git clone https://github.com/tpope/vim-surround
+git clone https://github.com/tpope/vim-repeat
+git clone https://github.com/airblade/vim-gitgutter
+git clone https://github.com/jiangmiao/auto-pairs
+git clone https://github.com/tpope/vim-fugitive
+cd -
 
