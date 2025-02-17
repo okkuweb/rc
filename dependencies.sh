@@ -22,5 +22,6 @@ git clone https://github.com/tpope/vim-repeat
 git clone https://github.com/airblade/vim-gitgutter
 git clone https://github.com/jiangmiao/auto-pairs
 git clone https://github.com/tpope/vim-fugitive
+git clone https://github.com/tpope/vim-sensible
 cd -
 
