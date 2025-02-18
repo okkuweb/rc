@@ -1,5 +1,7 @@
 OPTIONS=name:Okku
 OPTIONS=horsename:Agron
+OPTIONS=dogname:Hachiko
+OPTIONS=catname:Nyanko
 OPTIONS=gender:male
 OPTIONS=fruit:takoyaki
 OPTIONS=color
