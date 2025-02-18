@@ -104,3 +104,8 @@ fi
 
 alias caja="echo Opening with a caja alias; caja . &"
 
+if [ ! -d ~/.local/bin ]; then
+    mkdir ~/.local/bin
+fi
+PATH=$PATH:~/.local/bin
+

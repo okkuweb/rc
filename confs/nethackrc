@@ -1,7 +1,7 @@
 OPTIONS=name:Jyrki
 OPTIONS=horsename:Agron
 OPTIONS=gender:male
-OPTIONS=fruit:meme
+OPTIONS=fruit:takoyaki
 OPTIONS=color
 OPTIONS=noautopickup
 OPTIONS=altmeta
@@ -14,3 +14,4 @@ OPTIONS=sortpack, lootabc, fixinv
 OPTIONS=msg_window:reversed, msghistory:20
 OPTIONS=wraptext
 OPTIONS:boulder:0
+OPTIONS=!tutorial

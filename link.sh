@@ -47,6 +47,7 @@ ln -sfv `pwd`/confs/vimrc.vim ~/.vimrc
 ln -sfv `pwd`/confs/tmux.conf ~/.tmux.conf
 ln -sfv `pwd`/confs/w3mkeymap ~/.w3m/keymap
 ln -sfv `pwd`/confs/nethackrc ~/.nethackrc
+ln -sfv `pwd`/confs/nethackrc ~/.xnethackrc
 ln -sfv `pwd`/confs/molokai.vim ~/.vim/colors
 
 # Add a local vimrc file
