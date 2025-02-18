@@ -1,4 +1,4 @@
-OPTIONS=name:Jyrki
+OPTIONS=name:Okku
 OPTIONS=horsename:Agron
 OPTIONS=gender:male
 OPTIONS=fruit:takoyaki
@@ -13,5 +13,4 @@ OPTIONS=time, showexp, showscore
 OPTIONS=sortpack, lootabc, fixinv
 OPTIONS=msg_window:reversed, msghistory:20
 OPTIONS=wraptext
-OPTIONS:boulder:0
 OPTIONS=!tutorial
