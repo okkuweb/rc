@@ -147,3 +147,9 @@ alias grep="grep --color=auto"
 
 [ -x /usr/bin/lesspipe  ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+if command -v fdfind &> /dev/null; then
+    alias fd='fdfind'
+elif command -v fd-find &> /dev/null; then
+    alias fd='fd-find'
+fi
+
