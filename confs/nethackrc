@@ -13,6 +13,6 @@ OPTIONS=menucolors
 OPTIONS=menustyle:full, menu_headings:bold, extmenu
 OPTIONS=time, showexp, showscore
 OPTIONS=sortpack, lootabc, fixinv
-OPTIONS=msg_window:reversed, msghistory:20
+OPTIONS=msg_window:reversed, msghistory:500
 OPTIONS=wraptext
 OPTIONS=!tutorial
