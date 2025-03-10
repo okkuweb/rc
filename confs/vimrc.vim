@@ -283,5 +283,74 @@ nnoremap <Leader>q :only<CR>
 " Set 2 space indentation for yaml files
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
+" Define a global variable to track the warning counter
+if !exists('g:warning_counter')
+    let g:warning_counter = 1
+endif
+
+" Define a function that inserts a logging statement based on filetype
+function! InsertWarning()
+    let l:logs = {
+        \ 'c': 'printf("WARNING %d: Debug checkpoint\\n", ' . g:warning_counter . ');',
+        \ 'cpp': 'std::cout << "WARNING ' . g:warning_counter . ': Debug checkpoint" << std::endl;',
+        \ 'java': 'System.out.println("WARNING ' . g:warning_counter . ': Debug checkpoint");',
+        \ 'javascript': 'console.warn("WARNING ' . g:warning_counter . ': Debug checkpoint");',
+        \ 'typescript': 'console.warn("WARNING ' . g:warning_counter . ': Debug checkpoint");',
+        \ 'python': 'import warnings; warnings.warn("WARNING ' . g:warning_counter . ': Debug checkpoint")',
+        \ 'ruby': 'warn "WARNING ' . g:warning_counter . ': Debug checkpoint"',
+        \ 'go': 'log.Printf("WARNING %d: Debug checkpoint", ' . g:warning_counter . ')',
+        \ 'rust': 'eprintln!("WARNING ' . g:warning_counter . ': Debug checkpoint");',
+        \ 'php': 'trigger_error("WARNING ' . g:warning_counter . ': Debug checkpoint", E_USER_WARNING);',
+        \ 'swift': 'print("WARNING ' . g:warning_counter . ': Debug checkpoint")',
+        \ 'perl': 'warn "WARNING ' . g:warning_counter . ': Debug checkpoint";',
+        \ 'sh': 'echo "WARNING ' . g:warning_counter . ': Debug checkpoint" >&2',
+        \ 'bash': 'echo "WARNING ' . g:warning_counter . ': Debug checkpoint" >&2',
+        \ 'html': '<script>console.warn("WARNING ' . g:warning_counter . ': Debug checkpoint");</script>',
+        \ 'xml': '<!-- WARNING ' . g:warning_counter . ': Debug checkpoint -->',
+        \ 'css': '/* WARNING ' . g:warning_counter . ': Debug checkpoint */',
+        \ 'lua': 'print("WARNING ' . g:warning_counter . ': Debug checkpoint")',
+        \ 'vim': 'echowarn "WARNING ' . g:warning_counter . ': Debug checkpoint"',
+        \ 'haskell': 'putStrLn $ "WARNING ' . g:warning_counter . ': Debug checkpoint"',
+        \ 'lisp': '(warn "WARNING ' . g:warning_counter . ': Debug checkpoint")',
+        \ 'clojure': '(println "WARNING ' . g:warning_counter . ': Debug checkpoint")'
+        \ }
+    
+    " Get current filetype
+    let l:ft = &filetype
+    
+    " Default log for unknown filetypes
+    let l:log = 'print("WARNING ' . g:warning_counter . ': Debug checkpoint")'
+    
+    " Use specific log if available
+    if has_key(l:logs, l:ft)
+        let l:log = l:logs[l:ft]
+    endif
+    
+    " Get current indentation
+    let l:indent = matchstr(getline('.'), '^\s*')
+    
+    " Insert the log statement at the line after the current cursor position with indentation
+    let l:line = line('.')
+    call append(l:line, l:indent . l:log)
+    
+    " Move cursor to the newly inserted line
+    call cursor(l:line + 1, len(l:indent) + 1)
+    
+    " Increment the counter for next time
+    let g:warning_counter += 1
+endfunction
+
+" Function to reset the warning counter
+function! ResetWarningCounter()
+    let g:warning_counter = 1
+    echo "Warning counter reset to 1"
+endfunction
+
+" Map leader+w to the warning function
+nnoremap <leader>w :call InsertWarning()<CR>
+
+" Map leader+r to reset the warning counter
+nnoremap <leader>r :call ResetWarningCounter()<CR>
+
 " PC specific vim settings
 source ~/.vimlocal
