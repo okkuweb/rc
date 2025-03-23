@@ -105,7 +105,7 @@ fi
 alias caja="echo Opening with a caja alias; caja . &"
 
 if [ ! -d ~/.local/bin ]; then
-    mkdir ~/.local/bin
+    mkdir -p ~/.local/bin
 fi
 PATH=$PATH:~/.local/bin:/usr/local/go/bin:/home/$user/.go/bin
 export GOPATH=~/.go
