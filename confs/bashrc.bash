@@ -102,8 +102,6 @@ if ! shopt -oq posix; then
   fi
 fi
 
-alias caja="echo Opening with a caja alias; caja . &"
-
 if [ ! -d ~/.local/bin ]; then
     mkdir -p ~/.local/bin
 fi
