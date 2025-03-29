@@ -36,9 +36,6 @@ alias vi="vim"
 alias cp="cp -i"
 alias mv="mv -i"
 
-# Restart wifi
-alias wifirestart="sudo systemctl restart NetworkManager"
-
 # Alias shorthands
 alias ls="ls --color=auto"
 alias la="ls -a --color=auto"
@@ -119,27 +116,6 @@ function watchit () {
         compare
         sleep 1
     done
-}
-
-# Function to read vim root folder main class in java
-function runjava () {
-    if [ -d "$1" ]; then
-        cd $1
-        folder=`pwd`
-        main=`cat $folder/main.txt`
-        if [ -d "$folder" ] && [ -n "$main" ]; then
-            find $folder -name \*.java -print > class.list
-            if javac @class.list; then
-                java $main
-            else
-                echo "Compilation failed"
-            fi
-        else
-            echo "Invalid parameters"
-        fi
-    else
-        echo "Please provide a directory and add a main.txt with main class name there"
-    fi
 }
 
 # Grep coloring

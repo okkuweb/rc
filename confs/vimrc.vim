@@ -74,7 +74,8 @@ imap kJ <Esc>
 imap KJ <Esc>
 
 " Add newlines with enter without going to insert mode
-nmap <C-o> o<Esc>
+nmap <Leader>o o<Esc>
+nmap <Leader>O O<Esc>
 
 " Make a buffer file to home folder for copying between vims
 "vmap <C-y> :w! ~/.vimbuffer<CR>
@@ -148,45 +149,11 @@ nnoremap <C-w>% :vsplit<CR>
 nnoremap <C-w>" :split<CR>
 
 " Run file in interpreter
-nnoremap <Leader>rh :w<CR>:! clear && haxe -main % --interp<CR>
-nnoremap <Leader>re :call RunNeko()<CR>
-nnoremap <Leader>rw :call RunWeb()<CR>
 nnoremap <Leader>rn :w<CR>:! clear && node %<CR>
 nnoremap <Leader>rp :w<CR>:! clear && perl %<CR>
-nnoremap <Leader>rl :w<CR>:! clear && love `pwd`<CR>
 nnoremap <Leader>rb :w<CR>:! clear && bash %<CR>
-nnoremap <Leader>rg :w<CR>:! clear && go build -o app && ./app<CR>
-nnoremap <Leader>rj :call RunJava()<CR>
-
-" Function to run Java project
-function! RunJava()
-    let l:root = FindRootDirectory()
-    if empty(l:root)
-        echom "No root directory found"
-    else
-        execute '!runjava ' . l:root
-    endif
-endfunction
-
-" Function to run Neko Lime project
-function! RunNeko()
-    let l:root = FindRootDirectory()
-    if empty(l:root)
-        echom "No root directory found"
-    else
-        execute '!clear && cd ' . l:root . ' && lime test neko -debug && cd -'
-    endif
-endfunction
-
-" Function to run HTML5 Lime project
-function! RunWeb()
-    let l:root = FindRootDirectory()
-    if empty(l:root)
-        echom "No root directory found"
-    else
-        execute '!clear && cd ' . l:root . ' && lime test html5 -debug && cd -'
-    endif
-endfunction
+nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
+nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
 
 " Make a breakpoint on underscores
 set iskeyword-=_
@@ -213,15 +180,6 @@ cmap column column -t -o " "
 " Disable all bells and whistles cos they're annoying
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
-
-" Rebind ctrlp to leader + f(ind)
-let g:ctrlp_map = '<leader>f'
-
-" Add some stuff to java functions or some shit
-let java_highlight_functions=1
-
-" Added mapping for UltiSnips
-let g:UltiSnipsExpandTrigger="<tab>"
 
 " Yet another paste command (paste from last yank)
 nnoremap <Leader>p "0p
@@ -251,20 +209,8 @@ let $BASH_ENV = "~/.bash_aliases"
 nnoremap <Leader>T :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <Leader>t :tabnew<CR>
 
-" Vaxe stuff
-set autowrite
-let g:vaxe_lime_target = "linux -neko -64"
-
 " Close scratchpad
 nnoremap <Leader>c :pc<CR>
-
-" Better omnicompletion
-set completeopt=menu,longest,menuone,preview
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-inoremap <expr> <C-n> pumvisible() ? '<C-n>' :
-  \ '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
-inoremap <expr> <M-,> pumvisible() ? '<C-n>' :
-  \ '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
 
 " Disable modeline for its security issues
 set nomodeline
