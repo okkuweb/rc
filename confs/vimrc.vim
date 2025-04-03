@@ -152,6 +152,7 @@ nnoremap <C-w>" :split<CR>
 nnoremap <Leader>rn :w<CR>:! clear && node %<CR>
 nnoremap <Leader>rp :w<CR>:! clear && perl %<CR>
 nnoremap <Leader>rb :w<CR>:! clear && bash %<CR>
+nnoremap <Leader>re :w<CR>:! clear && expect %<CR>
 nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
 nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
 
