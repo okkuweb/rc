@@ -13,7 +13,17 @@ let $TMP = $HOME . "/.vim/tempfiles/"
 let $TMPDIR = $HOME . "/.vim/tempfiles/"
 
 " Execute pathogen plugins
-execute pathogen#infect()
+call plug#begin()
+" List your plugins here
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'airblade/vim-gitgutter'
+Plug 'jiangmiao/auto-pairs'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'roxma/vim-tmux-clipboard'
+Plug 'tmux-plugins/vim-tmux-focus-events'
+call plug#end()
 
 " Add vim syntax highlighting to vimlocal
 au BufNewFile,BufRead .vimlocal setlocal ft=vim

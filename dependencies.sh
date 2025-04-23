@@ -15,13 +15,5 @@ fi
 
 # Install vim dependencies
 mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-ln -fv $location/confs/prop/pathogen.vim ~/.vim/autoload/pathogen.vim
-cd ~/.vim/bundle
-git clone https://github.com/tpope/vim-surround
-git clone https://github.com/tpope/vim-repeat
-git clone https://github.com/airblade/vim-gitgutter
-git clone https://github.com/jiangmiao/auto-pairs
-git clone https://github.com/tpope/vim-fugitive
-git clone https://github.com/tpope/vim-sensible
-cd -
+curl -o ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
