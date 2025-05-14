@@ -129,3 +129,8 @@ elif command -v fd-find &> /dev/null; then
     alias fd='fd-find'
 fi
 
+alias resetbluetooth="sudo systemctl restart bluetooth && sudo rmmod btusb && sudo modprobe btusb"
+
+alias big='du -ah . | sort -rh | head -20'
+alias big-files='ls -1Rhs | sed -e "s/^ *//" | grep "^[0-9]" | sort -hr | head -n20'
+

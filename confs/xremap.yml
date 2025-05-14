@@ -1,0 +1,7 @@
+modmap:
+  - name: Slim X1 Keyboard Alt/Super Swap
+    device:
+      only: Slim X1 Keyboard
+    remap:
+      Alt_L: Super_L
+      Super_L: Alt_L
