@@ -23,6 +23,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'mbbill/undotree'
 call plug#end()
 
 " Add vim syntax highlighting to vimlocal

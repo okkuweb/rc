@@ -1,7 +1,10 @@
 modmap:
   - name: Slim X1 Keyboard Alt/Super Swap
     device:
-      only: Slim X1 Keyboard
+      only: [
+        'Slim X1 Keyboard',
+        'SONiX Satechi Compact Keyboard'
+      ]
     remap:
       Alt_L: Super_L
       Super_L: Alt_L
