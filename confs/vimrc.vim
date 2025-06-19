@@ -310,5 +310,8 @@ nnoremap <leader>w :call InsertWarning()<CR>
 " Map leader+r to reset the warning counter
 nnoremap <leader>r :call ResetWarningCounter()<CR>
 
+" Undotree toggle binding
+nnoremap <leader>u :UndotreeToggle<CR>
+
 " PC specific vim settings
 source ~/.vimlocal
