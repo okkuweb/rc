@@ -50,9 +50,13 @@ ln -sfv `pwd`/confs/xnethackrc ~/.xnethackrc
 ln -sfv `pwd`/confs/molokai.vim ~/.vim/colors
 mkdir -p ~/.config/xremap/
 ln -sfv `pwd`/confs/xremap.yml ~/.config/xremap/config.yml
+mkdir -p ~/.config/nvim/lua/config/
+ln -sfv `pwd`/confs/nvimrc.vim ~/.config/nvim/init.vim
+ln -sfv `pwd`/confs/nvimlazy.lua ~/.config/nvim/lua/config/lazy.lua
 
 # Add a local vimrc file
 touch ~/.vimlocal
+touch ~/.nvimlocal
 touch ~/.tmuxlocal.conf
 touch ~/.bash_local
 

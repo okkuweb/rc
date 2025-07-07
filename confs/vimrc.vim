@@ -30,6 +30,8 @@ call plug#end()
 au BufNewFile,BufRead .vimlocal setlocal ft=vim
 " Add syntax highlighting to .bash_local
 au BufNewFile,BufRead .bash_local setlocal ft=sh
+" Add highlighting for local nvim config file
+au BufNewFile,BufRead .nvimlocal setlocal ft=lua
 
 " Start syntax highlighting
 syntax on
