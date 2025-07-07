@@ -196,8 +196,11 @@ set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
 " Yet another paste command (paste from last yank)
-nnoremap <Leader>p "0p
-vnoremap <Leader>p "0p
+noremap <Leader>P "0p
+" Yet another paste command (paste from clipboard)
+noremap <leader>p "+p
+" Yet another copy command (copy to clipboard)
+noremap <leader>y "+yy
 
 " Change 'ctrl+g' to do the same as 'g ctrl+g'
 nnoremap <C-g> g<C-g>
