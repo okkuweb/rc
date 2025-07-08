@@ -31,7 +31,6 @@ require("lazy").setup({
     'mbbill/undotree',
     'ellisonleao/gruvbox.nvim',
     'aserowy/tmux.nvim',
-    "neovim/nvim-lspconfig",
     {
         "kawre/leetcode.nvim",
         build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
@@ -94,7 +93,6 @@ require("lazy").setup({
 })
 
 vim.cmd("colorscheme gruvbox")
-require'lspconfig'.gopls.setup{}
 
 dofile(vim.fn.expand("~/.nvimlocal"))
 EOF
