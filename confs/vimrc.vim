@@ -24,6 +24,7 @@ Plug 'tpope/vim-sensible'
 Plug 'roxma/vim-tmux-clipboard'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'mbbill/undotree'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 " Add vim syntax highlighting to vimlocal
@@ -99,7 +100,9 @@ vmap <C-y> "ny:new ~/.vimbuffer<CR>VG"nP:w<CR>:bdelete!<CR>:let @"=@0<CR>
 map <C-p> :r ~/.vimbuffer<CR>
 
 " Toggle paste mode with F10
-set pastetoggle=<F10>
+if !has('nvim')
+    set pastetoggle=<F10>
+endif
 
 " Set line number toggle
 noremap <F9> :set invnumber<CR>:GitGutterToggle<CR>
@@ -212,9 +215,6 @@ vnoremap <Leader>a $
 nnoremap <Leader>i ^
 vnoremap <Leader>i ^
 nnoremap <Leader>b <C-T>
-
-" Don't jump to root when in git coz it's annoying
-let g:rooter_manual_only = 1
 
 " Leader + Enter makes an enter press instead of ":"
 nnoremap <Leader><CR> <CR>
