@@ -99,7 +99,10 @@ fi
 if [ ! -d ~/.local/bin ]; then
     mkdir -p ~/.local/bin
 fi
-PATH=$PATH:~/.local/bin:/usr/local/go/bin:/home/$user/.go/bin
-export GOPATH=~/.go
+
 alias fd="fdfind"
+
+export GOPATH=~/.go
 export PATH=$PATH:/usr/local/go/bin
+PATH=$PATH:~/.local/bin:/usr/local/go/bin:~/.go/bin
+
