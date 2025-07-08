@@ -52,6 +52,7 @@ mkdir -p ~/.config/xremap/
 ln -sfv `pwd`/confs/xremap.yml ~/.config/xremap/config.yml
 mkdir -p ~/.config/nvim
 ln -sfv `pwd`/confs/nvimrc.vim ~/.config/nvim/init.vim
+ln -sfv `pwd`/confs/nvimrc.vim ~/.nvimrc
 
 # Add a local vimrc file
 touch ~/.vimlocal

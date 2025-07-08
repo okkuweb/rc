@@ -29,7 +29,6 @@ require("lazy").setup({
     'roxma/vim-tmux-clipboard',
     'tmux-plugins/vim-tmux-focus-events',
     'mbbill/undotree',
-    'dense-analysis/ale',
     'ellisonleao/gruvbox.nvim',
     'aserowy/tmux.nvim',
     {
