@@ -12,20 +12,22 @@
 let $TMP = $HOME . "/.vim/tempfiles/"
 let $TMPDIR = $HOME . "/.vim/tempfiles/"
 
-" Execute pathogen plugins
-call plug#begin()
-" List your plugins here
-Plug 'tpope/vim-surround'
-Plug 'tpope/vim-repeat'
-Plug 'airblade/vim-gitgutter'
-Plug 'jiangmiao/auto-pairs'
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-sensible'
-Plug 'roxma/vim-tmux-clipboard'
-Plug 'tmux-plugins/vim-tmux-focus-events'
-Plug 'mbbill/undotree'
-Plug 'dense-analysis/ale'
-call plug#end()
+if !has('nvim')
+    " Execute pathogen plugins
+    call plug#begin()
+    " List your plugins here
+    Plug 'tpope/vim-surround'
+    Plug 'tpope/vim-repeat'
+    Plug 'airblade/vim-gitgutter'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-sensible'
+    Plug 'roxma/vim-tmux-clipboard'
+    Plug 'tmux-plugins/vim-tmux-focus-events'
+    Plug 'mbbill/undotree'
+    Plug 'dense-analysis/ale'
+    call plug#end()
+endif
 
 " Add vim syntax highlighting to vimlocal
 au BufNewFile,BufRead .vimlocal setlocal ft=vim
@@ -58,8 +60,16 @@ set backup
 if !isdirectory($HOME."/.vim/tempfiles")
     call mkdir($HOME."/.vim/tempfiles", "p")
 endif
-set backupdir=~/.vim/tempfiles/
-set directory=~/.vim/tempfiles/
+if !isdirectory($HOME."/.nvim/tempfiles")
+    call mkdir($HOME."/.nvim/tempfiles", "p")
+endif
+if has('nvim')
+    set backupdir=~/.nvim/tempfiles/
+    set directory=~/.nvim/tempfiles/
+else
+    set backupdir=~/.vim/tempfiles/
+    set directory=~/.vim/tempfiles/
+endif
 
 " Rebind leader key
 let mapleader=" "
@@ -72,7 +82,9 @@ map <Leader>< <Plug>(GitGutterPrevHunk)
 map <Leader>> <Plug>(GitGutterNextHunk)
 
 " colorscheme
-colorscheme molokai
+if !has('nvim')
+    colorscheme molokai
+endif
 
 " Add numbers to vim sidebar
 set number
@@ -119,7 +131,11 @@ set smartcase
 
 " Set persistent undo
 set undofile
-set undodir=~/.vim/tempfiles
+if has('nvim')
+    set undodir=~/.nvim/tempfiles
+else
+    set undodir=~/.vim/tempfiles
+endif
 set undolevels=1000
 set undoreload=10000
 
@@ -214,6 +230,8 @@ nnoremap <Leader>a $
 vnoremap <Leader>a $
 nnoremap <Leader>i ^
 vnoremap <Leader>i ^
+
+" Go up the file stack
 nnoremap <Leader>b <C-T>
 
 " Leader + Enter makes an enter press instead of ":"
