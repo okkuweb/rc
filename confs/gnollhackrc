@@ -20,3 +20,4 @@ OPTIONS=msg_window:full, msghistory:500
 OPTIONS=wraptext
 OPTIONS=windowtype:curses
 OPTIONS=symset:default
+OPTIONS=perm_invent
