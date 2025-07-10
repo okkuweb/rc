@@ -46,7 +46,7 @@ ln -sfv `pwd`/confs/inputrc.bash ~/.inputrc
 ln -sfv `pwd`/confs/vimrc.vim ~/.vimrc
 ln -sfv `pwd`/confs/tmux.conf ~/.tmux.conf
 ln -sfv `pwd`/confs/w3mkeymap ~/.w3m/keymap
-ln -sfv `pwd`/confs/xnethackrc ~/.xnethackrc
+ln -sfv `pwd`/confs/gnollhackrc ~/.gnollhackrc
 ln -sfv `pwd`/confs/molokai.vim ~/.vim/colors
 mkdir -p ~/.config/xremap/
 ln -sfv `pwd`/confs/xremap.yml ~/.config/xremap/config.yml
