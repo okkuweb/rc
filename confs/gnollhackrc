@@ -4,7 +4,7 @@ OPTIONS=horsename:Agron
 OPTIONS=dogname:Hachiko
 OPTIONS=catname:Nyanko
 OPTIONS=gender:male
-OPTIONS=autopickup,autopickup:$,pickup_thrown
+OPTIONS=autopickup,pickup_types:$,pickup_thrown
 OPTIONS=fruit:takoyaki
 OPTIONS=color
 OPTIONS=altmeta
@@ -20,3 +20,6 @@ OPTIONS=windowtype:curses
 OPTIONS=symset:default
 OPTIONS=perm_invent
 OPTIONS=boulder:0
+OPTIONS=pile_limit:8
+PTIONS=popup_dialog
+
