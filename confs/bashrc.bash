@@ -103,6 +103,6 @@ fi
 alias fd="fdfind"
 
 export GOPATH=~/.go
-export PATH=$PATH:/usr/local/go/bin
-PATH=$PATH:~/.local/bin:/usr/local/go/bin:~/.go/bin
+
+PATH=$PATH:~/.local/games:~/.local/bin:/usr/local/go/bin:~/.go/bin
 
