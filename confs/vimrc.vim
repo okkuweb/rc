@@ -25,7 +25,6 @@ if !has('nvim')
     Plug 'roxma/vim-tmux-clipboard'
     Plug 'tmux-plugins/vim-tmux-focus-events'
     Plug 'mbbill/undotree'
-    Plug 'dense-analysis/ale'
     call plug#end()
 endif
 
