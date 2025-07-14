@@ -23,3 +23,4 @@ OPTIONS=pile_limit:8
 OPTIONS=popup_dialog
 OPTIONS=!tutorial
 OPTIONS=symset:IBMgraphics
+OPTIONS=lit_corridor
