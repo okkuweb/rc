@@ -335,5 +335,7 @@ nnoremap <leader>r :call ResetWarningCounter()<CR>
 " Undotree toggle binding
 nnoremap <leader>u :UndotreeToggle<CR>
 
+let g:go_fmt_autosave = 0
+
 " PC specific vim settings
 source ~/.vimlocal
