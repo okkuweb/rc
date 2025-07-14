@@ -21,5 +21,4 @@ OPTIONS=symset:default
 OPTIONS=perm_invent
 OPTIONS=boulder:0
 OPTIONS=pile_limit:8
-PTIONS=popup_dialog
-
+OPTIONS=popup_dialog

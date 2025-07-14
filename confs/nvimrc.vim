@@ -27,43 +27,51 @@ require("lazy").setup({
         'windwp/nvim-autopairs',
         event = "InsertEnter",
         config = true
-        -- use opts = {} for passing setup options
-        -- this is equivalent to setup({}) function
     },
     'tpope/vim-fugitive',
     'tpope/vim-sensible',
     'mbbill/undotree',
     'ellisonleao/gruvbox.nvim',
     'aserowy/tmux.nvim',
+    'nvim-treesitter/nvim-treesitter',
     {
         "kawre/leetcode.nvim",
-        build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+        build = ":TSUpdate html",
         branch = "dev",
         dependencies = {
-            -- include a picker of your choice, see picker section for more details
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
         },
         opts = {
+            lang = "golang",
+            storage = {
+                home = vim.fn.expand("~/git/leetcode"),
+            },
         },
+        keys = {
+            { "<leader>lq", mode = { "n" }, "<cmd>Leet tabs<cr>" },
+            { "<leader>lm", mode = { "n" }, "<cmd>Leet menu<cr>" },
+            { "<leader>lc", mode = { "n" }, "<cmd>Leet console<cr>" },
+            { "<leader>lh", mode = { "n" }, "<cmd>Leet info<cr>" },
+            { "<leader>ll", mode = { "n" }, "<cmd>Leet lang<cr>" },
+            { "<leader>ld", mode = { "n" }, "<cmd>Leet desc<cr>" },
+            { "<leader>lr", mode = { "n" }, "<cmd>Leet run<cr>" },
+            { "<leader>ls", mode = { "n" }, "<cmd>Leet submit<cr>" },
+            { "<leader>ly", mode = { "n" }, "<cmd>Leet yank<cr>" },
+        },
+        cmd = "Leet",
     },
+    'fatih/vim-go',
     {
         "folke/snacks.nvim",
         priority = 1000,
         lazy = false,
         ---@type snacks.Config
         opts = {
-            -- your configuration comes here
-            -- or leave it empty to use the default settings
-            -- refer to the configuration section below
             bigfile = { enabled = true },
-            explorer = { enabled = true },
-            indent = { enabled = true },
             input = { enabled = true },
             picker = { enabled = true },
             notifier = { enabled = true },
-            quickfile = { enabled = true },
-            scope = { enabled = true },
             statuscolumn = { enabled = true },
             words = { enabled = true },
         },
@@ -71,7 +79,11 @@ require("lazy").setup({
 })
 
 vim.cmd("colorscheme gruvbox")
+vim.keymap.set("n", "<leader>n", function()
+  require("snacks").picker.notifications()
+end, { desc = "Notification History" })
 
 dofile(vim.fn.expand("~/.nvimlocal"))
 EOF
+
 
