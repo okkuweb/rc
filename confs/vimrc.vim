@@ -180,12 +180,21 @@ nnoremap <C-w>% :vsplit<CR>
 nnoremap <C-w>" :split<CR>
 
 " Run file in interpreter
-nnoremap <Leader>rn :w<CR>:! clear && node %<CR>
-nnoremap <Leader>rp :w<CR>:! clear && perl %<CR>
-nnoremap <Leader>rb :w<CR>:! clear && bash %<CR>
-nnoremap <Leader>re :w<CR>:! clear && expect %<CR>
-nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
-nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
+if !has('nvim')
+    nnoremap <Leader>rn :w<CR>:! clear && node %<CR>
+    nnoremap <Leader>rp :w<CR>:! clear && perl %<CR>
+    nnoremap <Leader>rb :w<CR>:! clear && bash %<CR>
+    nnoremap <Leader>re :w<CR>:! clear && expect %<CR>
+    nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
+    nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
+else
+    nnoremap <Leader>rn :w<CR>:! node %<CR>
+    nnoremap <Leader>rp :w<CR>:! perl %<CR>
+    nnoremap <Leader>rb :w<CR>:! bash %<CR>
+    nnoremap <Leader>re :w<CR>:! expect %<CR>
+    nnoremap <Leader>rg :w<CR>:! go run %<CR>
+    nnoremap <Leader>rG :w<CR>:! go build -o app && ./app<CR>
+endif
 
 " Make a breakpoint on underscores
 set iskeyword-=_
