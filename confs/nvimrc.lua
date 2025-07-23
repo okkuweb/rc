@@ -40,6 +40,7 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
+            "telescope.nvim",
         },
         opts = {
             lang = "golang",
@@ -60,8 +61,28 @@ require("lazy").setup({
         },
         cmd = "Leet",
     },
+    {
+        "michaelb/sniprun",
+        branch = "master",
+
+        build = "sh install.sh",
+        -- do 'sh install.sh 1' if you want to force compile locally
+        -- (instead of fetching a binary from the github release). Requires Rust >= 1.65
+
+        config = function()
+            require("sniprun").setup({
+                -- your options
+            })
+        end,
+    },
+    {'akinsho/toggleterm.nvim', version = "*", opts = {
+        direction = 'float',
+    }},
 })
 
 vim.cmd("colorscheme gruvbox")
+vim.cmd("tnoremap <Esc> <C-\\><C-n>")
+vim.cmd("nnoremap <leader>t :ToggleTerm<CR>")
+vim.cmd("nnoremap <leader>t :ToggleTerm<CR>")
 
 dofile(vim.fn.expand("~/.nvimlocal"))

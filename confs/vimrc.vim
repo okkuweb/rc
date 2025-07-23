@@ -187,12 +187,12 @@ if !has('nvim')
     nnoremap <Leader>ri :w<CR>:! clear && gopls imports -w %<CR>
     nnoremap <Leader>rf :w<CR>:! clear && gofmt -w %<CR>
 else
-    nnoremap <Leader>rn :w<CR>:! node %<CR>
-    nnoremap <Leader>rp :w<CR>:! perl %<CR>
-    nnoremap <Leader>rb :w<CR>:! bash %<CR>
-    nnoremap <Leader>re :w<CR>:! expect %<CR>
-    nnoremap <Leader>rg :w<CR>:! go run %<CR>
-    nnoremap <Leader>rG :w<CR>:! go build -o app && ./app<CR>
+    nnoremap <Leader>rn :w<CR>:TermExec cmd="node %"<CR>
+    nnoremap <Leader>rp :w<CR>:TermExec cmd="perl %"<CR>
+    nnoremap <Leader>rb :w<CR>:TermExec cmd="bash %"<CR>
+    nnoremap <Leader>re :w<CR>:TermExec cmd="expect %"<CR>
+    nnoremap <Leader>rg :w<CR>:TermExec cmd="go run %"<CR>
+    nnoremap <Leader>rG :w<CR>:TermExec cmd="go build -o app && ./app && exit"<CR>
     nnoremap <Leader>ri :w<CR>:! gopls imports -w %<CR>
     nnoremap <Leader>rf :w<CR>:! gofmt -w %<CR>
 endif
@@ -340,7 +340,7 @@ endfunction
 nnoremap <leader>w :call InsertWarning()<CR>
 
 " Map leader+r to reset the warning counter
-nnoremap <leader>r :call ResetWarningCounter()<CR>
+nnoremap <leader>R :call ResetWarningCounter()<CR>
 
 " Undotree toggle binding
 nnoremap <leader>u :UndotreeToggle<CR>
