@@ -19,6 +19,8 @@ EDITOR="vim"
 HISTSIZE=2000000
 HISTFILESIZE=100000
 HISTTIMEFORMAT="%d.%m.%y %T "
+# Avoid duplicates in history
+export HISTCONTROL=erasedups:ignoreboth
 
 # Expand the bang command before running it
 shopt -s histverify
