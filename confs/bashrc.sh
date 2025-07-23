@@ -104,5 +104,13 @@ alias fd="fdfind"
 
 export GOPATH=~/.go
 
+vim() {
+    if [[ "$#" -eq 1 && "$1" == *.go  ]]; then
+        nvim "$1"
+    else
+        command vim "$@"
+    fi
+}
+
 PATH=$PATH:~/.local/games:~/.local/bin:/usr/local/go/bin:~/.go/bin
 
