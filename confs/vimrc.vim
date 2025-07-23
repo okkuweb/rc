@@ -9,8 +9,14 @@
 " - CONFIGURATIONS -
 
 " Set environment variables for gitgutter
-let $TMP = $HOME . "/.vim/tempfiles/"
-let $TMPDIR = $HOME . "/.vim/tempfiles/"
+
+if !has('nvim')
+    let $TMP = $HOME . "/.vim/tempfiles/"
+    let $TMPDIR = $HOME . "/.vim/tempfiles/"
+else
+    let $TMP = $HOME . "/.nvim/tempfiles/"
+    let $TMPDIR = $HOME . "/.nvim/tempfiles/"
+endif
 
 if !has('nvim')
     " Execute pathogen plugins
@@ -22,18 +28,9 @@ if !has('nvim')
     Plug 'jiangmiao/auto-pairs'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-sensible'
-    Plug 'roxma/vim-tmux-clipboard'
-    Plug 'tmux-plugins/vim-tmux-focus-events'
     Plug 'mbbill/undotree'
     call plug#end()
 endif
-
-" Add vim syntax highlighting to vimlocal
-au BufNewFile,BufRead .vimlocal setlocal ft=vim
-" Add syntax highlighting to .bash_local
-au BufNewFile,BufRead .bash_local setlocal ft=sh
-" Add highlighting for local nvim config file
-au BufNewFile,BufRead .nvimlocal setlocal ft=lua
 
 " Start syntax highlighting
 syntax on
@@ -162,7 +159,7 @@ nmap <silent> * :let @/='\<'.expand('<cword>').'\>'<CR>
 nmap <silent> # :let @/='\<'.expand('<cword>').'\>'<CR>
 
 " Save current file as sudo if opened without sudo
-cmap w!! w !sudo tee % > /dev/null
+cmap W w !sudo tee % > /dev/null
 
 " Add mouse support to vim
 set mouse=a
@@ -187,6 +184,8 @@ if !has('nvim')
     nnoremap <Leader>re :w<CR>:! clear && expect %<CR>
     nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
     nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
+    nnoremap <Leader>ri :w<CR>:! clear && gopls imports -w %<CR>
+    nnoremap <Leader>rf :w<CR>:! clear && gofmt -w %<CR>
 else
     nnoremap <Leader>rn :w<CR>:! node %<CR>
     nnoremap <Leader>rp :w<CR>:! perl %<CR>
@@ -194,6 +193,8 @@ else
     nnoremap <Leader>re :w<CR>:! expect %<CR>
     nnoremap <Leader>rg :w<CR>:! go run %<CR>
     nnoremap <Leader>rG :w<CR>:! go build -o app && ./app<CR>
+    nnoremap <Leader>ri :w<CR>:! gopls imports -w %<CR>
+    nnoremap <Leader>rf :w<CR>:! gofmt -w %<CR>
 endif
 
 " Make a breakpoint on underscores
@@ -347,4 +348,4 @@ nnoremap <leader>u :UndotreeToggle<CR>
 let g:go_fmt_autosave = 0
 
 " PC specific vim settings
-source ~/.vimlocal
+source ~/.vimlocal.vim

@@ -1,25 +1,26 @@
-set runtimepath^=~/.vim runtimepath+=~/.vim/after
-let &packpath=&runtimepath
-source ~/.vimrc
-lua << EOF
+vim.cmd("set runtimepath^=~/.vim runtimepath+=~/.vim/after")
+vim.cmd("let &packpath=&runtimepath")
+vim.cmd("source ~/.vimrc")
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out, "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
 vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
+    {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
     'tpope/vim-surround',
     'tpope/vim-repeat',
     'airblade/vim-gitgutter',
@@ -32,8 +33,6 @@ require("lazy").setup({
     'tpope/vim-sensible',
     'mbbill/undotree',
     'ellisonleao/gruvbox.nvim',
-    'aserowy/tmux.nvim',
-    'nvim-treesitter/nvim-treesitter',
     {
         "kawre/leetcode.nvim",
         build = ":TSUpdate html",
@@ -61,29 +60,8 @@ require("lazy").setup({
         },
         cmd = "Leet",
     },
-    'fatih/vim-go',
-    {
-        "folke/snacks.nvim",
-        priority = 1000,
-        lazy = false,
-        ---@type snacks.Config
-        opts = {
-            bigfile = { enabled = true },
-            input = { enabled = true },
-            picker = { enabled = true },
-            notifier = { enabled = true },
-            statuscolumn = { enabled = true },
-            words = { enabled = true },
-        },
-    },
 })
 
 vim.cmd("colorscheme gruvbox")
-vim.keymap.set("n", "<leader>n", function()
-  require("snacks").picker.notifications()
-end, { desc = "Notification History" })
 
 dofile(vim.fn.expand("~/.nvimlocal"))
-EOF
-
-

@@ -4,12 +4,12 @@ fi
 
 
 # Run bash alias file
-if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+if [ -f ~/.bash_aliases.sh ]; then
+    . ~/.bash_aliases.sh
 fi
 # Run machine specific bash commands
-if [ -f ~/.bash_local ]; then
-    . ~/.bash_local
+if [ -f ~/.bash_local.sh ]; then
+    . ~/.bash_local.sh
 fi
 
 # Make vim the default text editor
