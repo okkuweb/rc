@@ -40,8 +40,8 @@ fi
 
 mkdir -p ~/.w3m
 mkdir -p ~/.vim/colors
-ln -sfv `pwd`/confs/bashrc.bash ~/.bashrc
-ln -sfv `pwd`/confs/bash_aliases.bash ~/.bash_aliases
+ln -sfv `pwd`/confs/bashrc.sh ~/.bashrc
+ln -sfv `pwd`/confs/bash_aliases.sh ~/.bash_aliases.sh
 ln -sfv `pwd`/confs/inputrc.bash ~/.inputrc
 ln -sfv `pwd`/confs/vimrc.vim ~/.vimrc
 ln -sfv `pwd`/confs/tmux.conf ~/.tmux.conf
@@ -53,14 +53,14 @@ ln -sfv `pwd`/confs/molokai.vim ~/.vim/colors
 mkdir -p ~/.config/xremap/
 ln -sfv `pwd`/confs/xremap.yml ~/.config/xremap/config.yml
 mkdir -p ~/.config/nvim
-ln -sfv `pwd`/confs/nvimrc.vim ~/.config/nvim/init.vim
-ln -sfv `pwd`/confs/nvimrc.vim ~/.nvimrc
+ln -sfv `pwd`/confs/nvimrc.lua ~/.config/nvim/init.lua
+ln -sfv `pwd`/confs/nvimrc.lua ~/.nvimrc.lua
 
 # Add a local vimrc file
-touch ~/.vimlocal
-touch ~/.nvimlocal
+touch ~/.vimlocal.vim
+touch ~/.nvimlocal.lua
 touch ~/.tmuxlocal.conf
-touch ~/.bash_local
+touch ~/.bash_local.sh
 
 # Add git configurations to system
 if [ -f ~/.gitconfig ]; then
