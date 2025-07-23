@@ -107,7 +107,7 @@ alias fd="fdfind"
 export GOPATH=~/.go
 
 vim() {
-    if [[ "$#" -eq 1 && "$1" == *.go  ]]; then
+    if [[ "$#" -eq 1 && ( "$1" == *.go || "$1" == *.lua ) ]]; then
         nvim "$1"
     else
         command vim "$@"
