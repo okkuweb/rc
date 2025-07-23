@@ -159,7 +159,7 @@ nmap <silent> * :let @/='\<'.expand('<cword>').'\>'<CR>
 nmap <silent> # :let @/='\<'.expand('<cword>').'\>'<CR>
 
 " Save current file as sudo if opened without sudo
-cmap W w !sudo tee % > /dev/null
+cmap W!! w !sudo tee % > /dev/null
 
 " Add mouse support to vim
 set mouse=a
@@ -192,7 +192,7 @@ else
     nnoremap <Leader>rb :w<CR>:TermExec cmd="bash %"<CR>
     nnoremap <Leader>re :w<CR>:TermExec cmd="expect %"<CR>
     nnoremap <Leader>rg :w<CR>:TermExec cmd="go run %"<CR>
-    nnoremap <Leader>rG :w<CR>:TermExec cmd="go build -o app && ./app && exit"<CR>
+    nnoremap <Leader>rG :w<CR>:TermExec cmd="gogo && exit"<CR>
     nnoremap <Leader>ri :w<CR>:! gopls imports -w %<CR>
     nnoremap <Leader>rf :w<CR>:! gofmt -w %<CR>
 endif

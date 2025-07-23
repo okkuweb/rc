@@ -116,3 +116,5 @@ vim() {
 
 PATH=$PATH:~/.local/games:~/.local/bin:/usr/local/go/bin:~/.go/bin
 
+alias gogo="go build -o app ./... && ./app"
+
