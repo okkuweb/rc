@@ -1,0 +1,44 @@
+# Dungeon Crawl Stone Soup bcrawl-1.42.1 macro file
+# WARNING: This file is entirely auto-generated.
+
+# Key Mappings:
+K2:1
+A:.
+
+K2:2
+A:.
+
+K2:3
+A:.
+
+K2:4
+A:.
+
+# Command Macros:
+M:\{32}
+A:===startOrStep
+
+M:"
+A:;
+
+M:1
+A:za
+
+M:2
+A:zb
+
+M:;
+A:\{-236}
+
+M:[
+A:===hit_closest_nomove
+
+M:]
+A:\{-233}\{-233}\{-233}
+
+M:_
+A:===inputTogglePillar
+
+M:p
+A:===hit_closest
+
