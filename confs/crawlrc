@@ -7,6 +7,9 @@ easy_eat_chunks = true
 # Automatically eat chunks while traveling.
 auto_eat_chunks = true
 
+view_max_width = 81
+view_max_height = 71
+
 travel_avoid_terrain = deep water
 autofight_stop = 60
 
