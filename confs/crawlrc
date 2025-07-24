@@ -1,24 +1,63 @@
-# Autoexplore butchers corpses at satiated or worse.
 auto_butcher = satiated
-# Don't prompt to butcher stuff.
 confirm_butcher = never
-# Eat the oldest safe chunk just by pressing 'e'.
 easy_eat_chunks = true
-# Automatically eat chunks while traveling.
 auto_eat_chunks = true
-
+auto_drop_chunks       = rotten
 view_max_width = 81
 view_max_height = 71
+default_show_all_skills = true
+default_manual_training = true
+hp_colour = 70:yellow, 50:red
+travel_open_doors = false
+ae += <curare-tipped dart
+explore_stop += greedy_pickup,stairs,shops,altars,portals,branches,runed_doors
+dump_on_save = true
+dump_message_count = 100
+species += random
+background += viable
+weapon += viable
+name += Delver
+name_bypasses_menu += false
 
+# Macros
+macros += M 1 za
+macros += M 2 zb
+macros += M 3 zc
+macros += M 4 zd
+macros += M 5 ze
+macros += M 6 zf
+macros += M 7 zg
+macros += M 8 zh
+macros += M 9 zi
+macros += K2 1 .
+macros += K2 2 .
+macros += K2 3 .
+macros += K2 4 .
+macros += K2 5 .
+macros += K2 6 .
+macros += K2 7 .
+macros += K2 8 .
+macros += K2 9 .
+macros += M ; 5
+macros += M " ;
+
+# Safety
 travel_avoid_terrain = deep water
 autofight_stop = 60
-
-force_more_message = Your transformation is almost over
-runrest_stop_message = Your transformation is almost over
-force_more_message = You feel yourself come back to life
-runrest_stop_message = You feel yourself come back to life
-
+hp_warning = 50
+##### Force mores start here #####
+note_monsters += orb of fire, ancient lich, Sigmund
 more := force_more_message
+runrest := runrest_stop_message
+more += Your transformation is almost over
+runrest += Your transformation is almost over
+more += You feel yourself come back to life
+runrest += You feel yourself come back to life
+more += Ashenzari invites you to partake
+more += Ru believes you are ready to make a new sacrifice
+more += You can now merge with and destroy a victim.
+more += transformation is almost over
+
 more += Found .* abyssal rune of Zot
 more += Found a frozen archway
 more += Found a gateway leading out of the Abyss
