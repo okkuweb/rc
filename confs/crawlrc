@@ -8,7 +8,6 @@ view_max_height = 71
 default_show_all_skills = true
 default_manual_training = true
 hp_colour = 70:yellow, 50:red
-travel_open_doors = false
 ae += <curare-tipped dart
 explore_stop += greedy_pickup,stairs,shops,altars,portals,branches,runed_doors
 dump_on_save = true
