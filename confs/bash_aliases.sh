@@ -134,3 +134,6 @@ alias resetbluetooth="sudo systemctl restart bluetooth && sudo rmmod btusb && su
 alias big='du -ah . | sort -rh | head -20'
 alias big-files='ls -1Rhs | sed -e "s/^ *//" | grep "^[0-9]" | sort -hr | head -n20'
 
+alias gnollhack="TERM=xterm-256color gnollhack -T"
+alias sil="sil -mgcu -uDelver -r"
+
