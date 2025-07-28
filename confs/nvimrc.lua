@@ -124,6 +124,13 @@ keyset("n", "g>", "<Plug>(coc-diagnostic-next)", {silent = true})
 keyset("n", "g,", "<Plug>(coc-diagnostic-prev)", {silent = true})
 keyset("n", "g.", "<Plug>(coc-diagnostic-next)", {silent = true})
 keyset("n", "ga", ":<C-u>CocList diagnostics<cr>")
+vim.g.coc_user_config = {
+  suggest = {
+    enablePreselect = false,
+    noselect = true,
+    selection = "first",
+  }
+}
 
 cocenabled = true
 vim.keymap.set('n', 'gx', function()
