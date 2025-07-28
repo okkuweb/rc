@@ -78,6 +78,8 @@ map <Enter> :
 " Rebind gitgutter keys
 map <Leader>< <Plug>(GitGutterPrevHunk)
 map <Leader>> <Plug>(GitGutterNextHunk)
+map <Leader>, <Plug>(GitGutterPrevHunk)
+map <Leader>. <Plug>(GitGutterNextHunk)
 
 " colorscheme
 if !has('nvim')
