@@ -62,27 +62,66 @@ require("lazy").setup({
         cmd = "Leet",
     },
     {
-        "michaelb/sniprun",
-        branch = "master",
-
-        build = "sh install.sh",
-        -- do 'sh install.sh 1' if you want to force compile locally
-        -- (instead of fetching a binary from the github release). Requires Rust >= 1.65
-
-        config = function()
-            require("sniprun").setup({
-                -- your options
-            })
-        end,
+        'akinsho/toggleterm.nvim', version = "*", opts = {
+            direction = 'float',
+        }
     },
-    {'akinsho/toggleterm.nvim', version = "*", opts = {
-        direction = 'float',
-    }},
+    {
+        "folke/snacks.nvim",
+        priority = 1000,
+        lazy = false,
+        opts = {
+            bigfile = { enabled = true },
+            input = { enabled = true },
+            picker = { enabled = true },
+            notifier = { enabled = true },
+            statuscolumn = { enabled = true },
+        },
+    },
+    {
+        'neoclide/coc.nvim',
+        branch = 'release',
+        -- using BufReadPost instead of BufReadPre in this case might be better
+        event = { 'BufReadPre', 'BufNewFile'}
+    },
 })
+
+local keyset = vim.keymap.set
+local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
 
 vim.cmd("colorscheme gruvbox")
 vim.cmd("tnoremap <Esc> <C-\\><C-n>")
-vim.cmd("nnoremap <leader>t :ToggleTerm<CR>")
-vim.cmd("nnoremap <leader>t :ToggleTerm<CR>")
+
+-- CoC Settings
+function _G.check_back_space()
+    local col = vim.fn.col('.') - 1
+    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
+end
+keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
+keyset("n", "gt", "<Plug>(coc-type-definition)", {silent = true})
+keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
+keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
+keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+-- Use K to show documentation in preview window
+function _G.show_docs()
+    local cw = vim.fn.expand('<cword>')
+    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
+        vim.api.nvim_command('h ' .. cw)
+    elseif vim.api.nvim_eval('coc#rpc#ready()') then
+        vim.fn.CocActionAsync('doHover')
+    else
+        vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
+    end
+end
+keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
+
+-- Other keybinds
+keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
+keyset("n", "<leader>t", ":ToggleTerm<CR>", {silent = true})
+
+vim.opt.undofile = true
+vim.o.undodir = vim.fn.expand("~/.nvim/tempfiles")
 
 dofile(vim.fn.expand("~/.nvimlocal"))
