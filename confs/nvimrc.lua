@@ -119,6 +119,9 @@ function _G.show_docs()
 end
 keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
+keyset("n", "g<", "<Plug>(coc-diagnostic-prev)", {silent = true})
+keyset("n", "g>", "<Plug>(coc-diagnostic-next)", {silent = true})
+keyset("n", "ga", ":<C-u>CocList diagnostics<cr>")
 
 -- Other keybinds
 keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
