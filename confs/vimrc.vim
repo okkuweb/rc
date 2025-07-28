@@ -33,7 +33,9 @@ if !has('nvim')
 endif
 
 " Start syntax highlighting
-syntax on
+if !has('nvim')
+    syntax on
+endif
 
 " Tab fixes
 set smarttab
@@ -126,10 +128,8 @@ set ignorecase
 set smartcase
 
 " Set persistent undo
-set undofile
-if has('nvim')
-    set undodir=~/.nvim/tempfiles
-else
+if !has('nvim')
+    set undofile
     set undodir=~/.vim/tempfiles
 endif
 set undolevels=1000
@@ -178,23 +178,21 @@ nnoremap <C-w>" :split<CR>
 
 " Run file in interpreter
 if !has('nvim')
-    nnoremap <Leader>rn :w<CR>:! clear && node %<CR>
+    nnoremap <Leader>rj :w<CR>:! clear && node %<CR>
     nnoremap <Leader>rp :w<CR>:! clear && perl %<CR>
     nnoremap <Leader>rb :w<CR>:! clear && bash %<CR>
     nnoremap <Leader>re :w<CR>:! clear && expect %<CR>
     nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
     nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
-    nnoremap <Leader>ri :w<CR>:! clear && gopls imports -w %<CR>
-    nnoremap <Leader>rf :w<CR>:! clear && gofmt -w %<CR>
 else
-    nnoremap <Leader>rn :w<CR>:TermExec cmd="node %"<CR>
+    nnoremap <Leader>rj :w<CR>:Termjxec cmd="node %"<CR>
     nnoremap <Leader>rp :w<CR>:TermExec cmd="perl %"<CR>
     nnoremap <Leader>rb :w<CR>:TermExec cmd="bash %"<CR>
     nnoremap <Leader>re :w<CR>:TermExec cmd="expect %"<CR>
     nnoremap <Leader>rg :w<CR>:TermExec cmd="go run %"<CR>
     nnoremap <Leader>rG :w<CR>:TermExec cmd="gogo && exit"<CR>
-    nnoremap <Leader>ri :w<CR>:! gopls imports -w %<CR>
-    nnoremap <Leader>rf :w<CR>:! gofmt -w %<CR>
+    nnoremap <Leader>ri :w<CR>:silent execute '!gopls imports -w %'<CR>
+    nnoremap <Leader>rf :w<CR>:silent execute '!gofmt -w %'<CR>
 endif
 
 " Make a breakpoint on underscores
