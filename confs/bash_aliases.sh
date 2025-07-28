@@ -30,7 +30,9 @@ alias nodelist="npm list -g --depth=0"
 alias tmux="tmux -2"
 
 # Alias vi to vim
-alias vi="vim"
+alias vi="nvim"
+# Alias vim to nvim
+alias vim="nvim"
 
 # Make moving and copying files safer by making it confirm overwrite
 alias cp="cp -i"

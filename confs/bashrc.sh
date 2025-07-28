@@ -12,8 +12,8 @@ if [ -f ~/.bash_local.sh ]; then
     . ~/.bash_local.sh
 fi
 
-# Make vim the default text editor
-EDITOR="vim"
+# Make nvim the default text editor
+EDITOR="nvim"
 
 # Command history longer and better formatting
 HISTSIZE=2000000
@@ -105,14 +105,6 @@ fi
 alias fd="fdfind"
 
 export GOPATH=~/.go
-
-vim() {
-    if [[ "$#" -eq 1 && ( "$1" == *.go || "$1" == *.lua ) ]]; then
-        nvim "$1"
-    else
-        command vim "$@"
-    fi
-}
 
 PATH=$PATH:~/.local/games:~/.local/bin:/usr/local/go/bin:~/.go/bin
 
