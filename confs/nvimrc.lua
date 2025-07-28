@@ -125,6 +125,19 @@ keyset("n", "g,", "<Plug>(coc-diagnostic-prev)", {silent = true})
 keyset("n", "g.", "<Plug>(coc-diagnostic-next)", {silent = true})
 keyset("n", "ga", ":<C-u>CocList diagnostics<cr>")
 
+cocenabled = true
+vim.keymap.set('n', 'gx', function()
+  if cocenabled then
+    vim.cmd('CocDisable')
+    vim.cmd('echo "CoC Disabled"')
+    cocenabled = false
+  else
+    vim.cmd('CocEnable')
+    vim.cmd('echo "CoC Enabled"')
+    cocenabled = true
+  end
+end, { noremap = true, silent = true })
+
 -- Other keybinds
 keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
 keyset("n", "<leader>t", ":ToggleTerm<CR>", {silent = true})
