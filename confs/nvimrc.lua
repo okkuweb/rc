@@ -77,6 +77,9 @@ require("lazy").setup({
             notifier = { enabled = true },
             statuscolumn = { enabled = true },
         },
+        keys = {
+            { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
+        }
     },
     {
         'neoclide/coc.nvim',
