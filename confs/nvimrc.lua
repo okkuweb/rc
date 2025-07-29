@@ -40,7 +40,7 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            "telescope.nvim",
+            "nvim-telescope/telescope.nvim",
         },
         opts = {
             lang = "golang",
