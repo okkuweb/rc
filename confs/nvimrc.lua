@@ -157,13 +157,12 @@ function GoImports()
         -- Replace "<standard input>" with the filename in the error list
         local lines = vim.fn.getline(1, "$")
         local filename = vim.fn.expand("%")
-        local errors = vim.tbl_map(function(val)
+        local errors = table.concat(vim.tbl_map(function(val)
             return string.gsub(val, "<standard input>", filename)
-        end, lines)
+        end, lines), "\n")
 
-        vim.fn.setqflist({}, " ", { lines = errors })
+        vim.notify(errors, "error")
         vim.cmd("silent undo")  -- Undo the formatting
-        vim.cmd("cwindow")      -- Open quickfix window
     else 
         vim.cmd("write")
     end

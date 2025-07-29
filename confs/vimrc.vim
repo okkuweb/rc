@@ -191,10 +191,8 @@ else
     nnoremap <Leader>rp :w<CR>:TermExec cmd="perl %"<CR>
     nnoremap <Leader>rb :w<CR>:TermExec cmd="bash %"<CR>
     nnoremap <Leader>re :w<CR>:TermExec cmd="expect %"<CR>
-    nnoremap <Leader>rg :w<CR>:TermExec cmd="go run %"<CR>
-    nnoremap <Leader>rG :w<CR>:TermExec cmd="gogo && exit"<CR>
-    nnoremap <Leader>ri :w<CR>:silent execute '!gopls imports -w %'<CR>
-    nnoremap <Leader>rf :w<CR>:silent execute '!gofmt -w %'<CR>
+    nnoremap <Leader>rg :w<CR>:TermExec cmd="gogo"<CR>
+    nnoremap <Leader>rG :w<CR>:TermExec cmd="go run %"<CR>
 endif
 
 " Make a breakpoint on underscores
