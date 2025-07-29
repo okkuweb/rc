@@ -145,6 +145,16 @@ vim.keymap.set('n', 'gx', function()
   end
 end, { noremap = true, silent = true })
 
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*.go",
+  callback = function()
+    local pos = vim.api.nvim_win_get_cursor(0) -- save cursor position
+    vim.cmd("silent! %!goimports")
+    vim.cmd("silent! %!gofmt")
+    pcall(vim.api.nvim_win_set_cursor, 0, pos) -- restore cursor position safely
+  end,
+})
+
 -- Other keybinds
 keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
 keyset("n", "<leader>t", ":ToggleTerm<CR>", {silent = true})
