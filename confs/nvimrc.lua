@@ -95,7 +95,7 @@ local opts = {silent = true, noremap = true, expr = true, replace_keycodes = fal
 vim.cmd("colorscheme gruvbox")
 vim.cmd("tnoremap <Esc> <C-\\><C-n>")
 
--- CoC Settings
+-- Golang configs
 function _G.check_back_space()
     local col = vim.fn.col('.') - 1
     return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
@@ -125,34 +125,59 @@ keyset("n", "g,", "<Plug>(coc-diagnostic-prev)", {silent = true})
 keyset("n", "g.", "<Plug>(coc-diagnostic-next)", {silent = true})
 keyset("n", "ga", ":<C-u>CocList diagnostics<cr>")
 vim.g.coc_user_config = {
-  suggest = {
-    enablePreselect = false,
-    noselect = true,
-    selection = "first",
-  }
+    suggest = {
+        enablePreselect = false,
+        noselect = true,
+        selection = "first",
+    }
 }
 
 cocenabled = true
 vim.keymap.set('n', 'gx', function()
-  if cocenabled then
-    vim.cmd('CocDisable')
-    vim.cmd('echo "CoC Disabled"')
-    cocenabled = false
-  else
-    vim.cmd('CocEnable')
-    vim.cmd('echo "CoC Enabled"')
-    cocenabled = true
-  end
+    if cocenabled then
+        vim.cmd('CocDisable')
+        vim.cmd('echo "CoC Disabled"')
+        cocenabled = false
+    else
+        vim.cmd('CocEnable')
+        vim.cmd('echo "CoC Enabled"')
+        cocenabled = true
+    end
 end, { noremap = true, silent = true })
 
+function GoImports()
+    -- Save the current window view
+    local view = vim.fn.winsaveview()
+
+    -- Run gofmt on the whole buffer silently
+    vim.cmd("silent %!goimports")
+
+    -- If there was a shell error (non-zero exit code)
+    if vim.v.shell_error > 0 then
+        -- Replace "<standard input>" with the filename in the error list
+        local lines = vim.fn.getline(1, "$")
+        local filename = vim.fn.expand("%")
+        local errors = vim.tbl_map(function(val)
+            return string.gsub(val, "<standard input>", filename)
+        end, lines)
+
+        vim.fn.setqflist({}, " ", { lines = errors })
+        vim.cmd("silent undo")  -- Undo the formatting
+        vim.cmd("cwindow")      -- Open quickfix window
+    else 
+        vim.cmd("write")
+    end
+
+    -- Restore the original window view
+    vim.fn.winrestview(view)
+end
+vim.api.nvim_create_user_command("GoImports", GoImports, {})
+
+vim.api.nvim_create_augroup("go_autocmd", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.go",
-  callback = function()
-    local pos = vim.api.nvim_win_get_cursor(0) -- save cursor position
-    vim.cmd("silent! %!goimports")
-    vim.cmd("silent! %!gofmt")
-    pcall(vim.api.nvim_win_set_cursor, 0, pos) -- restore cursor position safely
-  end,
+    pattern = "*.go",
+    group = "go_autocmd",
+    callback = GoImports,
 })
 
 -- Other keybinds
