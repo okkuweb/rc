@@ -139,3 +139,6 @@ alias big-files='ls -1Rhs | sed -e "s/^ *//" | grep "^[0-9]" | sort -hr | head -
 alias gnollhack="TERM=xterm-256color gnollhack -T"
 alias sil="sil -mgcu -uDelver -r"
 
+alias gogo="go build -o app ./... && ./app"
+alias fd="fdfind"
+

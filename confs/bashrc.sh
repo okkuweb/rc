@@ -102,11 +102,7 @@ if [ ! -d ~/.local/bin ]; then
     mkdir -p ~/.local/bin
 fi
 
-alias fd="fdfind"
-
 export GOPATH=~/.go
 
 PATH=$PATH:~/.local/games:~/.local/bin:/usr/local/go/bin:~/.go/bin
-
-alias gogo="go build -o app ./... && ./app"
 
