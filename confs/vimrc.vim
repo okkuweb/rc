@@ -116,7 +116,7 @@ if !has('nvim')
     set pastetoggle=<F10>
 endif
 
-" Set line number toggle
+" Set line number toggle - TODO: This doesn't work in nvim, rather, isn't enough
 noremap <F9> :set invnumber<CR>:GitGutterToggle<CR>
 
 " Traverse one line at a time
@@ -187,7 +187,7 @@ if !has('nvim')
     nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
     nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
 else
-    nnoremap <Leader>rj :w<CR>:Termjxec cmd="node %"<CR>
+    nnoremap <Leader>rj :w<CR>:TermExec cmd="node %"<CR>
     nnoremap <Leader>rp :w<CR>:TermExec cmd="perl %"<CR>
     nnoremap <Leader>rb :w<CR>:TermExec cmd="bash %"<CR>
     nnoremap <Leader>re :w<CR>:TermExec cmd="expect %"<CR>
