@@ -21,6 +21,10 @@ vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
     {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
+    {
+        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        dependencies = { 'nvim-lua/plenary.nvim' },
+    },
     'tpope/vim-surround',
     'tpope/vim-repeat',
     'airblade/vim-gitgutter',
@@ -40,7 +44,6 @@ require("lazy").setup({
         dependencies = {
             "nvim-lua/plenary.nvim",
             "MunifTanjim/nui.nvim",
-            "nvim-telescope/telescope.nvim",
         },
         opts = {
             lang = "golang",
@@ -62,8 +65,7 @@ require("lazy").setup({
         cmd = "Leet",
     },
     {
-        'akinsho/toggleterm.nvim', version = "*", opts = { -- TODO: Start this in normal mode, not insert
-
+        'akinsho/toggleterm.nvim', version = "*", opts = {
             direction = 'float',
         }
     },
@@ -88,7 +90,33 @@ require("lazy").setup({
         -- using BufReadPost instead of BufReadPre in this case might be better
         event = { 'BufReadPre', 'BufNewFile'}
     },
+    "simeji/winresizer",
 })
+
+local actions = require("telescope.actions")
+require("telescope").setup{
+    defaults = {
+        mappings = {
+            i = {
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
+                ["<C-h>"] = "which_key",
+            },
+            n = {
+                ["<C-c>"] = actions.close,
+                ["<Leader>q"] = actions.close,
+                ["<C-j>"] = actions.move_selection_next,
+                ["<C-k>"] = actions.move_selection_previous,
+                ["<C-h>"] = "which_key",
+            },
+        },
+    }
+}
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
+vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
 
 local keyset = vim.keymap.set
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
@@ -98,12 +126,6 @@ function _G.check_back_space()
     local col = vim.fn.col('.') - 1
     return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 end
-keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
-keyset("n", "gt", "<Plug>(coc-type-definition)", {silent = true})
-keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
-keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
-keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 -- Use K to show documentation in preview window
 function _G.show_docs()
     local cw = vim.fn.expand('<cword>')
@@ -115,8 +137,14 @@ function _G.show_docs()
         vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
     end
 end
-keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
-keyset("n", "<leader>rn", "<Plug>(coc-rename)", {silent = true})
+keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
+keyset("n", "gt", "<Plug>(coc-type-definition)", {silent = true})
+keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
+keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
+keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
+keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
+keyset("n", "gk", '<CMD>lua _G.show_docs()<CR>', {silent = true})
+keyset("n", "gn", "<Plug>(coc-rename)", {silent = true})
 keyset("n", "g<", "<Plug>(coc-diagnostic-prev)", {silent = true})
 keyset("n", "g>", "<Plug>(coc-diagnostic-next)", {silent = true})
 keyset("n", "g,", "<Plug>(coc-diagnostic-prev)", {silent = true})
