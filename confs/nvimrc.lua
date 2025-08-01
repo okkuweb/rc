@@ -62,7 +62,8 @@ require("lazy").setup({
         cmd = "Leet",
     },
     {
-        'akinsho/toggleterm.nvim', version = "*", opts = {
+        'akinsho/toggleterm.nvim', version = "*", opts = { -- TODO: Start this in normal mode, not insert
+
             direction = 'float',
         }
     },
@@ -91,9 +92,6 @@ require("lazy").setup({
 
 local keyset = vim.keymap.set
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-
-vim.cmd("colorscheme gruvbox")
-vim.cmd("tnoremap <Esc> <C-\\><C-n>")
 
 -- Golang configs
 function _G.check_back_space()
@@ -185,5 +183,8 @@ keyset("n", "<leader>t", ":ToggleTerm<CR>", {silent = true})
 
 vim.opt.undofile = true
 vim.o.undodir = vim.fn.expand("~/.nvim/tempfiles")
+
+vim.cmd("colorscheme gruvbox")
+vim.cmd("tnoremap <Esc> <C-\\><C-n>")
 
 dofile(vim.fn.expand("~/.nvimlocal"))
