@@ -1,9 +1,4 @@
-: if you.gourmand() or you.race() == "Ghoul" or you.race() == "Kobold"
-:   or you.race() == "Troll" or you.race() == "Felid" then
 auto_butcher = true
-: else
-auto_butcher = hungry
-: end
 confirm_butcher = never
 easy_eat_chunks = true
 auto_eat_chunks = true

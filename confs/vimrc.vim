@@ -29,6 +29,7 @@ if !has('nvim')
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-sensible'
     Plug 'mbbill/undotree'
+    Plug 'simeji/winresizer'
     call plug#end()
 endif
 
@@ -114,10 +115,24 @@ map <C-p> :r ~/.vimbuffer<CR>
 " Toggle paste mode with F10
 if !has('nvim')
     set pastetoggle=<F10>
+else
+" I mean, just bring pastetoggle back pls
+    nnoremap <silent> <F10> :set paste!<cr>
+    inoremap <silent> <F10> <esc>:set paste!<cr>i
 endif
 
-" Set line number toggle - TODO: This doesn't work in nvim, rather, isn't enough
-noremap <F9> :set invnumber<CR>:GitGutterToggle<CR>
+" Set line number toggle
+if !has('nvim')
+    noremap <silent> <F9> :set number!<CR>:GitGutterToggle<CR>
+else
+" Some things are just so much harder in nvim
+    noremap <silent> <F9> :set invnumber<CR>:call ToggleStatusColumn()<CR>
+    inoremap <silent> <F9> <esc>:set invnumber<CR>:call ToggleStatusColumn()<CR>i
+endif
+
+function! ToggleStatusColumn()
+    exe "set statuscolumn=" .. (&statuscolumn == "" ? "%!v:lua.require'snacks.statuscolumn'.get()" : "")
+endfunction
 
 " Traverse one line at a time
 nnoremap <C-j> <C-E>j
@@ -187,12 +202,12 @@ if !has('nvim')
     nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
     nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
 else
-    nnoremap <Leader>rj :w<CR>:TermExec cmd="node %"<CR>
-    nnoremap <Leader>rp :w<CR>:TermExec cmd="perl %"<CR>
-    nnoremap <Leader>rb :w<CR>:TermExec cmd="bash %"<CR>
-    nnoremap <Leader>re :w<CR>:TermExec cmd="expect %"<CR>
-    nnoremap <Leader>rg :w<CR>:TermExec cmd="gogo"<CR>
-    nnoremap <Leader>rG :w<CR>:TermExec cmd="go run %"<CR>
+    nnoremap <Leader>rj :w<CR>:! node %<CR>
+    nnoremap <Leader>rp :w<CR>:! perl %<CR>
+    nnoremap <Leader>rb :w<CR>:! bash %<CR>
+    nnoremap <Leader>re :w<CR>:! expect %<CR>
+    nnoremap <Leader>rg :w<CR>:! go run %<CR>
+    nnoremap <Leader>bg :w<CR>:TermExec cmd="gogo"<CR>
 endif
 
 " Make a breakpoint on underscores
@@ -213,9 +228,6 @@ set statusline+=%F
 
 " Fix for gitgutter realtime processing error
 set shell=/bin/bash
-
-" Adding some deafult values to column command
-cmap column column -t -o " "
 
 " Disable all bells and whistles cos they're annoying
 set noerrorbells visualbell t_vb=
@@ -264,9 +276,6 @@ nnoremap <C-i> <C-a>
 nnoremap <C-a> <Nop>
 
 set laststatus=2
-
-" Close any preview/info windows
-nnoremap <Leader>q :only<CR>
 
 " Set 2 space indentation for yaml files
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
