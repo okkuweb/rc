@@ -215,4 +215,4 @@ vim.o.undodir = vim.fn.expand("~/.nvim/tempfiles")
 vim.cmd("colorscheme gruvbox")
 vim.cmd("tnoremap <Esc> <C-\\><C-n>")
 
-dofile(vim.fn.expand("~/.nvimlocal"))
+dofile(vim.fn.expand("~/.nvimlocal.lua"))
