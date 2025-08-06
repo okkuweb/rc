@@ -352,5 +352,9 @@ nnoremap <leader>R :call ResetWarningCounter()<CR>
 " Undotree toggle binding
 nnoremap <leader>u :UndotreeToggle<CR>
 
+" Close window and force close
+nnoremap <leader>q :q<CR>
+nnoremap <leader>Q :q!<CR>
+
 " PC specific vim settings
 source ~/.vimlocal.vim
