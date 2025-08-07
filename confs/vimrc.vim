@@ -126,8 +126,8 @@ if !has('nvim')
     noremap <silent> <F9> :set number!<CR>:GitGutterToggle<CR>
 else
 " Some things are just so much harder in nvim
-    noremap <silent> <F9> :set invnumber<CR>:call ToggleStatusColumn()<CR>
-    inoremap <silent> <F9> <esc>:set invnumber<CR>:call ToggleStatusColumn()<CR>i
+    noremap <silent> <F9> :set invnumber<CR>:call ToggleStatusColumn()<CR>:GitGutterToggle<CR>
+    inoremap <silent> <F9> <esc>:set invnumber<CR>:call ToggleStatusColumn()<CR>:GitGutterToggle<CR>i
 endif
 
 function! ToggleStatusColumn()
@@ -355,6 +355,9 @@ nnoremap <leader>u :UndotreeToggle<CR>
 " Close window and force close
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
+
+" Autoindent after paste
+nnoremap <leader>p p`[v`]=
 
 " PC specific vim settings
 source ~/.vimlocal.vim
