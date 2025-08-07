@@ -356,8 +356,8 @@ nnoremap <leader>u :UndotreeToggle<CR>
 nnoremap <leader>q :q<CR>
 nnoremap <leader>Q :q!<CR>
 
-" Autoindent after paste
-nnoremap <leader>p p`[v`]=
+" Make it so that closing windows doesn't resize other windows
+set noequalalways
 
 " PC specific vim settings
 source ~/.vimlocal.vim
