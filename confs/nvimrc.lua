@@ -22,7 +22,8 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
     {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
     {
-        'nvim-telescope/telescope.nvim', tag = '0.1.8',
+        'nvim-telescope/telescope.nvim',
+        lazy = false,
         dependencies = { 'nvim-lua/plenary.nvim' },
     },
     'tpope/vim-surround',
@@ -91,6 +92,11 @@ require("lazy").setup({
         event = { 'BufReadPre', 'BufNewFile'}
     },
     "simeji/winresizer",
+    {
+        "nvim-telescope/telescope-file-browser.nvim",
+        lazy = false,
+        dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
+    },
 })
 
 local actions = require("telescope.actions")
@@ -110,13 +116,21 @@ require("telescope").setup{
                 ["<C-h>"] = "which_key",
             },
         },
-    }
+    },
+    extensions = {
+        file_browser = {
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+        },
+    },
 }
+require("telescope").load_extension "file_browser"
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, { desc = 'Telescope live grep' })
-vim.keymap.set('n', '<leader>fb', builtin.buffers, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>fB', builtin.buffers, { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help tags' })
+vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
 
 local keyset = vim.keymap.set
 local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
