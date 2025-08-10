@@ -210,14 +210,8 @@ function GoImports()
     -- Restore the original window view
     vim.fn.winrestview(view)
 end
-vim.api.nvim_create_user_command("GoImports", GoImports, {})
 
-vim.api.nvim_create_augroup("go_autocmd", { clear = true })
-vim.api.nvim_create_autocmd("BufWritePre", {
-    pattern = "*.go",
-    group = "go_autocmd",
-    callback = GoImports,
-})
+vim.api.nvim_create_user_command("GoImports", GoImports, {})
 
 -- Other keybinds
 keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
