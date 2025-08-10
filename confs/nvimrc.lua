@@ -49,7 +49,12 @@ require("lazy").setup({
         opts = {
             lang = "golang",
             storage = {
-                home = vim.fn.expand("~/git/leetcode"),
+                home = (function()
+                    local expand, stat = vim.fn.expand, vim.loop.fs_stat
+                    return (stat(expand("~/git")) and expand("~/git/leetcode"))
+                    or (stat(expand("~/Git")) and expand("~/Git/leetcode"))
+                    or expand("~/.leetcode")
+                end)(),
             },
         },
         keys = {
