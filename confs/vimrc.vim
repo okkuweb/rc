@@ -360,5 +360,12 @@ nnoremap <leader>Q :q!<CR>
 " Make it so that closing windows doesn't resize other windows
 set noequalalways
 
+nnoremap <Leader>d :call InsertDumperLine()<CR>
+function! InsertDumperLine()
+    let l:timestamp = strftime("%Y%m%d_%H%M%S")
+    let l:line = "use Data::Dumper; open my $tfh, '>', '/tmp/holladolla.txt." . l:timestamp . "' or die(\"shiiiiiit $!\"); print $tfh Dumper($replace); close $tfh;"
+    call append(line('.'), l:line)
+endfunction
+
 " PC specific vim settings
 source ~/.vimlocal.vim
