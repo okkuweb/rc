@@ -56,6 +56,8 @@ ln -sfv `pwd`/confs/xremap.yml ~/.config/xremap/config.yml
 mkdir -p ~/.config/nvim
 ln -sfv `pwd`/confs/nvimrc.lua ~/.config/nvim/init.lua
 ln -sfv `pwd`/confs/nvimrc.lua ~/.nvimrc.lua
+mkdir -p ~/.config/nvim/
+ln -sfv `pwd`/confs/coc-settings.json ~/.config/nvim/coc-settings.json
 
 # Add a local vimrc file
 touch ~/.vimlocal.vim
