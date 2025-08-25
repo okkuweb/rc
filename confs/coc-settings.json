@@ -1,13 +1,24 @@
-{       
-  "languageserver": {       
-    "go": {       
-      "command": "gopls",       
-      "rootPatterns": ["go.mod"],       
-      "trace.server": "verbose",       
-      "filetypes": ["go"],       
-      "options": {       
-          "editor.action.organizeImport": "goimports"       
-      }       
-    }       
-  }       
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"],
+      "settings": {
+          "editor.action.organizeImport": "goimports"
+      }
+    },
+    "perlnavigator": {
+        "command": "node",
+        "args": [
+            "/usr/local/lib/node_modules/perlnavigator-server/out/server.js",
+            "--stdio"
+        ],
+        "filetypes": ["perl"],
+        "settings": {
+            "perlnavigator.includePaths": [ "/opt/Sec@GW/lib" ]
+        }
+    }
+  }
 }
