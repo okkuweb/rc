@@ -367,5 +367,7 @@ function! InsertDumperLine()
     call append(line('.'), l:line)
 endfunction
 
+nnoremap <leader>T :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
 " PC specific vim settings
 source ~/.vimlocal.vim
