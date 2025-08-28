@@ -144,3 +144,6 @@ alias sil="sil -mgcu -uDelver -r"
 
 alias gogo="go build -o app ./... && ./app"
 
+# Start vim in leetcode mode
+alias leet="nvim -c Leet"
+
