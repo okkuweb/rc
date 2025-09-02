@@ -1,4 +1,7 @@
 modmap:
+  - name: Caps lock to left mouse
+    remap:
+      CapsLock: BTN_LEFT
   - name: Slim X1 Keyboard Alt/Super Swap
     device:
       only: [
@@ -8,7 +11,6 @@ modmap:
     remap:
       Alt_L: Super_L
       Super_L: Alt_L
-      CapsLock: BTN_LEFT
 
 keymap:
   - name: Mouse bindings
