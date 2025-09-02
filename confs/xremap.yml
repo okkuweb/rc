@@ -8,3 +8,4 @@ modmap:
     remap:
       Alt_L: Super_L
       Super_L: Alt_L
+      CapsLock: BTN_LEFT
