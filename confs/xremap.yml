@@ -9,3 +9,10 @@ modmap:
       Alt_L: Super_L
       Super_L: Alt_L
       CapsLock: BTN_LEFT
+
+keymap:
+  - name: Mouse bindings
+    remap:
+      Alt-BTN_LEFT: BTN_RIGHT
+      Ctrl-BTN_LEFT: BTN_MIDDLE
+
