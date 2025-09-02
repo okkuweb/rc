@@ -58,36 +58,12 @@ ln -sfv `pwd`/confs/nvimrc.lua ~/.config/nvim/init.lua
 ln -sfv `pwd`/confs/nvimrc.lua ~/.nvimrc.lua
 mkdir -p ~/.config/nvim/
 ln -sfv `pwd`/confs/coc-settings.json ~/.config/nvim/coc-settings.json
+ln -sfv `pwd`/confs/gitconfig.ini ~/.gitconfig
 
 # Add a local vimrc file
 touch ~/.vimlocal.vim
 touch ~/.nvimlocal.lua
 touch ~/.tmuxlocal.conf
 touch ~/.bash_local.sh
-
-# Add git configurations to system
-if [ -f ~/.gitconfig ]; then
-    checkContent=`grep "\[user\]" ~/.gitconfig`
-    if [ "$checkContent" ]; then
-        content=`head -3 ~/.gitconfig`
-        cp -f $location/confs/gitconfig.ini ~/.gitconfig
-        echo -e "$content\n$(cat ~/.gitconfig)" > ~/.gitconfig
-        echo "Updated gitconfig"
-    else
-        printf "Adding Git configuration\n"
-        read -p "First and last name: " name
-        read -p "E-mail address: " email
-        cp -f $location/confs/gitconfig.ini ~/.gitconfig
-        user="[user]\n    name = $name\n    email = $email\n"
-        echo -e "$user$(cat ~/.gitconfig)" > ~/.gitconfig
-    fi
-else
-    printf "Adding Git configuration\n"
-    read -p "First and last name: " name
-    read -p "E-mail address: " email
-    cp -f $location/confs/gitconfig.ini ~/.gitconfig
-    user="[user]\n    name = $name\n    email = $email\n"
-    echo -e "$user$(cat ~/.gitconfig)" > ~/.gitconfig
-fi
 
 echo "System files updated!"
