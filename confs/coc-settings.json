@@ -12,7 +12,7 @@
     "perlnavigator": {
         "command": "node",
         "args": [
-            "/usr/local/lib/node_modules/perlnavigator-server/out/server.js",
+            "/var/home/okku/.n/lib/node_modules/perlnavigator-server/out/server.js",
             "--stdio"
         ],
         "filetypes": ["perl"],
