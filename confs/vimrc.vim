@@ -271,7 +271,7 @@ nnoremap <Leader>c :pc<CR>
 set nomodeline
 
 " Add an additional increment binding
-nnoremap <C-i> <C-a>
+nnoremap <C-s> <C-a>
 " Unbind default increment binding 
 " (it causes too many code errors since it's the same as tmux prefix)
 nnoremap <C-a> <Nop>
