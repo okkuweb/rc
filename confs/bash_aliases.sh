@@ -147,3 +147,6 @@ alias gogo="go build -o app ./... && ./app"
 # Start vim in leetcode mode
 alias leet="nvim -c Leet"
 
+# Switch lofree function keys to actual function keys
+alias lofreeswitch="echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode"
+
