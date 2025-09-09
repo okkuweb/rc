@@ -112,3 +112,6 @@ fi
 
 export N_PREFIX=$HOME/.n
 
+if [ -f "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi

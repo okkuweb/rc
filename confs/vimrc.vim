@@ -280,6 +280,7 @@ set laststatus=2
 
 " Set 2 space indentation for yaml files
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
+autocmd FileType scss setlocal ts=4 sts=4 sw=4 expandtab
 
 " Define a global variable to track the warning counter
 if !exists('g:warning_counter')
