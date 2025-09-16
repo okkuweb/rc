@@ -1,0 +1,8 @@
+[Unit]
+Description=Lofree switch service
+
+[Service]
+ExecStart=/usr/local/bin/lofree-switch
+
+[Install]
+WantedBy=multi-user.target
