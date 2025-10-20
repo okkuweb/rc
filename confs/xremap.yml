@@ -18,7 +18,4 @@ modmap:
 keymap:
   - name: Mouse bindings
     remap:
-      Alt-BTN_RIGHT: F1
-      Alt-BTN_MIDDLE: F2
-      Alt-BTN_MIDDLE: F3
       Alt-F5: CapsLock
