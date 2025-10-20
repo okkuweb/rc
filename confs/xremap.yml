@@ -11,9 +11,6 @@ modmap:
   - name: Keyboard mouse bindings
     remap:
       CapsLock: BTN_LEFT
-      F1: BTN_RIGHT
-      F2: BTN_MIDDLE
-      F3: BTN_LEFT
 
 keymap:
   - name: Mouse bindings
