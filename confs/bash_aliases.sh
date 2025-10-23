@@ -150,3 +150,60 @@ alias leet="nvim -c Leet"
 # Switch lofree function keys to actual function keys
 alias lofreeswitch="echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode"
 
+commit() {
+    local branch comment id clock
+
+    rtc_str=$(timedatectl show -p RTCTimeUSec --value)
+    sys_str=$(timedatectl show -p TimeUSec --value)
+
+    # Convert both to Unix timestamps
+    rtc_sec=$(date -d "$rtc_str" +%s)
+    sys_sec=$(date -d "$sys_str" +%s)
+
+    # Compare with 5-second tolerance
+    diff=$(( rtc_sec > sys_sec ? rtc_sec - sys_sec : sys_sec - rtc_sec ))
+    if (( diff > 5 )); then
+        echo "Setting clock"
+        sudo date -s "$(timedatectl show -p RTCTimeUSec --value)" 1> /dev/null
+    fi
+
+    branch=$(parse_git_branch)
+
+    if [[ "$branch" != @(""|master|main|dev) ]]; then
+        id="$branch "
+    fi
+
+    read -p "Comment: " comment
+
+    printf "git commit -m \"$id$comment\"\n"
+    /usr/bin/git commit -m "$id$comment"
+}
+
+# Extract most archives by just writing "unp"
+unp () {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xvjf $1    ;;
+            *.tar.gz)    tar xvzf $1    ;;
+            *.bz2)       bunzip2 $1     ;;
+            *.rar)       unrar x $1       ;;
+            *.gz)        gunzip $1      ;;
+            *.tar)       tar xvf $1     ;;
+            *.tbz2)      tar xvjf $1    ;;
+            *.tgz)       tar xvzf $1    ;;
+            *.zip)       unzip $1       ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1        ;;
+            *)           echo "don't know how to extract '$1'..." ;;
+        esac
+    else
+        echo "'$1' is not a valid file!"
+    fi
+}
+
+function gg () {
+    git log --oneline | grep -P $1
+}
+function ggs () {
+    git log --oneline | grep -P $1 | sed -E 's/^([0-9a-zA-Z]+).*$/\1/m' | tac | xargs git show --color=always | cut -c -320 | less -R
+}
