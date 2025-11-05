@@ -1,0 +1,47 @@
+diff --git a/brogue b/brogue
+deleted file mode 100755
+index 9bd84fc..0000000
+--- a/brogue
++++ /dev/null
+@@ -1,11 +0,0 @@
+-#!/usr/bin/env bash
+-cd `dirname $0`/bin
+-
+-./brogue $*
+-
+-# if [ -t 0 ]; then
+-#	 ./brogue -t $*
+-#else
+-#	./brogue $*
+-#fi
+-
+diff --git a/config.mk b/config.mk
+index 6f14b53..18b337b 100644
+--- a/config.mk
++++ b/config.mk
+@@ -5,10 +5,10 @@ DATADIR := .
+ SYSTEM := LINUXLIKE
+ 
+ # Include terminal support. Requires ncurses
+-TERMINAL := NO
++TERMINAL := YES
+ 
+ # Include graphical support. Requires SDL2 and SDL2_image
+-GRAPHICS := YES
++GRAPHICS := NO
+ # Path to sdl2-config script
+ SDL_CONFIG := sdl2-config
+ 
+diff --git a/src/platform/platformdependent.c b/src/platform/platformdependent.c
+index 8d4c921..08314ea 100644
+--- a/src/platform/platformdependent.c
++++ b/src/platform/platformdependent.c
+@@ -319,7 +319,7 @@ static short sortScoreBuffer() {
+ }
+ 
+ void setHighScoresFilename(char *buffer, int bufferMaxLength) {
+-    strncpy(buffer, gameConst->variantName, bufferMaxLength);
++    strncpy(buffer, "Brogue", bufferMaxLength);
+     strncat(buffer, "HighScores.txt", bufferMaxLength);
+     buffer[0] = toupper(buffer[0]);
+ }
