@@ -208,3 +208,7 @@ function gg () {
 function ggs () {
     git log --oneline | grep -P $1 | sed -E 's/^([0-9a-zA-Z]+).*$/\1/m' | tac | xargs git show --color=always | cut -c -320 | less -R
 }
+
+function h () {
+    $1 --help | less -F
+}
