@@ -135,7 +135,7 @@ elif command -v fd-find &> /dev/null; then
 fi
 
 alias resetbluetooth="sudo systemctl restart bluetooth && sudo rmmod btusb && sudo modprobe btusb"
-alias resetmouse="sudo /sbin/rmmod i2c_hid_acpi && sudo /sbin/rmmod i2c_hid && sudo /sbin/modprobe i2c_hid && sudo /sbin/modprobe i2c_hid_acpi"
+alias resetmouse="sudo rmmod i2c_hid_acpi && sudo rmmod i2c_hid && sudo rmmod psmouse && sudo modprobe psmouse && sudo modprobe i2c_hid && sudo modprobe i2c_hid_acpi"
 
 alias big='du -ah . | sort -rh | head -20'
 alias big-files='ls -1Rhs | sed -e "s/^ *//" | grep "^[0-9]" | sort -hr | head -n20'
