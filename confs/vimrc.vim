@@ -382,7 +382,7 @@ endfunction
 nnoremap <leader>T :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
-autocmd ColorScheme * highlight LineNr guibg=#1f1f1f
+autocmd ColorScheme * highlight LineNr guifg=#3a3a3a guibg=#1f1f1f
 autocmd ColorScheme * highlight SignColumn guibg=#1f1f1f
 
 " PC specific vim settings
