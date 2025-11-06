@@ -126,13 +126,23 @@ if !has('nvim')
     noremap <silent> <F9> :set number!<CR>:GitGutterToggle<CR>
 else
 " Some things are just so much harder in nvim
-    noremap <silent> <F9> :set invnumber<CR>:call ToggleStatusColumn()<CR>:GitGutterToggle<CR>
-    inoremap <silent> <F9> <esc>:set invnumber<CR>:call ToggleStatusColumn()<CR>:GitGutterToggle<CR>i
-endif
+    let g:closed = v:false
 
-function! ToggleStatusColumn()
-    exe "set statuscolumn=" .. (&statuscolumn == "" ? "%!v:lua.require'snacks.statuscolumn'.get()" : "")
-endfunction
+    function! ToggleClosed()
+        if g:closed
+            let g:closed = v:false
+            set invnumber
+            GitGutterEnable
+        else
+            let g:closed = v:true
+            set invnumber
+            GitGutterDisable
+        endif
+    endfunction
+
+    nnoremap <silent> <F9> :call ToggleClosed()<CR>
+    inoremap <silent> <F9> <Esc>:call ToggleClosed()<CR>i
+endif
 
 " Traverse one line at a time
 nnoremap <C-j> <C-E>j
@@ -372,6 +382,8 @@ endfunction
 nnoremap <leader>T :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+autocmd ColorScheme * highlight LineNr guibg=#1f1f1f
+autocmd ColorScheme * highlight SignColumn guibg=#1f1f1f
 
 " PC specific vim settings
 source ~/.vimlocal.vim
