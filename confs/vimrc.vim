@@ -371,5 +371,7 @@ endfunction
 
 nnoremap <leader>T :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
+autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
+
 " PC specific vim settings
 source ~/.vimlocal.vim
