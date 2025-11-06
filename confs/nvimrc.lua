@@ -84,7 +84,6 @@ require("lazy").setup({
             input = { enabled = true },
             picker = { enabled = true },
             notifier = { enabled = true },
-            statuscolumn = { enabled = true },
         },
         keys = {
             { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
