@@ -18,3 +18,7 @@ npm install -g perlnavigator-server
 4. In files.c file remove the unnecessary WARNING line for LIVELOG
 5. Compile with `make all`
 6. Install with `make install`
+
+# Optional tools for linux
+- `dnf group install "Development Tools"`
+- `apt install build-essential`
