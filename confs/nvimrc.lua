@@ -162,7 +162,7 @@ function _G.show_docs()
 end
 keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
 keyset("n", "gt", "<Plug>(coc-type-definition)", {silent = true})
-keyset("n", "gi", "<Plug>(coc-implementation)", {silent = true})
+keyset("n", "gI", "<Plug>(coc-implementation)", {silent = true})
 keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
 keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
 keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
@@ -173,6 +173,9 @@ keyset("n", "g>", "<Plug>(coc-diagnostic-next)", {silent = true})
 keyset("n", "g,", "<Plug>(coc-diagnostic-prev)", {silent = true})
 keyset("n", "g.", "<Plug>(coc-diagnostic-next)", {silent = true})
 keyset("n", "ga", ":<C-u>CocList diagnostics<cr>")
+keyset("n", "gi", ":call CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>", {silent = true})
+---- Use this for import an annoying import on save
+--vim.cmd("autocmd BufWritePre *.go call CocActionAsync('runCommand', 'editor.action.organizeImport')", {silent = true})
 vim.g.coc_user_config = {
     suggest = {
         enablePreselect = false,
@@ -194,33 +197,6 @@ vim.keymap.set('n', 'gx', function()
     end
 end, { noremap = true, silent = true })
 
-function GoImports()
-    -- Save the current window view
-    local view = vim.fn.winsaveview()
-
-    -- Run gofmt on the whole buffer silently
-    vim.cmd("silent %!goimports")
-
-    -- If there was a shell error (non-zero exit code)
-    if vim.v.shell_error > 0 then
-        -- Replace "<standard input>" with the filename in the error list
-        local lines = vim.fn.getline(1, "$")
-        local filename = vim.fn.expand("%")
-        local errors = table.concat(vim.tbl_map(function(val)
-            return string.gsub(val, "<standard input>", filename)
-        end, lines), "\n")
-
-        vim.notify(errors, "error")
-        vim.cmd("silent undo")  -- Undo the formatting
-    else 
-        vim.cmd("write")
-    end
-
-    -- Restore the original window view
-    vim.fn.winrestview(view)
-end
-
-vim.api.nvim_create_user_command("GoImports", GoImports, {})
 
 -- Other keybinds
 keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
