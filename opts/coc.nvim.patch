@@ -1,0 +1,12 @@
+diff --git a/build/index.js b/build/index.js
+index 543a2dcc..4b00c30f 100644
+--- a/build/index.js
++++ b/build/index.js
+@@ -85807,7 +85807,6 @@ var init_codeActions = __esm({
+         this.handler = handler;
+         handler.addDisposable(commands_default.registerCommand("editor.action.organizeImport", async () => {
+           let succeed = await this.organizeImport();
+-          if (!succeed) void window_default.showWarningMessage(`Organize import action not found`);
+         }));
+         commands_default.titles.set("editor.action.organizeImport", "Run organize import code action, show warning when not exists");
+         handler.addDisposable(commands_default.registerCommand("editor.action.executeCodeActions", async (doc, range, actionKinds, timeout2) => {

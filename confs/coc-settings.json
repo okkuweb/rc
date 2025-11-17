@@ -4,10 +4,7 @@
       "command": "gopls",
       "rootPatterns": ["go.mod"],
       "trace.server": "verbose",
-      "filetypes": ["go"],
-      "settings": {
-          "editor.action.organizeImport": "goimports"
-      }
+      "filetypes": ["go"]
     },
     "perlnavigator": {
         "command": "node",
