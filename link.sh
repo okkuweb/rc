@@ -59,6 +59,7 @@ ln -sfv `pwd`/confs/nvimrc.lua ~/.nvimrc.lua
 mkdir -p ~/.config/nvim/
 ln -sfv `pwd`/confs/coc-settings.json ~/.config/nvim/coc-settings.json
 ln -sfv `pwd`/confs/gitconfig.ini ~/.gitconfig
+git update-index --assume-unchanged ./confs/gitconfig.ini
 
 # Add a local vimrc file
 touch ~/.vimlocal.vim
