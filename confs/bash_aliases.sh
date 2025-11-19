@@ -30,7 +30,7 @@ alias nodelist="npm list -g --depth=0"
 alias tmux="tmux -2"
 
 # Alias vi to vim
-alias vi="vim"
+alias vi="/bin/vim"
 # Alias vim to nvim
 alias vim="nvim"
 
