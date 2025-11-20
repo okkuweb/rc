@@ -16,3 +16,10 @@ keymap:
   - name: Mouse bindings
     remap:
       Alt-F5: CapsLock
+  - name: Tilda specific remap
+    application:
+      only: Tilda
+    remap:
+      Ctrl_L-TAB: Ctrl-PageDown
+      Ctrl_L-Shift_L-TAB: Ctrl-PageUp
+
