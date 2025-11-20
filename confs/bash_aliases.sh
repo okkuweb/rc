@@ -127,12 +127,16 @@ alias grep="grep --color=auto"
 
 [ -x /usr/bin/lesspipe  ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-if command -v fd &> /dev/null; then
-    alias fd='fd'
-elif command -v fdfind &> /dev/null; then
-    alias fd='fdfind'
-elif command -v fd-find &> /dev/null; then
-    alias fd='fd-find'
+if alias fd >/dev/null 2>&1; then
+    :
+else
+    if command -v fd >/dev/null 2>&1; then
+        alias fd='fd'
+    elif command -v fdfind >/dev/null 2>&1; then
+        alias fd='fdfind'
+    elif command -v fd-find >/dev/null 2>&1; then
+        alias fd='fd-find'
+    fi
 fi
 
 alias resetbluetooth="sudo systemctl restart bluetooth && sudo rmmod btusb && sudo modprobe btusb"
