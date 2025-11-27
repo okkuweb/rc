@@ -29,10 +29,17 @@ alias nodelist="npm list -g --depth=0"
 # Add 256 colors to tmux
 alias tmux="tmux -2"
 
-# Alias vi to vim
-alias vi="/bin/vim"
-# Alias vim to nvim
-alias vim="nvim"
+if alias vim >/dev/null 2>&1; then
+    :
+else
+    if command -v nvim >/dev/null 2>&1; then
+        alias vim='nvim'
+    elif command -v vim >/dev/null 2>&1; then
+        alias vim='vim'
+    elif command -v vi >/dev/null 2>&1; then
+        alias vim='vi'
+    fi
+fi
 
 # Make moving and copying files safer by making it confirm overwrite
 alias cp="cp -i"
