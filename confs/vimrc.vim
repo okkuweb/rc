@@ -73,8 +73,8 @@ endif
 " Rebind leader key
 let mapleader=" "
 
-" Rebind enter to colon
-map <Enter> :
+" Rebind semicolon to colon
+map ; :
 
 " Rebind gitgutter keys
 map <Leader>< <Plug>(GitGutterPrevHunk)

@@ -101,7 +101,41 @@ require("lazy").setup({
         lazy = false,
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
-    "atiladefreitas/dooing",
+    "atiladefreitas/dooing"
+})
+
+require("dooing").setup({
+    priorities = {
+        {
+            name = "in progress",
+            weight = 4,
+        },
+        {
+            name = "important",
+            weight = 2,
+        },
+        {
+            name = "new ticket",
+            weight = -1,
+        },
+    },
+    priority_groups = {
+        high = {
+            members = { "in progress" },
+            color = nil,
+            hl_group = "DiagnosticError",
+        },
+        medium = {
+            members = { "important" },
+            color = nil,
+            hl_group = "DiagnosticWarn",
+        },
+        low = {
+            members = { "new ticket" },
+            color = nil,
+            hl_group = "DiagnosticInfo",
+        },
+    },
 })
 
 local actions = require("telescope.actions")
