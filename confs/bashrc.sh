@@ -105,3 +105,5 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULES="wayland;fcitx;ibus"
 export MOSH_SERVER_NETWORK_TMOUT=604800
 
+stty -ixon
+
