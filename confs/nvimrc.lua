@@ -101,8 +101,11 @@ require("lazy").setup({
         lazy = false,
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
-    "atiladefreitas/dooing"
+    "atiladefreitas/dooing",
+    "rmagatti/auto-session"
 })
+
+require("auto-session").setup({})
 
 require("dooing").setup({
     priorities = {
