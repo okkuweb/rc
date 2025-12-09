@@ -139,6 +139,13 @@ require("dooing").setup({
             hl_group = "DiagnosticInfo",
         },
     },
+    window = {
+        width = 70,         -- Width of the floating window
+        position = 'top', -- Window position: 'right', 'left', 'top', 'bottom', 'center',
+    },
+    keymaps = {
+        open_project_todo = "<leader>tg",
+    }
 })
 
 local actions = require("telescope.actions")
