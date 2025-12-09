@@ -30,6 +30,7 @@ if !has('nvim')
     Plug 'tpope/vim-sensible'
     Plug 'mbbill/undotree'
     Plug 'simeji/winresizer'
+    Plug 'tpope/vim-tbone'
     call plug#end()
 endif
 
@@ -245,13 +246,6 @@ set shell=/bin/bash
 set noerrorbells visualbell t_vb=
 autocmd GUIEnter * set visualbell t_vb=
 
-" Yet another paste command (paste from last yank)
-noremap <Leader>p "0p
-" Yet another paste command (paste from clipboard)
-noremap <leader>P "+p
-" Yet another copy command (copy to clipboard)
-noremap <leader>y "+yy
-
 " Change 'ctrl+g' to do the same as 'g ctrl+g'
 nnoremap <C-g> g<C-g>
 vnoremap <C-g> g<C-g>
@@ -385,6 +379,10 @@ nnoremap <leader>T :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight LineNr guifg=#4a4a4a guibg=#2f2f2f
 autocmd ColorScheme * highlight SignColumn guibg=#2f2f2f
+
+vnoremap <leader>y "zy:tabnew<CR>"zP:w !xargs -0 tmux set-buffer<CR><CR>:bdelete!<CR>
+nnoremap <leader>y :Tyank<CR>
+noremap <leader>p :Tput<CR>
 
 " PC specific vim settings
 source ~/.vimlocal.vim

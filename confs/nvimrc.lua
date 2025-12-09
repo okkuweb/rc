@@ -102,7 +102,8 @@ require("lazy").setup({
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
     "atiladefreitas/dooing",
-    "rmagatti/auto-session"
+    "rmagatti/auto-session",
+    "tpope/vim-tbone"
 })
 
 require("auto-session").setup({})
