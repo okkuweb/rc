@@ -2,16 +2,6 @@ if ! { [ "$TERM" = "screen-256color" ] && [ -n "$TMUX" ]; } then
     export TERM="xterm-256color"
 fi
 
-
-# Run bash alias file
-if [ -f ~/.bash_aliases.sh ]; then
-    . ~/.bash_aliases.sh
-fi
-# Run machine specific bash commands
-if [ -f ~/.bash_local.sh ]; then
-    . ~/.bash_local.sh
-fi
-
 # Make nvim the default text editor
 EDITOR="nvim"
 
@@ -110,4 +100,12 @@ then
     stty -ixon
 fi
 
+# Run bash alias file
+if [ -f ~/.bash_aliases.sh ]; then
+    . ~/.bash_aliases.sh
+fi
+# Run machine specific bash commands
+if [ -f ~/.bash_local.sh ]; then
+    . ~/.bash_local.sh
+fi
 
