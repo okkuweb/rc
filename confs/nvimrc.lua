@@ -146,6 +146,7 @@ require("dooing").setup({
     },
     keymaps = {
         open_project_todo = "<leader>tg",
+        create_nested_task = "<leader>n"
     }
 })
 
