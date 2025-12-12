@@ -2,6 +2,8 @@ if ! { [ "$TERM" = "screen-256color" ] && [ -n "$TMUX" ]; } then
     export TERM="xterm-256color"
 fi
 
+export COLORTERM=truecolor
+
 # Make nvim the default text editor
 EDITOR="nvim"
 
