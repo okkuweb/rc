@@ -17,6 +17,7 @@ background += viable
 weapon += viable
 name += Delver
 name_bypasses_menu += false
+explore_delay=5
 
 # Macros
 macros += M 1 za
