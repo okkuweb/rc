@@ -83,9 +83,6 @@ alias gf="git log -pS"
 # Alias for current date in folder format
 alias today="date +%Y-%m-%d"
 
-# Alias for starting the ssh agent
-alias startagent="eval \"$(ssh-agent -s)\""
-
 # Aliases for going up the directory
 function repeat() { printf "$1"'%.s' $(eval "echo {1.."$(($2))"}");  }
 
