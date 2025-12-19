@@ -5,12 +5,12 @@ fi
 export COLORTERM=truecolor
 
 # Make nvim the default text editor
-EDITOR="nvim"
+export EDITOR="nvim"
 
 # Command history longer and better formatting
-HISTSIZE=2000000
-HISTFILESIZE=100000
-HISTTIMEFORMAT="%d.%m.%y %T "
+export HISTSIZE=2000000
+export HISTFILESIZE=100000
+export HISTTIMEFORMAT="%d.%m.%y %T "
 # Avoid duplicates in history
 export HISTCONTROL=erasedups:ignoreboth
 
