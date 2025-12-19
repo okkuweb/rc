@@ -21,11 +21,7 @@ shopt -s histverify
 shopt -s histappend
 
 # Ensures common history for all sessions
-if [ -n "$(type -t autojump)" ]; then
-    export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} history -a"
-else
-    export PROMPT_COMMAND="history -a"
-fi
+export PROMPT_COMMAND="history -a"
 
 # Save multi-line commands as one command
 shopt -s cmdhist
