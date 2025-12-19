@@ -98,6 +98,8 @@ then
     stty -ixon
 fi
 
+export SSH_AUTH_SOCK=${PREFIX}/var/run/ssh-agent.socket
+
 # Run bash alias file
 if [ -f ~/.bash_aliases.sh ]; then
     . ~/.bash_aliases.sh
