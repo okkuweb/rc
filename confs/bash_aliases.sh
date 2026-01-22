@@ -79,6 +79,7 @@ alias gds="git diff --staged"
 alias gl="git log"
 alias gr="git diff --name-only | uniq | xargs nvim"
 alias gf="git log -pS"
+alias ga="git add"
 
 # Alias for current date in folder format
 alias today="date +%Y-%m-%d"
