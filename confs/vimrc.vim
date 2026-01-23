@@ -221,6 +221,8 @@ else
     nnoremap <Leader>re :w<CR>:! expect %<CR>
     nnoremap <Leader>rg :w<CR>:! go run %<CR>
     nnoremap <Leader>bg :w<CR>:TermExec cmd="gogovim"<CR>
+    nnoremap <Leader>td<CR>:TermExec cmd="todo && exit"<CR>
+    nnoremap <Leader>tg<CR>:TermExec cmd="togo && exit"<CR>
 endif
 
 " Make a breakpoint on underscores
