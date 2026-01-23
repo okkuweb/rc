@@ -221,8 +221,6 @@ else
     nnoremap <Leader>re :w<CR>:! expect %<CR>
     nnoremap <Leader>rg :w<CR>:! go run %<CR>
     nnoremap <Leader>bg :w<CR>:TermExec cmd="gogovim"<CR>
-    nnoremap <Leader>td<CR>:TermExec cmd="todo && exit"<CR>
-    nnoremap <Leader>tg<CR>:TermExec cmd="togo && exit"<CR>
 endif
 
 " Make a breakpoint on underscores
@@ -266,13 +264,6 @@ nnoremap <Leader><CR> <CR>
 
 " Make it so vim reads my bash aliases
 let $BASH_ENV = "~/.bash_aliases"
-
-" Remove all trailing whitespace
-nnoremap <Leader>T :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-nnoremap <Leader>t :tabnew<CR>
-
-" Close scratchpad
-nnoremap <Leader>c :pc<CR>
 
 " Disable modeline for its security issues
 set nomodeline
@@ -376,7 +367,7 @@ function! InsertDumperLine()
     call append(line('.'), l:line)
 endfunction
 
-nnoremap <leader>T :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+nnoremap <leader>C :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight LineNr guifg=#4a4a4a guibg=#2f2f2f
