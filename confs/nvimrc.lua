@@ -101,53 +101,24 @@ require("lazy").setup({
         lazy = false,
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
-    "atiladefreitas/dooing",
-    "rmagatti/auto-session",
-    "tpope/vim-tbone"
-})
-
-require("auto-session").setup({})
-
-require("dooing").setup({
-    priorities = {
-        {
-            name = "in progress",
-            weight = 4,
+    "MeanderingProgrammer/render-markdown.nvim",
+    {
+        "gaoDean/autolist.nvim",
+        ft = {
+            "markdown",
         },
-        {
-            name = "important",
-            weight = 2,
-        },
-        {
-            name = "new ticket",
-            weight = -1,
-        },
+        config = function()
+            require("autolist").setup()
+            vim.keymap.set("i", "<tab>", "<cmd>AutolistTab<cr>")
+            vim.keymap.set("i", "<s-tab>", "<cmd>AutolistShiftTab<cr>")
+            -- vim.keymap.set("i", "<c-t>", "<c-t><cmd>AutolistRecalculate<cr>") -- an example of using <c-t> to indent
+            vim.keymap.set("i", "<c-n>", "<CR><cmd>AutolistNewBullet<cr>")
+            vim.keymap.set("n", "o", "o<cmd>AutolistNewBullet<cr>")
+            vim.keymap.set("n", "O", "O<cmd>AutolistNewBulletBefore<cr>")
+            vim.keymap.set("n", "<CR>", "<cmd>AutolistToggleCheckbox<cr><CR>")
+            vim.keymap.set("n", "<C-r>", "<cmd>AutolistRecalculate<cr>")
+        end,
     },
-    priority_groups = {
-        high = {
-            members = { "in progress" },
-            color = nil,
-            hl_group = "DiagnosticError",
-        },
-        medium = {
-            members = { "important" },
-            color = nil,
-            hl_group = "DiagnosticWarn",
-        },
-        low = {
-            members = { "new ticket" },
-            color = nil,
-            hl_group = "DiagnosticInfo",
-        },
-    },
-    window = {
-        width = 70,         -- Width of the floating window
-        position = 'top', -- Window position: 'right', 'left', 'top', 'bottom', 'center',
-    },
-    keymaps = {
-        open_project_todo = "<leader>tg",
-        create_nested_task = "<leader>n"
-    }
 })
 
 local actions = require("telescope.actions")
