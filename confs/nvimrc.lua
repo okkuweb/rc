@@ -218,7 +218,9 @@ end, { noremap = true, silent = true })
 
 -- Other keybinds
 keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
-keyset("n", "<leader>t", ":ToggleTerm<CR>", {silent = true})
+keyset("n", "<leader>T", ":ToggleTerm<CR>", {silent = true})
+keyset("n", "<Leader>td", ":TermExec cmd='todo && exit'<CR>")
+keyset("n", "<Leader>tg", ":TermExec cmd='togo && exit'<CR>")
 
 vim.opt.undofile = true
 vim.o.undodir = vim.fn.expand("~/.nvim/tempfiles")
