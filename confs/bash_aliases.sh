@@ -154,7 +154,6 @@ alias gnollhack="TERM=xterm-256color gnollhack -T"
 alias sil="sil -mgcu -uDelver -r"
 
 alias gogo="go build -o app ./... && ./app"
-alias gogovim="go build -o app ./... && ./app && exit"
 
 # Start vim in leetcode mode
 alias leet="nvim -c Leet"
