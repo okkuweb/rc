@@ -76,7 +76,7 @@ fi
 
 export GOPATH=~/.go
 
-PATH=$PATH:~/.local/games:~/.local/bin:/usr/local/go/bin:~/.go/bin:~/.n/bin:~/.cargo/bin
+PATH=~/.local/bin:~/.local/games:/usr/local/go/bin:~/.go/bin:~/.n/bin:~/.cargo/bin:$PATH
 
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
