@@ -228,6 +228,9 @@ alias todo="vim ~/.todo.md"
 togo() {
     root=$(git rev-parse --show-toplevel 2>/dev/null) || return 1
     file="$root/todo.md"
-    [ -f "$file" ] || return 1
-    vim "$file"
+    if [ -f "$file" ]; then
+        vim "$file"
+    else
+        vim "$root/todo.md"
+    fi
 }
