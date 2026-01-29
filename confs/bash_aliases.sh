@@ -234,3 +234,5 @@ togo() {
         vim "$root/todo.md"
     fi
 }
+
+alias termux="adb forward tcp:8022 tcp:8022 && ssh u0_a386@localhost -p8022"
