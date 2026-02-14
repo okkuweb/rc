@@ -288,7 +288,7 @@ endif
 " Define a function that inserts a logging statement based on filetype
 function! InsertWarning()
     let l:logs = {
-        \ 'c': 'printf("WARNING %d: Debug checkpoint\\n", ' . g:warning_counter . ');',
+        \ 'c': 'printf("WARNING %d: Debug checkpoint\n", ' . g:warning_counter . ');',
         \ 'cpp': 'std::cout << "WARNING ' . g:warning_counter . ': Debug checkpoint" << std::endl;',
         \ 'java': 'System.out.println("WARNING ' . g:warning_counter . ': Debug checkpoint");',
         \ 'javascript': 'console.warn("WARNING ' . g:warning_counter . ': Debug checkpoint");',

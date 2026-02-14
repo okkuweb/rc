@@ -225,6 +225,7 @@ function h () {
 }
 
 alias todo="vim ~/.todo.md"
+
 togo() {
     root=$(git rev-parse --show-toplevel 2>/dev/null) || return 1
     file="$root/todo.md"
@@ -236,3 +237,8 @@ togo() {
 }
 
 alias termux="adb forward tcp:8022 tcp:8022 && ssh u0_a386@localhost -p8022"
+
+godoc() {
+    go doc -all ${1} |less -R
+}
+
