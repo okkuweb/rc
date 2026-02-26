@@ -377,8 +377,5 @@ vnoremap <leader>y "zy:tabnew<CR>"zP:w !xargs -0 tmux set-buffer<CR><CR>:bdelete
 nnoremap <leader>y :Tyank<CR>
 noremap <leader>p :Tput<CR>
 
-autocmd FileType markdown nnoremap <buffer> <leader>j /^#\+<CR>:nohlsearch<CR>
-autocmd FileType markdown nnoremap <buffer> <leader>k ?^#\+<CR>:nohlsearch<CR>
-
 " PC specific vim settings
 source ~/.vimlocal.vim
