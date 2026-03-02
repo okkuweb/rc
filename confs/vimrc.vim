@@ -102,8 +102,8 @@ imap kJ <Esc>
 imap KJ <Esc>
 
 " Add newlines with enter without going to insert mode
-nmap <Leader>o o<Esc>
-nmap <Leader>O O<Esc>
+nnoremap <Leader>o o<Esc>
+nnoremap <Leader>O O<Esc>
 
 " Make a buffer file to home folder for copying between vims
 "vmap <C-y> :w! ~/.vimbuffer<CR>
