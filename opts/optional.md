@@ -1,8 +1,6 @@
 # Setting up LS for nvim
-go install -v golang.org/x/tools/gopls@latest
-go install golang.org/x/tools/cmd/goimports@latest
+go install golang.org/x/tools/gopls@latest
 npm install -g perlnavigator-server
-:CocInstall coc-perl
 go telemetry off
 
 # Linux Tips and Tricks

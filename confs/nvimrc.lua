@@ -89,12 +89,6 @@ require("lazy").setup({
             { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
         }
     },
-    {
-        'neoclide/coc.nvim',
-        branch = 'release',
-        -- using BufReadPost instead of BufReadPre in this case might be better
-        event = { 'BufReadPre', 'BufNewFile'}
-    },
     "simeji/winresizer",
     {
         "nvim-telescope/telescope-file-browser.nvim",
@@ -102,7 +96,80 @@ require("lazy").setup({
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
     "MeanderingProgrammer/render-markdown.nvim",
+    "neovim/nvim-lspconfig",
+    {
+        "hrsh7th/nvim-cmp",
+        dependencies = {
+            "hrsh7th/cmp-nvim-lsp",
+        },
+        config = function()
+            local cmp = require("cmp")
+
+            cmp.setup({
+                completion = {
+                    completeopt = "menu,menuone,noinsert",
+                },
+
+                mapping = cmp.mapping.preset.insert({
+                    ["<CR>"] = cmp.mapping.confirm({ select = false }),
+                    ["<Tab>"] = cmp.mapping.select_next_item(),
+                    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+                    ["<C-x>"] = function(fallback) if cmp.visible() then cmp.close() else cmp.complete() end end,
+                }),
+
+                sources = {
+                    { name = "nvim_lsp" },
+                },
+            })
+        end,
+    },
 })
+
+-- LSP STUFF START --
+vim.diagnostic.config({ signs = { priority = 1000, }, })
+vim.lsp.config("gopls", { 
+    cmd = { "gopls", "-remote=auto", }, 
+})
+vim.lsp.config("perlnavigator", {
+    cmd = { "perlnavigator", "--stdio" },
+    filetypes = { "perl" },
+    includePaths = {
+        "/opt/*/lib",
+    },
+})
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local buf = args.buf
+    local function map(lhs, rhs) vim.keymap.set("n", lhs, rhs, { buffer = buf, silent = true }) end
+    map("gd", vim.lsp.buf.definition)
+    map("gt", vim.lsp.buf.type_definition)
+    map("gI", vim.lsp.buf.implementation)
+    map("gr", vim.lsp.buf.references)
+    map("gs", vim.lsp.buf.hover)
+    map("gn", vim.lsp.buf.rename)
+    map("gi", function() vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true, }) end)
+    local function jump_error(count) vim.diagnostic.jump({ count = count, severity = vim.diagnostic.severity.ERROR }) end
+    map("g>", function() jump_error(1) end)
+    map("g.", function() jump_error(1) end)
+    map("g<", function() jump_error(-1) end)
+    map("g,", function() jump_error(-1) end)
+    map("ge", function() vim.diagnostic.open_float(nil, { border = "rounded", source = "if_many" }) end)
+    local lsp_active = true
+    local function toggle_lsp_features()
+        lsp_active = not lsp_active
+        if lsp_active then
+            vim.diagnostic.enable()
+            print("LSP functionality enabled")
+        else
+            vim.diagnostic.disable()
+            print("LSP functionality disabled")
+        end
+    end
+    map("gx", toggle_lsp_features)
+  end,
+})
+vim.lsp.enable({ "gopls", "perlnavigator" })
+-- LSP STUFF END --
 
 local actions = require("telescope.actions")
 require("telescope").setup{
@@ -143,61 +210,6 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, { desc = 'Telescope help ta
 vim.keymap.set("n", "<space>fb", ":Telescope file_browser<CR>")
 
 local keyset = vim.keymap.set
-local opts = {silent = true, noremap = true, expr = true, replace_keycodes = false}
-
--- Golang configs
-function _G.check_back_space()
-    local col = vim.fn.col('.') - 1
-    return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
-end
--- Use K to show documentation in preview window
-function _G.show_docs()
-    local cw = vim.fn.expand('<cword>')
-    if vim.fn.index({'vim', 'help'}, vim.bo.filetype) >= 0 then
-        vim.api.nvim_command('h ' .. cw)
-    elseif vim.api.nvim_eval('coc#rpc#ready()') then
-        vim.fn.CocActionAsync('doHover')
-    else
-        vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
-    end
-end
-keyset("n", "gd", "<Plug>(coc-definition)", {silent = true})
-keyset("n", "gt", "<Plug>(coc-type-definition)", {silent = true})
-keyset("n", "gI", "<Plug>(coc-implementation)", {silent = true})
-keyset("n", "gr", "<Plug>(coc-references)", {silent = true})
-keyset("i", "<TAB>", 'coc#pum#visible() ? coc#pum#next(1) : v:lua.check_back_space() ? "<TAB>" : coc#refresh()', opts)
-keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
-keyset("n", "gs", '<CMD>lua _G.show_docs()<CR>', {silent = true})
-keyset("n", "gn", "<Plug>(coc-rename)", {silent = true})
-keyset("n", "g<", "<Plug>(coc-diagnostic-prev)", {silent = true})
-keyset("n", "g>", "<Plug>(coc-diagnostic-next)", {silent = true})
-keyset("n", "g,", "<Plug>(coc-diagnostic-prev)", {silent = true})
-keyset("n", "g.", "<Plug>(coc-diagnostic-next)", {silent = true})
-keyset("n", "ga", ":<C-u>CocList diagnostics<cr>")
-keyset("n", "gi", ":call CocActionAsync('runCommand', 'editor.action.organizeImport')<CR>", {silent = true})
----- Use this for import an annoying import on save
---vim.cmd("autocmd BufWritePre *.go call CocActionAsync('runCommand', 'editor.action.organizeImport')", {silent = true})
-vim.g.coc_user_config = {
-    suggest = {
-        enablePreselect = false,
-        noselect = true,
-        selection = "first",
-    }
-}
-
-cocenabled = true
-vim.keymap.set('n', 'gx', function()
-    if cocenabled then
-        vim.cmd('CocDisable')
-        vim.cmd('echo "CoC Disabled"')
-        cocenabled = false
-    else
-        vim.cmd('CocEnable')
-        vim.cmd('echo "CoC Enabled"')
-        cocenabled = true
-    end
-end, { noremap = true, silent = true })
-
 
 -- Other keybinds
 keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
