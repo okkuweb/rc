@@ -4,6 +4,7 @@ go install golang.org/x/tools/cmd/goimports@latest
 npm install -g perlnavigator-server
 :CocInstall coc-perl
 :CocInstall coc-go
+go telemetry off
 
 # Linux Tips and Tricks
 ## NetHack compilation
