@@ -56,6 +56,7 @@ ln -sfv `pwd`/confs/gitconfig.ini ~/.gitconfig
 git update-index --assume-unchanged ./confs/gitconfig.ini
 mkdir -p ~/.config/nvim/after/plugin
 ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
+ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
 
 # Add a local vimrc file
 touch ~/.vimlocal.vim

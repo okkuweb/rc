@@ -96,80 +96,17 @@ require("lazy").setup({
         dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     },
     "MeanderingProgrammer/render-markdown.nvim",
+    -- LSP START --
+    "L3MON4D3/LuaSnip",
+    "rafamadriz/friendly-snippets",
+    "hrsh7th/nvim-cmp",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "saadparwaiz1/cmp_luasnip",
     "neovim/nvim-lspconfig",
-    {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-            "hrsh7th/cmp-nvim-lsp",
-        },
-        config = function()
-            local cmp = require("cmp")
-
-            cmp.setup({
-                completion = {
-                    completeopt = "menu,menuone,noinsert",
-                },
-
-                mapping = cmp.mapping.preset.insert({
-                    ["<CR>"] = cmp.mapping.confirm({ select = false }),
-                    ["<Tab>"] = cmp.mapping.select_next_item(),
-                    ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-                    ["<C-x>"] = function(fallback) if cmp.visible() then cmp.close() else cmp.complete() end end,
-                }),
-
-                sources = {
-                    { name = "nvim_lsp" },
-                },
-            })
-        end,
-    },
+    -- LSP END --
 })
-
--- LSP STUFF START --
-vim.diagnostic.config({ signs = { priority = 1000, }, })
-vim.lsp.config("gopls", { 
-    cmd = { "gopls", "-remote=auto", }, 
-})
-vim.lsp.config("perlnavigator", {
-    cmd = { "perlnavigator", "--stdio" },
-    filetypes = { "perl" },
-    includePaths = {
-        "/opt/*/lib",
-    },
-})
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local buf = args.buf
-    local function map(lhs, rhs) vim.keymap.set("n", lhs, rhs, { buffer = buf, silent = true }) end
-    map("gd", vim.lsp.buf.definition)
-    map("gt", vim.lsp.buf.type_definition)
-    map("gI", vim.lsp.buf.implementation)
-    map("gr", vim.lsp.buf.references)
-    map("gs", vim.lsp.buf.hover)
-    map("gn", vim.lsp.buf.rename)
-    map("gi", function() vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true, }) end)
-    local function jump_error(count) vim.diagnostic.jump({ count = count, severity = vim.diagnostic.severity.ERROR }) end
-    map("g>", function() jump_error(1) end)
-    map("g.", function() jump_error(1) end)
-    map("g<", function() jump_error(-1) end)
-    map("g,", function() jump_error(-1) end)
-    map("ge", function() vim.diagnostic.open_float(nil, { border = "rounded", source = "if_many" }) end)
-    local lsp_active = true
-    local function toggle_lsp_features()
-        lsp_active = not lsp_active
-        if lsp_active then
-            vim.diagnostic.enable()
-            print("LSP functionality enabled")
-        else
-            vim.diagnostic.disable()
-            print("LSP functionality disabled")
-        end
-    end
-    map("gx", toggle_lsp_features)
-  end,
-})
-vim.lsp.enable({ "gopls", "perlnavigator" })
--- LSP STUFF END --
 
 local actions = require("telescope.actions")
 require("telescope").setup{
