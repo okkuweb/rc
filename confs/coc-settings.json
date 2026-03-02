@@ -2,6 +2,12 @@
     "perlnavigator.enable": true,
     "perlnavigator.serverPath": "/home/okku/.n/lib/node_modules/perlnavigator-server/out/server.js",
     "perlnavigator.includePaths": [ "/opt/*/lib" ],
-    "go.checkForUpdates": "disabled",
-    "go.goplsPath": "~/.go/bin/gopls"
+    "languageserver": {
+        "go": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod"],
+            "trace.server": "verbose",
+            "filetypes": ["go"]
+        }
+    }
 }
