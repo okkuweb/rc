@@ -1,0 +1,5 @@
+{
+    "perlnavigator.enable": true,
+    "perlnavigator.serverPath": "/home/okku/.n/lib/node_modules/perlnavigator-server/out/server.js",
+    "perlnavigator.includePaths": [ "/opt/*/lib" ]
+}
