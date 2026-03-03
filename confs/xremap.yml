@@ -15,7 +15,7 @@ modmap:
 keymap:
   - name: Mouse bindings
     remap:
-      Alt-F5: CapsLock
+      Alt-F1: CapsLock
   - name: Tilda specific remap
     application:
       only: Tilda
