@@ -6,6 +6,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 local cmp = require("cmp")
 
 cmp.setup({
+    preselect = cmp.PreselectMode.None,
     completion = { completeopt = "menu,menuone,noinsert" },
     snippet = { expand = function(args) luasnip.lsp_expand(args.body) end },
     mapping = cmp.mapping.preset.insert({
