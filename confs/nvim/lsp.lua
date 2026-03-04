@@ -106,5 +106,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
             if lsp_active then vim.diagnostic.enable() else vim.diagnostic.disable() end
             print("LSP functionality " .. (lsp_active and "enabled" or "disabled"))
         end)
+
+        local buf = args.buf
+        -- Override default LSP K mapping with native filetype behavior
+        vim.keymap.set("n", "K", function()
+            vim.cmd("normal! K")  -- calls the original native behavior (man/perldoc)
+        end, { buffer = buf, silent = true })
     end,
 })
