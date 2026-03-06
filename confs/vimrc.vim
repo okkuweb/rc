@@ -106,9 +106,8 @@ nnoremap <Leader>o o<Esc>
 nnoremap <Leader>O O<Esc>
 
 " Make a buffer file to home folder for copying between vims
-"vmap <C-y> :w! ~/.vimbuffer<CR>
 nmap <C-y> :.w! ~/.vimbuffer<CR>
-vmap <C-y> "ny:new ~/.vimbuffer<CR>VG"nP:w<CR>:bdelete!<CR>:let @"=@0<CR>
+vmap <C-y> :w! ~/.vimbuffer<CR>
 
 " Paste from buffer
 map <C-p> :r ~/.vimbuffer<CR>
@@ -372,10 +371,6 @@ nnoremap <leader>C :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight LineNr guifg=#4a4a4a guibg=#2f2f2f
 autocmd ColorScheme * highlight SignColumn guibg=#2f2f2f
-
-vnoremap <leader>y "zy:tabnew<CR>"zP:w !xargs -0 tmux set-buffer<CR><CR>:bdelete!<CR>
-nnoremap <leader>y :Tyank<CR>
-noremap <leader>p :Tput<CR>
 
 " PC specific vim settings
 source ~/.vimlocal.vim
