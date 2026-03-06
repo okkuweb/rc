@@ -372,5 +372,10 @@ autocmd ColorScheme * highlight Normal ctermbg=NONE guibg=NONE
 autocmd ColorScheme * highlight LineNr guifg=#4a4a4a guibg=#2f2f2f
 autocmd ColorScheme * highlight SignColumn guibg=#2f2f2f
 
+nnoremap <leader>y "+yy
+vnoremap <leader>y "+y
+nnoremap <leader>p "+p
+vnoremap <leader>p "+p
+
 " PC specific vim settings
 source ~/.vimlocal.vim
