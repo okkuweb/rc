@@ -133,12 +133,10 @@ else
             let g:closed = v:false
             set invnumber
             silent GitGutterEnable
-            silent CocEnable
         else
             let g:closed = v:true
             set invnumber
             silent GitGutterDisable
-            silent CocDisable
         endif
     endfunction
 
