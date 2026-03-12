@@ -93,9 +93,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.diagnostic.jump({ count = count, severity = vim.diagnostic.severity.ERROR })
         end
         map("g>", function() jump_error(1) end)
-        map("g.", function() vim.diagnostic.goto_next() end)
+        map("g.", function() vim.diagnostic.jump({ count = 1 }) end)
         map("g<", function() jump_error(-1) end)
-        map("g,", function() vim.diagnostic.goto_prev() end)
+        map("g,", function() vim.diagnostic.jump({ count = -1 }) end)
         map("ge", function()
             vim.diagnostic.open_float(nil, { border = "rounded", source = "if_many" })
         end)
