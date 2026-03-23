@@ -38,38 +38,38 @@ require("lazy").setup({
     'tpope/vim-sensible',
     'mbbill/undotree',
     'ellisonleao/gruvbox.nvim',
-    {
-        "kawre/leetcode.nvim",
-        build = ":TSUpdate html",
-        branch = "dev",
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-            "MunifTanjim/nui.nvim",
-        },
-        opts = {
-            lang = "golang",
-            storage = {
-                home = (function()
-                    local expand, stat = vim.fn.expand, vim.loop.fs_stat
-                    return (stat(expand("~/git")) and expand("~/git/leetcode"))
-                    or (stat(expand("~/Git")) and expand("~/Git/leetcode"))
-                    or expand("~/.leetcode")
-                end)(),
-            },
-        },
-        keys = {
-            { "<leader>lq", mode = { "n" }, "<cmd>Leet tabs<cr>" },
-            { "<leader>lm", mode = { "n" }, "<cmd>Leet menu<cr>" },
-            { "<leader>lc", mode = { "n" }, "<cmd>Leet console<cr>" },
-            { "<leader>lh", mode = { "n" }, "<cmd>Leet info<cr>" },
-            { "<leader>ll", mode = { "n" }, "<cmd>Leet lang<cr>" },
-            { "<leader>ld", mode = { "n" }, "<cmd>Leet desc<cr>" },
-            { "<leader>lr", mode = { "n" }, "<cmd>Leet run<cr>" },
-            { "<leader>ls", mode = { "n" }, "<cmd>Leet submit<cr>" },
-            { "<leader>ly", mode = { "n" }, "<cmd>Leet yank<cr>" },
-        },
-        cmd = "Leet",
-    },
+    --{
+    --    "kawre/leetcode.nvim",
+    --    build = ":TSUpdate html",
+    --    branch = "dev",
+    --    dependencies = {
+    --        "nvim-lua/plenary.nvim",
+    --        "MunifTanjim/nui.nvim",
+    --    },
+    --    opts = {
+    --        lang = "golang",
+    --        storage = {
+    --            home = (function()
+    --                local expand, stat = vim.fn.expand, vim.loop.fs_stat
+    --                return (stat(expand("~/git")) and expand("~/git/leetcode"))
+    --                or (stat(expand("~/Git")) and expand("~/Git/leetcode"))
+    --                or expand("~/.leetcode")
+    --            end)(),
+    --        },
+    --    },
+    --    keys = {
+    --        { "<leader>lq", mode = { "n" }, "<cmd>Leet tabs<cr>" },
+    --        { "<leader>lm", mode = { "n" }, "<cmd>Leet menu<cr>" },
+    --        { "<leader>lc", mode = { "n" }, "<cmd>Leet console<cr>" },
+    --        { "<leader>lh", mode = { "n" }, "<cmd>Leet info<cr>" },
+    --        { "<leader>ll", mode = { "n" }, "<cmd>Leet lang<cr>" },
+    --        { "<leader>ld", mode = { "n" }, "<cmd>Leet desc<cr>" },
+    --        { "<leader>lr", mode = { "n" }, "<cmd>Leet run<cr>" },
+    --        { "<leader>ls", mode = { "n" }, "<cmd>Leet submit<cr>" },
+    --        { "<leader>ly", mode = { "n" }, "<cmd>Leet yank<cr>" },
+    --    },
+    --    cmd = "Leet",
+    --},
     {
         'akinsho/toggleterm.nvim', version = "*", opts = {
             direction = 'float',
