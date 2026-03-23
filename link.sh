@@ -1,30 +1,4 @@
 #!/bin/bash
-# Check current folder
-location=`dirname $0`
-if [ -f $location/windows ]; then
-    windows=1
-fi
-
-cd $location
-
-# Link files to appropriate locations
-if [ "$windows" ]; then
-    ln -fv $location/confs/vimrc.vim ~/_vimrc
-    touch ~/.vimlocal
-    mkdir -p ~/vimfiles/colors
-    ln -fv $location/confs/molokai.vim ~/vimfiles/colors
-    echo "Filthy windows files updated..."
-    exit 1
-fi
-
-# Check if bashrc is updated
-backupcheck=`grep screen-256color ~/.bashrc`
-# And back it up if it hasn't been updated
-if [ -z "$backupcheck" ]; then
-    cp ~/.bashrc ~/.bashrc.bak
-    rm ~/.bash_profile
-    echo "MOVE ALL YOUR LOCAL CONFIGURATIONS FROM ~/.bashrc.bak to ~/.bash_local"
-fi
 
 # Add .bash_profile for tmux
 if [ -f ~/.bash_profile ]; then
@@ -52,11 +26,15 @@ ln -sfv `pwd`/confs/xremap.yml ~/.config/xremap/config.yml
 mkdir -p ~/.config/nvim
 ln -sfv `pwd`/confs/nvimrc.lua ~/.config/nvim/init.lua
 ln -sfv `pwd`/confs/nvimrc.lua ~/.nvimrc.lua
-ln -sfv `pwd`/confs/gitconfig.ini ~/.gitconfig
-git update-index --assume-unchanged ./confs/gitconfig.ini
 mkdir -p ~/.config/nvim/after/plugin
 ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
+
+if [[ -f "$HOME/.gitskip" ]]; then
+    echo "Skipping gitconfig link\n"
+else
+    ln -sfv `pwd`/confs/gitconfig.ini ~/.gitconfig
+fi
 
 # Add a local vimrc file
 touch ~/.vimlocal.vim
