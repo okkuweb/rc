@@ -31,7 +31,7 @@ ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
 
 if [[ -f "$HOME/.gitskip" ]]; then
-    echo "Skipping gitconfig link\n"
+    echo "Skipping gitconfig link"
 else
     ln -sfv `pwd`/confs/gitconfig.ini ~/.gitconfig
 fi
