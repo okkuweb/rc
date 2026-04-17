@@ -61,6 +61,8 @@ vim.lsp.config.gopls = {
 }
 vim.lsp.enable('gopls')
 
+vim.lsp.enable('rust_analyzer')
+
 vim.lsp.config.perlnavigator = {
     {
         cmd = { "perlnavigator", "--stdio" },

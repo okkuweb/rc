@@ -210,6 +210,7 @@ if !has('nvim')
     nnoremap <Leader>rb :w<CR>:! clear && bash %<CR>
     nnoremap <Leader>re :w<CR>:! clear && expect %<CR>
     nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
+    nnoremap <Leader>rr :w<CR>:! clear && cargo run %<CR>
     nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
 else
     nnoremap <Leader>rj :w<CR>:! node %<CR>
@@ -217,6 +218,7 @@ else
     nnoremap <Leader>rb :w<CR>:! bash %<CR>
     nnoremap <Leader>re :w<CR>:! expect %<CR>
     nnoremap <Leader>rg :w<CR>:! go run %<CR>
+    nnoremap <Leader>rr :w<CR>:! cargo run %<CR>
     nnoremap <Leader>bg :w<CR>:TermExec cmd="gogo && exit"<CR>
 endif
 
