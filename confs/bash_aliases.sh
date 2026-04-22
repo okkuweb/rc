@@ -150,9 +150,6 @@ alias resetmouse="sudo rmmod i2c_hid_acpi && sudo rmmod i2c_hid && sudo rmmod ps
 alias big='du -ah . | sort -rh | head -20'
 alias big-files='ls -1Rhs | sed -e "s/^ *//" | grep "^[0-9]" | sort -hr | head -n20'
 
-alias gnollhack="TERM=xterm-256color gnollhack -T"
-alias sil="sil -mgcu -uDelver -r"
-
 alias gogo="go build -o app ./... && ./app"
 
 # Start vim in leetcode mode
