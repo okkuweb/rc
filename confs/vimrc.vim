@@ -210,16 +210,16 @@ if !has('nvim')
     nnoremap <Leader>rb :w<CR>:! clear && bash %<CR>
     nnoremap <Leader>re :w<CR>:! clear && expect %<CR>
     nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
-    nnoremap <Leader>rr :w<CR>:! clear && cargo run %<CR>
+    nnoremap <Leader>rr :w<CR>:! clear && cargo-root && cargo run %<CR>
     nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
 else
-    nnoremap <Leader>rj :w<CR>:! node %<CR>
-    nnoremap <Leader>rp :w<CR>:! perl %<CR>
-    nnoremap <Leader>rb :w<CR>:! bash %<CR>
-    nnoremap <Leader>re :w<CR>:! expect %<CR>
-    nnoremap <Leader>rg :w<CR>:! go run %<CR>
-    nnoremap <Leader>rr :w<CR>:! cargo run %<CR>
-    nnoremap <Leader>bg :w<CR>:TermExec cmd="gogo && exit"<CR>
+    nnoremap <Leader>rj :w<CR>:TermExec cmd='node %'<CR>
+    nnoremap <Leader>rp :w<CR>:TermExec cmd='perl %'<CR>
+    nnoremap <Leader>rb :w<CR>:TermExec cmd='bash %'<CR>
+    nnoremap <Leader>re :w<CR>:TermExec cmd='expect %'<CR>
+    nnoremap <Leader>rg :w<CR>:TermExec cmd='go run %'<CR>
+    nnoremap <Leader>rr :w<CR>:TermExec cmd='cargo-root && cargo run'<CR>
+    nnoremap <Leader>rG :w<CR>:TermExec cmd='go build -o app && ./app'<CR>
 endif
 
 " Make a breakpoint on underscores

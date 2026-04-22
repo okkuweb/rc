@@ -60,7 +60,7 @@ vim.lsp.config.gopls = {
     }
 }
 vim.lsp.enable('gopls')
-
+vim.lsp.enable('pyright')
 vim.lsp.enable('rust_analyzer')
 
 vim.lsp.config.perlnavigator = {
@@ -87,6 +87,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("gr", vim.lsp.buf.references)
         map("gs", vim.lsp.buf.hover)
         map("gn", vim.lsp.buf.rename)
+        map("gf", vim.lsp.buf.format)
         map("gi", function()
             vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
         end)

@@ -239,3 +239,9 @@ godoc() {
     go doc -all ${1} |less -R
 }
 
+cargo-root() {
+    local root
+    root="$(cargo locate-project --message-format=plain 2>/dev/null)" || return 1
+    cd "$(dirname "$root")" || return 1
+}
+
