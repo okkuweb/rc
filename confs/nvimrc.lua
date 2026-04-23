@@ -135,9 +135,16 @@ require("telescope").setup{
                     ["<bs>"] = false,
                 },
             },
+            initial_mode = "normal",
         },
     },
+    pickers = {
+        buffers = {
+            initial_mode = "normal",
+        }
+    }
 }
+
 require("telescope").load_extension "file_browser"
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })

@@ -377,5 +377,8 @@ vnoremap <leader>y "+y
 nnoremap <leader>p "+p
 vnoremap <leader>p "+p
 
+set splitbelow
+set splitright
+
 " PC specific vim settings
 source ~/.vimlocal.vim
