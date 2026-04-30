@@ -164,6 +164,9 @@ keyset("n", "<Leader>tg", ":TermExec cmd='togo && exit'<CR>")
 vim.opt.undofile = true
 vim.o.undodir = vim.fn.expand("~/.nvim/tempfiles")
 
+require("gruvbox").setup({
+    bold = false,
+})
 vim.cmd("colorscheme gruvbox")
 vim.cmd("tnoremap <Esc> <C-\\><C-n>")
 
