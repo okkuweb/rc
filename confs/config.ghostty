@@ -7,3 +7,5 @@ bold-is-bright = true
 theme = Dracula
 palette = 4=#61afef
 palette = 12=#61afef
+clipboard-write = allow
+font-family = "JetBrains Mono"
