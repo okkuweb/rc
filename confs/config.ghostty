@@ -1,4 +1,3 @@
-keybind = f11=toggle_fullscreen
 window-decoration = none
 background-opacity = 0.9
 font-size = 10
@@ -9,3 +8,5 @@ palette = 4=#61afef
 palette = 12=#61afef
 clipboard-write = allow
 font-family = "JetBrains Mono"
+scrollback-limit = 100000
+keybind = f11=toggle_fullscreen
