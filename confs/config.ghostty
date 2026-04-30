@@ -10,3 +10,7 @@ clipboard-write = allow
 font-family = "JetBrains Mono"
 scrollback-limit = 100000
 keybind = f11=toggle_fullscreen
+adjust-cell-height = 16%
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
