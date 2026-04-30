@@ -81,6 +81,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
             vim.keymap.set("n", lhs, rhs, { buffer = buf, silent = true })
         end
 
+        map("gy","<cmd>lua vim.diagnostic.open_float()<CR><cmd>lua vim.diagnostic.open_float()<CR>ggVG\"+Y<CR>:q<CR>")
         map("gd", vim.lsp.buf.definition)
         map("gt", vim.lsp.buf.type_definition)
         map("gI", vim.lsp.buf.implementation)

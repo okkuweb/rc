@@ -26,6 +26,8 @@ ln -sfv `pwd`/confs/xremap.yml ~/.config/xremap/config.yml
 mkdir -p ~/.config/nvim
 ln -sfv `pwd`/confs/nvimrc.lua ~/.config/nvim/init.lua
 ln -sfv `pwd`/confs/nvimrc.lua ~/.nvimrc.lua
+mkdir -p ~/.config/ghostty/
+ln -sfv `pwd`/confs/config.ghostty ~/.config/ghostty/
 mkdir -p ~/.config/nvim/after/plugin
 ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/

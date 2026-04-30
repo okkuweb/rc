@@ -1,0 +1,9 @@
+keybind = f11=toggle_fullscreen
+window-decoration = none
+background-opacity = 0.9
+font-size = 10
+background = #141414
+bold-is-bright = true
+theme = Dracula
+palette = 4=#61afef
+palette = 12=#61afef
