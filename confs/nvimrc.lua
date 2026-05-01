@@ -157,7 +157,18 @@ local keyset = vim.keymap.set
 
 -- Other keybinds
 keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
-keyset("n", "<leader>T", ":ToggleTerm<CR>", {silent = true})
+local keyset = vim.keymap.set
+local function toggle_term()
+  if vim.fn.mode() == "t" then
+    vim.cmd("stopinsert")
+  elseif vim.fn.mode() == "i" then
+    vim.cmd("stopinsert")
+  end
+
+  vim.cmd("ToggleTerm")
+  vim.cmd("startinsert")
+end
+keyset({ "n", "i", "t" }, "<C-t>", toggle_term, { silent = true })
 keyset("n", "<Leader>td", ":TermExec cmd='todo && exit'<CR>")
 keyset("n", "<Leader>tg", ":TermExec cmd='togo && exit'<CR>")
 
