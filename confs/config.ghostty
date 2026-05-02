@@ -7,7 +7,6 @@ theme = Dracula
 palette = 4=#61afef
 palette = 12=#61afef
 clipboard-write = allow
-font-family = "JetBrains Mono"
 scrollback-limit = 100000
 adjust-cell-height = 16%
 shell-integration-features = no-cursor
