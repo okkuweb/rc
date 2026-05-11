@@ -1,6 +1,7 @@
 window-decoration = none
-background-opacity = 0.9
-font-size = 9.42
+background-opacity = 0.90
+font-size = 10
+font-family = "JetBrainsMono Nerd Font"
 background = #141414
 bold-is-bright = true
 theme = Dracula
