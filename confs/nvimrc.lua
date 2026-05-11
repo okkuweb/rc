@@ -73,6 +73,7 @@ require("lazy").setup({
     {
         'akinsho/toggleterm.nvim', version = "*", opts = {
             direction = 'float',
+            start_in_insert = false,
         }
     },
     {
@@ -164,12 +165,9 @@ local function toggle_term()
   elseif vim.fn.mode() == "i" then
     vim.cmd("stopinsert")
   end
-
   vim.cmd("ToggleTerm")
 end
 keyset({ "n" }, "<Leader>c", toggle_term, { silent = true })
-keyset({ "t" }, "jk", [[<C-\><C-n>]], { silent = true })
-keyset({ "t" }, "kj", [[<C-\><C-n>]], { silent = true })
 keyset("n", "<Leader>td", ":TermExec cmd='todo && exit'<CR>")
 keyset("n", "<Leader>tg", ":TermExec cmd='togo && exit'<CR>")
 
