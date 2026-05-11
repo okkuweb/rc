@@ -16,3 +16,4 @@ keybind = global:F12=toggle_quick_terminal
 keybind = global:F11=toggle_fullscreen
 quick-terminal-size = 100%,100%
 quit-after-last-window-closed=false
+gtk-custom-css = tab-style.css
