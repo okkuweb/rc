@@ -166,9 +166,10 @@ local function toggle_term()
   end
 
   vim.cmd("ToggleTerm")
-  vim.cmd("startinsert")
 end
-keyset({ "n", "i", "t" }, "<C-t>", toggle_term, { silent = true })
+keyset({ "n", "i" }, "<Leader>c", toggle_term, { silent = true })
+keyset({ "t" }, "jk", [[<C-\><C-n>]], { silent = true })
+keyset({ "t" }, "kj", [[<C-\><C-n>]], { silent = true })
 keyset("n", "<Leader>td", ":TermExec cmd='todo && exit'<CR>")
 keyset("n", "<Leader>tg", ":TermExec cmd='togo && exit'<CR>")
 
