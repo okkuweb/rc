@@ -32,6 +32,8 @@ ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty/
 mkdir -p ~/.config/nvim/after/plugin
 ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
+mkdir -p ~/.config/dunst
+ln -sfv `pwd`/confs/dunstrc ~/.config/dunst/
 
 if [[ -f "$HOME/.gitskip" ]]; then
     echo "Skipping gitconfig link"
