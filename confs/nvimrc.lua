@@ -167,7 +167,7 @@ local function toggle_term()
 
   vim.cmd("ToggleTerm")
 end
-keyset({ "n", "i" }, "<Leader>c", toggle_term, { silent = true })
+keyset({ "n" }, "<Leader>c", toggle_term, { silent = true })
 keyset({ "t" }, "jk", [[<C-\><C-n>]], { silent = true })
 keyset({ "t" }, "kj", [[<C-\><C-n>]], { silent = true })
 keyset("n", "<Leader>td", ":TermExec cmd='todo && exit'<CR>")
