@@ -60,7 +60,6 @@ vim.lsp.config.gopls = {
     }
 }
 vim.lsp.enable('gopls')
-vim.lsp.enable('pyright')
 vim.lsp.enable('rust_analyzer')
 
 vim.lsp.config.perlnavigator = {
