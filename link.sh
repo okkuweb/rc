@@ -36,9 +36,13 @@ mkdir -p ~/.config/dunst
 ln -sfv `pwd`/confs/dunstrc ~/.config/dunst/
 
 if [[ -f "$HOME/.gitskip" ]]; then
-    echo "Skipping gitconfig link"
+    if [[ -f "$HOME/.gitconfig" ]]; then
+        echo "Skipping gitconfig link"
+    else
+        cp -v "$(pwd)/confs/gitconfig.ini" "$HOME/.gitconfig"
+    fi
 else
-    ln -sfv `pwd`/confs/gitconfig.ini ~/.gitconfig
+    ln -sfv "$(pwd)/confs/gitconfig.ini" "$HOME/.gitconfig"
 fi
 
 # Add a local vimrc file
