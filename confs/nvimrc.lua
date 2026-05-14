@@ -89,7 +89,6 @@ require("lazy").setup({
             { "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
         }
     },
-    "simeji/winresizer",
     {
         "nvim-telescope/telescope-file-browser.nvim",
         lazy = false,
