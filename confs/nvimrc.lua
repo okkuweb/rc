@@ -106,6 +106,10 @@ require("lazy").setup({
     "saadparwaiz1/cmp_luasnip",
     "neovim/nvim-lspconfig",
     -- LSP END --
+    {
+        "mrjones2014/smart-splits.nvim",
+        lazy = false,
+    }
 })
 
 local actions = require("telescope.actions")
@@ -194,5 +198,13 @@ vim.api.nvim_create_autocmd("BufReadPost", {
         end
     end,
 })
+
+local smart_splits = require("smart-splits")
+
+-- Navigate between tmux and nvim splits splits
+vim.keymap.set("n", "<A-h>", smart_splits.move_cursor_left)
+vim.keymap.set("n", "<A-j>", smart_splits.move_cursor_down)
+vim.keymap.set("n", "<A-k>", smart_splits.move_cursor_up)
+vim.keymap.set("n", "<A-l>", smart_splits.move_cursor_right)
 
 dofile(vim.fn.expand("~/.nvimlocal.lua"))
