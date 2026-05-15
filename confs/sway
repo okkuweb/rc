@@ -30,6 +30,15 @@ input type:touchpad {
 focus_follows_mouse no
 
 ### Appearance
+default_border pixel 2
+default_floating_border pixel 2
+
+client.focused          #4f5f86 #1e1e2e #cdd6f4 #4f5f86 #4f5f86
+client.focused_inactive #313244 #1e1e2e #bac2de #313244 #313244
+client.unfocused        #181825 #11111b #6c7086 #181825 #181825
+client.urgent           #f38ba8 #1e1e2e #cdd6f4 #f38ba8 #f38ba8
+client.placeholder      #181825 #11111b #6c7086 #181825 #181825
+
 gaps inner 6
 gaps outer 1
 smart_gaps on

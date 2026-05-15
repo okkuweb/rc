@@ -1,0 +1,179 @@
+* {
+    border: none;
+    border-radius: 0;
+    font-family: "JetBrains Mono", "Noto Sans Mono", "Font Awesome 6 Free", "Font Awesome 6 Brands", monospace;
+    font-size: 12px;
+    min-height: 0;
+}
+
+window#waybar {
+    background: rgba(17, 17, 27, 0.78);
+    color: #cdd6f4;
+}
+
+window#waybar.hidden {
+    opacity: 0.2;
+}
+
+tooltip {
+    background: rgba(30, 30, 46, 0.96);
+    border: 1px solid rgba(137, 180, 250, 0.35);
+    border-radius: 8px;
+}
+
+tooltip label {
+    color: #cdd6f4;
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#backlight,
+#network,
+#pulseaudio,
+#tray,
+#mode,
+#idle_inhibitor,
+#scratchpad,
+#language,
+#power-profiles-daemon {
+    margin: 0 0 5px;
+    padding: 0 10px;
+    border-radius: 8px;
+    color: #1e1e2e;
+}
+
+#workspaces {
+    margin: 0 0 5px;
+    padding: 0 4px;
+    border-radius: 8px;
+    background: #313244;
+}
+
+#workspaces button {
+    margin: 0 2px;
+    padding: 0 8px;
+    border-radius: 7px;
+    background: transparent;
+    color: #a6adc8;
+    box-shadow: none;
+}
+
+#workspaces button:hover {
+    background: #45475a;
+    color: #cdd6f4;
+    box-shadow: none;
+}
+
+#workspaces button.focused,
+#workspaces button.active {
+    background: #b4befe;
+    color: #1e1e2e;
+}
+
+#workspaces button.urgent {
+    background: #f2cdcd;
+    color: #1e1e2e;
+}
+
+#mode,
+#scratchpad {
+    background: #cba6f7;
+}
+
+#idle_inhibitor {
+    background: #f5c2e7;
+}
+
+#idle_inhibitor.activated {
+    background: #a6e3a1;
+}
+
+#pulseaudio {
+    background: #f9e2af;
+}
+
+#pulseaudio.muted {
+    background: #6c7086;
+    color: #cdd6f4;
+}
+
+#network {
+    background: #89dceb;
+}
+
+#network.disconnected {
+    background: #f2cdcd;
+}
+
+#power-profiles-daemon {
+    background: #fab387;
+}
+
+#power-profiles-daemon.performance {
+    background: #f2cdcd;
+}
+
+#power-profiles-daemon.balanced {
+    background: #b4befe;
+}
+
+#power-profiles-daemon.power-saver {
+    background: #a6e3a1;
+}
+
+#cpu {
+    background: #a6e3a1;
+}
+
+#memory {
+    background: #b4befe;
+}
+
+#temperature {
+    background: #fab387;
+}
+
+#temperature.critical {
+    background: #f2cdcd;
+}
+
+#backlight {
+    background: #94e2d5;
+}
+
+#language {
+    background: #cba6f7;
+}
+
+#battery {
+    background: #a6e3a1;
+}
+
+#battery.warning {
+    background: #f9e2af;
+}
+
+#battery.critical:not(.charging) {
+    background: #f2cdcd;
+}
+
+#clock {
+    background: #bac2de;
+}
+
+#tray {
+    background: #313244;
+    color: #cdd6f4;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+    background: #f2cdcd;
+}
