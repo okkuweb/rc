@@ -1,0 +1,14 @@
+image=~/Pictures/lock.png
+font=FantasqueSansM Nerd Font Propo
+scaling=fill
+inside-color=00000099
+line-color=00000000
+separator-color=00000000
+text-color=eaeaea
+ring-color=6f8596
+key-hl-color=9ec1d9
+bs-hl-color=c98f8f
+ring-ver-color=7fa2b8
+text-ver-color=eaeaea
+ring-wrong-color=b88484
+text-wrong-color=eaeaea

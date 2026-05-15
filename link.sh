@@ -34,6 +34,8 @@ ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
 mkdir -p ~/.config/dunst
 ln -sfv `pwd`/confs/dunstrc ~/.config/dunst/
+mkdir -p ~/.config/swaylock
+ln -sfv `pwd`/confs/swaylock ~/.config/swaylock/
 
 if [[ -f "$HOME/.gitskip" ]]; then
     if [[ -f "$HOME/.gitconfig" ]]; then
