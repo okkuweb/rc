@@ -56,6 +56,7 @@ bindsym $mod+Return exec $term
 bindsym $mod+Space exec $menu
 bindsym $mod+e exec thunar
 bindsym $mod+b exec flatpak run org.mozilla.firefox
+bindsym $mod+Shift+s exec flatpak run org.flameshot.Flameshot gui
 
 ### Session
 bindsym $mod+Shift+c reload
@@ -83,6 +84,8 @@ bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
+bindsym $mod+period resize grow width 30px, resize grow height 30px
+bindsym $mod+comma resize shrink width 30px, resize shrink height 30px
 
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
