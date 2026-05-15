@@ -36,6 +36,9 @@ mkdir -p ~/.config/dunst
 ln -sfv `pwd`/confs/dunstrc ~/.config/dunst/
 mkdir -p ~/.config/swaylock
 ln -sfv `pwd`/confs/swaylock ~/.config/swaylock/
+mkdir -p ~/.config/sway
+ln -sfv `pwd`/confs/sway ~/.config/sway/config
+touch ~/.config/sway/sway-private
 
 if [[ -f "$HOME/.gitskip" ]]; then
     if [[ -f "$HOME/.gitconfig" ]]; then
