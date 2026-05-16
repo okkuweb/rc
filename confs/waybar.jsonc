@@ -15,16 +15,16 @@
         "sway/mode",
         "sway/scratchpad",
         "idle_inhibitor",
-        "pulseaudio",
-        "network",
         "power-profiles-daemon",
-        "cpu",
-        "memory",
-        "temperature",
-        "backlight",
         "sway/language",
-        "battery",
-        "clock"
+        "cpu",
+        "clock",
+        "network",
+        //"memory",
+        //"temperature",
+        //"backlight",
+        "pulseaudio",
+        "battery"
     ],
     "modules-right": [
         "tray"
@@ -109,7 +109,7 @@
     },
 
     "backlight": {
-        "format": "󰃠 {percent}%"
+        "format": " {percent}%"
     },
 
     "battery": {
