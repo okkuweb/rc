@@ -42,6 +42,8 @@ touch ~/.config/sway/sway-private
 mkdir -p ~/.config/waybar
 ln -sfv `pwd`/confs/waybar.jsonc ~/.config/waybar/config.jsonc
 ln -sfv `pwd`/confs/waybar.css ~/.config/waybar/style.css
+mkdir -p ~/.local/share/fonts
+ln -sfv `pwd`/confs/fonts/* ~/.local/share/fonts/
 
 if [[ -f "$HOME/.gitskip" ]]; then
     if [[ -f "$HOME/.gitconfig" ]]; then
