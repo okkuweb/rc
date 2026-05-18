@@ -20,6 +20,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 -- Setup lazy.nvim
 require("lazy").setup({
+    vim.fn.isdirectory(vim.fn.stdpath("config") .. "/lua/plugins") == 1
+    and { { import = "plugins" } }
+    or {},
     {"nvim-treesitter/nvim-treesitter", branch = 'master', lazy = false, build = ":TSUpdate"},
     {
         'nvim-telescope/telescope.nvim',
