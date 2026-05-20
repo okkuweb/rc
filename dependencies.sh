@@ -3,7 +3,7 @@
 apt=`which apt`
 dnf=`which dnf`
 apt_list="htop curl git vim tmux tree bash-completion ripgrep fd-find tar zip wget jq unzip fzf bat"
-dnf_list="htop curl git vim tmux tree bash-completion epel-release ripgrep fd-find tar zip wget jq unzip fzf bat fdfind batcat"
+dnf_list="htop curl git vim tmux tree bash-completion epel-release ripgrep fd-find tar zip wget jq unzip fzf bat"
 
 # Install required bash cli tools
 if [ "$apt" ]; then
