@@ -7,9 +7,9 @@ dnf_list="htop curl git vim tmux tree bash-completion epel-release ripgrep fd-fi
 
 # Install required bash cli tools
 if [ "$apt" ]; then
-    sudo apt update && sudo apt --ignore-missing install ${apt_list}
+    sudo apt update && sudo apt install ${apt_list}
 elif [ "$dnf" ]; then
-    sudo dnf check-update && sudo dnf install  --skip-unavailable ${dnf_list}
+    sudo dnf check-update && sudo dnf install ${dnf_list}
 fi
 
 # Install vim dependencies
