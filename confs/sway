@@ -27,8 +27,6 @@ input type:touchpad {
     middle_emulation enabled
 }
 
-focus_follows_mouse no
-
 ### Appearance
 default_border pixel 2
 default_floating_border pixel 2
