@@ -259,3 +259,17 @@ cdf() {
     cd "$dir"
 }
 
+vimf() {
+    local dir
+    file=$(fd --type f --hidden \
+        --exclude .git \
+        --exclude node_modules \
+        --exclude .cargo \
+        --exclude vendor \
+        --exclude .venv \
+        --exclude venv \
+        | fzf) || return
+
+    vim "$file"
+}
+
