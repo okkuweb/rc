@@ -247,7 +247,7 @@ cargo-root() {
 
 cdf() {
     local dir
-    dir=$(fdfind --type d --hidden \
+    dir=$(fd--type d --hidden \
         --exclude .git \
         --exclude node_modules \
         --exclude .cargo \
