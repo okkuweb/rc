@@ -1,16 +1,15 @@
 #!/bin/bash
 # Update repositories
-location=`dirname $0`
 apt=`which apt`
-yum=`which yum`
+dnf=`which dnf`
+apt_list="htop curl git vim tmux tree bash-completion ripgrep fd-find tar zip wget jq unzip fzf bat"
+dnf_list="htop curl git vim tmux tree bash-completion epel-release ripgrep fd-find tar zip wget jq unzip fzf bat fdfind batcat"
 
 # Install required bash cli tools
 if [ "$apt" ]; then
-    sudo apt update && sudo apt install htop curl git vim tmux tree bash-completion
-elif [ "$yum" ]; then
-    sudo yum check-update && sudo yum install htop curl git vim tmux tree bash-completion
-else
-    checkOS=1
+    sudo apt update && sudo apt --ignore-missing install ${apt_list}
+elif [ "$dnf" ]; then
+    sudo dnf check-update && sudo dnf install  --skip-unavailable ${dnf_list}
 fi
 
 # Install vim dependencies

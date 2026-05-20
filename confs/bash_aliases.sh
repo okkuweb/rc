@@ -245,3 +245,17 @@ cargo-root() {
     cd "$(dirname "$root")" || return 1
 }
 
+cdf() {
+    local dir
+    dir=$(fdfind --type d --hidden \
+        --exclude .git \
+        --exclude node_modules \
+        --exclude .cargo \
+        --exclude vendor \
+        --exclude .venv \
+        --exclude venv \
+        | fzf) || return
+
+    cd "$dir"
+}
+
