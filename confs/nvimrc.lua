@@ -111,6 +111,9 @@ require("lazy").setup({
     {
         "mrjones2014/smart-splits.nvim",
         lazy = false,
+        opts = {
+            default_amount = 1
+        }
     }
 })
 
@@ -209,9 +212,23 @@ vim.keymap.set("n", "<A-j>", smart_splits.move_cursor_down)
 vim.keymap.set("n", "<A-k>", smart_splits.move_cursor_up)
 vim.keymap.set("n", "<A-l>", smart_splits.move_cursor_right)
 
-vim.keymap.set('n', '<A-H>', require('smart-splits').resize_left)
-vim.keymap.set('n', '<A-J>', require('smart-splits').resize_down)
-vim.keymap.set('n', '<A-K>', require('smart-splits').resize_up)
-vim.keymap.set('n', '<A-L>', require('smart-splits').resize_right)
+local splits = require('smart-splits')
+vim.keymap.set('n', '<A-H>', function()
+    splits.resize_left(6)
+end)
+vim.keymap.set('n', '<A-J>', function()
+    splits.resize_down(3)
+end)
+vim.keymap.set('n', '<A-K>', function()
+    splits.resize_up(3)
+end)
+vim.keymap.set('n', '<A-L>', function()
+    splits.resize_right(6)
+end)
+
+require('smart-splits').resize_up(3)
+require('smart-splits').resize_down(3)
+require('smart-splits').resize_left(6)
+require('smart-splits').resize_right(6)
 
 dofile(vim.fn.expand("~/.nvimlocal.lua"))
