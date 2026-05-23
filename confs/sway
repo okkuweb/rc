@@ -48,6 +48,7 @@ exec swayidle -w \
     before-sleep 'swaylock -f'
 exec --no-startup-id unset GTK_IM_MODULE && fcitx5 -d
 exec xremap ~/.config/xremap/config.yml
+exec_always autotiling -w 1 3 5 7 9
 
 ### Applications
 bindsym $mod+Return exec $term
@@ -135,6 +136,10 @@ bindsym $mod+r mode "resize"
 
 ### Window Rules
 for_window [title=".*Ground Gives Way.*"] floating enable
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="dialog"] floating enable
+for_window [window_type="dialog"] floating enable
 
 ### System Includes
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'

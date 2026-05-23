@@ -77,7 +77,7 @@
         "format-wifi": " {signalStrength}%",
         "format-ethernet": "󰈀 wired",
         "format-linked": "󰈀 link",
-        "format-disconnected": "󰤮 offline",
+        "format-disconnected": " offline",
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "tooltip-format": "{ifname} via {gwaddr}"
     },
