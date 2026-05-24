@@ -176,8 +176,8 @@ local function toggle_term()
   vim.cmd("ToggleTerm")
 end
 keyset({ "n", "t", "i" }, "<C-t>", toggle_term, { silent = true })
-keyset("n", "<Leader>td", ":TermExec cmd='todo && exit'<CR>")
-keyset("n", "<Leader>tg", ":TermExec cmd='togo && exit'<CR>")
+keyset("n", "<Leader>td", "<Esc>:TermExec cmd='todo && exit'<CR>")
+keyset("n", "<Leader>tg", "<Esc>:TermExec cmd='togo && exit'<CR>")
 
 vim.opt.undofile = true
 vim.o.undodir = vim.fn.expand("~/.nvim/tempfiles")
@@ -207,10 +207,10 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 local smart_splits = require("smart-splits")
 
 -- Navigate between tmux and nvim splits splits
-vim.keymap.set("n", "<A-h>", smart_splits.move_cursor_left)
-vim.keymap.set("n", "<A-j>", smart_splits.move_cursor_down)
-vim.keymap.set("n", "<A-k>", smart_splits.move_cursor_up)
-vim.keymap.set("n", "<A-l>", smart_splits.move_cursor_right)
+vim.keymap.set({"n", "t"}, "<A-h>", smart_splits.move_cursor_left)
+vim.keymap.set({"n", "t"}, "<A-j>", smart_splits.move_cursor_down)
+vim.keymap.set({"n", "t"}, "<A-k>", smart_splits.move_cursor_up)
+vim.keymap.set({"n", "t"}, "<A-l>", smart_splits.move_cursor_right)
 
 local splits = require('smart-splits')
 vim.keymap.set('n', '<A-H>', function()

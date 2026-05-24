@@ -145,4 +145,4 @@ for_window [window_type="dialog"] floating enable
 include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
 
 ### Private Overrides
-include ~/.config/sway/sway-private
+include ~/.config/sway/sway-local

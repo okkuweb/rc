@@ -34,14 +34,19 @@ ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
 mkdir -p ~/.config/dunst
 ln -sfv `pwd`/confs/dunstrc ~/.config/dunst/
+ln -sfv `pwd`/confs/dunstrc ~/.dunstrc
 mkdir -p ~/.config/swaylock
 ln -sfv `pwd`/confs/swaylock ~/.config/swaylock/config
 mkdir -p ~/.config/sway
 ln -sfv `pwd`/confs/sway ~/.config/sway/config
-touch ~/.config/sway/sway-private
+ln -sfv `pwd`/confs/sway ~/.sway
+touch ~/.config/sway/sway-local
+ln -sfv `pwd`/confs/sway-local ~/.sway-local
 mkdir -p ~/.config/waybar
 ln -sfv `pwd`/confs/waybar.jsonc ~/.config/waybar/config.jsonc
+ln -sfv `pwd`/confs/waybar.jsonc ~/.waybar.jsonc
 ln -sfv `pwd`/confs/waybar.css ~/.config/waybar/style.css
+ln -sfv `pwd`/confs/waybar.css ~/.waybar.css
 mkdir -p ~/.local/share/fonts
 ln -sfv `pwd`/confs/fonts/* ~/.local/share/fonts/
 
