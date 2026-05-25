@@ -273,3 +273,5 @@ vimf() {
     vim "$file"
 }
 
+alias hf="history |fzf"
+
