@@ -23,7 +23,6 @@ require("lazy").setup({
     vim.fn.isdirectory(vim.fn.stdpath("config") .. "/lua/plugins") == 1
     and { { import = "plugins" } }
     or {},
-    {"nvim-treesitter/nvim-treesitter", branch = 'main', lazy = false, build = ":TSUpdate"},
     {
         'nvim-telescope/telescope.nvim',
         lazy = false,
