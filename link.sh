@@ -41,7 +41,7 @@ mkdir -p ~/.config/sway
 ln -sfv `pwd`/confs/sway ~/.config/sway/config
 ln -sfv `pwd`/confs/sway ~/.sway
 touch ~/.config/sway/sway-local
-ln -sfv `pwd`/confs/sway-local ~/.sway-local
+ln -sfv ~/.config/sway/sway-local ~/.sway-local
 mkdir -p ~/.config/waybar
 ln -sfv `pwd`/confs/waybar.jsonc ~/.config/waybar/config.jsonc
 ln -sfv `pwd`/confs/waybar.jsonc ~/.waybar.jsonc
@@ -59,6 +59,8 @@ if [[ -f "$HOME/.gitskip" ]]; then
 else
     ln -sfv "$(pwd)/confs/gitconfig.ini" "$HOME/.gitconfig"
 fi
+
+touch ~/.gitignore_global
 
 # Add a local vimrc file
 touch ~/.vimlocal.vim
