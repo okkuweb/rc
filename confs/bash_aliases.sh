@@ -177,7 +177,8 @@ commit() {
 
     branch=$(parse_git_branch)
 
-    if [[ "$branch" != @(""|master|main|dev) ]]; then
+    if [[ "$branch" =~ ^[A-Z]{2,} ]]; then
+        echo "Using branch name in comment"
         id="$branch "
     fi
 
