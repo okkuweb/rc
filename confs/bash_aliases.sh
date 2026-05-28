@@ -182,7 +182,7 @@ commit() {
         id="$branch "
     fi
 
-    read -p "Comment: ${branch} " comment
+    read -p "Comment: ${id}" comment
 
     printf "git commit -m \"$id$comment\"\n"
     /usr/bin/git commit -m "$id$comment"
