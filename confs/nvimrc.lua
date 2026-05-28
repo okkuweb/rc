@@ -230,4 +230,17 @@ require('smart-splits').resize_down(3)
 require('smart-splits').resize_left(6)
 require('smart-splits').resize_right(6)
 
+vim.keymap.set("n", "<M-s>", function()
+    local w = vim.api.nvim_win_get_width(0)
+    local h = vim.api.nvim_win_get_height(0)
+
+    if w * 10 > h * 25 then
+        vim.cmd("vsplit")
+    else
+        vim.cmd("split")
+    end
+end)
+
+vim.keymap.set("n", "<M-q>", "<cmd>q<CR>")
+
 dofile(vim.fn.expand("~/.nvimlocal.lua"))

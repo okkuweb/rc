@@ -161,8 +161,8 @@ alias lofreeswitch="echo 2 | sudo tee /sys/module/hid_apple/parameters/fnmode"
 commit() {
     local branch comment id clock
 
-    rtc_str=$(timedatectl show -p RTCTimeUSec --value)
-    sys_str=$(timedatectl show -p TimeUSec --value)
+    rtc_str=$(timedatectl show -p RTCTimeUSec --value 2>/dev/null)
+    sys_str=$(timedatectl show -p TimeUSec --value 2>/dev/null)
 
     # Convert both to Unix timestamps
     rtc_sec=$(date -d "$rtc_str" +%s)
