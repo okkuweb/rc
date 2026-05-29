@@ -100,8 +100,6 @@ fi
 
 export SSH_AUTH_SOCK=${PREFIX}/var/run/ssh-agent.socket
 
-bind '"\eq": "\C-d"'
-
 # Run bash alias file
 if [ -f ~/.bash_aliases.sh ]; then
     . ~/.bash_aliases.sh
