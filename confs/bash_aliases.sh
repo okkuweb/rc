@@ -276,3 +276,9 @@ vimf() {
 
 alias hf="history |fzf"
 
+copy() {
+    local data
+    data="$(base64 -w0)"
+    printf '\033Ptmux;\033\033]52;c;%s\a\033\\' "$data" > /dev/tty
+}
+
