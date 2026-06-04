@@ -33,11 +33,9 @@ if alias vim >/dev/null 2>&1; then
     :
 else
     if command -v nvim >/dev/null 2>&1; then
-        alias vim='nvim'
-    elif command -v vim >/dev/null 2>&1; then
-        alias vim='vim'
-    elif command -v vi >/dev/null 2>&1; then
-        alias vim='vi'
+        alias v="`command -v vi`"
+        alias vi="`command -v vim`"
+        alias vim="`command -v nvim`";
     fi
 fi
 
