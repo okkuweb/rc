@@ -381,6 +381,8 @@ set splitbelow
 set splitright
 
 nnoremap <C-w>z <C-w>_
+nnoremap <M-s> :vsplit<CR>
+nnoremap <M-x> :split<CR>
 
 " PC specific vim settings
 source ~/.vimlocal.vim
