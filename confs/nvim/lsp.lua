@@ -71,6 +71,7 @@ vim.lsp.config.perlnavigator = {
     }
 }
 vim.lsp.enable('perlnavigator')
+vim.lsp.enable('ts_ls')
 
 -- LSP keymaps
 vim.api.nvim_create_autocmd("LspAttach", {

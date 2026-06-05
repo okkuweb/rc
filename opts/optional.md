@@ -1,6 +1,7 @@
 # Setting up LS for nvim
 go install golang.org/x/tools/gopls@latest
 npm install -g perlnavigator-server
+npm install -g typescript typescript-language-server
 go telemetry off
 
 # Optional tools for linux
