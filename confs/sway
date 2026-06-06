@@ -89,10 +89,12 @@ bindsym $mod+comma resize shrink width 30px, resize shrink height 30px
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+d layout toggle split
-bindsym $mod+f fullscreen
+bindsym $mod+z fullscreen
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+t focus mode_toggle
 bindsym $mod+a focus parent
+bindsym f12 scratchpad show, resize set 1920 1043, move position center
+bindsym $mod+f12 move scratchpad
 
 ### Workspaces
 bindsym $mod+1 workspace number 1
@@ -117,7 +119,7 @@ bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
-bindsym f12 workspace back_and_forth
+#bindsym f12 workspace back_and_forth
 
 ### Resize Mode
 mode "resize" {
@@ -136,6 +138,7 @@ bindsym $mod+r mode "resize"
 
 ### Window Rules
 for_window [title=".*Ground Gives Way.*"] floating enable
+for_window [title=".*Dungeon Crawl Stone Soup.*"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="dialog"] floating enable
