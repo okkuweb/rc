@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=rl-ghostty
+Comment=Launch Ghostty in roguelike mode
+Exec=rl-ghostty
+Icon=utilities-terminal
+Terminal=false
+Categories=System;TerminalEmulator;
+StartupNotify=true

@@ -14,6 +14,19 @@ fi
 
 mkdir -p ~/.w3m
 mkdir -p ~/.vim/colors
+mkdir -p ~/.local/bin
+mkdir -p ~/.config/ghostty-roguelike/ghostty
+mkdir -p ~/.config/nvim
+mkdir -p ~/.config/xremap/
+mkdir -p ~/.config/ghostty/
+mkdir -p ~/.config/ghostty-roguelike/ghostty
+mkdir -p ~/.config/nvim/after/plugin
+mkdir -p ~/.config/dunst
+mkdir -p ~/.config/swaylock
+mkdir -p ~/.config/sway
+mkdir -p ~/.config/waybar
+mkdir -p ~/.local/share/fonts
+mkdir -p ~/.local/share/applications
 ln -sfv `pwd`/confs/bashrc.sh ~/.bashrc
 ln -sfv `pwd`/confs/bash_aliases.sh ~/.bash_aliases.sh
 ln -sfv `pwd`/confs/inputrc.bash ~/.inputrc
@@ -21,36 +34,28 @@ ln -sfv `pwd`/confs/vimrc.vim ~/.vimrc
 ln -sfv `pwd`/confs/tmux.conf ~/.tmux.conf
 ln -sfv `pwd`/confs/w3mkeymap ~/.w3m/keymap
 ln -sfv `pwd`/confs/molokai.vim ~/.vim/colors
-mkdir -p ~/.config/xremap/
 ln -sfv `pwd`/confs/xremap.yml ~/.config/xremap/config.yml
-mkdir -p ~/.config/nvim
 ln -sfv `pwd`/confs/nvimrc.lua ~/.config/nvim/init.lua
 ln -sfv `pwd`/confs/nvimrc.lua ~/.nvimrc.lua
-mkdir -p ~/.config/ghostty/
 ln -sfv `pwd`/confs/config.ghostty ~/.config/ghostty/
-mkdir -p ~/.config/ghostty-roguelike/ghostty
+ln -sfv `pwd`/confs/rl-ghostty ~/.local/bin/
+ln -sfv `pwd`/confs/rl-ghostty.desktop ~/.local/share/applications/
 cp -fv ~/.config/ghostty/* ~/.config/ghostty-roguelike/ghostty/
 sed -i 's/font-family = "JetBrainsMonoNL Nerd Font"/font-family = "BigBlueTermPlus Nerd Font Mono"/' ~/.config/ghostty-roguelike/ghostty/config.ghostty
 ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty/
-mkdir -p ~/.config/nvim/after/plugin
 ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
-mkdir -p ~/.config/dunst
 ln -sfv `pwd`/confs/dunstrc ~/.config/dunst/
 ln -sfv `pwd`/confs/dunstrc ~/.dunstrc
-mkdir -p ~/.config/swaylock
 ln -sfv `pwd`/confs/swaylock ~/.config/swaylock/config
-mkdir -p ~/.config/sway
 ln -sfv `pwd`/confs/sway ~/.config/sway/config
 ln -sfv `pwd`/confs/sway ~/.sway
 touch ~/.config/sway/sway-local
 ln -sfv ~/.config/sway/sway-local ~/.sway-local
-mkdir -p ~/.config/waybar
 ln -sfv `pwd`/confs/waybar.jsonc ~/.config/waybar/config.jsonc
 ln -sfv `pwd`/confs/waybar.jsonc ~/.waybar.jsonc
 ln -sfv `pwd`/confs/waybar.css ~/.config/waybar/style.css
 ln -sfv `pwd`/confs/waybar.css ~/.waybar.css
-mkdir -p ~/.local/share/fonts
 ln -sfv `pwd`/confs/fonts/* ~/.local/share/fonts/
 
 if [[ -f "$HOME/.gitskip" ]]; then
