@@ -85,6 +85,8 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 bindsym $mod+period resize grow width 30px, resize grow height 30px
 bindsym $mod+comma resize shrink width 30px, resize shrink height 30px
+bindsym $mod+Shift+period resize grow height 30px
+bindsym $mod+Shift+comma resize shrink height 30px
 
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
