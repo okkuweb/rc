@@ -99,6 +99,7 @@ then
 fi
 
 export SSH_AUTH_SOCK=${PREFIX}/var/run/ssh-agent.socket
+export TMUX_TMPDIR=/var/tmp
 
 # Run bash alias file
 if [ -f ~/.bash_aliases.sh ]; then
