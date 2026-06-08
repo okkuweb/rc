@@ -26,7 +26,6 @@ mkdir -p ~/.config/swaylock
 mkdir -p ~/.config/sway
 mkdir -p ~/.config/waybar
 mkdir -p ~/.local/share/fonts
-mkdir -p ~/.local/share/applications
 ln -sfv `pwd`/confs/bashrc.sh ~/.bashrc
 ln -sfv `pwd`/confs/bash_aliases.sh ~/.bash_aliases.sh
 ln -sfv `pwd`/confs/inputrc.bash ~/.inputrc
@@ -39,7 +38,6 @@ ln -sfv `pwd`/confs/nvimrc.lua ~/.config/nvim/init.lua
 ln -sfv `pwd`/confs/nvimrc.lua ~/.nvimrc.lua
 ln -sfv `pwd`/confs/config.ghostty ~/.config/ghostty/
 ln -sfv `pwd`/confs/rl-ghostty ~/.local/bin/
-ln -sfv `pwd`/confs/rl-ghostty.desktop ~/.local/share/applications/
 cp -fv ~/.config/ghostty/* ~/.config/ghostty-roguelike/ghostty/
 sed -i 's/font-family = "JetBrainsMonoNL Nerd Font"/font-family = "BigBlueTermPlus Nerd Font Mono"/' ~/.config/ghostty-roguelike/ghostty/config.ghostty
 ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty/
