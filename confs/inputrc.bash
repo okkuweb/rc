@@ -21,6 +21,11 @@ Space:magic-space
 "\e[C": forward-char
 "\e[D": backward-char
 
+set editing-mode vi
+set show-mode-in-prompt on
+set vi-ins-mode-string \1\e[5 q\2
+set vi-cmd-mode-string \1\e[1 q\2
+
 set keymap vi-command
 "ciw": "lbcw"
 "diw": "lbdw"
@@ -28,3 +33,5 @@ set keymap vi-command
 "ciW": "lBcW"
 "diW": "lBdW"
 "yiW": "lByW"
+
+
