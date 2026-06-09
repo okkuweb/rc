@@ -20,3 +20,11 @@ Space:magic-space
 "\e[B": history-search-forward
 "\e[C": forward-char
 "\e[D": backward-char
+
+set keymap vi-command
+"ciw": "lbcw"
+"diw": "lbdw"
+"yiw": "lbyw"
+"ciW": "lBcW"
+"diW": "lBdW"
+"yiW": "lByW"
