@@ -1,0 +1,18 @@
+background-opacity = 0.90
+font-size = 14
+font-family = "BigBlueTermPlus Nerd Font Mono"
+background = #141414
+bold-is-bright = true
+theme = Dracula
+palette = 4=#61afef
+palette = 12=#61afef
+clipboard-write = allow
+scrollback-limit = 100000
+adjust-cell-height = 16%
+shell-integration-features = no-cursor
+cursor-style = block
+cursor-style-blink = false
+keybind = global:F11=toggle_fullscreen
+quit-after-last-window-closed=false
+gtk-custom-css = tab-style.css
+window-new-tab-position = end

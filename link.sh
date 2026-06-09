@@ -37,10 +37,10 @@ ln -sfv `pwd`/confs/xremap.yml ~/.config/xremap/config.yml
 ln -sfv `pwd`/confs/nvimrc.lua ~/.config/nvim/init.lua
 ln -sfv `pwd`/confs/nvimrc.lua ~/.nvimrc.lua
 ln -sfv `pwd`/confs/config.ghostty ~/.config/ghostty/
-ln -sfv `pwd`/confs/rl-ghostty ~/.local/bin/
-cp -fv ~/.config/ghostty/* ~/.config/ghostty-roguelike/ghostty/
-sed -i 's/font-family = "JetBrainsMonoNL Nerd Font"/font-family = "BigBlueTermPlus Nerd Font Mono"/' ~/.config/ghostty-roguelike/ghostty/config.ghostty
 ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty/
+ln -sfv `pwd`/confs/rl-ghostty ~/.local/bin/
+ln -sfv `pwd`/confs/rl-config.ghostty ~/.config/ghostty-roguelike/ghostty/config.ghostty
+ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty-roguelike/ghostty/
 ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/dunstrc ~/.config/dunst/
