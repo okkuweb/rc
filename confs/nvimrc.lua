@@ -221,16 +221,8 @@ end)
 vim.keymap.set('n', '<A-L>', function()
     splits.resize_right(6)
 end)
-vim.keymap.set("n", "<M-s>", function()
-    local w = vim.api.nvim_win_get_width(0)
-    local h = vim.api.nvim_win_get_height(0)
-
-    if w * 10 > h * 25 then
-        vim.cmd("vsplit")
-    else
-        vim.cmd("split")
-    end
-end)
+vim.keymap.set("n", "<M-D>", "<cmd>vsplit<CR>")
+vim.keymap.set("n", "<M-X>", "<cmd>split<CR>")
 
 vim.keymap.set("n", "<M-q>", "<cmd>q<CR>")
 

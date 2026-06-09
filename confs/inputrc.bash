@@ -26,12 +26,21 @@ set show-mode-in-prompt on
 set vi-ins-mode-string \1\e[5 q\2
 set vi-cmd-mode-string \1\e[1 q\2
 
+$if mode=vi
+set keymap vi-insert
+"\ew": history-search-backward
+"\ex": history-search-forward
+
 set keymap vi-command
+"\ew": history-search-backward
+"\ex": history-search-forward
 "ciw": "lbcw"
 "diw": "lbdw"
 "yiw": "lbyw"
 "ciW": "lBcW"
 "diW": "lBdW"
 "yiW": "lByW"
+$endif
+
 
 
