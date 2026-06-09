@@ -97,6 +97,8 @@ bindsym $mod+t focus mode_toggle
 bindsym $mod+a focus parent
 bindsym f12 scratchpad show, resize set 1920 1043, move position center
 bindsym $mod+f12 move scratchpad
+bindsym Mod1+c scratchpad show, resize set 1920 1043, move position center
+bindsym Mod1+Shift+c move scratchpad
 
 ### Workspaces
 bindsym $mod+1 workspace number 1
@@ -120,8 +122,6 @@ bindsym $mod+Shift+7 move container to workspace number 7
 bindsym $mod+Shift+8 move container to workspace number 8
 bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
-
-#bindsym f12 workspace back_and_forth
 
 ### Resize Mode
 mode "resize" {
