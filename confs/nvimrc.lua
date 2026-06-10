@@ -223,7 +223,9 @@ vim.keymap.set('n', '<A-L>', function()
 end)
 vim.keymap.set("n", "<M-D>", "<cmd>vsplit<CR>")
 vim.keymap.set("n", "<M-X>", "<cmd>split<CR>")
-
 vim.keymap.set("n", "<M-q>", "<cmd>q<CR>")
+
+vim.opt.shada:append("/100")
+vim.opt.shadafile = vim.fn.expand("~/.nvim/search.shada")
 
 dofile(vim.fn.expand("~/.nvimlocal.lua"))
