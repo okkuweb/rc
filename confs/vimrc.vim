@@ -384,5 +384,8 @@ nnoremap <C-w>z <C-w>_
 nnoremap <M-s> :vsplit<CR>
 nnoremap <M-x> :split<CR>
 
+cnoremap <M-w> <Up>
+cnoremap <M-s> <Down>
+
 " PC specific vim settings
 source ~/.vimlocal.vim
