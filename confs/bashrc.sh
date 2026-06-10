@@ -104,6 +104,10 @@ export TMUX_TMPDIR=/var/tmp
 set -o vi
 bind '"jk":vi-movement-mode'
 bind '"kj":vi-movement-mode'
+bind -m vi-insert '"\ef": forward-word'
+bind -m vi-insert '"\eb": backward-word'
+bind -m vi-command '"\ef": forward-word'
+bind -m vi-command '"\eb": backward-word'
 
 # Run bash alias file
 if [ -f ~/.bash_aliases.sh ]; then

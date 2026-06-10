@@ -30,10 +30,20 @@ $if mode=vi
 set keymap vi-insert
 "\ew": history-search-backward
 "\es": history-search-forward
+"\C-l": clear-screen
+"\C-e": end-of-line
+"\C-a": beginning-of-line
+"\C-k": kill-line
+"\C-u": unix-line-discard
 
 set keymap vi-command
 "\ew": history-search-backward
 "\es": history-search-forward
+"\C-l": clear-screen
+"\C-e": end-of-line
+"\C-a": beginning-of-line
+"\C-k": kill-line
+"\C-u": unix-line-discard
 "ciw": "lbcw"
 "diw": "lbdw"
 "yiw": "lbyw"
