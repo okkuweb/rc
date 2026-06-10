@@ -29,11 +29,11 @@ set vi-cmd-mode-string \1\e[1 q\2
 $if mode=vi
 set keymap vi-insert
 "\ew": history-search-backward
-"\ex": history-search-forward
+"\es": history-search-forward
 
 set keymap vi-command
 "\ew": history-search-backward
-"\ex": history-search-forward
+"\es": history-search-forward
 "ciw": "lbcw"
 "diw": "lbdw"
 "yiw": "lbyw"
