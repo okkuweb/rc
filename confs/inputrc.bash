@@ -30,6 +30,8 @@ $if mode=vi
 set keymap vi-insert
 "\ew": history-search-backward
 "\es": history-search-forward
+"\e[A": history-search-backward
+"\e[B": history-search-forward
 "\C-l": clear-screen
 "\C-e": end-of-line
 "\C-a": beginning-of-line
@@ -39,6 +41,8 @@ set keymap vi-insert
 set keymap vi-command
 "\ew": history-search-backward
 "\es": history-search-forward
+"\e[A": history-search-backward
+"\e[B": history-search-forward
 "\C-l": clear-screen
 "\C-e": end-of-line
 "\C-a": beginning-of-line
