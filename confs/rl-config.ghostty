@@ -1,6 +1,9 @@
 background-opacity = 0.90
 font-size = 14
-font-family = "DepartureMono Nerd Font Mono"
+font-family = "GohuFont 11 Nerd Font Mono"
+#font-family = "DepartureMono Nerd Font Mono"
+#font-family = "BigBlueTermPlus Nerd Font Mono"
+#font-family = "JetBrainsMonoNL Nerd Font"
 background = #141414
 bold-is-bright = true
 theme = Dracula
