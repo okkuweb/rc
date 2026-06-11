@@ -109,6 +109,8 @@ bind -m vi-insert '"\eb": backward-word'
 bind -m vi-command '"\ef": forward-word'
 bind -m vi-command '"\eb": backward-word'
 
+eval "$(fzf --bash)"
+
 # Run bash alias file
 if [ -f ~/.bash_aliases.sh ]; then
     . ~/.bash_aliases.sh
