@@ -54,7 +54,7 @@ ln -sfv `pwd`/confs/waybar.jsonc ~/.config/waybar/config.jsonc
 ln -sfv `pwd`/confs/waybar.jsonc ~/.waybar.jsonc
 ln -sfv `pwd`/confs/waybar.css ~/.config/waybar/style.css
 ln -sfv `pwd`/confs/waybar.css ~/.waybar.css
-ln -sfv `pwd`/confs/fonts/* ~/.local/share/fonts/
+cp -fv `pwd`/confs/fonts/* ~/.local/share/fonts/
 
 if [[ -f "$HOME/.gitskip" ]]; then
     if [[ -f "$HOME/.gitconfig" ]]; then
