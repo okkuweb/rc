@@ -28,7 +28,15 @@ cmp.setup({
     sources = {
         { name = "nvim_lsp" },
         { name = "luasnip" },
-        { name = "buffer" },
+        {
+            name = "buffer",
+            option = {
+                keyword_pattern = [[\%(-\?\d\+\%(\.\d\+\)\?\|\h\w*\%([\-.]\w*\)*\)]],
+            },
+            entry_filter = function(entry, ctx)
+                return vim.fn.strchars(entry:get_word()) < 50
+            end,
+        },
         { name = "path" },
     },
     sorting = {
