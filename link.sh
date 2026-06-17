@@ -26,6 +26,7 @@ mkdir -p ~/.config/swaylock
 mkdir -p ~/.config/sway
 mkdir -p ~/.config/waybar
 mkdir -p ~/.local/share/fonts
+mkdir -p ~/.config/rofi
 ln -sfv `pwd`/confs/bashrc.sh ~/.bashrc
 ln -sfv `pwd`/confs/bash_aliases.sh ~/.bash_aliases.sh
 ln -sfv `pwd`/confs/inputrc.bash ~/.inputrc
@@ -53,6 +54,7 @@ ln -sfv `pwd`/confs/waybar.jsonc ~/.waybar.jsonc
 ln -sfv `pwd`/confs/waybar.css ~/.config/waybar/style.css
 ln -sfv `pwd`/confs/waybar.css ~/.waybar.css
 cp -fv `pwd`/confs/fonts/* ~/.local/share/fonts/
+ln -sfv `pwd`/confs/rofi.rasi ~/.config/rofi/config.rasi
 
 if [[ -f "$HOME/.gitskip" ]]; then
     if [[ -f "$HOME/.gitconfig" ]]; then
