@@ -1,0 +1,22 @@
+// German and Swedish characters added as third level symbols to the US keyboard layout
+// Author: Stephan Lachnit <stephanlachnit@protonmail.com>, 2019
+// the german umlauts are placed over the characters without diaeresis, the sharp-s over the s
+// the swedish ao is placed over the p, since it's closed to the position on a swedish keyboard
+// the euro sign is placed over the e, as it is usual for german and swedish keyboards
+partial alphanumeric_keys
+xkb_symbols "de_se_fi"  {
+
+    include "us(basic)"
+    include "eurosign(e)"
+    name[Group1] = "German, Swedish and Finnish (US)";
+
+    key <AC01> {[ a,            A,          adiaeresis, Adiaeresis ]};
+    key <AC02> {[ s,            S,          ssharp,     U1E9E      ]};
+    key <AD01> {[ q,            Q,          at                     ]};
+    key <AD07> {[ u,            U,          udiaeresis, Udiaeresis ]};
+    key <AD09> {[ o,            O,          odiaeresis, Odiaeresis ]};
+    key <AD10> {[ p,            P,          aring,      Aring      ]};
+    key <AD12> {[ bracketright, braceright, asciitilde             ]};
+
+    include "level3(ralt_switch)"
+};
