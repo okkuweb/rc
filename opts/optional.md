@@ -19,6 +19,6 @@ Put this in your .bash_local.sh
 export SSH_AUTH_SOCK=/run/user/1000/ssh-agent.socket
 
 # To add Finnish characters to Finnish layout
-Copy de_se_fi.layout file contents and append them to /usr/share/X11/xkb/symbols/us file
-Run `setxkbmap -variant de_se_fi` and it might be necessary to make this run on system startup as well.
+Copy us_fi.layout file contents and append them to /usr/share/X11/xkb/symbols/us file
+Run `setxkbmap -layout us -variant fi` and it might be necessary to make this run on system startup as well.
 

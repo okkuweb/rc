@@ -1,0 +1,14 @@
+partial alphanumeric_keys
+xkb_symbols "fi"  {
+
+    include "us(basic)"
+    include "eurosign(e)"
+    name[Group1] = "Finnish (US)";
+
+    key <AC01> {[ a,            A,          adiaeresis, Adiaeresis ]};
+    key <AD01> {[ q,            Q,          odiaeresis, Odiaeresis ]};
+    key <AD09> {[ o,            O,          odiaeresis, Odiaeresis ]};
+    key <AD10> {[ p,            P,          aring,      Aring      ]};
+
+    include "level3(ralt_switch)"
+};
