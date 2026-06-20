@@ -149,7 +149,21 @@ for_window [window_role="dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 
 ### System Includes
-include '$(/usr/libexec/sway/layered-include "/usr/share/sway/config.d/*.conf" "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+include '$(/usr/libexec/sway/layered-include "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+
+### More specific system includes - Check from time to time if there's additions
+include /usr/share/sway/config.d/50-rules-browser.conf
+include /usr/share/sway/config.d/50-rules-pavucontrol.conf
+include /usr/share/sway/config.d/50-rules-policykit-agent.conf
+include /usr/share/sway/config.d/60-bindings-brightness.conf
+include /usr/share/sway/config.d/60-bindings-media.conf
+include /usr/share/sway/config.d/60-bindings-screenshot.conf
+include /usr/share/sway/config.d/60-bindings-volume.conf
+include /usr/share/sway/config.d/65-mode-passthrough.conf
+include /usr/share/sway/config.d/90-bar.conf
+include /usr/share/sway/config.d/95-autostart-policykit-agent.conf
+include /usr/share/sway/config.d/95-xdg-desktop-autostart.conf
+include /usr/share/sway/config.d/95-xdg-user-dirs.conf
 
 ### Private Overrides
 include ~/.config/sway/sway-local
