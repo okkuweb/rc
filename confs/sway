@@ -19,7 +19,7 @@ input type:keyboard {
     repeat_delay 250
     repeat_rate 30
     xkb_layout us
-    xkb_variant de_se_fi
+    xkb_variant fi
 }
 
 input type:touchpad {
@@ -45,8 +45,7 @@ smart_gaps on
 
 ### Startup
 exec swayidle -w \
-    timeout 300 'swaylock -f' \
-    timeout 600 'swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+    timeout 600 'chayang && swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
     before-sleep 'swaylock -f'
 exec --no-startup-id unset GTK_IM_MODULE && fcitx5 -d
 exec xremap ~/.config/xremap/config.yml
