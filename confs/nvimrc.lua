@@ -190,7 +190,6 @@ require("gruvbox").setup({
     bold = false,
 })
 vim.cmd("colorscheme gruvbox")
-vim.cmd("tnoremap <Esc> <C-\\><C-n>")
 
 -- Open file where the cursor was in file before closing
 local lastplace = vim.api.nvim_create_augroup("LastPlace", {})
