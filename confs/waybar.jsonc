@@ -16,7 +16,6 @@
         "sway/scratchpad",
         "idle_inhibitor",
         "power-profiles-daemon",
-        "sway/language",
         "cpu",
         "clock",
         "network",

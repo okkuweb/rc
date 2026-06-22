@@ -60,5 +60,3 @@ set keymap vi-command
 "yiW": "lByW"
 $endif
 
-
-

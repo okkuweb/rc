@@ -387,5 +387,8 @@ nnoremap <M-x> :split<CR>
 cnoremap <M-w> <Up>
 cnoremap <M-s> <Down>
 
+let &t_SI = "\e[5 q"
+let &t_EI = "\e[2 q"
+
 " PC specific vim settings
 source ~/.vimlocal.vim
