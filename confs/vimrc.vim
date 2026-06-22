@@ -387,8 +387,17 @@ nnoremap <M-x> :split<CR>
 cnoremap <M-w> <Up>
 cnoremap <M-s> <Down>
 
-let &t_SI = "\e[5 q"
-let &t_EI = "\e[2 q"
+if !has('nvim')
+    let &t_SI = "\e[5 q"    " insert: blinking bar
+    let &t_SR = "\e[3 q"    " replace: blinking underline
+    let &t_EI = "\e[2 q"    " normal: steady block
+
+    augroup terminal_cursor_shape
+        autocmd!
+        autocmd VimEnter * call echoraw(&t_EI)
+        autocmd VimLeave * call echoraw("\e[0 q")
+    augroup END
+endif
 
 " PC specific vim settings
 source ~/.vimlocal.vim
