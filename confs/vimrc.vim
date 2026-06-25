@@ -400,7 +400,5 @@ if !has('nvim')
     augroup END
 endif
 
-cnoremap <expr> : getcmdtype() ==# ':' && getcmdpos() == 1 ? '' : ':'
-
 " PC specific vim settings
 source ~/.vimlocal.vim
