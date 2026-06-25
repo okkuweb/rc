@@ -222,8 +222,9 @@ else
     nnoremap <Leader>rG :w<CR>:TermExec cmd='go build -o app && ./app'<CR>
 endif
 
-" Make a breakpoint on underscores
+" Make a breakpoint on underscores and dashes
 set iskeyword-=_
+set iskeyword-=-
 
 " Does the opposite of shift + j
 nnoremap <Leader>j i<CR><Esc>k$
@@ -398,6 +399,8 @@ if !has('nvim')
         autocmd VimLeave * call echoraw("\e[0 q")
     augroup END
 endif
+
+cnoremap <expr> : getcmdtype() ==# ':' && getcmdpos() == 1 ? '' : ':'
 
 " PC specific vim settings
 source ~/.vimlocal.vim
