@@ -101,14 +101,6 @@ fi
 export SSH_AUTH_SOCK=${PREFIX}/var/run/ssh-agent.socket
 export TMUX_TMPDIR=/var/tmp
 
-set -o vi
-bind '"jk":vi-movement-mode'
-bind '"kj":vi-movement-mode'
-bind -m vi-insert '"\ef": forward-word'
-bind -m vi-insert '"\eb": backward-word'
-bind -m vi-command '"\ef": forward-word'
-bind -m vi-command '"\eb": backward-word'
-
 eval "$(fzf --bash)"
 
 # Run bash alias file

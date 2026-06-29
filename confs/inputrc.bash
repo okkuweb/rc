@@ -39,6 +39,10 @@ set keymap vi-insert
 "\C-u": unix-line-discard
 "\C-w": backward-kill-word
 "\e.": yank-last-arg
+"jk": vi-movement-mode
+"kj": vi-movement-mode
+"\ef": forward-word
+"\eb": backward-word
 
 set keymap vi-command
 "\ew": history-search-backward
@@ -58,5 +62,7 @@ set keymap vi-command
 "ciW": "lBcW"
 "diW": "lBdW"
 "yiW": "lByW"
+"\ef": forward-word
+"\eb": backward-word
 $endif
 
