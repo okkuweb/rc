@@ -280,5 +280,7 @@ copy() {
     printf '\033Ptmux;\033\033]52;c;%s\a\033\\' "$data" > /dev/tty
 }
 
+alias vmnetworkrestart="sudo virsh net-destroy default && sudo virsh net-start default && sudo systemctl restart libvirtd"
+
 alias rlghostty="XDG_CONFIG_HOME=\"\$HOME/.config/ghostty-roguelike\" ghostty"
 
