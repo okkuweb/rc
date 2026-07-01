@@ -382,7 +382,7 @@ set splitbelow
 set splitright
 
 nnoremap <C-w>z <C-w>_
-nnoremap <M-s> :vsplit<CR>
+nnoremap <M-d> :vsplit<CR>
 nnoremap <M-x> :split<CR>
 
 cnoremap <M-w> <Up>
