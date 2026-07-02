@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Roguelike Ghostty
+Comment=Launch Ghostty with roguelike config
+Exec=/bin/sh -lc 'XDG_CONFIG_HOME="$HOME/.config/ghostty-roguelike" exec ghostty'
+Terminal=false
+Categories=Game;TerminalEmulator;
+StartupNotify=true
+

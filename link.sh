@@ -15,7 +15,6 @@ fi
 mkdir -p ~/.w3m
 mkdir -p ~/.vim/colors
 mkdir -p ~/.local/bin
-mkdir -p ~/.config/ghostty-roguelike/ghostty
 mkdir -p ~/.config/nvim
 mkdir -p ~/.config/xremap/
 mkdir -p ~/.config/ghostty/
@@ -29,6 +28,7 @@ mkdir -p ~/.local/share/fonts
 mkdir -p ~/.config/rofi
 mkdir -p ~/.config/.ssh
 mkdir -p ~/.config/xkb/symbols
+mkdir -p ~/.local/share/applications/
 ln -sfv `pwd`/confs/bashrc.sh ~/.bashrc
 ln -sfv `pwd`/confs/bash_aliases.sh ~/.bash_aliases.sh
 ln -sfv `pwd`/confs/inputrc.bash ~/.inputrc
@@ -42,6 +42,8 @@ ln -sfv `pwd`/confs/nvimrc.lua ~/.nvimrc.lua
 ln -sfv `pwd`/confs/config.ghostty ~/.config/ghostty/
 ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty/
 ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty-roguelike/ghostty/
+ln -sfv `pwd`/confs/rl-config.ghostty ~/.config/ghostty-roguelike/ghostty/config.ghostty
+ln -sfv `pwd`/confs/rl-ghostty.desktop ~/.local/share/applications/
 ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/dunstrc ~/.config/dunst/
@@ -58,6 +60,7 @@ ln -sfv `pwd`/confs/waybar.css ~/.waybar.css
 cp -fv  --update=none `pwd`/confs/fonts/* ~/.local/share/fonts/
 ln -sfv `pwd`/confs/rofi.rasi ~/.config/rofi/config.rasi
 ln -sfv `pwd`/confs/us_fi.layout ~/.config/xkb/symbols/us
+
 if [[ ! -f "$HOME/.ssh/config" ]]; then
     cp -fv `pwd`/confs/sshbase.conf ~/.ssh/config
 fi
