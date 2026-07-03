@@ -28,6 +28,7 @@ mkdir -p ~/.local/share/fonts
 mkdir -p ~/.config/rofi
 mkdir -p ~/.config/.ssh
 mkdir -p ~/.config/xkb/symbols
+mkdir -p ~/.config/xkb/rules
 mkdir -p ~/.local/share/applications/
 ln -sfv `pwd`/confs/bashrc.sh ~/.bashrc
 ln -sfv `pwd`/confs/bash_aliases.sh ~/.bash_aliases.sh
@@ -60,6 +61,7 @@ ln -sfv `pwd`/confs/waybar.css ~/.waybar.css
 cp -fv  --update=none `pwd`/confs/fonts/* ~/.local/share/fonts/
 ln -sfv `pwd`/confs/rofi.rasi ~/.config/rofi/config.rasi
 ln -sfv `pwd`/confs/us_fi.layout ~/.config/xkb/symbols/us
+ln -sfv `pwd`/confs/evdev.xml ~/.config/xkb/rules/evdev.xml
 
 if [[ ! -f "$HOME/.ssh/config" ]]; then
     cp -fv `pwd`/confs/sshbase.conf ~/.ssh/config
