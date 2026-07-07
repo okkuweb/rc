@@ -58,7 +58,7 @@ ln -sfv `pwd`/confs/waybar.jsonc ~/.config/waybar/config.jsonc
 ln -sfv `pwd`/confs/waybar.jsonc ~/.waybar.jsonc
 ln -sfv `pwd`/confs/waybar.css ~/.config/waybar/style.css
 ln -sfv `pwd`/confs/waybar.css ~/.waybar.css
-cp -fv  --update=none `pwd`/confs/fonts/* ~/.local/share/fonts/
+cp -fv  --update `pwd`/confs/fonts/* ~/.local/share/fonts/
 ln -sfv `pwd`/confs/rofi.rasi ~/.config/rofi/config.rasi
 ln -sfv `pwd`/confs/us_fi.layout ~/.config/xkb/symbols/us
 ln -sfv `pwd`/confs/evdev.xml ~/.config/xkb/rules/evdev.xml
