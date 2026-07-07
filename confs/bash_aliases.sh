@@ -286,3 +286,37 @@ alias rlghostty="XDG_CONFIG_HOME=\"\$HOME/.config/ghostty-roguelike\" ghostty"
 
 alias acp="git add . && commit && git push"
 
+# Directory history
+__cdhist=("$PWD")
+__cdhist_i=0
+
+cd() {
+  builtin cd "$@" || return
+
+  # If we went back and then cd somewhere new, discard forward history.
+  __cdhist=("${__cdhist[@]:0:$((__cdhist_i + 1))}" "$PWD")
+  __cdhist_i=$((${#__cdhist[@]} - 1))
+}
+
+cdb() {
+  local n=${1:-1}
+
+  while (( n > 0 && __cdhist_i > 0 )); do
+    ((__cdhist_i--))
+    ((n--))
+  done
+
+  builtin cd "${__cdhist[$__cdhist_i]}" && pwd
+}
+
+cdn() {
+  local n=${1:-1}
+
+  while (( n > 0 && __cdhist_i < ${#__cdhist[@]} - 1 )); do
+    ((__cdhist_i++))
+    ((n--))
+  done
+
+  builtin cd "${__cdhist[$__cdhist_i]}" && pwd
+}
+
