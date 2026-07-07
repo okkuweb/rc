@@ -284,3 +284,5 @@ alias vmnetworkrestart="sudo virsh net-destroy default && sudo virsh net-start d
 
 alias rlghostty="XDG_CONFIG_HOME=\"\$HOME/.config/ghostty-roguelike\" ghostty"
 
+alias acp="git add . && commit && git push"
+
