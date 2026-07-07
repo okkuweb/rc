@@ -78,6 +78,8 @@ alias gl="git log"
 alias gr="git diff --name-only | uniq | xargs nvim"
 alias gf="git log -pS"
 alias ga="git add"
+alias acp="git add . && commit && git push"
+alias gp="git push"
 
 # Alias for current date in folder format
 alias today="date +%Y-%m-%d"
@@ -283,8 +285,6 @@ copy() {
 alias vmnetworkrestart="sudo virsh net-destroy default && sudo virsh net-start default && sudo systemctl restart libvirtd"
 
 alias rlghostty="XDG_CONFIG_HOME=\"\$HOME/.config/ghostty-roguelike\" ghostty"
-
-alias acp="git add . && commit && git push"
 
 # Directory history
 __cdhist=("$PWD")
