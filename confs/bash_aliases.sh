@@ -79,7 +79,7 @@ alias gr="git diff --name-only | uniq | xargs nvim"
 alias gf="git log -pS"
 alias ga="git add"
 alias acp="git add . && commit && git push"
-alias gp="git push"
+alias gp="git pull && git push"
 
 # Alias for current date in folder format
 alias today="date +%Y-%m-%d"
