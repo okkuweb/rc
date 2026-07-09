@@ -80,6 +80,7 @@ alias gf="git log -pS"
 alias ga="git add"
 alias acp="git add . && commit && git push"
 alias gp="git pull && git push"
+alias grh="git reset --hard"
 
 # Alias for current date in folder format
 alias today="date +%Y-%m-%d"
