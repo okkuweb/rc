@@ -321,3 +321,21 @@ cdn() {
   builtin cd "${__cdhist[$__cdhist_i]}" && pwd
 }
 
+perlver() {
+    perl -Mstrict -Mwarnings -E '
+    for my $m (@ARGV) {
+        $m =~ s/::[a-z_]\w*$//;  # turns Authen::OATH::totp into Authen::OATH
+        (my $file = "$m.pm") =~ s!::!/!g;
+
+        eval { require $file; 1 } or do {
+            chomp $@;
+            say "$m: not installed";
+            next;
+        };
+
+    no strict "refs";
+    say "$m: " . (${ "${m}::VERSION" } // "version not set");
+    }
+    ' "$@"
+}
+
