@@ -400,5 +400,10 @@ if !has('nvim')
     augroup END
 endif
 
+augroup cgi_as_perl
+    autocmd!
+    autocmd BufRead,BufNewFile *.cgi setlocal filetype=perl
+augroup END
+
 " PC specific vim settings
 source ~/.vimlocal.vim
