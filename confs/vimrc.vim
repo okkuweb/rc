@@ -353,10 +353,6 @@ nnoremap <leader>R :call ResetWarningCounter()<CR>
 " Undotree toggle binding
 nnoremap <leader>u :UndotreeToggle<CR>
 
-" Close window and force close
-nnoremap <leader>q :q<CR>
-nnoremap <leader>Q :q!<CR>
-
 " Make it so that closing windows doesn't resize other windows
 set noequalalways
 
@@ -404,6 +400,10 @@ augroup cgi_as_perl
     autocmd!
     autocmd BufRead,BufNewFile *.cgi setlocal filetype=perl
 augroup END
+
+let maplocalleader = "q"
+nnoremap Q q
+nnoremap q <Nop>
 
 " PC specific vim settings
 source ~/.vimlocal.vim
