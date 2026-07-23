@@ -115,7 +115,8 @@ require("lazy").setup({
         "mrjones2014/smart-splits.nvim",
         lazy = false,
         opts = {
-            default_amount = 1
+            default_amount = 1,
+            float_win_behavior = "mux",
         },
         commit = '501ea73e433246cbd53f0b14bbd205fa44831e4d'
     }
