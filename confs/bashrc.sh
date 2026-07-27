@@ -90,7 +90,8 @@ fi
 
 export XMODIFIERS=@im=fcitx
 export GTK_IM_MODULE=fcitx
-export QT_IM_MODULES="wayland;fcitx;ibus"
+export QT_IM_MODULE=fcitx
+export SDL_IM_MODULE=ibus
 export MOSH_SERVER_NETWORK_TMOUT=604800
 
 if [[ $- == *i* ]]
