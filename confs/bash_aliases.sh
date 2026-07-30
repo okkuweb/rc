@@ -1,24 +1,11 @@
 # Recursive grep with perl regexes
-if command -v rg &> /dev/null
-then
-    alias grip="rg -iPHnM 1000 -g '!node_modules' -g '!puppeteer'"
-    alias grp="rg -PHnM 1000 -g '!node_modules' -g '!puppeteer'"
+if command -v jq &>/dev/null && command -v rg &>/dev/null; then
+    . "$HOME/.grip.sh"
 else
-    # Recursive grep with perl regexes
-    alias grip="grep --color=auto -riPHn"
-    alias grp="grep --color=auto -rPHn"
-	# Recursive grip that cuts out files that have too long lines
-	function gut () {
-		if [ -z "$1" ]; then echo "Provide a parameter"
-		else grep --color=always -riPHn $1 | cut -c1-320
-		fi
-	}
-	function gt () {
-		if [ -z "$1" ]; then echo "Provide a parameter"
-		else grep --color=always -rPHn $1 | cut -c1-320
-		fi
-	}
+    . "$HOME/.grip_plain.sh"
 fi
+
+. "$HOME/.dot_directory_preview.sh"
 
 # A thing to make aliases work in vim shell
 shopt -s expand_aliases
@@ -338,4 +325,3 @@ perlver() {
     }
     ' "$@"
 }
-

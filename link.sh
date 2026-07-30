@@ -32,6 +32,9 @@ mkdir -p ~/.config/xkb/rules
 mkdir -p ~/.local/share/applications/
 ln -sfv `pwd`/confs/bashrc.sh ~/.bashrc
 ln -sfv `pwd`/confs/bash_aliases.sh ~/.bash_aliases.sh
+ln -sfv `pwd`/confs/bash/grip.sh ~/.grip.sh
+ln -sfv `pwd`/confs/bash/grip_plain.sh ~/.grip_plain.sh
+ln -sfv `pwd`/confs/bash/dot_directory_preview.sh ~/.dot_directory_preview.sh
 ln -sfv `pwd`/confs/inputrc.bash ~/.inputrc
 ln -sfv `pwd`/confs/vimrc.vim ~/.vimrc
 ln -sfv `pwd`/confs/tmux.conf ~/.tmux.conf
