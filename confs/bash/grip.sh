@@ -1,5 +1,5 @@
 # Numbered matching files from the latest grip/grp search are available as
-# $f1, $f2, ... and through `f INDEX COMMAND`.
+# $f1, $f2, ... and through `f COMMAND INDEX`.
 declare -ag GRIP_FILES=()
 declare -ag GRIP_MATCH_COUNTS=()
 declare -ag GRIP_FIRST_LINES=()
@@ -152,12 +152,14 @@ grp() {
 
 f() {
     if (($# == 0)); then
-        printf 'usage: f INDEX [COMMAND [ARG ...]]\n' >&2
+        printf 'usage: f COMMAND [ARG ...] INDEX\n' >&2
+        printf '       f INDEX\n' >&2
         return 2
     fi
 
-    local index=$1
-    shift
+    local index=${!#}
+    local command_arg_count=$(($# - 1))
+    local -a invocation=("${@:1:command_arg_count}")
 
     if [[ ! $index =~ ^[1-9][0-9]*$ ]]; then
         printf 'f: index must be a positive integer: %s\n' "$index" >&2
@@ -172,13 +174,12 @@ f() {
     local array_index=$((index - 1))
     local path=${GRIP_FILES[array_index]}
 
-    if (($# == 0)); then
+    if ((command_arg_count == 0)); then
         printf '%s\n' "$path"
         return 0
     fi
 
-    local command_name=${1##*/}
-    local -a invocation=("$@")
+    local command_name=${invocation[0]##*/}
     local command_text
 
     case "$command_name" in
