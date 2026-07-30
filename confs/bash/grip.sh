@@ -181,10 +181,18 @@ f() {
 
     local command_name=${invocation[0]##*/}
     local command_text
+    local GRIP_F_VIM_SEARCH
 
     case "$command_name" in
         v | vi | vim | nvim | neovim)
             invocation+=("+${GRIP_FIRST_LINES[array_index]}")
+            if IFS= read -r -d '' GRIP_F_VIM_SEARCH <"$GRIP_SEARCH_STATE_FILE"; then
+                export GRIP_F_VIM_SEARCH
+                invocation+=(
+                    -c
+                    "let @/ = '\\V' . escape(\$GRIP_F_VIM_SEARCH, '\\') | call histadd('search', @/)"
+                )
+            fi
             ;;
     esac
 
