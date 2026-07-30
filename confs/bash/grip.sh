@@ -135,7 +135,8 @@ _grip_index_results() {
 
 _grip_run() {
     local ignore_case=$1
-    shift
+    local force_file_list=$2
+    shift 2
 
     local -a rg_args=(-PHnM 1000 -g '!node_modules' -g '!puppeteer')
     local search_status
@@ -149,24 +150,48 @@ _grip_run() {
     _grip_clear_results
 
     if ((search_status == 0)); then
-        _grip_index_results "$ignore_case" "$@"
+        if ((force_file_list)) || [[ -t 1 ]]; then
+            _grip_index_results "$ignore_case" "$@"
+        fi
     fi
 
     return "$search_status"
 }
 
 grip() {
+    local force_file_list=0
+    local arg
+    local -a provided_args=()
     local -a search_args=()
 
-    _grip_resolve_search search_args "$@" || return
-    _grip_run 1 "${search_args[@]}"
+    for arg in "$@"; do
+        if [[ $arg == --grip-list ]]; then
+            force_file_list=1
+        else
+            provided_args+=("$arg")
+        fi
+    done
+
+    _grip_resolve_search search_args "${provided_args[@]}" || return
+    _grip_run 1 "$force_file_list" "${search_args[@]}"
 }
 
 grp() {
+    local force_file_list=0
+    local arg
+    local -a provided_args=()
     local -a search_args=()
 
-    _grip_resolve_search search_args "$@" || return
-    _grip_run 0 "${search_args[@]}"
+    for arg in "$@"; do
+        if [[ $arg == --grip-list ]]; then
+            force_file_list=1
+        else
+            provided_args+=("$arg")
+        fi
+    done
+
+    _grip_resolve_search search_args "${provided_args[@]}" || return
+    _grip_run 0 "$force_file_list" "${search_args[@]}"
 }
 
 f() {

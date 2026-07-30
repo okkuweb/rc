@@ -70,15 +70,27 @@ _grip_plain_run() {
 }
 
 grip() {
+    local arg
+    local -a provided_args=()
     local -a search_args=()
 
-    _grip_plain_resolve_search search_args "$@" || return
+    for arg in "$@"; do
+        [[ $arg == --grip-list ]] || provided_args+=("$arg")
+    done
+
+    _grip_plain_resolve_search search_args "${provided_args[@]}" || return
     _grip_plain_run 1 "${search_args[@]}"
 }
 
 grp() {
+    local arg
+    local -a provided_args=()
     local -a search_args=()
 
-    _grip_plain_resolve_search search_args "$@" || return
+    for arg in "$@"; do
+        [[ $arg == --grip-list ]] || provided_args+=("$arg")
+    done
+
+    _grip_plain_resolve_search search_args "${provided_args[@]}" || return
     _grip_plain_run 0 "${search_args[@]}"
 }
