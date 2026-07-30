@@ -68,6 +68,9 @@ _grip_index_results() {
     shift
 
     local -a rg_args=(-PHnM 1000 -g '!node_modules' -g '!puppeteer')
+    local -a sorted_files=()
+    local -a sorted_match_counts=()
+    local -a sorted_first_lines=()
     local -A file_indexes=()
     local path line index i variable_name match_word
 
@@ -94,6 +97,22 @@ _grip_index_results() {
                   (.data.line_number | tostring), "\u0000"
             ' 2>/dev/null
     )
+
+    if ((${#GRIP_FILES[@]} > 0)); then
+        mapfile -d '' -t sorted_files < <(
+            printf '%s\0' "${GRIP_FILES[@]}" | LC_ALL=C sort -z -V
+        )
+
+        for path in "${sorted_files[@]}"; do
+            index=${file_indexes["$path"]}
+            sorted_match_counts+=("${GRIP_MATCH_COUNTS[index]}")
+            sorted_first_lines+=("${GRIP_FIRST_LINES[index]}")
+        done
+
+        GRIP_FILES=("${sorted_files[@]}")
+        GRIP_MATCH_COUNTS=("${sorted_match_counts[@]}")
+        GRIP_FIRST_LINES=("${sorted_first_lines[@]}")
+    fi
 
     GRIP_RESULT_COUNT=${#GRIP_FILES[@]}
     ((GRIP_RESULT_COUNT > 0)) || return 0
