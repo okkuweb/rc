@@ -324,15 +324,15 @@ function! InsertWarning()
         let l:log = l:logs[l:ft]
     endif
     
-    " Get current indentation
-    let l:indent = matchstr(getline('.'), '^\s*')
-    
-    " Insert the log statement at the line after the current cursor position with indentation
+    " Insert the log statement after the current line, then indent it as a new line.
+    " This lets the active indent rules account for constructs such as an opening `{`.
     let l:line = line('.')
-    call append(l:line, l:indent . l:log)
-    
-    " Move cursor to the newly inserted line
-    call cursor(l:line + 1, len(l:indent) + 1)
+    call append(l:line, l:log)
+
+    " Reindent and move the cursor to the inserted text.
+    call cursor(l:line + 1, 1)
+    silent normal! ==
+    call cursor(l:line + 1, indent(l:line + 1) + 1)
     
     " Increment the counter for next time
     let g:warning_counter += 1
