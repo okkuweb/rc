@@ -119,7 +119,23 @@ require("lazy").setup({
             float_win_behavior = "mux",
         },
         commit = '501ea73e433246cbd53f0b14bbd205fa44831e4d'
-    }
+    },
+    {
+        "wfxr/minimap.vim",
+        lazy = false,
+        commit = '28c530f8e0929b73ef27c86f705ff8bcfcec97d8',
+        init = function()
+            vim.g.minimap_width = 12
+            vim.g.minimap_auto_start = 1
+            vim.g.minimap_auto_start_win_enter = 1
+            vim.g.minimap_highlight_range = 1
+            vim.g.minimap_highlight_search = 1
+            vim.g.minimap_git_colors = 1
+        end,
+        keys = {
+            { "<leader>m", "<cmd>MinimapToggle<cr>", desc = "Toggle minimap" },
+        },
+    },
 })
 
 local actions = require("telescope.actions")
