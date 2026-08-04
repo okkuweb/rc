@@ -176,6 +176,8 @@ require("lazy").setup({
                     side = "right",
                     width = 12,
                     focusable = false,
+                    show_integration_count = false,
+                    winblend = 0,
                 },
             })
 
@@ -339,6 +341,9 @@ require("gruvbox").setup({
     bold = false,
 })
 vim.cmd("colorscheme gruvbox")
+vim.api.nvim_set_hl(0, "MiniMapNormal", { bg = "NONE", fg = "#504945" })
+vim.api.nvim_set_hl(0, "MiniMapSymbolLine", { fg = "#928374" })
+vim.api.nvim_set_hl(0, "MiniMapSymbolView", { fg = "#504945" })
 
 -- Open file where the cursor was in file before closing
 local lastplace = vim.api.nvim_create_augroup("LastPlace", {})
