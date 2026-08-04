@@ -1,1 +1,1 @@
-brew install code-minimap jq ripgrep
+brew install jq ripgrep fzf fd
