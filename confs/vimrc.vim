@@ -1,15 +1,3 @@
-" - INFO -
-" Plugin folder for gvim on windows is 'vimfiles'
-" and name of the rc file is '_vimrc'
-"
-" - DEFECTIVE PLUGINS ON WINDOWS -
-" vim-gitgutter
-" vim-indent-guides
-"
-" - CONFIGURATIONS -
-
-" Set environment variables for gitgutter
-
 if !has('nvim')
     let $TMP = $HOME . "/.vim/tempfiles/"
     let $TMPDIR = $HOME . "/.vim/tempfiles/"
@@ -77,11 +65,13 @@ let mapleader=" "
 " Rebind semicolon to colon
 map ; :
 
-" Rebind gitgutter keys
-map <Leader>< <Plug>(GitGutterPrevHunk)
-map <Leader>> <Plug>(GitGutterNextHunk)
-map <Leader>, <Plug>(GitGutterPrevHunk)
-map <Leader>. <Plug>(GitGutterNextHunk)
+" GitGutter bindings are for Vim only; Neovim uses Gitsigns.
+if !has('nvim')
+    map <Leader>< <Plug>(GitGutterPrevHunk)
+    map <Leader>> <Plug>(GitGutterNextHunk)
+    map <Leader>, <Plug>(GitGutterPrevHunk)
+    map <Leader>. <Plug>(GitGutterNextHunk)
+endif
 
 " colorscheme
 if !has('nvim')
@@ -132,11 +122,11 @@ else
         if g:closed
             let g:closed = v:false
             set invnumber
-            silent GitGutterEnable
+            silent lua require('gitsigns').toggle_signs(true)
         else
             let g:closed = v:true
             set invnumber
-            silent GitGutterDisable
+            silent lua require('gitsigns').toggle_signs(false)
         endif
     endfunction
 
@@ -195,15 +185,17 @@ set mouse=a
 inoremap <C-k> <C-x><C-y>
 inoremap <C-j> <C-x><C-e>
 
-" Gitgutter settings
+" Keep editor updates responsive
 set updatetime=250
-let g:gitgutter_max_signs = 600
+if !has('nvim')
+    let g:gitgutter_max_signs = 600
+endif
 
 " Adding splitting to vim
 nnoremap <C-w>% :vsplit<CR>
 nnoremap <C-w>" :split<CR>
 
-" Run file in interpreter
+" Run file in interpreter (Neovim configures its runners in init.lua)
 if !has('nvim')
     nnoremap <Leader>rj :w<CR>:! clear && node %<CR>
     nnoremap <Leader>rp :w<CR>:! clear && perl %<CR>
@@ -212,14 +204,6 @@ if !has('nvim')
     nnoremap <Leader>rg :w<CR>:! clear && go run %<CR>
     nnoremap <Leader>rr :w<CR>:! clear && cargo-root && cargo run %<CR>
     nnoremap <Leader>rG :w<CR>:! clear && go build -o app && ./app<CR>
-else
-    nnoremap <Leader>rj :w<CR>:TermExec cmd='node %'<CR>
-    nnoremap <Leader>rp :w<CR>:TermExec cmd='perl %'<CR>
-    nnoremap <Leader>rb :w<CR>:TermExec cmd='bash %'<CR>
-    nnoremap <Leader>re :w<CR>:TermExec cmd='expect %'<CR>
-    nnoremap <Leader>rg :w<CR>:TermExec cmd='go run %'<CR>
-    nnoremap <Leader>rr :w<CR>:TermExec cmd='cargo-root && cargo run'<CR>
-    nnoremap <Leader>rG :w<CR>:TermExec cmd='go build -o app && ./app'<CR>
 endif
 
 " Make a breakpoint on underscores and dashes

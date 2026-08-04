@@ -30,7 +30,6 @@ require("lazy").setup({
     },
     {'tpope/vim-surround', commit = '3d188ed2113431cf8dac77be61b842acb64433d9'},
     {'tpope/vim-repeat', commit = '65846025c15494983dafe5e3b46c8f88ab2e9635'},
-    {'airblade/vim-gitgutter', commit = '21c977e8597c468c7dc76001389b0b430d46a4b0'},
     {
         'windwp/nvim-autopairs',
         event = "InsertEnter",
@@ -121,20 +120,90 @@ require("lazy").setup({
         commit = '501ea73e433246cbd53f0b14bbd205fa44831e4d'
     },
     {
-        "wfxr/minimap.vim",
+        "nvim-mini/mini.map",
+        commit = '86a150f1556d0293194d0327f7b4cb97c87920bb',
         lazy = false,
-        commit = '28c530f8e0929b73ef27c86f705ff8bcfcec97d8',
-        init = function()
-            vim.g.minimap_width = 12
-            vim.g.minimap_auto_start = 1
-            vim.g.minimap_auto_start_win_enter = 1
-            vim.g.minimap_highlight_range = 1
-            vim.g.minimap_highlight_search = 1
-            vim.g.minimap_git_colors = 1
-        end,
-        keys = {
-            { "<leader>m", "<cmd>MinimapToggle<cr>", desc = "Toggle minimap" },
+        dependencies = {
+            {
+                "lewis6991/gitsigns.nvim",
+                commit = '31d6fb2d618bca1482b9f274751ead5f03461408',
+                config = function()
+                    local gitsigns = require("gitsigns")
+
+                    gitsigns.setup({
+                        on_attach = function(bufnr)
+                            local function map_hunk(lhs, direction, description)
+                                vim.keymap.set("n", lhs, function()
+                                    gitsigns.nav_hunk(direction)
+                                end, {
+                                    buffer = bufnr,
+                                    silent = true,
+                                    desc = description,
+                                })
+                            end
+
+                            map_hunk("<leader><", "prev", "Previous Git hunk")
+                            map_hunk("<leader>,", "prev", "Previous Git hunk")
+                            map_hunk("<leader>>", "next", "Next Git hunk")
+                            map_hunk("<leader>.", "next", "Next Git hunk")
+                            vim.keymap.set("n", "<leader>hu", gitsigns.reset_hunk, {
+                                buffer = bufnr,
+                                silent = true,
+                                desc = "Reset Git hunk",
+                            })
+                            vim.keymap.set("n", "<leader>hs", gitsigns.stage_hunk, {
+                                buffer = bufnr,
+                                silent = true,
+                                desc = "Stage Git hunk",
+                            })
+                        end,
+                    })
+                end,
+            },
         },
+        config = function()
+            local map = require("mini.map")
+            local min_width = 110
+            local user_enabled = true
+
+            map.setup({
+                integrations = {
+                    map.gen_integration.builtin_search(),
+                    map.gen_integration.diagnostic(),
+                    map.gen_integration.gitsigns(),
+                },
+                window = {
+                    side = "right",
+                    width = 12,
+                    focusable = false,
+                },
+            })
+
+            local function sync_visibility()
+                if user_enabled and vim.o.columns >= min_width then
+                    map.open()
+                else
+                    map.close()
+                end
+            end
+
+            local resize_group = vim.api.nvim_create_augroup("MiniMapResponsive", {
+                clear = true,
+            })
+            vim.api.nvim_create_autocmd("VimResized", {
+                group = resize_group,
+                callback = sync_visibility,
+            })
+
+            vim.keymap.set("n", "<leader>m", function()
+                user_enabled = not user_enabled
+                sync_visibility()
+            end, {
+                desc = "Toggle minimap",
+            })
+
+            sync_visibility()
+        end,
     },
 })
 
@@ -143,11 +212,13 @@ require("telescope").setup{
     defaults = {
         mappings = {
             i = {
+                ["<M-q>"] = actions.close,
                 ["<C-j>"] = actions.move_selection_next,
                 ["<C-k>"] = actions.move_selection_previous,
                 ["<C-h>"] = "which_key",
             },
             n = {
+                ["<M-q>"] = actions.close,
                 ["<C-c>"] = actions.close,
                 ["<Leader>q"] = actions.close,
                 ["<C-j>"] = actions.move_selection_next,
@@ -187,18 +258,79 @@ local keyset = vim.keymap.set
 
 -- Other keybinds
 keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
-local keyset = vim.keymap.set
-local function toggle_term()
-  if vim.fn.mode() == "t" then
-    vim.cmd("stopinsert")
-  elseif vim.fn.mode() == "i" then
-    vim.cmd("stopinsert")
-  end
-  vim.cmd("ToggleTerm")
+keyset("n", "<Leader>tt", "<cmd>ToggleTerm<CR>", { silent = true })
+
+local function command_float(command)
+  vim.system(command, { text = true }, vim.schedule_wrap(function(result)
+    local output = (result.stdout or "") .. (result.stderr or "")
+    local lines = output == "" and { "(no output)" }
+      or vim.split(vim.trim(output), "\n", { plain = true })
+    local buffer, window = vim.lsp.util.open_floating_preview(lines, "text", {
+      border = "rounded",
+      title = table.concat(command, " "),
+    })
+    vim.api.nvim_set_current_win(window)
+    local close = function()
+      if vim.api.nvim_win_is_valid(window) then vim.api.nvim_win_close(window, true) end
+    end
+    keyset("n", "q", close, { buffer = buffer, silent = true })
+    keyset("n", "<Esc>", close, { buffer = buffer, silent = true })
+  end))
 end
-keyset({ "n", "t", "i" }, "<M-t>", toggle_term, { silent = true })
-keyset("n", "<Leader>td", "<Esc>:TermExec cmd='todo && exit'<CR>")
-keyset("n", "<Leader>tg", "<Esc>:TermExec cmd='togo && exit'<CR>")
+
+local runners = {
+  javascript = { "node" },
+  perl = { "perl" },
+  python = { "python3" },
+  sh = { "bash" },
+  expect = { "expect" },
+  go = { "go", "run" },
+}
+
+local function run_current_file()
+  if vim.bo.filetype == "rust" then
+    vim.cmd.write()
+    command_float({ "sh", "-c", "cargo-root && cargo run" })
+    return
+  end
+  local command = vim.deepcopy(runners[vim.bo.filetype])
+  if not command then
+    vim.notify("No runner for " .. vim.bo.filetype, vim.log.levels.ERROR)
+    return
+  end
+  vim.cmd.write()
+  table.insert(command, vim.api.nvim_buf_get_name(0))
+  command_float(command)
+end
+
+local function file_float(file)
+  Snacks.win({
+    file = file,
+    width = 0.8,
+    height = 0.8,
+    border = "rounded",
+    enter = true,
+    bo = { readonly = false, modifiable = true },
+    keys = { q = "hide", ["<Esc>"] = "hide" },
+  })
+end
+
+keyset("n", "<Leader>td", function()
+  file_float(vim.fn.expand("~/.todo.md"))
+end)
+keyset("n", "<Leader>tg", function()
+  local root = vim.trim(vim.fn.system({ "git", "rev-parse", "--show-toplevel" }))
+  if vim.v.shell_error ~= 0 then
+    vim.notify("Not inside a Git repository", vim.log.levels.ERROR)
+    return
+  end
+  file_float(root .. "/todo.md")
+end)
+keyset("n", "<Leader>r", run_current_file, { desc = "Run current file" })
+keyset("n", "<Leader>R", function()
+  vim.cmd.write()
+  command_float({ "sh", "-c", "go build -o app && ./app" })
+end, { desc = "Build and run Go" })
 
 vim.opt.undofile = true
 vim.o.undodir = vim.fn.expand("~/.nvim/tempfiles")
