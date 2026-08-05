@@ -16,10 +16,10 @@ keymap:
   - name: Mouse bindings
     remap:
       Alt-F1: CapsLock
-  - name: Tilda specific remap
-    application:
-      only: Tilda
+  - name: Alt WASD arrows
     remap:
-      Ctrl_L-TAB: Ctrl-PageDown
-      Ctrl_L-Shift_L-TAB: Ctrl-PageUp
+      Alt-w: up
+      Alt-a: left
+      Alt-s: down
+      Alt-d: right
 
