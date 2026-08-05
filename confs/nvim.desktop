@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Neovim
+Comment=Edit text files with Neovim
+TryExec=ghostty
+Exec=ghostty --window-decoration=auto -e nvim %F
+Terminal=false
+Icon=accessories-text-editor
+Categories=Utility;TextEditor;
+MimeType=text/plain;text/markdown;application/json;application/x-shellscript;text/x-python;text/x-lua;text/x-perl;text/x-csrc;text/x-c++src;

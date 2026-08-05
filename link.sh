@@ -48,6 +48,7 @@ ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty/
 ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty-roguelike/ghostty/
 ln -sfv `pwd`/confs/rl-config.ghostty ~/.config/ghostty-roguelike/ghostty/config.ghostty
 ln -sfv `pwd`/confs/rl-ghostty.desktop ~/.local/share/applications/
+ln -sfv `pwd`/confs/nvim.desktop ~/.local/share/applications/
 ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/dunstrc ~/.config/dunst/
