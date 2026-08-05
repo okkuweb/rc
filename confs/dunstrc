@@ -4,26 +4,29 @@
 
     # Display notifications on monitor with mouse focus
     follow = mouse
-    # Set {width}x{height} and {x_pos}+{y_pos}
-    geometry = "300x30-5+60"
+    # Compact notification size and top-right placement
+    width = 240
+    height = 90
+    # One notification plus one hidden-notification counter
+    notification_limit = 2
+    origin = top-right
+    offset = 5x60
     # Show number of hidden notifications
     indicate_hidden = yes
     # Shrink window if smaller than width
     shrink = no
     # Set transparency of notifications
     transparency = 0
-    # Height of whole notification    
-    notification_height = 0
     # Height of seperators
-    separator_height = 2
+    separator_height = 1
     # Text and seperator padding
-    padding = 8
+    padding = 5
     # Horizontal padding
-    horizontal_padding = 8
+    horizontal_padding = 7
     # Width of frame around window
     frame_width = 1
     # Color of frame around window
-    frame_color = "#4287f5"
+    frame_color = "#697078"
     # Sort messages by urgency
     sort = yes
     # Idle seconds
@@ -32,9 +35,9 @@
     ### Text ###
     
     # Set font of notifications
-    font = JetBrainsMono 11
+    font = JetBrainsMono 9
     # Spacing between lines 
-    line-height = 0
+    line_height = 0
     # Markup parsing
     markup = full
     # Message format:
@@ -93,9 +96,9 @@
     # Dunst verbosity
     verbosity = mesg
     # Corner radius of dunst
-    corner_radius = 15
+    corner_radius = 6
     # Ignore dbus closeNotification message
-    ignore_dbusclose = false
+    ignore_dbusclose = true
 
     ### Mouse ###
 
@@ -113,19 +116,35 @@
     # Close all notifications
     close_all = ctrl+shift+space
 
+[urgency_low]
+
+    # Muted teal for low-priority notifications
+    background = "#263a38"
+    foreground = "#c4ded8"
+    frame_color = "#4f8078"
+    timeout = 0
+
 [urgency_normal]
 
-    # Normal urgency notifications
-    background = "#202632"
-    foreground = "#ffffff"
-    timeout = 5
+    # Higher-contrast matte blue for normal notifications
+    background = "#344254"
+    foreground = "#f1f4f8"
+    frame_color = "#779ac2"
+    timeout = 0
 
 [urgency_critical]
 
-    # High urgency notifications
-    background = "#ffffff"
-    foreground = "#db0101"
+    # Muted burgundy for critical notifications
+    background = "#49383a"
+    foreground = "#f0d6d6"
+    frame_color = "#9a6267"
     timeout = 0
+
+# Keep every notification visible until it is dismissed manually, even when
+# the sending application requests its own timeout.
+[permanent_notifications]
+    timeout = 0
+    override_dbus_timeout = 0
 #[global]
 #font = JetBrainsMono 11
 ## Allow a small subset of html markup:
