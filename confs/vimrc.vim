@@ -331,8 +331,8 @@ endfunction
 " Map leader+w to the warning function
 nnoremap <leader>w :call InsertWarning()<CR>
 
-" Map leader+r to reset the warning counter
-nnoremap <leader>R :call ResetWarningCounter()<CR>
+" Map leader+W to reset the warning counter
+nnoremap <leader>W :call ResetWarningCounter()<CR>
 
 " Undotree toggle binding
 nnoremap <leader>u :UndotreeToggle<CR>
