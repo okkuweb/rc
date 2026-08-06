@@ -18,8 +18,8 @@ keymap:
       Alt-F1: CapsLock
   - name: Alt WASD arrows
     remap:
-      Alt-L-w: up
-      Alt-L-a: left
-      Alt-L-s: down
-      Alt-L-d: right
+      Alt_L-w: up
+      Alt_L-a: left
+      Alt_L-s: down
+      Alt_L-d: right
 
