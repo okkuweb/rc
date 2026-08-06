@@ -156,11 +156,6 @@ require("lazy").setup({
                                 silent = true,
                                 desc = "Stage Git hunk",
                             })
-                            vim.keymap.set("n", "<leader>hr", gitsigns.undo_stage_hunk, {
-                                buffer = bufnr,
-                                silent = true,
-                                desc = "Unstage Git hunk",
-                            })
                         end,
                     })
                 end,
