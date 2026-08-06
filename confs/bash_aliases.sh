@@ -279,10 +279,12 @@ __cdhist=("$PWD")
 __cdhist_i=0
 
 cd() {
+  local keep_count
   builtin cd "$@" || return
 
   # If we went back and then cd somewhere new, discard forward history.
-  __cdhist=("${__cdhist[@]:0:$((__cdhist_i + 1))}" "$PWD")
+  keep_count=$((__cdhist_i + 1))
+  __cdhist=("${__cdhist[@]:0:keep_count}" "$PWD")
   __cdhist_i=$((${#__cdhist[@]} - 1))
 }
 
@@ -325,3 +327,18 @@ perlver() {
     }
     ' "$@"
 }
+
+# Browse closed Dunst notifications in a searchable pager.
+notifications() {
+    if ! command -v jq >/dev/null 2>&1; then
+        printf '%s\n' 'notifications: jq is required (sudo apt install jq)' >&2
+        return 127
+    fi
+
+    dunstctl history |
+        jq -r '.data[0][] |
+            "\u001b[1;36m\(.appname.data // "Unknown")\u001b[0m — \u001b[1m\(.summary.data // "")\u001b[0m\n\(.body.data // "")\n\n\u001b[2m────────────────────────────────────────────────────────────\u001b[0m\n"' |
+        less -R
+}
+
+alias dh='notifications'

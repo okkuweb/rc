@@ -77,7 +77,7 @@
     ### History ###
     
     # Length of history
-    history_length = 20
+    history_length = 100
     
     ### Misc ###
     
@@ -145,6 +145,12 @@
 [permanent_notifications]
     timeout = 0
     override_dbus_timeout = 0
+
+# Network changes are informational and do not need manual dismissal.
+[temporary_networkmanager]
+    appname = "NetworkManager Applet"
+    timeout = 10s
+    override_dbus_timeout = 10s
 #[global]
 #font = JetBrainsMono 11
 ## Allow a small subset of html markup:

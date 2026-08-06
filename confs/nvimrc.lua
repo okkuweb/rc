@@ -164,7 +164,8 @@ require("lazy").setup({
         config = function()
             local map = require("mini.map")
             local min_width = 110
-            local user_enabled = true
+            local map_width = 12
+            local hide_on_overlap = true
 
             map.setup({
                 integrations = {
@@ -174,17 +175,65 @@ require("lazy").setup({
                 },
                 window = {
                     side = "right",
-                    width = 12,
+                    width = map_width,
                     focusable = false,
                     show_integration_count = false,
                     winblend = 0,
                 },
             })
 
+            local function is_open()
+                local win = map.current.win_data[vim.api.nvim_get_current_tabpage()]
+                return win ~= nil and vim.api.nvim_win_is_valid(win)
+            end
+
+            local function visible_lines_overlap_map()
+                local win = vim.api.nvim_get_current_win()
+                if vim.api.nvim_win_get_config(win).relative ~= "" then
+                    return false
+                end
+
+                local wininfo = vim.fn.getwininfo(win)[1]
+                if wininfo == nil then
+                    return false
+                end
+
+                local screen_col = vim.fn.win_screenpos(win)[2]
+                local text_start_col = screen_col + wininfo.textoff
+                local win_right_col = screen_col + vim.api.nvim_win_get_width(win) - 1
+                local map_start_col = vim.o.columns - map_width + 1
+
+                if win_right_col < map_start_col then
+                    return false
+                end
+
+                local width_before_map = math.max(0, map_start_col - text_start_col)
+                local leftcol = vim.fn.winsaveview().leftcol
+                local first_line = vim.fn.line("w0")
+                local last_line = vim.fn.line("w$")
+                local lines = vim.api.nvim_buf_get_lines(0, first_line - 1, last_line, false)
+
+                for index, line in ipairs(lines) do
+                    local line_number = first_line + index - 1
+                    if vim.fn.foldclosed(line_number) == -1 then
+                        local line_width = vim.fn.strdisplaywidth(line)
+                        local visible_width = math.max(0, line_width - leftcol)
+                        if visible_width > width_before_map then
+                            return true
+                        end
+                    end
+                end
+
+                return false
+            end
+
             local function sync_visibility()
-                if user_enabled and vim.o.columns >= min_width then
+                local should_open = vim.o.columns >= min_width
+                    and (not hide_on_overlap or not visible_lines_overlap_map())
+
+                if should_open and not is_open() then
                     map.open()
-                else
+                elseif not should_open and is_open() then
                     map.close()
                 end
             end
@@ -192,16 +241,25 @@ require("lazy").setup({
             local resize_group = vim.api.nvim_create_augroup("MiniMapResponsive", {
                 clear = true,
             })
-            vim.api.nvim_create_autocmd("VimResized", {
+            vim.api.nvim_create_autocmd({
+                "BufEnter",
+                "CursorMoved",
+                "CursorMovedI",
+                "TextChanged",
+                "TextChangedI",
+                "VimResized",
+                "WinEnter",
+                "WinScrolled",
+            }, {
                 group = resize_group,
                 callback = sync_visibility,
             })
 
             vim.keymap.set("n", "<leader>m", function()
-                user_enabled = not user_enabled
+                hide_on_overlap = not hide_on_overlap
                 sync_visibility()
             end, {
-                desc = "Toggle minimap",
+                desc = "Toggle minimap overlap hiding",
             })
 
             sync_visibility()
