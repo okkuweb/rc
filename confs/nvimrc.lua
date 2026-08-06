@@ -227,8 +227,28 @@ require("lazy").setup({
                 return false
             end
 
+            local function cursor_overlaps_map()
+                local win = vim.api.nvim_get_current_win()
+                if vim.api.nvim_win_get_config(win).relative ~= "" then
+                    return false
+                end
+
+                local screen_col = vim.fn.win_screenpos(win)[2]
+                local win_right_col = screen_col + vim.api.nvim_win_get_width(win) - 1
+                local map_start_col = vim.o.columns - map_width + 1
+                if win_right_col < map_start_col then
+                    return false
+                end
+
+                local cursor = vim.api.nvim_win_get_cursor(win)
+                local position = vim.fn.screenpos(win, cursor[1], cursor[2] + 1)
+                local cursor_screen_col = position.curscol > 0 and position.curscol or position.col
+                return cursor_screen_col >= map_start_col
+            end
+
             local function sync_visibility()
                 local should_open = vim.o.columns >= min_width
+                    and not cursor_overlaps_map()
                     and (not hide_on_overlap or not visible_lines_overlap_map())
 
                 if should_open and not is_open() then
