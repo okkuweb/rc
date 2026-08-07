@@ -66,6 +66,7 @@ cp -fv  --update `pwd`/confs/fonts/* ~/.local/share/fonts/
 ln -sfv `pwd`/confs/rofi.rasi ~/.config/rofi/config.rasi
 ln -sfv `pwd`/confs/us_fi.layout ~/.config/xkb/symbols/us
 ln -sfv `pwd`/confs/evdev.xml ~/.config/xkb/rules/evdev.xml
+ln -sfv `pwd`/confs/update.sh ~/update.sh
 
 if [[ ! -f "$HOME/.ssh/config" ]]; then
     cp -fv `pwd`/confs/sshbase.conf ~/.ssh/config
