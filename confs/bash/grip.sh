@@ -217,15 +217,20 @@ f() {
 
     local array_index=$((index - 1))
     local path=${GRIP_FILES[array_index]}
-
-    if ((command_arg_count == 0)); then
-        printf '%s\n' "$path"
-        return 0
-    fi
-
     local command_name=${invocation[0]##*/}
     local command_text
     local GRIP_F_VIM_SEARCH
+
+    if [[ -z $command_name ]]; then
+        local cmd
+        for cmd in neovim nvim vim vi v; do
+            if command -v "$cmd" >/dev/null 2>&1; then
+                command_name=$cmd
+                invocation=("$cmd")
+                break
+            fi
+        done
+    fi
 
     case "$command_name" in
         v | vi | vim | nvim | neovim)
