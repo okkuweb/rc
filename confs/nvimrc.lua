@@ -339,14 +339,12 @@ local keyset = vim.keymap.set
 keyset("t", "<Esc>", "<C-\\><C-n>", {silent = true})
 keyset("n", "<Leader>tt", "<cmd>ToggleTerm<CR>", { silent = true })
 
-local function command_float(command)
-  vim.system(command, { text = true }, vim.schedule_wrap(function(result)
-    local output = (result.stdout or "") .. (result.stderr or "")
-    local lines = output == "" and { "(no output)" }
-      or vim.split(vim.trim(output), "\n", { plain = true })
-    local buffer, window = vim.lsp.util.open_floating_preview(lines, "text", {
+local last_command_output
+
+local function show_command_output(output)
+    local buffer, window = vim.lsp.util.open_floating_preview(output.lines, "text", {
       border = "rounded",
-      title = table.concat(command, " "),
+      title = output.title,
     })
     vim.api.nvim_set_current_win(window)
     local close = function()
@@ -354,6 +352,17 @@ local function command_float(command)
     end
     keyset("n", "q", close, { buffer = buffer, silent = true })
     keyset("n", "<Esc>", close, { buffer = buffer, silent = true })
+end
+
+local function command_float(command)
+  vim.system(command, { text = true }, vim.schedule_wrap(function(result)
+    local output = (result.stdout or "") .. (result.stderr or "")
+    last_command_output = {
+      lines = output == "" and { "(no output)" }
+        or vim.split(vim.trim(output), "\n", { plain = true }),
+      title = table.concat(command, " "),
+    }
+    show_command_output(last_command_output)
   end))
 end
 
@@ -407,9 +416,12 @@ keyset("n", "<Leader>tg", function()
 end)
 keyset("n", "<Leader>r", run_current_file, { desc = "Run current file" })
 keyset("n", "<Leader>R", function()
-  vim.cmd.write()
-  command_float({ "sh", "-c", "go build -o app && ./app" })
-end, { desc = "Build and run Go" })
+  if not last_command_output then
+    vim.notify("No run output available", vim.log.levels.WARN)
+    return
+  end
+  show_command_output(last_command_output)
+end, { desc = "Show last run output" })
 
 vim.opt.undofile = true
 vim.o.undodir = vim.fn.expand("~/.nvim/tempfiles")
