@@ -1,7 +1,6 @@
 # Numbered matching files from the latest grip/grp search are available as
 # $f1, $f2, ... and through `f COMMAND INDEX`.
 declare -ag GRIP_FILES=()
-declare -ag GRIP_MATCH_COUNTS=()
 declare -ag GRIP_FIRST_LINES=()
 GRIP_RESULT_COUNT=0
 GRIP_SEARCH_STATE_FILE=${GRIP_SEARCH_STATE_FILE:-"$HOME/.grip_last_search"}
@@ -58,7 +57,6 @@ _grip_clear_results() {
     done
 
     GRIP_FILES=()
-    GRIP_MATCH_COUNTS=()
     GRIP_FIRST_LINES=()
     GRIP_RESULT_COUNT=0
 }
@@ -68,11 +66,8 @@ _grip_index_results() {
     shift
 
     local -a rg_args=(-PHnM 1000 -g '!node_modules' -g '!puppeteer')
-    local -a sorted_files=()
-    local -a sorted_match_counts=()
-    local -a sorted_first_lines=()
     local -A file_indexes=()
-    local path line index i variable_name match_word
+    local path line index
 
     if ((ignore_case)); then
         rg_args=(-i "${rg_args[@]}")
@@ -83,11 +78,7 @@ _grip_index_results() {
             index=${#GRIP_FILES[@]}
             file_indexes["$path"]=$index
             GRIP_FILES[index]=$path
-            GRIP_MATCH_COUNTS[index]=1
             GRIP_FIRST_LINES[index]=$line
-        else
-            index=${file_indexes["$path"]}
-            ((GRIP_MATCH_COUNTS[index]++))
         fi
     done < <(
         command rg "${rg_args[@]}" --json --color=never "$@" 2>/dev/null |
@@ -98,38 +89,38 @@ _grip_index_results() {
             ' 2>/dev/null
     )
 
-    if ((${#GRIP_FILES[@]} > 0)); then
-        mapfile -d '' -t sorted_files < <(
-            printf '%s\0' "${GRIP_FILES[@]}" | LC_ALL=C sort -z -V
-        )
+    GRIP_RESULT_COUNT=${#GRIP_FILES[@]}
+}
 
-        for path in "${sorted_files[@]}"; do
-            index=${file_indexes["$path"]}
-            sorted_match_counts+=("${GRIP_MATCH_COUNTS[index]}")
-            sorted_first_lines+=("${GRIP_FIRST_LINES[index]}")
+_grip_annotate_output() {
+    local -a indexed_files=("${GRIP_FILES[@]}")
+    local -a indexed_first_lines=("${GRIP_FIRST_LINES[@]}")
+    local -A emitted_files=()
+    local line plain_line path variable_name i
+
+    _grip_clear_results
+
+    while IFS= read -r line || [[ -n $line ]]; do
+        plain_line=$line
+        while [[ $plain_line =~ $'\e'\[[0-9\;]*m ]]; do
+            plain_line=${plain_line/"${BASH_REMATCH[0]}"/}
         done
 
-        GRIP_FILES=("${sorted_files[@]}")
-        GRIP_MATCH_COUNTS=("${sorted_match_counts[@]}")
-        GRIP_FIRST_LINES=("${sorted_first_lines[@]}")
-    fi
+        for ((i = 0; i < ${#indexed_files[@]}; i++)); do
+            path=${indexed_files[i]}
+            if [[ $plain_line == "$path" && -z ${emitted_files["$path"]+set} ]]; then
+                emitted_files["$path"]=1
+                GRIP_FILES+=("$path")
+                GRIP_FIRST_LINES+=("${indexed_first_lines[i]}")
+                GRIP_RESULT_COUNT=${#GRIP_FILES[@]}
+                variable_name="f$GRIP_RESULT_COUNT"
+                printf -v "$variable_name" '%s' "$path"
+                printf '%s [%d]\n' "$line" "$GRIP_RESULT_COUNT"
+                continue 2
+            fi
+        done
 
-    GRIP_RESULT_COUNT=${#GRIP_FILES[@]}
-    ((GRIP_RESULT_COUNT > 0)) || return 0
-
-    printf '\nMatching files:\n'
-    for ((i = 0; i < GRIP_RESULT_COUNT; i++)); do
-        variable_name="f$((i + 1))"
-        printf -v "$variable_name" '%s' "${GRIP_FILES[i]}"
-
-        match_word=matches
-        ((GRIP_MATCH_COUNTS[i] == 1)) && match_word=match
-        printf '[%d] %s — %d %s, first line %d\n' \
-            "$((i + 1))" \
-            "${GRIP_FILES[i]}" \
-            "${GRIP_MATCH_COUNTS[i]}" \
-            "$match_word" \
-            "${GRIP_FIRST_LINES[i]}"
+        printf '%s\n' "$line"
     done
 }
 
@@ -139,21 +130,28 @@ _grip_run() {
     shift 2
 
     local -a rg_args=(-PHnM 1000 -g '!node_modules' -g '!puppeteer')
-    local search_status
+    local output_file search_status
 
     if ((ignore_case)); then
         rg_args=(-i "${rg_args[@]}")
     fi
 
-    command rg "${rg_args[@]}" "$@"
-    search_status=$?
     _grip_clear_results
+    _grip_index_results "$ignore_case" "$@"
 
-    if ((search_status == 0)); then
-        if ((force_file_list)) || [[ -t 1 ]]; then
-            _grip_index_results "$ignore_case" "$@"
-        fi
+    if [[ -t 1 ]]; then
+        rg_args=(--color=always "${rg_args[@]}")
     fi
+
+    output_file=$(mktemp "${TMPDIR:-/tmp}/grip-output.XXXXXX") || {
+        printf 'grip: could not create output buffer\n' >&2
+        return 1
+    }
+
+    command rg --heading "${rg_args[@]}" "$@" >"$output_file"
+    search_status=$?
+    _grip_annotate_output <"$output_file"
+    rm -f -- "$output_file"
 
     return "$search_status"
 }
@@ -196,9 +194,16 @@ grp() {
 
 f() {
     if (($# == 0)); then
-        printf 'usage: f COMMAND [ARG ...] INDEX\n' >&2
-        printf '       f INDEX\n' >&2
-        return 2
+        if ((GRIP_RESULT_COUNT == 0)); then
+            printf 'f: no files matched the last grip/grp search\n' >&2
+            return 1
+        fi
+
+        local i
+        for ((i = 0; i < GRIP_RESULT_COUNT; i++)); do
+            printf '%s [%d]\n' "${GRIP_FILES[i]}" "$((i + 1))"
+        done
+        return 0
     fi
 
     local index=${!#}
