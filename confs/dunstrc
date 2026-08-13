@@ -116,7 +116,7 @@
     background = "#263a38"
     foreground = "#c4ded8"
     frame_color = "#4f8078"
-    timeout = 10
+    timeout = 6s
 
 [urgency_normal]
 
@@ -124,7 +124,7 @@
     background = "#344254"
     foreground = "#f1f4f8"
     frame_color = "#779ac2"
-    timeout = 10
+    timeout = 6s
 
 [urgency_critical]
 
@@ -132,13 +132,13 @@
     background = "#49383a"
     foreground = "#f0d6d6"
     frame_color = "#9a6267"
-    timeout = 0
+    timeout = 6s
 
-# Keep every notification visible until it is dismissed manually, even when
-# the sending application requests its own timeout.
-[permanent_notifications]
-    timeout = 0
-    override_dbus_timeout = 0
+# Expire notifications after six seconds, even when the sending application
+# requests a different timeout.
+[six_second_notifications]
+    timeout = 6s
+    override_dbus_timeout = 6s
 
 # Network changes are informational and do not need manual dismissal.
 [temporary_networkmanager]
