@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Notification History (All)
+Comment=Browse all closed Dunst notifications
+TryExec=ghostty
+Exec=ghostty --window-decoration=client --gtk-titlebar=true -e notification-history-all
+Terminal=false
+Icon=preferences-system-notifications
+Categories=Utility;
+StartupNotify=true

@@ -50,7 +50,9 @@ ln -sfv `pwd`/confs/rl-config.ghostty ~/.config/ghostty-roguelike/ghostty/config
 ln -sfv `pwd`/confs/rl-ghostty.desktop ~/.local/share/applications/
 ln -sfv `pwd`/confs/nvim.desktop ~/.local/share/applications/
 ln -sfv `pwd`/confs/dunst-history.desktop ~/.local/share/applications/
+ln -sfv `pwd`/confs/dunst-history-all.desktop ~/.local/share/applications/
 ln -sfv `pwd`/confs/bash/notifications-history.sh ~/.local/bin/notifications-history
+ln -sfv `pwd`/confs/bash/notifications-history.sh ~/.local/bin/notification-history-all
 ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/nvim/lsp.lua ~/.config/nvim/after/plugin/
 ln -sfv `pwd`/confs/dunstrc ~/.config/dunst/
