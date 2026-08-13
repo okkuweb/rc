@@ -1,8 +1,9 @@
 configuration {
     font: "JetBrains Mono 11";
+    terminal: "ghostty";
+    modes: "drun";
     show-icons: true;
     display-drun: "";
-    display-run: "";
     drun-display-format: "{name}";
 }
 

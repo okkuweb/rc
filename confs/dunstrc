@@ -6,11 +6,11 @@
     follow = mouse
     # Compact notification size and top-right placement
     width = 240
-    height = 90
+    height = (0, 90)
     # One notification plus one hidden-notification counter
     notification_limit = 2
     origin = top-right
-    offset = 5x60
+    offset = (5, 60)
     # Show number of hidden notifications
     indicate_hidden = yes
     # Shrink window if smaller than width
@@ -91,10 +91,6 @@
     title = Dunst
     # Notification class
     class = Dunst
-    # Print notification on startup
-    startup_notification = false
-    # Dunst verbosity
-    verbosity = mesg
     # Corner radius of dunst
     corner_radius = 6
     # Ignore dbus closeNotification message
@@ -108,8 +104,6 @@
     mouse_middle_click = do_action
     # Right click
     mouse_right_click = do_action
-
-[shortcuts]
 
     # Close one notification
     close = ctrl+space
@@ -151,6 +145,21 @@
     appname = "NetworkManager Applet"
     timeout = 10s
     override_dbus_timeout = 10s
+
+# Hide message contents from private messaging/browser notifications. The
+# summary normally contains the sender or notification title; the body is not
+# rendered and the original notification cannot be recalled from Dunst history.
+[private_signal]
+    appname = "*[Ss]ignal*"
+    format = "<b>%s</b>"
+
+[private_brave]
+    appname = "*[Bb]rave*"
+    format = "<b>%s</b>"
+
+[private_discord]
+    appname = "*[Dd]iscord*"
+    format = "<b>%s</b>"
 #[global]
 #font = JetBrainsMono 11
 ## Allow a small subset of html markup:
