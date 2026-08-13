@@ -151,15 +151,15 @@
 # rendered and the original notification cannot be recalled from Dunst history.
 [private_signal]
     appname = "*[Ss]ignal*"
-    format = "<b>%s</b>"
+    format = "<b>%a</b>\n<i>%s</i>"
 
 [private_brave]
     appname = "*[Bb]rave*"
-    format = "<b>%s</b>"
+    format = "<b>%a</b>\n<i>%s</i>"
 
 [private_discord]
     appname = "*[Dd]iscord*"
-    format = "<b>%s</b>"
+    format = "<b>%a</b>\n<i>%s</i>"
 #[global]
 #font = JetBrainsMono 11
 ## Allow a small subset of html markup:
