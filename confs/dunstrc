@@ -116,7 +116,7 @@
     background = "#263a38"
     foreground = "#c4ded8"
     frame_color = "#4f8078"
-    timeout = 0
+    timeout = 10
 
 [urgency_normal]
 
@@ -124,7 +124,7 @@
     background = "#344254"
     foreground = "#f1f4f8"
     frame_color = "#779ac2"
-    timeout = 0
+    timeout = 10
 
 [urgency_critical]
 
@@ -146,20 +146,6 @@
     timeout = 10s
     override_dbus_timeout = 10s
 
-# Hide message contents from private messaging/browser notifications. The
-# summary normally contains the sender or notification title; the body is not
-# rendered and the original notification cannot be recalled from Dunst history.
-[private_signal]
-    appname = "*[Ss]ignal*"
-    format = "<b>%a</b>\n<i>%s</i>"
-
-[private_brave]
-    appname = "*[Bb]rave*"
-    format = "<b>%a</b>\n<i>%s</i>"
-
-[private_discord]
-    appname = "*[Dd]iscord*"
-    format = "<b>%a</b>\n<i>%s</i>"
 #[global]
 #font = JetBrainsMono 11
 ## Allow a small subset of html markup:
