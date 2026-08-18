@@ -140,12 +140,6 @@
     timeout = 6s
     override_dbus_timeout = 6s
 
-# Network changes are informational and do not need manual dismissal.
-[temporary_networkmanager]
-    appname = "NetworkManager Applet"
-    timeout = 10s
-    override_dbus_timeout = 10s
-
 #[global]
 #font = JetBrainsMono 11
 ## Allow a small subset of html markup:
