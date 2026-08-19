@@ -9,7 +9,11 @@ set $right l
 set $term ghostty
 set $rofi_cmd rofi \
     -terminal '$term'
-set $menu $rofi_cmd -show combi -combi-modes drun#run -modes combi
+set $menu $rofi_cmd -show drun -modes drun
+# Disable drag lock so double-click dragging ends when the button is released.
+input type:touchpad {
+    drag_lock disabled
+}
 
 ### Outputs
 output * bg ~/Pictures/wallpaper.jpg fill
