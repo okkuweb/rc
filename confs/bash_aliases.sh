@@ -336,8 +336,26 @@ notifications() {
     fi
 
     dunstctl history |
-        jq -r '.data[0][] |
-            "\u001b[1;36m\(.appname.data // "Unknown")\u001b[0m — \u001b[1m\(.summary.data // "")\u001b[0m\n\(.body.data // "")\n\n\u001b[2m────────────────────────────────────────────────────────────\u001b[0m\n"' |
+        jq -r '
+            def sender:
+                (.appname.data // "") as $name |
+                if ($name | length) > 0 then $name else "Unknown" end;
+            def title:
+                (.summary.data // "") as $summary |
+                if ($summary | length) > 0 then $summary else "(no title)" end;
+
+            (.data[0] // []) as $notifications |
+            "\u001b[1;33mSummary (\($notifications | length) notifications)\u001b[0m",
+            (
+                $notifications
+                | group_by(sender)[]
+                | "\u001b[1;36m\(.[0] | sender)\u001b[0m (\(length))",
+                  (. | group_by(title)[] | "  \u001b[1m\(.[0] | title)\u001b[0m (\(length))")
+            ),
+            "\n\u001b[2m════════════════════════════════════════════════════════════\u001b[0m\n",
+            ($notifications[] |
+                "\u001b[1;36m\(.appname.data // "Unknown")\u001b[0m — \u001b[1m\(.summary.data // "")\u001b[0m\n\(.body.data // "")\n\n\u001b[2m────────────────────────────────────────────────────────────\u001b[0m\n"
+            )' |
         less -R
 }
 
