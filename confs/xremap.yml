@@ -1,3 +1,5 @@
+default_mode: urw_vi
+
 modmap:
   - name: Slim X1 Keyboard Alt/Super Swap
     device:
@@ -17,6 +19,7 @@ keymap:
     application:
       only: '/[Uu][Rr][Ww]|[Uu]n[Rr]eal.?[Ww]orld/'
     exact_match: true
+    mode: urw_vi
     remap:
       # Preserve the original letter commands behind Ctrl.
       Ctrl-Y: Y
@@ -47,6 +50,14 @@ keymap:
       B: KEY_KP1
       J: KEY_KP2
       N: KEY_KP3
+      BACKSLASH: { set_mode: urw_original }
+  - name: UnReal World original bindings
+    application:
+      only: '/[Uu][Rr][Ww]|[Uu]n[Rr]eal.?[Ww]orld/'
+    exact_match: true
+    mode: urw_original
+    remap:
+      BACKSLASH: { set_mode: urw_vi }
   - name: Mouse bindings
     remap:
       Alt-F1: CapsLock
