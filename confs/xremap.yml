@@ -28,6 +28,16 @@ keymap:
       Ctrl-B: B
       Ctrl-N: N
 
+      # Move without turning using UnReal World's Ctrl+numpad controls.
+      Super-Y: Ctrl-KEY_KP7
+      Super-K: Ctrl-KEY_KP8
+      Super-U: Ctrl-KEY_KP9
+      Super-H: Ctrl-KEY_KP4
+      Super-L: Ctrl-KEY_KP6
+      Super-B: Ctrl-KEY_KP1
+      Super-J: Ctrl-KEY_KP2
+      Super-N: Ctrl-KEY_KP3
+
       # Vi-style movement using UnReal World's numpad controls.
       Y: KEY_KP7
       K: KEY_KP8
