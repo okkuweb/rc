@@ -13,6 +13,30 @@ modmap:
       CapsLock: BTN_LEFT
 
 keymap:
+  - name: UnReal World vi movement
+    application:
+      only: '/[Uu][Rr][Ww]|[Uu]n[Rr]eal.?[Ww]orld/'
+    exact_match: true
+    remap:
+      # Preserve the original letter commands behind Ctrl.
+      Ctrl-Y: Y
+      Ctrl-U: U
+      Ctrl-H: H
+      Ctrl-J: J
+      Ctrl-K: K
+      Ctrl-L: L
+      Ctrl-B: B
+      Ctrl-N: N
+
+      # Vi-style movement using UnReal World's numpad controls.
+      Y: KEY_KP7
+      K: KEY_KP8
+      U: KEY_KP9
+      H: KEY_KP4
+      L: KEY_KP6
+      B: KEY_KP1
+      J: KEY_KP2
+      N: KEY_KP3
   - name: Mouse bindings
     remap:
       Alt-F1: CapsLock
@@ -22,4 +46,3 @@ keymap:
       Alt_L-a: left
       Alt_L-s: down
       Alt_L-d: right
-
