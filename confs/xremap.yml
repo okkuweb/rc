@@ -54,7 +54,7 @@ keymap:
       B: KEY_KP1
       J: KEY_KP2
       N: KEY_KP3
-      SEMICOLON: { set_mode: urw_original }
+      APOSTROPHE: { set_mode: urw_original }
   - name: UnReal World original bindings
     application:
       only: '/[Uu][Rr][Ww]|[Uu]n[Rr]eal.?[Ww]orld/'
@@ -62,7 +62,7 @@ keymap:
     mode: urw_original
     remap:
       Tab: Enter
-      SEMICOLON: { set_mode: urw_vi }
+      APOSTROPHE: { set_mode: urw_vi }
   - name: Mouse bindings
     remap:
       Alt-F1: CapsLock
