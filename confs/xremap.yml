@@ -25,24 +25,14 @@ keymap:
       Tab: Enter
 
       # Preserve the original letter commands behind Ctrl.
-      Ctrl-Y: Y
-      Ctrl-U: U
-      Ctrl-H: H
-      Ctrl-J: J
-      Ctrl-K: K
-      Ctrl-L: L
-      Ctrl-B: B
-      Ctrl-N: N
-
-      # Move without turning using UnReal World's Ctrl+numpad controls.
-      Super-Y: Ctrl-KEY_KP7
-      Super-K: Ctrl-KEY_KP8
-      Super-U: Ctrl-KEY_KP9
-      Super-H: Ctrl-KEY_KP4
-      Super-L: Ctrl-KEY_KP6
-      Super-B: Ctrl-KEY_KP1
-      Super-J: Ctrl-KEY_KP2
-      Super-N: Ctrl-KEY_KP3
+      Super-Y: Y
+      Super-U: U
+      Super-H: H
+      Super-J: J
+      Super-K: K
+      Super-L: L
+      Super-B: B
+      Super-N: N
 
       # Vi-style movement using UnReal World's numpad controls.
       Y: KEY_KP7
@@ -53,7 +43,7 @@ keymap:
       B: KEY_KP1
       J: KEY_KP2
       N: KEY_KP3
-      BACKSLASH: { set_mode: urw_original }
+      SEMICOLON: { set_mode: urw_original }
   - name: UnReal World original bindings
     application:
       only: '/[Uu][Rr][Ww]|[Uu]n[Rr]eal.?[Ww]orld/'
@@ -61,11 +51,14 @@ keymap:
     mode: urw_original
     remap:
       Tab: Enter
-      BACKSLASH: { set_mode: urw_vi }
+      SEMICOLON: { set_mode: urw_vi }
   - name: Mouse bindings
     remap:
       Alt-F1: CapsLock
   - name: Alt WASD arrows
+    application:
+      not: '/[Uu][Rr][Ww]|[Uu]n[Rr]eal.?[Ww]orld/'
+    exact_match: true
     remap:
       Alt_L-w: up
       Alt_L-a: left
