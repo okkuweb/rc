@@ -1,4 +1,5 @@
 default_mode: urw_vi
+keypress_delay_ms: 20
 
 modmap:
   - name: Slim X1 Keyboard Alt/Super Swap
@@ -33,6 +34,16 @@ keymap:
       Super-L: L
       Super-B: B
       Super-N: N
+
+      # Move without turning using UnReal World's Ctrl+numpad controls.
+      Shift-Y: Ctrl-KEY_KP7
+      Shift-K: Ctrl-KEY_KP8
+      Shift-U: Ctrl-KEY_KP9
+      Shift-H: Ctrl-KEY_KP4
+      Shift-L: Ctrl-KEY_KP6
+      Shift-B: Ctrl-KEY_KP1
+      Shift-J: Ctrl-KEY_KP2
+      Shift-N: Ctrl-KEY_KP3
 
       # Vi-style movement using UnReal World's numpad controls.
       Y: KEY_KP7
