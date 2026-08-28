@@ -21,6 +21,9 @@ keymap:
     exact_match: true
     mode: urw_vi
     remap:
+      # Put Enter within easy reach for map and menu actions.
+      Tab: Enter
+
       # Preserve the original letter commands behind Ctrl.
       Ctrl-Y: Y
       Ctrl-U: U
@@ -57,6 +60,7 @@ keymap:
     exact_match: true
     mode: urw_original
     remap:
+      Tab: Enter
       BACKSLASH: { set_mode: urw_vi }
   - name: Mouse bindings
     remap:
