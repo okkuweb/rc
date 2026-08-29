@@ -1,6 +1,3 @@
-default_mode: urw_vi
-keypress_delay_ms: 20
-
 modmap:
   - name: Slim X1 Keyboard Alt/Super Swap
     device:
@@ -16,60 +13,10 @@ modmap:
       CapsLock: BTN_LEFT
 
 keymap:
-  - name: UnReal World vi movement
-    application:
-      only: '/[Uu][Rr][Ww]|[Uu]n[Rr]eal.?[Ww]orld/'
-    exact_match: true
-    mode: urw_vi
-    remap:
-      # Put Enter within easy reach for map and menu actions.
-      Tab: Enter
-
-      # Preserve the original letter commands behind Ctrl.
-      Super-Y: Y
-      Super-U: U
-      Super-H: H
-      Super-J: J
-      Super-K: K
-      Super-L: L
-      Super-B: B
-      Super-N: N
-
-      # Move without turning using UnReal World's Ctrl+numpad controls.
-      Shift-Y: { Ctrl-KEY_KP7, repeat: true }
-      Shift-K: { Ctrl-KEY_KP8, repeat: true }
-      Shift-U: { Ctrl-KEY_KP9, repeat: true }
-      Shift-H: { Ctrl-KEY_KP4, repeat: true }
-      Shift-L: { Ctrl-KEY_KP6, repeat: true }
-      Shift-B: { Ctrl-KEY_KP1, repeat: true }
-      Shift-J: { Ctrl-KEY_KP2, repeat: true }
-      Shift-N: { Ctrl-KEY_KP3, repeat: true }
-
-      # Vi-style movement using UnReal World's numpad controls.
-      Y: KEY_KP7
-      K: KEY_KP8
-      U: KEY_KP9
-      H: KEY_KP4
-      L: KEY_KP6
-      B: KEY_KP1
-      J: KEY_KP2
-      N: KEY_KP3
-      SEMICOLON: { set_mode: urw_original }
-  - name: UnReal World original bindings
-    application:
-      only: '/[Uu][Rr][Ww]|[Uu]n[Rr]eal.?[Ww]orld/'
-    exact_match: true
-    mode: urw_original
-    remap:
-      Tab: Enter
-      SEMICOLON: { set_mode: urw_vi }
   - name: Mouse bindings
     remap:
       Alt-F1: CapsLock
   - name: Alt WASD arrows
-    application:
-      not: '/[Uu][Rr][Ww]|[Uu]n[Rr]eal.?[Ww]orld/'
-    exact_match: true
     remap:
       Alt_L-w: up
       Alt_L-a: left
