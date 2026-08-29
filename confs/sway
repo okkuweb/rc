@@ -54,7 +54,7 @@ exec swayidle -w \
     before-sleep 'swaylock -f'
 exec --no-startup-id unset GTK_IM_MODULE && fcitx5 -d
 exec ~/installed/keymapper/build/keymapperd
-exec ~/installed/keymapper/build/keymapper
+exec ~/installed/keymapper/build/keymapper -u
 exec_always autotiling
 
 ### Applications
