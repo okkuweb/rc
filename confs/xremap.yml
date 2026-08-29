@@ -36,14 +36,14 @@ keymap:
       Super-N: N
 
       # Move without turning using UnReal World's Ctrl+numpad controls.
-      Shift-Y: Ctrl-KEY_KP7
-      Shift-K: Ctrl-KEY_KP8
-      Shift-U: Ctrl-KEY_KP9
-      Shift-H: Ctrl-KEY_KP4
-      Shift-L: Ctrl-KEY_KP6
-      Shift-B: Ctrl-KEY_KP1
-      Shift-J: Ctrl-KEY_KP2
-      Shift-N: Ctrl-KEY_KP3
+      Shift-Y: { Ctrl-KEY_KP7, repeat: true }
+      Shift-K: { Ctrl-KEY_KP8, repeat: true }
+      Shift-U: { Ctrl-KEY_KP9, repeat: true }
+      Shift-H: { Ctrl-KEY_KP4, repeat: true }
+      Shift-L: { Ctrl-KEY_KP6, repeat: true }
+      Shift-B: { Ctrl-KEY_KP1, repeat: true }
+      Shift-J: { Ctrl-KEY_KP2, repeat: true }
+      Shift-N: { Ctrl-KEY_KP3, repeat: true }
 
       # Vi-style movement using UnReal World's numpad controls.
       Y: KEY_KP7

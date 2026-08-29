@@ -53,7 +53,8 @@ exec swayidle -w \
     timeout 360 'swaylock -f' \
     before-sleep 'swaylock -f'
 exec --no-startup-id unset GTK_IM_MODULE && fcitx5 -d
-exec xremap ~/.config/xremap/config.yml
+exec ~/installed/keymapper/build/keymapperd
+exec ~/installed/keymapper/build/keymapper
 exec_always autotiling
 
 ### Applications
