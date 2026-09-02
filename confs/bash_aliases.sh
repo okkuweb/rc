@@ -268,6 +268,14 @@ copy() {
     local data
     data="$(base64 -w0)"
     printf '\033Ptmux;\033\033]52;c;%s\a\033\\' "$data" > /dev/tty
+
+    if [ -n "${WAYLAND_DISPLAY:-}" ] && command -v wl-copy >/dev/null 2>&1; then
+        printf '%s' "$data" | base64 --decode | wl-copy
+    elif [ -n "${DISPLAY:-}" ] && command -v xclip >/dev/null 2>&1; then
+        printf '%s' "$data" | base64 --decode | xclip -selection clipboard
+    elif [ -n "${DISPLAY:-}" ] && command -v xsel >/dev/null 2>&1; then
+        printf '%s' "$data" | base64 --decode | xsel --clipboard --input
+    fi
 }
 
 alias restartvmnetwork="sudo virsh net-destroy default && sudo virsh net-start default && sudo systemctl restart libvirtd"
