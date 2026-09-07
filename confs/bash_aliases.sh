@@ -367,4 +367,5 @@ notifications() {
         less -R
 }
 
-alias dh='notifications'
+alias dha='notifications'
+alias dh='notifications-history'
