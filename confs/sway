@@ -154,22 +154,87 @@ for_window [window_role="bubble"] floating enable
 for_window [window_role="dialog"] floating enable
 for_window [window_type="dialog"] floating enable
 
-### System Includes
-include '$(/usr/libexec/sway/layered-include "/etc/sway/config.d/*.conf" "${XDG_CONFIG_HOME:-$HOME/.config}/sway/config.d/*.conf")'
+### Expanded System Configuration
+# Inlined from /etc/sway/config.d/10-systemd-cgroups.conf
+exec /usr/libexec/sway-systemd/assign-cgroups.py
 
-### More specific system includes - Check from time to time if there's additions
-include /usr/share/sway/config.d/50-rules-browser.conf
-include /usr/share/sway/config.d/50-rules-pavucontrol.conf
-include /usr/share/sway/config.d/50-rules-policykit-agent.conf
-include /usr/share/sway/config.d/60-bindings-brightness.conf
-include /usr/share/sway/config.d/60-bindings-media.conf
-include /usr/share/sway/config.d/60-bindings-screenshot.conf
-include /usr/share/sway/config.d/60-bindings-volume.conf
-include /usr/share/sway/config.d/65-mode-passthrough.conf
-include /usr/share/sway/config.d/90-bar.conf
-include /usr/share/sway/config.d/95-autostart-policykit-agent.conf
-include /usr/share/sway/config.d/95-xdg-desktop-autostart.conf
-include /usr/share/sway/config.d/95-xdg-user-dirs.conf
+# Inlined from /etc/sway/config.d/10-systemd-session.conf
+exec /usr/libexec/sway-systemd/session.sh
+
+# Inlined from /usr/share/sway/config.d/50-rules-browser.conf
+for_window [class="Chromium-browser"] mark Browser
+for_window [class="Brave-browser"] mark Browser
+for_window [class="firefox"] mark Browser
+for_window [app_id="Chromium-browser"] mark Browser
+for_window [app_id="brave-browser"] mark Browser
+for_window [app_id="firefox"] mark Browser
+for_window [con_mark="Browser"] inhibit_idle fullscreen
+for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
+
+# Inlined from /usr/share/sway/config.d/50-rules-pavucontrol.conf
+for_window [app_id="pavucontrol"] {
+    floating enable
+    move position center
+}
+for_window [app_id="pavucontrol-qt"] {
+    floating enable
+    move position center
+}
+
+# Inlined from /usr/share/sway/config.d/50-rules-policykit-agent.conf
+for_window [app_id="lxqt-policykit-agent"] {
+    floating enable
+    move position center
+}
+
+# Inlined from /usr/share/sway/config.d/60-bindings-brightness.conf
+set $brightness_notification_cmd command -v notify-send >/dev/null && \
+    VALUE=$(brightnessctl --percentage get) && \
+    notify-send -e -h string:x-canonical-private-synchronous:brightness \
+        -h "int:value:$VALUE" -t 800 "Brightness: ${VALUE}%"
+bindsym XF86MonBrightnessDown exec \
+    'STEP="$brightness_step" && brightnessctl -q set ${STEP:-5}%- && $brightness_notification_cmd'
+bindsym XF86MonBrightnessUp exec \
+    'STEP="$brightness_step" && brightnessctl -q set +${STEP:-5}% && $brightness_notification_cmd'
+
+# Inlined from /usr/share/sway/config.d/60-bindings-media.conf
+bindsym --locked {
+    XF86AudioPlay exec playerctl play-pause
+    XF86AudioStop exec playerctl stop
+}
+bindsym {
+    XF86AudioForward exec playerctl position +10
+    XF86AudioNext exec playerctl next
+    XF86AudioPause exec playerctl pause
+    XF86AudioPrev exec playerctl previous
+    XF86AudioRewind exec playerctl position -10
+}
+
+# Inlined from /usr/share/sway/config.d/60-bindings-volume.conf
+set $volume_helper_cmd /usr/libexec/sway/volume-helper
+bindsym --locked {
+    XF86AudioRaiseVolume exec \
+        $volume_helper_cmd --limit "$volume_limit" --increase "$volume_step"
+    XF86AudioLowerVolume exec \
+        $volume_helper_cmd --limit "$volume_limit" --decrease "$volume_step"
+    XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $volume_helper_cmd
+    XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+}
+
+# Inlined from /usr/share/sway/config.d/90-bar.conf
+bar {
+    swaybar_command waybar
+}
+
+# Inlined from /usr/share/sway/config.d/95-autostart-policykit-agent.conf
+exec /usr/libexec/lxqt-policykit-agent
+
+# Inlined from /usr/share/sway/config.d/95-xdg-desktop-autostart.conf
+exec /usr/libexec/sway-systemd/wait-sni-ready && \
+    systemctl --user start sway-xdg-autostart.target
+
+# Inlined from /usr/share/sway/config.d/95-xdg-user-dirs.conf
+exec /usr/bin/xdg-user-dirs-update
 
 ### Private Overrides
 include ~/.config/sway/sway-local
