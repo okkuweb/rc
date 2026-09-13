@@ -45,6 +45,14 @@ tooltip label {
     color: #1e1e2e;
 }
 
+#custom-notifications {
+    margin: 0 0 5px;
+    padding: 0 10px;
+    border-radius: 8px;
+    background: #89b4fa;
+    color: #1e1e2e;
+}
+
 #workspaces {
     margin: 0 0 5px;
     padding: 0 4px;
