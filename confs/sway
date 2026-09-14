@@ -16,7 +16,7 @@ input type:touchpad {
 }
 
 ### Outputs
-output * bg ~/Pictures/wallpaper.jpg fill
+output * bg ~/.wallpaper/wallpaper.jpg fill
 
 ### Input
 input type:keyboard {
@@ -53,9 +53,6 @@ exec swayidle -w \
     timeout 360 'swaylock -f' \
     before-sleep 'swaylock -f'
 exec --no-startup-id unset GTK_IM_MODULE && fcitx5 -d
-exec ~/installed/keymapper/build/keymapperd
-exec ~/installed/keymapper/build/keymapper -u
-exec_always autotiling
 
 ### Applications
 bindsym $mod+Return exec $term

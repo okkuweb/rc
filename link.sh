@@ -30,6 +30,7 @@ mkdir -p ~/.config/.ssh
 mkdir -p ~/.config/xkb/symbols
 mkdir -p ~/.config/xkb/rules
 mkdir -p ~/.local/share/applications/
+mkdir -p ~/.wallpaper
 ln -sfv `pwd`/confs/bashrc.sh ~/.bashrc
 ln -sfv `pwd`/confs/bash_aliases.sh ~/.bash_aliases.sh
 ln -sfv `pwd`/confs/bash/grip.sh ~/.grip.sh
@@ -71,6 +72,8 @@ ln -sfv `pwd`/confs/rofi.rasi ~/.config/rofi/config.rasi
 ln -sfv `pwd`/confs/us_fi.layout ~/.config/xkb/symbols/us
 ln -sfv `pwd`/confs/evdev.xml ~/.config/xkb/rules/evdev.xml
 ln -sfv `pwd`/confs/update.sh ~/update.sh
+ln -sfv `pwd`/confs/wallpaper.jpg ~/.wallpaper/wallpaper.jpg
+ln -sfv `pwd`/confs/lock.jpg ~/.wallpaper/lock.jpg
 
 if [[ ! -f "$HOME/.ssh/config" ]]; then
     cp -fv `pwd`/confs/sshbase.conf ~/.ssh/config
