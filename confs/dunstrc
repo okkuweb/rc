@@ -149,6 +149,6 @@
     history_ignore = yes
 
 [ignore_network_manager]
-    summary = "NetworkManager Applet"
+    appname = "NetworkManager Applet"
     history_ignore = yes
 
