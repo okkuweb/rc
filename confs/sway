@@ -22,8 +22,8 @@ output * bg ~/.wallpaper/wallpaper.jpg fill
 input type:keyboard {
     repeat_delay 250
     repeat_rate 30
-    xkb_layout us
-    xkb_variant fi
+    #xkb_layout us
+    #xkb_variant fi
 }
 
 input type:touchpad {
@@ -57,9 +57,10 @@ exec --no-startup-id unset GTK_IM_MODULE && fcitx5 -d
 ### Applications
 bindsym $mod+Return exec $term
 bindsym $mod+Space exec $menu
-bindsym $mod+e exec thunar
-bindsym $mod+b exec flatpak run org.mozilla.firefox
+bindsym $mod+e exec env GTK_THEME=Adwaita:dark thunar
 bindsym $mod+Shift+s exec flatpak run org.flameshot.Flameshot gui
+bindsym $mod+n exec ghostty -e ~/.local/bin/notifications-history
+#bindsym $mod+b exec flatpak run org.mozilla.firefox
 
 ### Session
 bindsym $mod+Shift+c reload
@@ -179,7 +180,7 @@ for_window [app_id="lxqt-policykit-agent"] {
 
 # Inlined from /usr/share/sway/config.d/60-bindings-brightness.conf
 set $brightness_notification_cmd command -v notify-send >/dev/null && \
-    VALUE=$(brightnessctl --percentage get) && \
+    VALUE=$(brightnessctl --class=backlight --machine-readable | cut -d, -f4 | tr -d '%') && \
     notify-send -e -h string:x-canonical-private-synchronous:brightness \
         -h "int:value:$VALUE" -t 800 "Brightness: ${VALUE}%"
 bindsym XF86MonBrightnessDown exec \
@@ -199,6 +200,13 @@ bindsym {
     XF86AudioPrev exec playerctl previous
     XF86AudioRewind exec playerctl position -10
 }
+
+#bindsym --locked {
+#    XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
+#    XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
+#    XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+#    XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
+#}
 
 # Inlined from /usr/share/sway/config.d/90-bar.conf
 bar {

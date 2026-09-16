@@ -49,7 +49,7 @@
     },
 
     "custom/notifications": {
-        "exec": "notifications-history --count",
+        "exec": "$HOME/.local/bin/notifications-history --count",
         "interval": 2,
         "format": " {}",
         "tooltip-format": "{} unread notifications — click to open",

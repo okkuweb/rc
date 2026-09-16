@@ -5,7 +5,7 @@ font-size = 14
 font-family = "BigBlueTermPlus Nerd Font Mono"
 #font-family = "JetBrainsMonoNL Nerd Font"
 background = #141414
-bold-is-bright = true
+bold-color = bright
 theme = Dracula
 palette = 4=#61afef
 palette = 12=#61afef

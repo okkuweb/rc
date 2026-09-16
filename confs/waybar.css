@@ -25,6 +25,24 @@ tooltip label {
     color: #cdd6f4;
 }
 
+menu {
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    border: 1px solid #313244;
+}
+
+menuitem {
+    padding: 6px 12px;
+}
+
+menuitem:hover {
+    background-color: #313244;
+}
+
+menuitem:disabled {
+    color: #6c7086;
+}
+
 #clock,
 #battery,
 #cpu,
@@ -35,12 +53,18 @@ tooltip label {
 #pulseaudio,
 #tray,
 #mode,
-#idle_inhibitor,
 #scratchpad,
-#language,
-#power-profiles-daemon {
+#language {
     margin: 0 0 5px;
-    padding: 0 10px;
+    padding: 0 14px;
+    font-size: 14px;
+    border-radius: 8px;
+    color: #1e1e2e;
+}
+#power-profiles-daemon, #idle_inhibitor {
+    margin: 0 0 5px;
+    padding: 0px 20px 0px 12px;
+    font-size: 14px;
     border-radius: 8px;
     color: #1e1e2e;
 }

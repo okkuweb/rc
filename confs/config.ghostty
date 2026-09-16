@@ -3,7 +3,7 @@ background-opacity = 0.90
 font-size = 10
 font-family = "JetBrainsMonoNL Nerd Font"
 background = #141414
-bold-is-bright = true
+bold-color = bright
 theme = Dracula
 palette = 4=#61afef
 palette = 12=#61afef
@@ -13,7 +13,7 @@ adjust-cell-height = 16%
 shell-integration-features = no-cursor
 cursor-style = block
 cursor-style-blink = false
-keybind = global:F12=toggle_quick_terminal
+keybind = global:alt+c=toggle_quick_terminal
 keybind = global:F11=toggle_fullscreen
 keybind = ctrl+enter=unbind
 quick-terminal-size = 100%,100%
