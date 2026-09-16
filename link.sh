@@ -69,7 +69,7 @@ ln -sfv `pwd`/confs/waybar.css ~/.config/waybar/style.css
 ln -sfv `pwd`/confs/waybar.css ~/.waybar.css
 cp -fv  --update `pwd`/confs/fonts/* ~/.local/share/fonts/
 ln -sfv `pwd`/confs/rofi.rasi ~/.config/rofi/config.rasi
-ln -sfv `pwd`/confs/us_fi.layout ~/.config/xkb/symbols/us
+ln -sfv `pwd`/confs/us_fi.layout ~/.config/xkb/symbols/us_fi
 ln -sfv `pwd`/confs/evdev.xml ~/.config/xkb/rules/evdev.xml
 ln -sfv `pwd`/confs/update.sh ~/update.sh
 ln -sfv `pwd`/confs/wallpaper.jpg ~/.wallpaper/wallpaper.jpg

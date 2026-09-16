@@ -4,16 +4,13 @@
   <layoutList>
     <layout>
       <configItem>
-        <name>us</name>
+        <name>us_fi</name>
+        <shortDescription>fi</shortDescription>
+        <description>Finnish (US)</description>
+        <languageList>
+          <iso639Id>fin</iso639Id>
+        </languageList>
       </configItem>
-      <variantList>
-        <variant>
-          <configItem>
-            <name>fi</name>
-            <description>Finnish (US)</description>
-          </configItem>
-        </variant>
-      </variantList>
     </layout>
   </layoutList>
 </xkbConfigRegistry>
