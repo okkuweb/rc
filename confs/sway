@@ -61,6 +61,7 @@ bindsym $mod+e exec env GTK_THEME=Adwaita:dark thunar
 bindsym $mod+Shift+s exec flatpak run org.flameshot.Flameshot gui
 bindsym $mod+n exec ghostty -e ~/.local/bin/notifications-history
 #bindsym $mod+b exec flatpak run org.mozilla.firefox
+#exec /usr/libexec/lxqt-policykit-agent
 
 ### Session
 bindsym $mod+Shift+c reload
@@ -201,6 +202,16 @@ bindsym {
     XF86AudioRewind exec playerctl position -10
 }
 
+# Inlined from /usr/share/sway/config.d/60-bindings-volume.conf
+set $volume_helper_cmd /usr/libexec/sway/volume-helper
+bindsym --locked {
+    XF86AudioRaiseVolume exec \
+        $volume_helper_cmd --limit "$volume_limit" --increase "$volume_step"
+    XF86AudioLowerVolume exec \
+        $volume_helper_cmd --limit "$volume_limit" --decrease "$volume_step"
+    XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && $volume_helper_cmd
+    XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+}
 #bindsym --locked {
 #    XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
 #    XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
