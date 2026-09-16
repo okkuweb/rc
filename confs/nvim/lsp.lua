@@ -97,6 +97,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
         map("gs", vim.lsp.buf.hover)
         map("gn", vim.lsp.buf.rename)
         map("gf", vim.lsp.buf.format)
+        map("ga", vim.lsp.buf.code_action)
         map("gi", function()
             vim.lsp.buf.code_action({ context = { only = { "source.organizeImports" } }, apply = true })
         end)
