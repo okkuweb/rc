@@ -22,8 +22,7 @@ output * bg ~/.wallpaper/wallpaper.jpg fill
 input type:keyboard {
     repeat_delay 250
     repeat_rate 30
-    #xkb_layout us
-    #xkb_variant fi
+    xkb_layout us_fi
 }
 
 input type:touchpad {
