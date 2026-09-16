@@ -74,6 +74,7 @@ ln -sfv `pwd`/confs/evdev.xml ~/.config/xkb/rules/evdev.xml
 ln -sfv `pwd`/confs/update.sh ~/update.sh
 ln -sfv `pwd`/confs/wallpaper.jpg ~/.wallpaper/wallpaper.jpg
 ln -sfv `pwd`/confs/lock.png ~/.wallpaper/lock.png
+ln -sfv `pwd`/confs/audio-volume-change.oga ~/.config/waybar/
 
 if [[ ! -f "$HOME/.ssh/config" ]]; then
     cp -fv `pwd`/confs/sshbase.conf ~/.ssh/config

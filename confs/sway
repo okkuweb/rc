@@ -48,7 +48,7 @@ smart_gaps on
 
 ### Startup
 exec swayidle -w \
-    timeout 300 'chayang && swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
+    timeout 300 '~/.local/bin/chayang && swaymsg "output * power off"' resume 'swaymsg "output * power on"' \
     timeout 360 'swaylock -f' \
     before-sleep 'swaylock -f'
 exec --no-startup-id unset GTK_IM_MODULE && fcitx5 -d
@@ -201,10 +201,11 @@ bindsym {
     XF86AudioRewind exec playerctl position -10
 }
 
+set $volume_sound_cmd paplay ~/.config/waybar/audio-volume-change.oga
 bindsym --locked {
-    XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle
-    XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%
-    XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%
+    XF86AudioMute exec pactl set-sink-mute \@DEFAULT_SINK@ toggle, exec $volume_sound_cmd
+    XF86AudioLowerVolume exec pactl set-sink-volume \@DEFAULT_SINK@ -5%, exec $volume_sound_cmd
+    XF86AudioRaiseVolume exec pactl set-sink-volume \@DEFAULT_SINK@ +5%, exec $volume_sound_cmd
     XF86AudioMicMute exec pactl set-source-mute \@DEFAULT_SOURCE@ toggle
 }
 

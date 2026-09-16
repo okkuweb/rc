@@ -67,8 +67,8 @@
     "pulseaudio": {
         "format": "{icon} {volume}%",
         "format-bluetooth": "{icon} {volume}%",
-        "format-bluetooth-muted": " ",
-        "format-muted": " muted",
+        "format-bluetooth-muted": " ",
+        "format-muted": " muted",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
