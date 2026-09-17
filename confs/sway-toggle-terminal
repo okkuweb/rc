@@ -2,19 +2,19 @@
 
 set -eu
 
-terminal_workspace=10
+terminal_workspace='>'
 current_workspace=$(swaymsg -t get_workspaces -r |
-    jq -r '.[] | select(.focused) | .num')
+    jq -r '.[] | select(.focused) | .name')
 
 if [ "$current_workspace" = "$terminal_workspace" ]; then
     swaymsg 'workspace back_and_forth' >/dev/null
     exit
 fi
 
-if swaymsg -t get_tree -r | jq -e --argjson workspace "$terminal_workspace" '
+if swaymsg -t get_tree -r | jq -e --arg workspace "$terminal_workspace" '
     first(
         .. | objects |
-        select(.type? == "workspace" and .num? == $workspace) |
+        select(.type? == "workspace" and .name? == $workspace) |
         .. | objects |
         select(
             ((.app_id // "") | ascii_downcase | contains("ghostty")) or
@@ -22,7 +22,7 @@ if swaymsg -t get_tree -r | jq -e --argjson workspace "$terminal_workspace" '
         )
     ) // false
 ' >/dev/null; then
-    swaymsg "workspace number $terminal_workspace" >/dev/null
+    swaymsg "workspace \"$terminal_workspace\"" >/dev/null
 else
-    swaymsg "workspace number $terminal_workspace; exec ghostty" >/dev/null
+    swaymsg "workspace \"$terminal_workspace\"; exec ghostty" >/dev/null
 fi
