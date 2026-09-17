@@ -53,7 +53,7 @@
         "interval": 2,
         "format": " {}",
         "tooltip-format": "{} unread notifications — click to open",
-        "on-click": "ghostty --window-decoration=client --gtk-titlebar=true -e notifications-history"
+        "on-click": "ghostty --window-decoration=client --gtk-titlebar=true -e $HOME/.local/bin/notifications-history"
     },
 
     "idle_inhibitor": {
