@@ -43,6 +43,42 @@ menuitem:disabled {
     color: #6c7086;
 }
 
+/* The global reset above also affects GTK's internal check/radio nodes.
+ * Restore their size and provide visible symbolic indicators for tray menus. */
+menu menuitem check,
+menu menuitem radio {
+    min-width: 16px;
+    min-height: 16px;
+    margin-right: 6px;
+    color: #cdd6f4;
+}
+
+menu menuitem check:checked {
+    -gtk-icon-source: -gtk-icontheme("object-select-symbolic");
+}
+
+menu menuitem radio:checked {
+    -gtk-icon-source: -gtk-icontheme("media-record-symbolic");
+}
+
+menu menuitem:hover check,
+menu menuitem:hover radio {
+    color: #ffffff;
+}
+
+/* StatusNotifier menus use this symbolic icon for nested submenus.  Give it
+ * an explicit size and foreground so it cannot disappear into a dark menu. */
+menu menuitem arrow {
+    color: #cdd6f4;
+    min-width: 16px;
+    min-height: 16px;
+    -gtk-icon-source: -gtk-icontheme("pan-end-symbolic");
+}
+
+menu menuitem:hover arrow {
+    color: #ffffff;
+}
+
 #clock,
 #battery,
 #cpu,

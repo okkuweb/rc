@@ -83,6 +83,8 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 bindsym $mod+Tab focus right
 bindsym $mod+Shift+Tab focus left
+bindsym Mod1+Tab focus right
+bindsym Mod1+Shift+Tab focus left
 
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
@@ -101,7 +103,7 @@ bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+d layout toggle split
 bindsym $mod+z fullscreen
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle, resize set width 70 ppt height 70 ppt, move position center
 bindsym $mod+t focus mode_toggle
 bindsym $mod+a focus parent
 bindsym f12 scratchpad show, resize set 100ppt 100ppt, move position center
@@ -148,6 +150,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 ### Window Rules
+for_window [floating] resize set width 70 ppt height 70 ppt, move position center
 for_window [title=".*Ground Gives Way.*"] floating enable
 for_window [title=".*Dungeon Crawl Stone Soup.*"] floating enable
 for_window [window_role="pop-up"] floating enable

@@ -377,3 +377,6 @@ notifications() {
 
 alias dha='notifications'
 alias dh='notifications-history'
+
+alias swaywindows="swaymsg -t get_tree | jq -r '.. | objects | select(.type? == \"con\" and (.app_id? != null or .window? != null)) | \"\(.app_id // .window_properties.class // \"unknown\") — \(.name // \"untitled\")\"'"
+

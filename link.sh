@@ -31,6 +31,7 @@ mkdir -p ~/.config/xkb/symbols
 mkdir -p ~/.config/xkb/rules
 mkdir -p ~/.local/share/applications/
 mkdir -p ~/.wallpaper
+mkdir -p ~/.config/kanshi
 ln -sfv `pwd`/confs/bashrc.sh ~/.bashrc
 ln -sfv `pwd`/confs/bash_aliases.sh ~/.bash_aliases.sh
 ln -sfv `pwd`/confs/bash/grip.sh ~/.grip.sh
@@ -75,6 +76,7 @@ ln -sfv `pwd`/confs/update.sh ~/update.sh
 ln -sfv `pwd`/confs/wallpaper.jpg ~/.wallpaper/wallpaper.jpg
 ln -sfv `pwd`/confs/lock.png ~/.wallpaper/lock.png
 ln -sfv `pwd`/confs/audio-volume-change.oga ~/.config/waybar/
+ln -sfv `pwd`/confs/kanshi.config ~/.config/kanshi/config
 
 if [[ ! -f "$HOME/.ssh/config" ]]; then
     cp -fv `pwd`/confs/sshbase.conf ~/.ssh/config
