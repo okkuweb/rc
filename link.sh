@@ -77,6 +77,7 @@ ln -sfv `pwd`/confs/wallpaper.jpg ~/.wallpaper/wallpaper.jpg
 ln -sfv `pwd`/confs/lock.png ~/.wallpaper/lock.png
 ln -sfv `pwd`/confs/audio-volume-change.oga ~/.config/waybar/
 ln -sfv `pwd`/confs/kanshi.config ~/.config/kanshi/config
+ln -sfv `pwd`/confs/sway-toggle-terminal ~/.config/sway/
 
 if [[ ! -f "$HOME/.ssh/config" ]]; then
     cp -fv `pwd`/confs/sshbase.conf ~/.ssh/config
