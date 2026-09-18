@@ -120,16 +120,14 @@ menu menuitem:hover arrow {
 
 #workspaces {
     margin: 0 0 5px;
-    padding: 0 4px;
     border-radius: 8px;
     background: #1e1e2e;
     border: 1px solid rgba(205, 214, 244, 0.55);
 }
 
 #workspaces button {
-    margin: 0 2px;
     padding: 0 8px;
-    border-radius: 7px;
+    border-radius: 8px;
     background: transparent;
     color: #a6adc8;
     box-shadow: none;
