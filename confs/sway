@@ -158,6 +158,8 @@ for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
 for_window [window_role="dialog"] floating enable
 for_window [window_type="dialog"] floating enable
+for_window [app_id=".*pavucontrol"] floating enable
+for_window [app_id=".*pavucontrol-qt"] floating enable
 
 # Inlined from /usr/share/sway/config.d/50-rules-browser.conf
 for_window [class="Chromium-browser"] mark Browser
@@ -169,20 +171,11 @@ for_window [app_id="firefox"] mark Browser
 for_window [con_mark="Browser"] inhibit_idle fullscreen
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
 
-# Inlined from /usr/share/sway/config.d/50-rules-pavucontrol.conf
-for_window [app_id="pavucontrol"] {
-    floating enable
-    move position center
-}
-for_window [app_id="pavucontrol-qt"] {
-    floating enable
-    move position center
-}
-
 # Inlined from /usr/share/sway/config.d/50-rules-policykit-agent.conf
 for_window [app_id="lxqt-policykit-agent"] {
     floating enable
     move position center
+    resize set width 20 ppt height 20 ppt
 }
 
 # Inlined from /usr/share/sway/config.d/60-bindings-brightness.conf
