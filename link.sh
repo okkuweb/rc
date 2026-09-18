@@ -73,8 +73,6 @@ ln -sfv `pwd`/confs/rofi.rasi ~/.config/rofi/config.rasi
 ln -sfv `pwd`/confs/us_fi.layout ~/.config/xkb/symbols/us_fi
 ln -sfv `pwd`/confs/evdev.xml ~/.config/xkb/rules/evdev.xml
 ln -sfv `pwd`/confs/update.sh ~/update.sh
-ln -sfv `pwd`/confs/wallpaper.jpg ~/.wallpaper/wallpaper.jpg
-ln -sfv `pwd`/confs/lock.png ~/.wallpaper/lock.png
 ln -sfv `pwd`/confs/audio-volume-change.oga ~/.config/waybar/
 ln -sfv `pwd`/confs/kanshi.config ~/.config/kanshi/config
 ln -sfv `pwd`/confs/sway-toggle-terminal ~/.config/sway/

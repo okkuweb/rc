@@ -16,7 +16,7 @@ input type:touchpad {
 }
 
 ### Outputs
-output * bg ~/.wallpaper/wallpaper.jpg fill
+output * bg ~/.wallpaper/wallpaper.png fill
 
 ### Input
 input type:keyboard {
