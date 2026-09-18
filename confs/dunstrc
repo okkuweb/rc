@@ -153,10 +153,6 @@
     history_ignore = yes
 
 [ignore_network_manager]
-    appname = "Flameshot"
-    history_ignore = yes
-
-[ignore_network_manager]
-    appname = "Flameshot Info"
+    appname = "flameshot"
     history_ignore = yes
 
