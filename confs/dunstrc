@@ -149,7 +149,7 @@
     history_ignore = yes
 
 [ignore_network_manager]
-    appname = "NetworkManager Applet"
+    appname = "NetworkManager Applet*"
     history_ignore = yes
 
 [ignore_network_manager]
