@@ -156,3 +156,7 @@
     appname = "flameshot"
     history_ignore = yes
 
+[ignore_network_manager]
+    appname = "keymapper"
+    history_ignore = yes
+
