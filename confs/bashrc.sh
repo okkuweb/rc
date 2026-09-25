@@ -108,6 +108,10 @@ eval "$(fzf --bash)"
 if [ -f ~/.bash_aliases.sh ]; then
     . ~/.bash_aliases.sh
 fi
+# Run private bash commands
+if [ -f ~/.bash_private.sh ]; then
+    . ~/.bash_private.sh
+fi
 # Run machine specific bash commands
 if [ -f ~/.bash_local.sh ]; then
     . ~/.bash_local.sh
