@@ -6,9 +6,20 @@ if command -v apt >/dev/null 2>&1; then
   echo "======== Updated apt packages ========"
 fi
 if command -v rpm-ostree >/dev/null 2>&1; then
-  echo "======== Updating rpm-ostree packages ========"
-  sudo rpm-ostree update
-  echo "======== Updated rpm-ostree packages ========"
+  echo "======== Checking for rpm-ostree updates ========"
+  # --check returns 77 when no update is available, without pulling the image.
+  if rpm-ostree upgrade --check; then
+    echo "======== Updating rpm-ostree packages ========"
+    sudo rpm-ostree upgrade
+    echo "======== Updated rpm-ostree packages ========"
+  else
+    rpm_ostree_status=$?
+    if [ "$rpm_ostree_status" -eq 77 ]; then
+      echo "======== rpm-ostree packages already up-to-date ========"
+    else
+      exit "$rpm_ostree_status"
+    fi
+  fi
 elif command -v dnf >/dev/null 2>&1; then
   echo "======== Updating dnf packages ========"
   sudo dnf update
