@@ -2,7 +2,7 @@
 
 set -eu
 
-terminal_workspace='>'
+terminal_workspace='0:>'
 current_workspace=$(swaymsg -t get_workspaces -r |
     jq -r '.[] | select(.focused) | .name')
 
