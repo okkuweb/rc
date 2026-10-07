@@ -58,10 +58,7 @@ if [[ -L "$HOME/.local/share/applications/power-menu.desktop" &&
       "$(readlink "$HOME/.local/share/applications/power-menu.desktop")" == "$(pwd)/confs/power-menu.desktop" ]]; then
     rm "$HOME/.local/share/applications/power-menu.desktop"
 fi
-if [[ -L "$HOME/.local/bin/rofi-power" &&
-      "$(readlink "$HOME/.local/bin/rofi-power")" == "$(pwd)/confs/bash/rofi-power.sh" ]]; then
-    rm "$HOME/.local/bin/rofi-power"
-fi
+ln -sfv "$(pwd)/confs/bash/rofi-power.sh" ~/.local/bin/rofi-power
 for action in lock sleep hibernate log-out reboot shut-down; do
     ln -sfv "$(pwd)/confs/desktop/rofi-$action.desktop" ~/.local/share/applications/
 done
@@ -95,10 +92,10 @@ case ":${XDG_CURRENT_DESKTOP,,}:" in
         ;;
 esac
 
-ln -sfv `pwd`/confs/update.sh ~/update.sh
+ln -sfv `pwd`/confs/bash/update.sh ~/update.sh
 ln -sfv `pwd`/confs/audio-volume-change.oga ~/.config/waybar/
 ln -sfv `pwd`/confs/kanshi.config ~/.config/kanshi/config
-ln -sfv `pwd`/confs/sway-toggle-terminal ~/.config/sway/
+ln -sfv `pwd`/confs/bash/sway-toggle-terminal ~/.config/sway/
 
 if [[ ! -f "$HOME/.ssh/config" ]]; then
     cp -fv `pwd`/confs/sshbase.conf ~/.ssh/config

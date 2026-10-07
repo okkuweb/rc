@@ -4,4 +4,4 @@ Name=Shut down
 Exec=systemctl poweroff
 Icon=system-shutdown
 Terminal=false
-Categories=System;
+Categories=System;X-Power;

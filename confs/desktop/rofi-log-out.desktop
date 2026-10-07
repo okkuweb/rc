@@ -4,4 +4,4 @@ Name=Log out
 Exec=swaymsg exit
 Icon=system-log-out
 Terminal=false
-Categories=System;
+Categories=System;X-Power;

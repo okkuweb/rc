@@ -4,4 +4,4 @@ Name=Sleep
 Exec=systemctl suspend
 Icon=system-suspend
 Terminal=false
-Categories=System;
+Categories=System;X-Power;
