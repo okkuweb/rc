@@ -152,11 +152,10 @@
     appname = "NetworkManager Applet*"
     history_ignore = yes
 
-[ignore_network_manager]
+[ignore_flameshot_history]
     appname = "flameshot"
     history_ignore = yes
 
-[ignore_network_manager]
+[ignore_keymapper_history]
     appname = "keymapper"
     history_ignore = yes
-
