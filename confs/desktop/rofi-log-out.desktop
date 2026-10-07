@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=Log out
+Exec=swaymsg exit
+Icon=system-log-out
+Terminal=false
+Categories=System;

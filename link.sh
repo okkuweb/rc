@@ -49,10 +49,22 @@ ln -sfv `pwd`/confs/config.ghostty ~/.config/ghostty/
 ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty/
 ln -sfv `pwd`/confs/tab-style.css ~/.config/ghostty-roguelike/ghostty/
 ln -sfv `pwd`/confs/rl-config.ghostty ~/.config/ghostty-roguelike/ghostty/config.ghostty
-ln -sfv `pwd`/confs/rl-ghostty.desktop ~/.local/share/applications/
-ln -sfv `pwd`/confs/nvim.desktop ~/.local/share/applications/
-ln -sfv `pwd`/confs/dunst-history.desktop ~/.local/share/applications/
-ln -sfv `pwd`/confs/dunst-history-all.desktop ~/.local/share/applications/
+ln -sfv "$(pwd)/confs/desktop/rl-ghostty.desktop" ~/.local/share/applications/
+ln -sfv "$(pwd)/confs/desktop/nvim.desktop" ~/.local/share/applications/
+ln -sfv "$(pwd)/confs/desktop/dunst-history.desktop" ~/.local/share/applications/
+ln -sfv "$(pwd)/confs/desktop/dunst-history-all.desktop" ~/.local/share/applications/
+# Remove links from the previous nested power menu, if installed by this repo.
+if [[ -L "$HOME/.local/share/applications/power-menu.desktop" &&
+      "$(readlink "$HOME/.local/share/applications/power-menu.desktop")" == "$(pwd)/confs/power-menu.desktop" ]]; then
+    rm "$HOME/.local/share/applications/power-menu.desktop"
+fi
+if [[ -L "$HOME/.local/bin/rofi-power" &&
+      "$(readlink "$HOME/.local/bin/rofi-power")" == "$(pwd)/confs/bash/rofi-power.sh" ]]; then
+    rm "$HOME/.local/bin/rofi-power"
+fi
+for action in lock sleep hibernate log-out reboot shut-down; do
+    ln -sfv "$(pwd)/confs/desktop/rofi-$action.desktop" ~/.local/share/applications/
+done
 ln -sfv `pwd`/confs/bash/notifications-history.sh ~/.local/bin/notifications-history
 ln -sfv `pwd`/confs/bash/notifications-history.sh ~/.local/bin/notification-history-all
 ln -sfv `pwd`/confs/nvim/markdown.lua ~/.config/nvim/after/plugin/
