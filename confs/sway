@@ -217,5 +217,18 @@ bar {
     swaybar_command waybar
 }
 
+## Kanshi startup configs
+#exec --no-startup-id ~/.local/bin/kanshi
+#exec_always ~/.local/bin/kanshictl reload
+
+## Dunst startup configs
+#exec dunst
+
+## Policykit theming adjustments and startup
+#exec env QT_QPA_PLATFORMTHEME=gtk3 lxqt-policykit-agent
+
+## Network manager applet startup
+#exec nm-applet --indicator
+
 ### Private Overrides
 include ~/.config/sway/sway-local
