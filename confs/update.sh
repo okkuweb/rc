@@ -1,9 +1,36 @@
 #!/bin/bash
 set -euo pipefail
 if command -v apt >/dev/null 2>&1; then
-  echo "======== Updating apt packages ========"
-  sudo apt update && sudo apt upgrade
-  echo "======== Updated apt packages ========"
+  (
+    echo "======== Checking for apt updates ========"
+    # Refresh private package lists without writing to root-owned APT state.
+    apt_check_dir=$(mktemp -d)
+    trap 'rm -rf -- "$apt_check_dir"' EXIT
+    mkdir -p "$apt_check_dir/lists/partial"
+    # System update hooks may require root; only run them during sudo apt update.
+    cat > "$apt_check_dir/apt.conf" <<'EOF'
+#clear APT::Update::Pre-Invoke;
+#clear APT::Update::Post-Invoke;
+#clear APT::Update::Post-Invoke-Success;
+EOF
+    apt_check_options=(
+      -c "$apt_check_dir/apt.conf"
+      -o "Dir::State::lists=$apt_check_dir/lists"
+      -o 'Dir::Cache::pkgcache='
+      -o 'Dir::Cache::srcpkgcache='
+      -o 'APT::Update::Error-Mode=any'
+    )
+    apt-get "${apt_check_options[@]}" update
+    apt_updates=$(LC_ALL=C apt-get "${apt_check_options[@]}" --simulate --with-new-pkgs upgrade)
+    if grep -q '^Inst ' <<< "$apt_updates"; then
+      echo "======== Updating apt packages ========"
+      sudo apt update
+      sudo apt upgrade -y
+      echo "======== Updated apt packages ========"
+    else
+      echo "======== apt packages already up-to-date ========"
+    fi
+  )
 fi
 if command -v rpm-ostree >/dev/null 2>&1; then
   echo "======== Checking for rpm-ostree updates ========"
@@ -21,58 +48,40 @@ if command -v rpm-ostree >/dev/null 2>&1; then
     fi
   fi
 elif command -v dnf >/dev/null 2>&1; then
-  echo "======== Updating dnf packages ========"
-  sudo dnf update
-  echo "======== Updated dnf packages ========"
+  echo "======== Checking for dnf updates ========"
+  # DNF returns 100 when updates are available, 0 when there are none.
+  if dnf --refresh check-update; then
+    echo "======== dnf packages already up-to-date ========"
+  else
+    dnf_status=$?
+    if [ "$dnf_status" -eq 100 ]; then
+      echo "======== Updating dnf packages ========"
+      sudo dnf --refresh update -y
+      echo "======== Updated dnf packages ========"
+    else
+      exit "$dnf_status"
+    fi
+  fi
 fi
 if command -v snap >/dev/null 2>&1; then
-  echo "======== Updating snaps ========"
-  sudo snap refresh
-  echo "======== Updated snaps ========"
+  echo "======== Checking for snap updates ========"
+  snap_updates=$(LC_ALL=C snap refresh --list)
+  if grep -q '^Name[[:space:]]' <<< "$snap_updates"; then
+    printf '%s\n' "$snap_updates"
+    echo "======== Updating snaps ========"
+    sudo snap refresh
+    echo "======== Updated snaps ========"
+  else
+    echo "======== snaps already up-to-date ========"
+  fi
 fi
 if command -v flatpak >/dev/null 2>&1; then
   echo "======== Updating flatpaks ========"
-  flatpak update
+  flatpak update --assumeyes --noninteractive
   echo "======== Updated flatpaks ========"
 fi
 if command -v brew >/dev/null 2>&1; then
   echo "======== Updating brew packages ========"
-  brew update && brew upgrade
+  brew update && brew upgrade --no-ask
   echo "======== Updated brew packages ========"
-fi
-if command -v dpkg wget jq >/dev/null 2>&1 &&
-  dpkg -s proton-pass >/dev/null 2>&1; then
-  (
-    trap 'rm -f ProtonPass.deb' 0 1 2 15
-    metadata=$(wget -qO- https://proton.me/download/PassDesktop/linux/x64/version.json) &&
-      online_version=$(printf '%s' "$metadata" | jq -er 'first(.Releases[] | select(.CategoryName == "Stable")) | .Version') &&
-      installed_version=$(dpkg-query -W -f='${Version}' proton-pass) &&
-      if [ "$installed_version" != "$online_version" ]; then
-          echo "======== Updating Proton Pass ========"
-          package_url=$(printf '%s' "$metadata" | jq -er 'first(.Releases[] | select(.CategoryName == "Stable") | .File[] | select(.Identifier | startswith(".deb"))) | .Url') &&
-              wget -O ProtonPass.deb "$package_url" &&
-              sudo dpkg -i ProtonPass.deb
-          echo "======== Updated Proton Pass ========"
-      else
-          echo "======== Proton Pass already up-to-date ========"
-      fi
-  )
-fi
-if command -v rpm wget jq >/dev/null 2>&1 &&
-  rpm -q proton-pass >/dev/null 2>&1; then
-  (
-    trap 'rm -f ProtonPass.rpm' 0 1 2 15
-    metadata=$(wget -qO- https://proton.me/download/PassDesktop/linux/x64/version.json) &&
-      online_version=$(printf '%s' "$metadata" | jq -er 'first(.Releases[] | select(.CategoryName == "Stable")) | .Version') &&
-      installed_version=$(rpm -q --qf '%{VERSION}' proton-pass) &&
-      if [ "$installed_version" != "$online_version" ]; then
-          echo "======== Updating Proton Pass ========"
-          package_url=$(printf '%s' "$metadata" | jq -er 'first(.Releases[] | select(.CategoryName == "Stable") | .File[] | select(.Identifier | startswith(".rpm"))) | .Url') &&
-              wget -O ProtonPass.rpm "$package_url" &&
-              sudo rpm -U ProtonPass.rpm
-          echo "======== Updated Proton Pass ========"
-      else
-          echo "======== Proton Pass already up-to-date ========"
-      fi
-  )
 fi
