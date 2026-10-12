@@ -85,3 +85,18 @@ if command -v brew >/dev/null 2>&1; then
   brew update && brew upgrade --no-ask
   echo "======== Updated brew packages ========"
 fi
+
+while IFS= read -r -d '' repo_dir; do
+  echo "======== Updating $repo_dir ========"
+  previous_commit=$(git -C "$repo_dir" rev-parse HEAD)
+  git -C "$repo_dir" pull
+  current_commit=$(git -C "$repo_dir" rev-parse HEAD)
+
+  if [[ "$previous_commit" != "$current_commit" ]]; then
+    echo "======== Changes pulled; running link.sh for $repo_dir ========"
+    (cd "$repo_dir" && ./link.sh)
+  else
+    echo "======== No changes pulled; skipping link.sh for $repo_dir ========"
+  fi
+done < <(find "$HOME" -mindepth 1 -maxdepth 2 -type d \
+  \( -name rc -o -name prc \) -print0)
