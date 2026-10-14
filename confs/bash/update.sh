@@ -110,6 +110,19 @@ if command -v brew >/dev/null 2>&1; then
   echo "======== Updated brew packages ========"
 fi
 
+find_update_repos() {
+  local fd_name fd_command
+  for fd_name in fd fdfind fd-find; do
+    if fd_command=$(type -P "$fd_name"); then
+      "$fd_command" --type d --max-depth 2 --hidden --no-ignore \
+        --case-sensitive --print0 '^(rc|prc)$' "$HOME"
+      return
+    fi
+  done
+  find "$HOME" -mindepth 1 -maxdepth 2 -type d \
+    \( -name rc -o -name prc \) -print0
+}
+
 while IFS= read -r -d '' repo_dir; do
   echo "======== Updating $repo_dir ========"
   previous_commit=$(git -C "$repo_dir" rev-parse HEAD)
@@ -122,5 +135,4 @@ while IFS= read -r -d '' repo_dir; do
   else
     echo "======== No changes pulled; skipping link.sh for $repo_dir ========"
   fi
-done < <(find "$HOME" -mindepth 1 -maxdepth 2 -type d \
-  \( -name rc -o -name prc \) -print0)
+done < <(find_update_repos)
