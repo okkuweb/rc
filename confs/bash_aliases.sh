@@ -13,6 +13,9 @@ shopt -s expand_aliases
 # List self-installed npm packages
 alias nodelist="npm list -g --depth=0"
 
+# Use the current user's Flatpak installation.
+alias flatpak="flatpak --user"
+
 # Add 256 colors to tmux
 alias tmux="tmux -2"
 

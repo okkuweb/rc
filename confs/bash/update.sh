@@ -77,7 +77,7 @@ if command -v snap >/dev/null 2>&1; then
 fi
 if command -v flatpak >/dev/null 2>&1; then
   echo "======== Updating flatpaks ========"
-  flatpak update --assumeyes --noninteractive
+  flatpak update --user --assumeyes --noninteractive
   echo "======== Updated flatpaks ========"
 fi
 if command -v brew >/dev/null 2>&1; then

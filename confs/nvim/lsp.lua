@@ -73,7 +73,7 @@ vim.lsp.enable('rust_analyzer')
 -- Expand library globs here: PerlNavigator passes includePaths literally to perl.
 local perl_libs = vim.tbl_filter(function(path)
     return vim.fn.isdirectory(path) == 1
-end, vim.fn.glob("/opt/*/lib", false, true))
+end, vim.fn.glob("/opt/*/lib", true, true))
 
 -- Keep this environment local to PerlNavigator and its child processes.
 local perl_env = {}
