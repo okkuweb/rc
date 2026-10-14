@@ -70,13 +70,31 @@ vim.lsp.config.gopls = {
 vim.lsp.enable('gopls')
 vim.lsp.enable('rust_analyzer')
 
+-- Expand library globs here: PerlNavigator passes includePaths literally to perl.
+local perl_libs = vim.tbl_filter(function(path)
+    return vim.fn.isdirectory(path) == 1
+end, vim.fn.glob("/opt/*/lib", false, true))
+
+-- Keep this environment local to PerlNavigator and its child processes.
+local perl_env = {}
+if #perl_libs > 0 then
+    local perl5lib = table.concat(perl_libs, ":")
+    if vim.env.PERL5LIB and vim.env.PERL5LIB ~= "" then
+        perl5lib = perl5lib .. ":" .. vim.env.PERL5LIB
+    end
+    perl_env.PERL5LIB = perl5lib
+end
+
 vim.lsp.config.perlnavigator = {
-    {
-        cmd = { "perlnavigator", "--stdio" },
-        filetypes = { "perl" },
-        includePaths = { "/opt/*/lib" },
-        capabilities = capabilities,
-    }
+    cmd = { "perlnavigator", "--stdio" },
+    cmd_env = perl_env,
+    filetypes = { "perl" },
+    capabilities = capabilities,
+    settings = {
+        perlnavigator = {
+            includePaths = perl_libs,
+        },
+    },
 }
 vim.lsp.enable('perlnavigator')
 vim.lsp.enable('ts_ls')
