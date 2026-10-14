@@ -76,9 +76,33 @@ if command -v snap >/dev/null 2>&1; then
   fi
 fi
 if command -v flatpak >/dev/null 2>&1; then
-  echo "======== Updating flatpaks ========"
-  flatpak update --user --assumeyes --noninteractive
-  echo "======== Updated flatpaks ========"
+  # Check each existing installation without sudo or installing updates.
+  for flatpak_scope in user system; do
+    if [ "$flatpak_scope" = user ]; then
+      flatpak_dir=${FLATPAK_USER_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/flatpak}
+    else
+      flatpak_dir=${FLATPAK_SYSTEM_DIR:-/var/lib/flatpak}
+    fi
+    if [ ! -d "$flatpak_dir/repo" ]; then
+      echo "======== No $flatpak_scope Flatpak repository; skipping ========"
+      continue
+    fi
+
+    echo "======== Checking for $flatpak_scope Flatpak updates ========"
+    flatpak_updates=$(flatpak remote-ls "--$flatpak_scope" --updates --all --columns=ref)
+    if [ -n "$flatpak_updates" ]; then
+      printf '%s\n' "$flatpak_updates"
+      echo "======== Updating $flatpak_scope flatpaks ========"
+      if [ "$flatpak_scope" = system ] && ! command -v rpm-ostree >/dev/null 2>&1; then
+        sudo flatpak update --system --assumeyes --noninteractive
+      else
+        flatpak update "--$flatpak_scope" --assumeyes --noninteractive
+      fi
+      echo "======== Updated $flatpak_scope flatpaks ========"
+    else
+      echo "======== $flatpak_scope flatpaks already up-to-date ========"
+    fi
+  done
 fi
 if command -v brew >/dev/null 2>&1; then
   echo "======== Updating brew packages ========"
