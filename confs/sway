@@ -90,6 +90,8 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 bindsym $mod+Tab focus right
 bindsym $mod+Shift+Tab focus left
+bindsym $mod+d focus right
+bindsym $mod+a focus left
 bindsym Mod1+Tab focus right
 bindsym Mod1+Shift+Tab focus left
 
@@ -106,13 +108,14 @@ bindsym $mod+comma resize shrink width 30px, resize shrink height 30px
 bindsym $mod+Shift+period resize grow height 30px
 bindsym $mod+Shift+comma resize shrink height 30px
 
-bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
-bindsym $mod+d layout toggle split
+bindsym $mod+s layout toggle split
+bindsym $mod+x split toggle
 bindsym $mod+z fullscreen
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+t focus mode_toggle
-bindsym $mod+a focus parent
+bindsym $mod+f focus parent
+bindsym $mod+Shift+f focus child
 bindsym f12 scratchpad show, resize set 100ppt 100ppt, move position center
 bindsym $mod+f12 move scratchpad
 bindsym $mod+c scratchpad show, resize set 100ppt 100ppt, move position center
