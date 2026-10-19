@@ -152,6 +152,11 @@
     appname = "NetworkManager Applet*"
     history_ignore = yes
 
+[ignore_blueman]
+    appname = "blueman"
+    skip_display = yes
+    history_ignore = yes
+
 [ignore_flameshot_history]
     appname = "flameshot"
     history_ignore = yes
