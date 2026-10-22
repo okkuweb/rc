@@ -32,6 +32,7 @@ mkdir -p ~/.config/xkb/rules
 mkdir -p ~/.local/share/applications/
 mkdir -p ~/.wallpaper
 mkdir -p ~/.config/kanshi
+mkdir -p ~/.var/app/org.flameshot.Flameshot/config/flameshot
 
 # Make screenshots visible in Pictures without replacing existing files.
 if [[ -d "$HOME/Pictures" ]]; then
@@ -112,6 +113,7 @@ esac
 ln -sfv `pwd`/confs/bash/update.sh ~/update.sh
 ln -sfv `pwd`/confs/audio-volume-change.oga ~/.config/waybar/
 ln -sfv `pwd`/confs/kanshi.config ~/.config/kanshi/config
+ln -sfv `pwd`/confs/flameshot.ini ~/.var/app/org.flameshot.Flameshot/config/flameshot/flameshot.ini
 ln -sfv `pwd`/confs/bash/sway-toggle-terminal ~/.config/sway/
 
 if [[ ! -f "$HOME/.ssh/config" ]]; then
