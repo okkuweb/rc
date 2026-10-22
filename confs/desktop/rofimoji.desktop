@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Emoji
+Comment=Pick emoji and copy them to the clipboard
+Exec=rofimoji --selector rofi --action copy --clipboarder wl-copy
+TryExec=rofimoji
+Icon=face-smile
+Terminal=false
+Categories=Utility;
+Keywords=emoji;emojis;emoticon;unicode;characters;rofimoji;

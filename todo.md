@@ -1,1 +1,3 @@
 - [ ] Not all versions of tmux support "extended-keys"
+- [ ] Put optional support to sway configs for emojis
+- [ ] Sway cannot sometimes paste jpg/png images depending on the application

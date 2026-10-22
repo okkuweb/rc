@@ -53,6 +53,7 @@ ln -sfv "$(pwd)/confs/desktop/rl-ghostty.desktop" ~/.local/share/applications/
 ln -sfv "$(pwd)/confs/desktop/nvim.desktop" ~/.local/share/applications/
 ln -sfv "$(pwd)/confs/desktop/dunst-history.desktop" ~/.local/share/applications/
 ln -sfv "$(pwd)/confs/desktop/dunst-history-all.desktop" ~/.local/share/applications/
+ln -sfv "$(pwd)/confs/desktop/rofimoji.desktop" ~/.local/share/applications/
 # Remove links from the previous nested power menu, if installed by this repo.
 if [[ -L "$HOME/.local/share/applications/power-menu.desktop" &&
       "$(readlink "$HOME/.local/share/applications/power-menu.desktop")" == "$(pwd)/confs/power-menu.desktop" ]]; then
