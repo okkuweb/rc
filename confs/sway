@@ -64,7 +64,8 @@ exec --no-startup-id unset GTK_IM_MODULE && fcitx5 -dr
 bindsym $mod+Return exec $term
 bindsym $mod+Space exec $menu
 bindsym $mod+e exec env GTK_THEME=Adwaita:dark thunar
-bindsym $mod+Shift+s exec flatpak run org.flameshot.Flameshot gui
+bindsym $mod+Shift+s exec flatpak run --filesystem="$HOME/.screenshots:create" org.flameshot.Flameshot gui --path "$HOME/.screenshots"
+bindsym $mod+Ctrl+s exec flatpak run org.flameshot.Flameshot gui --raw | wl-copy --type image/png
 bindsym $mod+n exec ghostty -e ~/.local/bin/notifications-history
 #bindsym $mod+b exec flatpak run org.mozilla.firefox
 #exec /usr/libexec/lxqt-policykit-agent

@@ -32,6 +32,22 @@ mkdir -p ~/.config/xkb/rules
 mkdir -p ~/.local/share/applications/
 mkdir -p ~/.wallpaper
 mkdir -p ~/.config/kanshi
+
+# Make screenshots visible in Pictures without replacing existing files.
+if [[ -d "$HOME/Pictures" ]]; then
+    if [[ -L "$HOME/Pictures/Screenshots" ]]; then
+        if [[ "$(readlink "$HOME/Pictures/Screenshots")" != "$HOME/.screenshots" ]]; then
+            echo "Warning: ~/Pictures/Screenshots already links elsewhere; leaving it unchanged." >&2
+        fi
+    elif [[ -d "$HOME/Pictures/Screenshots" ]]; then
+        echo "Warning: ~/Pictures/Screenshots already exists. Move the pictures inside manually to ~/.screenshots and remove the ~/Pictures/Screenshots directory, then rerun link.sh." >&2
+    elif [[ -e "$HOME/Pictures/Screenshots" ]]; then
+        echo "Warning: ~/Pictures/Screenshots already exists as a file; leaving it unchanged." >&2
+    else
+        ln -sv "$HOME/.screenshots" "$HOME/Pictures/Screenshots"
+    fi
+fi
+
 ln -sfv `pwd`/confs/bashrc.sh ~/.bashrc
 ln -sfv `pwd`/confs/bash_aliases.sh ~/.bash_aliases.sh
 ln -sfv `pwd`/confs/bash/grip.sh ~/.grip.sh
