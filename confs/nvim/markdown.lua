@@ -170,19 +170,30 @@ return content:match("^%- ")
         if content:match("^%- %[ %] ") then
             content = content:gsub("^%- %[ %] ", "- [x] ", 1)
 
-            -- Move completed items within the contiguous block at the same indentation.
+            -- Move the item and its children past siblings and their children.
             local lines = vim.api.nvim_buf_get_lines(0, row - 1, -1, false)
+            local indent_width = vim.fn.strdisplaywidth(indent)
             local block_end = 1
-            while lines[block_end + 1]
-                and lines[block_end + 1]:match("^(%s*)%- %[[ xX]%] ") == indent do
+            local item_end = 1
+            local found_sibling = false
+            while lines[block_end + 1] do
+                local next_indent = lines[block_end + 1]:match("^(%s*)%- %[[ xX]%] ")
+                if not next_indent then break end
+                local next_width = vim.fn.strdisplaywidth(next_indent)
+                if next_width < indent_width then break end
+                if next_width == indent_width then found_sibling = true end
                 block_end = block_end + 1
+                if not found_sibling then item_end = block_end end
             end
 
             local replacement = {}
-            for i = 2, block_end do
+            for i = item_end + 1, block_end do
                 replacement[#replacement + 1] = lines[i]
             end
             replacement[#replacement + 1] = indent .. content
+            for i = 2, item_end do
+                replacement[#replacement + 1] = lines[i]
+            end
 
             local col = vim.api.nvim_win_get_cursor(0)[2]
             vim.api.nvim_buf_set_lines(0, row - 1, row + block_end - 1, false, replacement)
