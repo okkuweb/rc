@@ -170,11 +170,11 @@ return content:match("^%- ")
         if content:match("^%- %[ %] ") then
             content = content:gsub("^%- %[ %] ", "- [x] ", 1)
 
-            -- Move completed items to the end of the contiguous checkbox block.
+            -- Move completed items within the contiguous block at the same indentation.
             local lines = vim.api.nvim_buf_get_lines(0, row - 1, -1, false)
             local block_end = 1
             while lines[block_end + 1]
-                and lines[block_end + 1]:match("^%s*%- %[[ xX]%] ") do
+                and lines[block_end + 1]:match("^(%s*)%- %[[ xX]%] ") == indent do
                 block_end = block_end + 1
             end
 
@@ -186,7 +186,7 @@ return content:match("^%- ")
 
             local col = vim.api.nvim_win_get_cursor(0)[2]
             vim.api.nvim_buf_set_lines(0, row - 1, row + block_end - 1, false, replacement)
-            vim.api.nvim_win_set_cursor(0, { row + block_end - 1, col })
+            vim.api.nvim_win_set_cursor(0, { row, col })
             return
         elseif content:match("^%- %[x%] ") then
             content = content:gsub("^%- %[x%] ", "- [ ] ", 1)
