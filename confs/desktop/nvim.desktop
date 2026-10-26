@@ -4,7 +4,7 @@ Type=Application
 Name=Neovim
 Comment=Edit text files with Neovim
 TryExec=ghostty
-Exec=ghostty --window-decoration=auto -e nvim %F
+Exec=ghostty --window-decoration=client --gtk-titlebar=true -e /bin/sh -c "PATH=~/.local/bin:\\$PATH; export PATH; exec nvim \\"\\$@\\"" nvim %F
 Terminal=false
 Icon=accessories-text-editor
 Categories=Utility;TextEditor;
