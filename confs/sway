@@ -121,7 +121,8 @@ bindsym f12 scratchpad show, resize set 100ppt 100ppt, move position center
 bindsym $mod+f12 move scratchpad
 bindsym $mod+c scratchpad show, resize set 100ppt 100ppt, move position center
 bindsym Mod1+c exec ~/.config/sway/sway-toggle-terminal
-bindsym $mod+grave workspace "0:>"
+bindsym --to-code $mod+grave workspace "0:>"
+bindsym --to-code $mod+Shift+grave move container to workspace "0:>"
 bindsym $mod+Mod1+c move scratchpad
 
 ### Workspaces
