@@ -2,6 +2,8 @@ configuration {
     font: "JetBrains Mono 11";
     terminal: "ghostty";
     modes: "drun";
+    disable-history: false;
+    max-history-size: 100;
     show-icons: true;
     display-drun: "";
     drun-display-format: "{name}";
