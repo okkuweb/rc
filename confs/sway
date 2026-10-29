@@ -119,9 +119,9 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+t focus mode_toggle
 bindsym $mod+f focus parent
 bindsym $mod+Shift+f focus child
-bindsym f12 scratchpad show, resize set 100ppt 100ppt, move position center
+bindsym f12 scratchpad show
 bindsym $mod+f12 move scratchpad
-bindsym $mod+c scratchpad show, resize set 100ppt 100ppt, move position center
+bindsym $mod+c scratchpad show
 bindsym Mod1+c exec ~/.config/sway/sway-toggle-terminal
 bindsym --to-code $mod+grave workspace "0:>"
 bindsym --to-code $mod+Shift+grave move container to workspace "0:>"
