@@ -118,13 +118,11 @@ bindsym $mod+t focus mode_toggle
 bindsym $mod+f focus parent
 bindsym $mod+Shift+f focus child
 bindsym $mod+c scratchpad show
-bindsym $mod+Tab scratchpad show
-bindsym $mod+Shift+Tab move scratchpad
+bindsym $mod+Mod1+c move scratchpad
 bindsym $mod+y [title="^Picture-in-picture$"] scratchpad show; focus tiling
 bindsym Mod1+c exec ~/.config/sway/sway-toggle-terminal
 bindsym --to-code $mod+grave workspace "0:>"
 bindsym --to-code $mod+Shift+grave move container to workspace "0:>"
-bindsym $mod+Mod1+c move scratchpad
 
 ### Workspaces
 # Number 0 keeps the terminal workspace first; Waybar displays only >.
