@@ -89,8 +89,6 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-bindsym $mod+Tab focus right
-bindsym $mod+Shift+Tab focus left
 bindsym $mod+d focus right
 bindsym $mod+a focus left
 bindsym Mod1+Tab focus right
@@ -115,14 +113,13 @@ bindsym $mod+w layout tabbed
 bindsym $mod+s layout toggle split
 bindsym $mod+x split toggle
 bindsym $mod+z fullscreen
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Alt+space floating toggle
 bindsym $mod+t focus mode_toggle
 bindsym $mod+f focus parent
 bindsym $mod+Shift+f focus child
-bindsym f12 scratchpad show
-bindsym $mod+f12 move scratchpad
 bindsym $mod+c scratchpad show
-# Toggle picture-in-picture without keeping focus on its scratchpad window.
+bindsym $mod+Tab scratchpad show
+bindsym $mod+Shift+Tab move scratchpad
 bindsym $mod+y [title="^Picture-in-picture$"] scratchpad show; focus tiling
 bindsym Mod1+c exec ~/.config/sway/sway-toggle-terminal
 bindsym --to-code $mod+grave workspace "0:>"
