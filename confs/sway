@@ -122,6 +122,8 @@ bindsym $mod+Shift+f focus child
 bindsym f12 scratchpad show
 bindsym $mod+f12 move scratchpad
 bindsym $mod+c scratchpad show
+# Toggle picture-in-picture without keeping focus on its scratchpad window.
+bindsym $mod+y [title="^Picture-in-picture$"] scratchpad show; focus tiling
 bindsym Mod1+c exec ~/.config/sway/sway-toggle-terminal
 bindsym --to-code $mod+grave workspace "0:>"
 bindsym --to-code $mod+Shift+grave move container to workspace "0:>"
