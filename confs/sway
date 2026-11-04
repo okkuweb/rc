@@ -185,6 +185,7 @@ for_window [app_id="brave-browser"] mark Browser
 for_window [app_id="firefox"] mark Browser
 for_window [con_mark="Browser"] inhibit_idle fullscreen
 for_window [app_id="firefox" title="Firefox — Sharing Indicator"] floating enable
+for_window [app_id="thunar" title="Rename"] floating enable
 
 # Inlined from /usr/share/sway/config.d/50-rules-policykit-agent.conf
 for_window [app_id="lxqt-policykit-agent"] {
