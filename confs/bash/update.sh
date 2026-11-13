@@ -34,19 +34,10 @@ EOF
 fi
 if command -v rpm-ostree >/dev/null 2>&1; then
   echo "======== Checking for rpm-ostree updates ========"
-  # --check returns 77 when no update is available, without pulling the image.
-  if rpm-ostree upgrade --check; then
-    echo "======== Updating rpm-ostree packages ========"
-    sudo rpm-ostree upgrade
-    echo "======== Updated rpm-ostree packages ========"
-  else
-    rpm_ostree_status=$?
-    if [ "$rpm_ostree_status" -eq 77 ]; then
-      echo "======== rpm-ostree packages already up-to-date ========"
-    else
-      exit "$rpm_ostree_status"
-    fi
-  fi
+  # --check can miss available updates; let upgrade determine whether work is needed.
+  echo "======== Updating rpm-ostree packages ========"
+  sudo rpm-ostree upgrade
+  echo "======== rpm-ostree upgrade complete ========"
 elif command -v dnf >/dev/null 2>&1; then
   echo "======== Checking for dnf updates ========"
   # DNF returns 100 when updates are available, 0 when there are none.
