@@ -121,7 +121,7 @@ bindsym $mod+f focus parent
 bindsym $mod+Shift+f focus child
 bindsym $mod+c scratchpad show
 bindsym $mod+Mod1+c move scratchpad
-bindsym $mod+v [title="^Picture-in-picture$"] scratchpad show; focus tiling
+bindsym $mod+v [title="^Picture-in-picture$"] scratchpad show, resize set width 34 ppt height 32 ppt, move position 66 ppt 0 px; focus tiling
 bindsym Mod1+c exec ~/.config/sway/sway-toggle-terminal
 bindsym --to-code $mod+grave workspace "0:>"
 bindsym --to-code $mod+Shift+grave move container to workspace "0:>"
