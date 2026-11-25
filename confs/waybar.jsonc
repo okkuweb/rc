@@ -138,6 +138,7 @@
         "format-alt": " {:%d.%m.%Y}",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "calendar": {
+            "weeks-pos": "left",
             "format": {
                 "today": "<span background='#89b4fa' foreground='#1e1e2e'><b>{}</b></span>"
             }
